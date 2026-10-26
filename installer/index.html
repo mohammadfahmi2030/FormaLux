@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormaLux Desktop Installer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="installer-window">
+    <!-- Titlebar -->
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <div class="app-logo">
+          <img src="icon.png" width="20" height="20" style="object-fit: contain; border-radius: 4px;" alt="Logo" onerror="this.style.display='none'">
+        </div>
+        <span class="titlebar-title">FormaLux desktop installer</span>
+      </div>
+      <div class="titlebar-controls">
+        <button class="win-btn" id="btn-minimize" title="Minimize">−</button>
+        <button class="win-btn close" id="btn-close" title="Close">×</button>
+      </div>
+    </div>
+
+    <!-- Main Content Area / Slideshow Stage -->
+    <div class="carousel-stage">
+      <!-- Background Ambient Glows -->
+      <div class="ambient-glow cyan"></div>
+      <div class="ambient-glow purple"></div>
+
+      <!-- Slide 1: Evolution of Format Factory -->
+      <div class="slide active" data-slide="0">
+        <div class="slide-content">
+          <div class="slide-text">
+            <h1 class="slide-headline">Format Factory Evolution</h1>
+            <p class="slide-description">
+              Next-generation ultimate media powerhouse with 56+ professional formats. Effortlessly batch convert Video, Audio, Pictures, Documents, and ROM discs at top fidelity.
+            </p>
+            <div class="slide-pills">
+              <span class="pill">4K UHD Video</span>
+              <span class="pill">Hi-Res Audio</span>
+              <span class="pill">Next-Gen WebP</span>
+              <span class="pill">PDF Suite</span>
+            </div>
+          </div>
+          <div class="slide-graphic">
+            <div class="glass-card">
+              <div class="card-header">
+                <span class="card-dot red"></span>
+                <span class="card-dot yellow"></span>
+                <span class="card-dot green"></span>
+                <span class="card-tag">56+ Built-in Formats</span>
+              </div>
+              <div class="card-body formats-grid">
+                <div class="fmt-badge video">
+                  <span class="fmt-icon">🎬</span>
+                  <div class="fmt-info"><strong>MP4 / MKV</strong><span>4K 60FPS AVC/HEVC</span></div>
+                </div>
+                <div class="fmt-badge audio">
+                  <span class="fmt-icon">🎵</span>
+                  <div class="fmt-info"><strong>MP3 / FLAC</strong><span>320k Lossless Audio</span></div>
+                </div>
+                <div class="fmt-badge picture">
+                  <span class="fmt-icon">🖼️</span>
+                  <div class="fmt-info"><strong>WebP / JPG</strong><span>Ultra Compression</span></div>
+                </div>
+                <div class="fmt-badge doc">
+                  <span class="fmt-icon">📄</span>
+                  <div class="fmt-info"><strong>PDF / Word</strong><span>Merge & Decrypt</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Hardware Acceleration -->
+      <div class="slide" data-slide="1">
+        <div class="slide-content">
+          <div class="slide-text">
+            <h1 class="slide-headline">Hardware Acceleration</h1>
+            <p class="slide-description">
+              Experience lightning-fast conversions powered by multi-threaded FFmpeg with NVIDIA NVENC, Intel QuickSync, and AMD AMF GPU encoding.
+            </p>
+            <div class="slide-pills">
+              <span class="pill highlight">NVIDIA NVENC</span>
+              <span class="pill highlight">Intel QuickSync</span>
+              <span class="pill highlight">AMD AMF</span>
+            </div>
+          </div>
+          <div class="slide-graphic">
+            <div class="glass-card gpu-card">
+              <div class="gpu-chip">
+                <div class="chip-core">
+                  <span class="chip-label">GPU BOOST</span>
+                  <span class="chip-status">MULTI-THREAD 16X</span>
+                </div>
+              </div>
+              <div class="speed-meter">
+                <div class="speed-bar"><div class="speed-fill"></div></div>
+                <div class="speed-text"><span>Processing Speed</span><strong>12.5x Real-Time</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Precision Trimmer -->
+      <div class="slide" data-slide="2">
+        <div class="slide-content">
+          <div class="slide-text">
+            <h1 class="slide-headline">Precision Clip & Trim</h1>
+            <p class="slide-description">
+              Frame-accurate video and audio editing with live scrubber, synchronized player, fade in/out transitions, and playback speed acceleration.
+            </p>
+            <div class="slide-pills">
+              <span class="pill">0.01s Precision</span>
+              <span class="pill">Waveform Sync</span>
+              <span class="pill">Fade Effects</span>
+            </div>
+          </div>
+          <div class="slide-graphic">
+            <div class="glass-card trimmer-card">
+              <div class="trimmer-preview">
+                <div class="trimmer-waveform">
+                  <div class="wave-bar" style="height:40%"></div>
+                  <div class="wave-bar" style="height:70%"></div>
+                  <div class="wave-bar" style="height:100%"></div>
+                  <div class="wave-bar" style="height:60%"></div>
+                  <div class="wave-bar" style="height:85%"></div>
+                  <div class="wave-bar" style="height:95%"></div>
+                  <div class="wave-bar" style="height:50%"></div>
+                  <div class="wave-bar" style="height:75%"></div>
+                  <div class="wave-bar" style="height:40%"></div>
+                  <div class="wave-bar" style="height:90%"></div>
+                  <div class="wave-bar" style="height:65%"></div>
+                  <div class="wave-bar" style="height:80%"></div>
+                </div>
+                <div class="trim-marker start"><span>[|&lt; Start</span></div>
+                <div class="trim-marker end"><span>End &gt;|]</span></div>
+              </div>
+              <div class="trim-timecode">
+                <span>00:00:15.200</span>
+                <span class="dur-badge">Duration: 00:04:30</span>
+                <span>00:04:45.200</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Smart File Division -->
+      <div class="slide" data-slide="3">
+        <div class="slide-content">
+          <div class="slide-text">
+            <h1 class="slide-headline">Smart File Division</h1>
+            <p class="slide-description">
+              Effortlessly split massive recordings and long podcasts by exact length of time, target file count, or specific MB size limits with zero loss.
+            </p>
+            <div class="slide-pills">
+              <span class="pill">By Duration (s)</span>
+              <span class="pill">By File Count</span>
+              <span class="pill">By Target Size (MB)</span>
+            </div>
+          </div>
+          <div class="slide-graphic">
+            <div class="glass-card divide-card">
+              <div class="divide-diagram">
+                <div class="source-file">
+                  <span class="file-icon">📦</span>
+                  <span>Huge_Media.wav (1.8 GB)</span>
+                </div>
+                <div class="divide-arrow">➔ ➔ ➔</div>
+                <div class="segments-stack">
+                  <div class="seg"><span>Part_001.mp3</span><small>60 MB</small></div>
+                  <div class="seg"><span>Part_002.mp3</span><small>60 MB</small></div>
+                  <div class="seg"><span>Part_003.mp3</span><small>60 MB</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Document & PDF Suite -->
+      <div class="slide" data-slide="4">
+        <div class="slide-content">
+          <div class="slide-text">
+            <h1 class="slide-headline">Document & PDF Suite</h1>
+            <p class="slide-description">
+              Merge, compress, decrypt, and convert seamlessly between PDF, Word, Excel, and images with military-grade formatting preservation.
+            </p>
+            <div class="slide-pills">
+              <span class="pill">PDF Joiner</span>
+              <span class="pill">PDF to Word</span>
+              <span class="pill">PDF to Image</span>
+              <span class="pill">Encryption</span>
+            </div>
+          </div>
+          <div class="slide-graphic">
+            <div class="glass-card doc-card">
+              <div class="doc-diagram">
+                <div class="doc-node pdf">
+                  <span class="doc-icon">📕</span>
+                  <strong>PDF Document</strong>
+                </div>
+                <div class="doc-arrows">
+                  <span class="flow-pill">Word (.docx)</span>
+                  <span class="flow-pill">Excel (.xlsx)</span>
+                  <span class="flow-pill">Images (.png)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel Dot Indicators -->
+      <div class="carousel-dots" id="carousel-dots">
+        <button class="dot active" data-index="0"></button>
+        <button class="dot" data-index="1"></button>
+        <button class="dot" data-index="2"></button>
+        <button class="dot" data-index="3"></button>
+        <button class="dot" data-index="4"></button>
+      </div>
+    </div>
+
+    <!-- Bottom Installation Control Bar -->
+    <div class="installer-bottom-bar">
+      <!-- Progress Mode (Active during / after install) -->
+      <div class="progress-section" id="progress-section">
+        <div class="progress-track-wrapper">
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="progress-status-row">
+          <div class="status-left">
+            <div class="status-spinner" id="status-spinner"></div>
+            <span class="status-text" id="status-text">Preparing installation...</span>
+          </div>
+          <div class="status-right">
+            <span class="percent-text" id="percent-text">0%</span>
+            <button class="btn-more" id="btn-more">More</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finished State Action Section (Hidden until 100%) -->
+      <div class="finished-action-row hidden" id="finished-action-row">
+        <div class="finish-left">
+          <div class="finish-note">
+            <span class="check-icon">✓</span>
+            <span>Installation completed successfully!</span>
+          </div>
+          <label class="finish-launch-checkbox" id="lbl-finish-launch">
+            <input type="checkbox" id="chk-finish-launch" checked>
+            <span>Launch FormaLux now</span>
+          </label>
+        </div>
+        <div class="finish-right">
+          <button class="btn-finish" id="btn-finish">
+            <span>Finish</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- "More" Options Slide-up Drawer -->
+      <div class="more-drawer hidden" id="more-drawer">
+        <div class="drawer-header">
+          <span class="drawer-title">Installation Options</span>
+          <button class="drawer-close" id="btn-close-drawer">×</button>
+        </div>
+        <div class="drawer-body">
+          <div class="drawer-row">
+            <label class="drawer-label">Install Location:</label>
+            <div class="path-input-group">
+              <input type="text" id="input-install-path" class="path-input" readonly>
+              <button class="btn-browse" id="btn-browse-folder">Browse...</button>
+            </div>
+          </div>
+          <div class="drawer-options-grid">
+            <label class="drawer-checkbox">
+              <input type="checkbox" id="chk-desktop" checked>
+              <span>Create Desktop Shortcut</span>
+            </label>
+            <label class="drawer-checkbox">
+              <input type="checkbox" id="chk-startmenu" checked>
+              <span>Add to Start Menu</span>
+            </label>
+            <label class="drawer-checkbox">
+              <input type="checkbox" id="chk-launch" checked>
+              <span>Launch FormaLux upon finish</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maintenance Stage (Visible if FormaLux is already installed) -->
+    <div class="maintenance-stage hidden" id="maintenance-stage">
+      <!-- Ambient Background Glows -->
+      <div class="ambient-glow cyan"></div>
+      <div class="ambient-glow purple"></div>
+
+      <!-- Main Maintenance Container -->
+      <div class="maintenance-container" id="maintenance-main-view">
+        <!-- Header -->
+        <div class="maint-header">
+          <div class="maint-logo-wrap">
+            <img src="icon.png" class="maint-logo-img" alt="FormaLux" onerror="this.src='../build/icon.png'">
+            <div class="maint-logo-glow"></div>
+          </div>
+          <h1 class="maint-title">FormaLux Maintenance</h1>
+          <p class="maint-subtitle">FormaLux is already installed on this computer. What would you like to do?</p>
+          <div class="maint-install-badge">
+            <span class="maint-badge-dot"></span>
+            <span class="maint-badge-text" id="maint-badge-text">Version 1.0.0</span>
+            <span class="maint-badge-sep">•</span>
+            <span class="maint-badge-path" id="maint-badge-path" title="Installed Path">C:\Users\...\FormaLux</span>
+          </div>
+        </div>
+
+        <!-- 2 Main Cards Grid: Repair vs Uninstall -->
+        <div class="maint-grid">
+          <!-- Card 1: Repair -->
+          <div class="maint-card repair-card" id="card-repair">
+            <div class="maint-card-icon-wrap repair">
+              <svg class="maint-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+            </div>
+            <div class="maint-card-content">
+              <h2 class="maint-card-title">Repair FormaLux</h2>
+              <p class="maint-card-desc">
+                Reinstall core binaries, repair corrupted files, refresh FFmpeg 6.0 media engines, and restore desktop & Start menu shortcuts.
+              </p>
+            </div>
+            <button class="maint-btn btn-repair" id="btn-maint-repair">
+              <span class="btn-text">Repair</span>
+              <span class="btn-arrow">➔</span>
+            </button>
+          </div>
+
+          <!-- Card 2: Uninstall -->
+          <div class="maint-card uninstall-card" id="card-uninstall">
+            <div class="maint-card-icon-wrap uninstall">
+              <svg class="maint-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </div>
+            <div class="maint-card-content">
+              <h2 class="maint-card-title">Uninstall FormaLux</h2>
+              <p class="maint-card-desc">
+                Completely remove FormaLux application files, media encoders, system shortcuts, and uninstaller registry entries.
+              </p>
+            </div>
+            <button class="maint-btn btn-uninstall" id="btn-maint-uninstall">
+              <span class="btn-text">Uninstall</span>
+              <span class="btn-arrow">➔</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="maint-footer">
+          <span class="maint-footer-note">All processes run with user privileges. No reboot required.</span>
+          <button class="btn-maint-exit" id="btn-maint-exit">Cancel & Exit</button>
+        </div>
+      </div>
+
+      <!-- Uninstall Confirmation Dialog -->
+      <div class="maint-confirm-overlay hidden" id="maint-uninstall-confirm">
+        <div class="maint-confirm-box">
+          <div class="maint-confirm-icon">⚠️</div>
+          <h3 class="maint-confirm-title">Confirm Uninstallation</h3>
+          <p class="maint-confirm-text">
+            Are you sure you want to completely uninstall <strong>FormaLux</strong>? All conversion tools, audio/video engines, and presets will be removed from your PC.
+          </p>
+          <label class="maint-confirm-checkbox">
+            <input type="checkbox" id="chk-maint-delete-user-data" checked>
+            <span>Remove user preferences, saved presets, and temporary cache</span>
+          </label>
+          <div class="maint-confirm-actions">
+            <button class="btn-maint-cancel" id="btn-cancel-uninstall">Cancel</button>
+            <button class="btn-maint-confirm-danger" id="btn-confirm-uninstall">Uninstall Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- In-Flight Operation Progress Overlay (For Repair & Uninstall) -->
+      <div class="maint-progress-overlay hidden" id="maint-progress-overlay">
+        <div class="maint-progress-box">
+          <div class="maint-progress-icon-ring">
+            <div class="maint-spinner" id="maint-op-spinner"></div>
+            <span class="maint-finish-check hidden" id="maint-finish-check">✓</span>
+          </div>
+          <h2 class="maint-op-title" id="maint-op-title">Repairing FormaLux...</h2>
+          <p class="maint-op-status" id="maint-op-status">Please wait while the operation completes...</p>
+
+          <div class="maint-progress-track">
+            <div class="maint-progress-fill" id="maint-progress-fill" style="width: 0%;"></div>
+          </div>
+          <div class="maint-progress-pct" id="maint-progress-pct">0%</div>
+
+          <div class="maint-done-actions hidden" id="maint-done-actions">
+            <label class="finish-launch-checkbox" id="lbl-maint-launch">
+              <input type="checkbox" id="chk-maint-launch" checked>
+              <span>Launch FormaLux now</span>
+            </label>
+            <button class="btn-finish" id="btn-maint-done-finish">
+              <span>Finish</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="installer.js"></script>
+</body>
+</html>

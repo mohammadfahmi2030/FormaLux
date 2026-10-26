@@ -1,0 +1,28 @@
+# Node & Electron dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build and compilation outputs
+dist/
+build/temp/
+build/extracted/
+out/
+bin/
+
+# Temporary / Scratch files
+scratch/
+*.log
+*.tmp
+*.bak
+*.pfx
+*.exe
+FormaLux-Setup.exe
+
+# Operating System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/

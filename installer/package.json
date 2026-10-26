@@ -1,0 +1,49 @@
+{
+  "name": "formalux-setup",
+  "version": "1.0.0",
+  "description": "FormaLux Desktop Installer",
+  "main": "main.js",
+  "author": "Mohammad Fahmi",
+  "license": "MIT",
+  "build": {
+    "appId": "com.formalux.installer",
+    "productName": "FormaLux Setup",
+    "electronVersion": "45.0.0",
+    "directories": {
+      "output": "../dist/setup-installer"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "styles.css",
+      "installer.js",
+      "icon.ico",
+      "icon.png",
+      "Uninstall.exe"
+    ],
+    "extraResources": [
+      {
+        "from": "payload.tar.gz",
+        "to": "payload.tar.gz"
+      }
+    ]
+  }
+}
