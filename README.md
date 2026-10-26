@@ -1,19 +1,48 @@
 <div align="center">
 
-# FormaLux (فورما لوكس) 🎬🎵🖼️📄💿
-### The Ultimate All-in-One Media Converter & Transcoder for Windows
-### مصنع التحويل الفاخر والشامل لجميع الوسائط المتعددة لنظام ويندوز
+<img src="assets/formalux_hero_banner.jpg" alt="FormaLux Hero Banner" width="100%">
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/mohammadfahmi2030/FormaLux?style=for-the-badge&logo=github&color=blue)](https://github.com/mohammadfahmi2030/FormaLux/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/mohammadfahmi2030/FormaLux/total?style=for-the-badge&logo=windows&color=success)](https://github.com/mohammadfahmi2030/FormaLux/releases/latest)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20x64-brightgreen?style=for-the-badge&logo=windows)](#-download--installation)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
-[![Electron](https://img.shields.io/badge/Framework-Electron-47848F?style=for-the-badge&logo=electron)](https://www.electronjs.org/)
+<br><br>
+
+<!-- ACTION CTA BUTTONS -->
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
+  <img src="assets/btn_download_setup.svg" width="310" alt="Download FormaLux for Windows">
+</a>
+&nbsp;&nbsp;
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest">
+  <img src="assets/btn_latest_release.svg" width="245" alt="FormaLux Latest Release">
+</a>
+&nbsp;&nbsp;
+<a href="https://github.com/mohammadfahmi2030/FormaLux/archive/refs/heads/main.zip">
+  <img src="assets/btn_source_code.svg" width="245" alt="FormaLux Source Code">
+</a>
+
+<br><br>
+
+<!-- QUICK NAVIGATION -->
+**[Engine Studio](#01--high-performance-transcoding-engine)** &nbsp;•&nbsp; 
+**[Hardware Acceleration](#-gpu-hardware-transcoding)** &nbsp;•&nbsp; 
+**[Subtitle Studio](#-studio-subtitle-burning)** &nbsp;•&nbsp; 
+**[Download Specs](#02--official-standalone-package)** &nbsp;•&nbsp; 
+**[النسخة العربية](#-النسخة-العربية)**
+
+<br>
+
+<!-- BADGES BAR -->
+[![Latest release](https://img.shields.io/github/v/release/mohammadfahmi2030/FormaLux?style=flat-square&color=84cc16&labelColor=0f172a)](https://github.com/mohammadfahmi2030/FormaLux/releases/latest)
+[![MIT License](https://img.shields.io/badge/source-MIT-818cf8?style=flat-square&labelColor=0f172a)](LICENSE)
+[![Platform Windows](https://img.shields.io/badge/Windows-10%20%2F%2011%20x64-38bdf8?style=flat-square&labelColor=0f172a)](#02--official-standalone-package)
+[![Bilingual](https://img.shields.io/badge/English%20%2B%20Arabic-Native%20RTL-f43f5e?style=flat-square&labelColor=0f172a)](#-النسخة-العربية)
+[![Engine](https://img.shields.io/badge/Engine-FFmpeg%20%2B%20Electron-22c55e?style=flat-square&labelColor=0f172a)](https://www.electronjs.org/)
+
+<br>
+
+**Free, open-source, and engineered for uncompromising media quality.**
 
 ---
 
-### 🌐 Language / اختر اللغة
-**[🇬🇧 English Version](#-english)** &nbsp;&nbsp;|&nbsp;&nbsp; **[🇸🇦 النسخة العربية](#-العربية)**
+### 🌐 Select Language / اختر لغة العرض
+**[🇬🇧 English Documentation](#-english-version)** &nbsp;&nbsp;|&nbsp;&nbsp; **[🇸🇦 الدليل باللغة العربية](#-النسخة-العربية)**
 
 ---
 
@@ -21,186 +50,284 @@
 
 <br>
 
-<a name="-english"></a>
-# 🇬🇧 English
+<a name="-english-version"></a>
+# 🇬🇧 English Version
 
-## 🌟 Overview
-**FormaLux** is a modern, high-performance, and feature-rich desktop media converter designed for Windows. Built as an advanced, luxurious alternative to classic converters like Format Factory, it combines the full power of **FFmpeg** with an ultra-sleek, multi-themed, and intuitive user interface.
+## ` 01 ` &nbsp; High-Performance Transcoding Engine ➔
+> **PRECISION PROCESSING · LOSSLESS CONVERSION · GPU ACCELERATED**
 
-Whether you need to convert high-definition 4K videos, remaster and boost audio tracks, convert graphic assets and generate multi-resolution `.ico` icon packs, rip DVDs/CDs, compress ISOs, or convert documents, **FormaLux does it all in one standalone, offline package.**
+### Universal Media Studio. Uncompromising Quality.
 
----
+<table>
+<tr>
+<td width="33%" valign="top">
 
-## 🚀 Key Features
+### 🎬 `01 / VIDEO & AUDIO`
+#### All-in-One Audio-Visual Lab
+Transcode 4K Ultra-HD video (`MP4, MKV, WebM, AVI, MOV, TS`), master lossless audio (`FLAC, MP3, WAV, AAC`), boost quiet volume up to 400%, and merge or split clips with millisecond precision.
 
-### 🎬 1. Video Conversion & Processing
-* **All Formats Supported:** MP4, MKV, WebM, AVI, MOV, FLV, WMV, MPG, 3GP, TS, M4V, Animated GIF, and more.
-* **Smart Encoder Presets:** H.264 (AVC), H.265 (HEVC), VP9, AV1, ProRes, MPEG-4 with custom CRF, Bitrate, and FPS.
-* **Video Tools:** Lossless video merger/joiner, precision video splitter/clipper, audio extractor, and speed control.
-* **Subtitle Hardcoding & Customization:** Burn SRT, ASS, or SSA subtitles directly into video with full styling control: font family, interactive color picker, border outline, shadow, positioning, and character encodings (UTF-8, ANSI Windows-1256 for Arabic, etc.).
-* **Watermarks & Branding:** Overlay custom PNG logos (with full transparency) or text watermarks with opacity, scale, and custom margins in any corner.
-* **Web Optimization:** Automatic `FastStart` (Web Moov Atom placement) for instantaneous streaming playback on web players.
+</td>
+<td width="33%" valign="top">
 
-### 🎵 2. Audio Remastering & Conversion
-* **Formats Supported:** MP3, FLAC (Lossless), AAC, M4A, OGG, WAV, WMA, APE, AC3, DTS, AMR, M4R (iPhone Ringtone), and more.
-* **Advanced Sound DSP:**
-  * Volume Booster: Amplification up to **400%** with peak limiting.
-  * Audio Filters: Fade-in / Fade-out effects, Reverb & Echo, Noise Reduction (Denoise), and Audio Reverse.
-  * Channel Mapping: Stereo, Mono, 5.1 Surround, Sample Rate adjustment (up to 96kHz), and Bitrate customization (up to 320kbps).
-* **Audio Tools:** Audio Merger/Combiner and Audio Clipper/Splitter.
+### 🖼️ `02 / GRAPHICS & ICONS`
+#### Studio Graphics & Icon Generator
+Convert between modern image formats (`WebP, PNG, JPG, BMP, TIFF`) and generate full-scale multi-layer Windows Icon packs (`.ico` from 16px to 256px) with clean transparency.
 
-### 🖼️ 3. Image Studio & Multi-Resolution Icon Maker
-* **Formats Supported:** JPG, PNG, WebP, ICO, BMP, GIF, TIFF, TGA, AVIF.
-* **Professional Icon Studio:** Convert any image (JPG, PNG, WebP) into high-fidelity Windows Icon files (`.ico`) containing crisp multi-resolution layers (`16x16`, `32x32`, `48x48`, `64x64`, `128x128`, `256x256`).
-* **Batch Compression & Resize:** Resize by percentage or target dimensions, adjust JPEG/WebP quality, remove metadata, and rotate/flip.
+</td>
+<td width="33%" valign="top">
 
-### 📄 4. Document & E-Book Converter
-* Convert between popular document and e-book formats: **PDF, EPUB, MOBI, DOCX, TXT, and HTML**.
+### 💿 `03 / DISCS & UTILITIES`
+#### Disc Mastering & Productivity Tools
+Rip video DVDs, extract audio CDs to lossless FLAC/MP3, compress ISO disk images to CSO, and manage huge libraries with the integrated batch renamer.
 
-### 💿 5. Disc & ISO Tools
-* **DVD to Video:** Rip video DVD structures and VOB titles into modern video formats.
-* **Music CD Ripper:** Extract Audio CD tracks into pristine MP3, FLAC, or WAV files.
-* **ISO & CSO Utilities:** Convert ISO images to compressed CSO and vice-versa, or build standard ISO images from local folders.
+</td>
+</tr>
+</table>
 
-### ⚡ 6. Hardware Acceleration (GPU)
-* Automatic hardware encoder detection for blazing-fast conversion speeds:
-  * **NVIDIA NVENC** (`h264_nvenc`, `hevc_nvenc`)
-  * **Intel Quick Sync Video** (`h264_qsv`, `hevc_qsv`)
-  * **AMD AMF** (`h264_amf`, `hevc_amf`)
-
-### 🎨 7. Modern UI & System Integration
-* **Rich Color Themes:** Switch seamlessly between *Dark Mode, Navy Blue, Royal Purple, Emerald Green, and Clean Light*.
-* **Multi-Language Support:** Fully localized in English, Arabic (العربية), French (Français), Spanish (Español), and Turkish (Türkçe).
-* **System Integration:** Windows Context Menu integration (right-click any file to convert), System Tray minimization, and real-time CPU & conversion progress indicators.
-* **Smart Auto-Updates:** Built-in auto-update engine that queries GitHub Releases and notifies you whenever a new release is available with a single-click download.
+<br>
 
 ---
 
-## 📥 Download & Installation
-
-Get the official, digitally signed Windows installer package from the Releases tab:
-
-👉 **[Download FormaLux-Setup.exe (Latest Version)](https://github.com/mohammadfahmi2030/FormaLux/releases/latest)**
-
-* **Self-Contained & Offline:** All necessary libraries, runtimes, and FFmpeg binaries are bundled inside. No extra downloads needed.
-* **Smart Installer & Uninstaller:** Supports clean installation, desktop/start-menu shortcuts, Windows Context Menu integration, and built-in Repair / Uninstall options.
+### ⚡ GPU Hardware Transcoding
+FormaLux automatically queries your graphics hardware to deliver blazing speeds:
+* **NVIDIA NVENC:** `h264_nvenc` & `hevc_nvenc` (Ultra-fast 4K export)
+* **Intel QuickSync (QSV):** Hardware-accelerated encoding for Intel Iris, Arc, and Core processors.
+* **AMD AMF:** Hardware acceleration for AMD Radeon GPUs.
 
 ---
 
-## 🛠️ Build from Source
+### 🖋️ Studio Subtitle Burning
+Hardcode subtitles into your movies without any character glitches:
+* **Interactive Styling Studio:** Customize font family, color picker, outline border thickness, and drop-shadow depth.
+* **Full Arabic Script Support:** Complete native compatibility for **ANSI Windows-1256** and **UTF-8**, rendering connected, properly positioned Arabic subtitles every single time.
 
-If you want to contribute, customize, or build the application from source code:
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/mohammadfahmi2030/FormaLux.git
-cd FormaLux
-
-# 2. Install dependencies
-npm install
-
-# 3. Launch application in development mode
-npm start
-
-# 4. Package and build production installer
-npm run build
-```
+<br>
 
 ---
+
+## ` 02 ` &nbsp; Official Standalone Package ➔
+> **WINDOWS 64-BIT EDITION · 100% OFFLINE RUNTIME**
+
+### Self-Contained & Production-Ready
+FormaLux requires zero external setup. All necessary FFmpeg engines, codecs, and dependencies are securely pre-bundled.
+
+| Technical Specification | Package Details |
+| :--- | :--- |
+| **Package File** | `FormaLux-Setup.exe` (Signed Installer & Uninstaller) |
+| **Download Size** | **~659 MB** (Complete offline bundle — no internet required for transcoding) |
+| **Operating System** | Windows 11 / Windows 10 (64-bit) |
+| **Update Engine** | Automatic notification & 1-click update via GitHub Releases |
+| **Publisher Security** | Verified local publisher certificate & checksum integrity |
+
+<br>
+
+<div align="center">
+
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
+  <img src="assets/btn_download_setup.svg" width="310" alt="Download FormaLux Setup">
+</a>
+&nbsp;&nbsp;
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest">
+  <img src="assets/btn_latest_release.svg" width="245" alt="Releases">
+</a>
+
+</div>
+
+<br>
+
+---
+
+## ` 03 ` &nbsp; Modern Visual Workspace & Native RTL ➔
+> **5 LUXURY ACCENT THEMES · FULL ARABIC LOCALIZATION**
+
+FormaLux is crafted with focus on aesthetics and workflow comfort:
+* **5 Curated Color Themes:** Dark Obsidian, Deep Navy, Royal Purple, Emerald Green, and Daylight Light.
+* **First-Class RTL Localization:** Native Arabic layout engineered with right-to-left perfection alongside English, French, Spanish, and Turkish.
+* **Windows Context Menu:** Instant right-click integration to convert any media directly from Windows File Explorer.
+* **System Tray Minimization:** Keep long transcoding queues running quietly in the background.
+
+<br>
+
+---
+
+## ` 04 ` &nbsp; Independent & Open-Source Ecosystem ➔
+> **MIT LICENSED · COMMUNITY DRIVEN · CONTINUOUS UPDATES**
+
+FormaLux is an independent, free and open-source project created and actively developed by **Mohammad Fahmi**.
+
+<br>
+
+<table>
+<tr>
+<th width="50%">🔍 Resources & Navigation</th>
+<th width="50%">🛠️ Developer Hub</th>
+</tr>
+<tr>
+<td valign="top">
+
+* 📦 [Official Release v1.0.0](https://github.com/mohammadfahmi2030/FormaLux/releases/latest)
+* 📋 [Changelog & Release Notes](https://github.com/mohammadfahmi2030/FormaLux/releases)
+* 🛡️ [License Terms (MIT)](LICENSE)
+
+</td>
+<td valign="top">
+
+* 💻 [Clone Repository (`git clone`)](https://github.com/mohammadfahmi2030/FormaLux.git)
+* 🐛 [Submit an Issue / Bug Report](https://github.com/mohammadfahmi2030/FormaLux/issues)
+* 💡 [Suggest a New Feature](https://github.com/mohammadfahmi2030/FormaLux/issues)
+
+</td>
+</tr>
+</table>
 
 <br><br>
 
 ---
 
-<a name="-العربية"></a>
-# 🇸🇦 النسخة العربية (Arabic)
+<br>
 
-## 🌟 نبذة عن البرنامج
-**فورما لوكس (FormaLux)** هو تطبيق مكتبي متكامل، فائق السرعة، ومصمم خصيصاً لبيئة ويندوز ليكون البديل العصري والفاخر لبرامج التحويل التقليدية القديمة مثل (Format Factory). يجمع البرنامج بين قوة محرك المعالجة العالمي **FFmpeg** وواجهة مستخدم رسومية راقية وعصرية تدعم ثيمات متعددة واللغة العربية بشكل أصيل وكامل.
+<a name="-النسخة-العربية"></a>
+# 🇸🇦 النسخة العربية (Arabic Version)
 
-سواء كنت ترغب في تحويل فيديوهاتك بدقة 4K العالية، أو معالجة وتضخيم ملفات الصوت، أو تحويل الصور وصناعة حزم الأيقونات متعددة الأحجام (`.ico`)، أو نسخ أقراص الـ DVD والـ CD، أو ضغط ملفات الـ ISO، أو تحويل المستندات والكتب، **فإن برنامج FormaLux يوفر لك كل ذلك داخل حزمة واحدة متكاملة ومستقلة تعمل بالكامل بدون إنترنت.**
+<div align="center">
 
----
+<!-- ARABIC ACTION CTA BUTTONS -->
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
+  <img src="assets/btn_download_setup_ar.svg" width="310" alt="تحميل فورما لوكس لويندوز">
+</a>
+&nbsp;&nbsp;
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest">
+  <img src="assets/btn_latest_release_ar.svg" width="245" alt="الإصدار الرسمي">
+</a>
+&nbsp;&nbsp;
+<a href="https://github.com/mohammadfahmi2030/FormaLux/archive/refs/heads/main.zip">
+  <img src="assets/btn_source_code_ar.svg" width="245" alt="الكود المصدري">
+</a>
 
-## ✨ المميزات الرئيسية
+<br><br>
 
-### 🎬 1. معالجة وتحويل الفيديو
-* **دعم شامل لجميع الصيغ:** MP4, MKV, WebM, AVI, MOV, FLV, WMV, MPG, 3GP, TS, M4V، وصور GIF المتحركة والمزيد.
-* **خيارات تشفير احترافية:** H.264 (AVC), H.265 (HEVC), VP9, AV1, ProRes, MPEG-4 مع تحكم كامل بمعدل البت (Bitrate)، الدقة، والإطارات (FPS).
-* **أدوات مونتاج مدمجة:** دمج الفيديوهات بدون فقدان جودة (Merger)، قص وتقطيع المقاطع بدقة أجزاء الثانية (Splitter)، استخراج الصوت، وتسريع/إبطاء الفيديو.
-* **حرق وتخصيص الترجمة (Hardcode Subtitles):** دمج ملفات SRT, ASS, SSA مباشرة داخل الفيديو مع تحكم كامل بنوع الخط، اللون عبر منتقي ألوان تفاعلي، لون وحجم الإطار (Outline)، الظل، وتحديد ترميز النصوص (دعم كامل لترميز اللغة العربية ANSI Windows-1256 و UTF-8 لمنع ظهور الرموز الغريبة).
-* **العلامة المائية والشعار (Watermark):** وضع شعار صورتك (PNG شفاف / JPG) أو نص كتابي في أي زاوية مع التحكم في نسبة الشفافية، الحجم، والهوامش.
-* **تحسين الويب (Fast Start):** ميزة وضع موضع تشغيل الفيديو السريع على الإنترنت لبدء البث الفوري بدون انتظار اكتمال التنزيل.
+**برنامج مجاني ومفتوح المصدر، صُمم ليمنحك أعلى جودة ممكنة في معالجة الوسائط.**
 
-### 🎵 2. استوديو وهندسة الصوت
-* **الصيغ المدعومة:** MP3, FLAC (عديم الفقدان), AAC, M4A, OGG, WAV, WMA, APE, AC3, DTS, AMR, M4R (نغمات آيفون) وغيرها.
-* **فلاتر ومؤثرات صوتية متقدمة:**
-  * تضخيم الصوت (Volume Boost) حتى **400%** مع حماية ضد التشويش (Limiter).
-  * تأثيرات التلاشي التدريجي (Fade-in / Fade-out).
-  * الصدى والرنين (Echo / Reverb)، وفلتر تنقية وتقليل الضوضاء (Denoise)، وعكس اتجاه الصوت (Reverse).
-  * تعديل القنوات (Stereo, Mono, 5.1)، ومعدل التردد (حتى 96kHz)، ومعدل البت (حتى 320kbps).
-* **أدوات الصوت:** دمج مقاطع صوتية متعددة وقص وتجزئة المقاطع.
+</div>
 
-### 🖼️ 3. استوديو الصور وصانع الأيقونات الاحترافي
-* **الصيغ المدعومة:** JPG, PNG, WebP, ICO, BMP, GIF, TIFF, TGA, AVIF.
-* **محول أيقونات ويندوز المتكامل:** تحويل أي صورة تلقائياً إلى ملف أيقونة ويندوز فائق الدقة (`.ico`) يحتوي على جميع الطبقات والأحجام المطلوبة للنظام (`16x16`, `32x32`, `48x48`, `64x64`, `128x128`, `256x256`).
-* **ضغط وتعديل جماعي:** تصغير الأبعاد بنسب مئوية أو أبعاد مخصصة، وضبط جودة الضغط، وإزالة البيانات الوصفية لحفظ الخصوصية.
+<br>
 
-### 📄 4. تحويل المستندات والكتب الإلكترونية
-* تحويل سريع وسلس بين أشهر صيغ الوثائق: **PDF, EPUB, MOBI, DOCX, TXT, HTML**.
+## ` 01 ` &nbsp; محرك المعالجة والتحويل فائق السرعة ➔
+> **دقة متناهية · جودة بدون فقدان · تسريع عتادي عبر كرت الشاشة**
 
-### 💿 5. أدوات الأقراص المدمجة والـ ISO
-* **DVD إلى فيديو:** استخراج ونسخ أفلام الـ DVD المدمجة وتحويلها إلى ملفات فيديو عصرية.
-* **استخراج أقراص الصوت (CD Ripper):** تحويل السيديهات الصوتية الموسيقية إلى MP3 أو FLAC بجودة أصلية.
-* **أدوات الـ ISO:** ضغط ملفات الـ ISO إلى صيغة CSO الخفيفة والعكس، وإنشاء ملفات ISO قياسية من أي مجلد على جهازك.
+### استوديو شامل لجميع الوسائط الرقمية بأعلى جودة واحترافية.
 
-### ⚡ 6. تسريع عتادي فائق عبر كرت الشاشة (Hardware Acceleration)
-* كشف واستخدام بطاقات الرسوميات تلقائياً لتسريع عمليات التحويل بأضعاف السرعة العادية:
-  * **NVIDIA NVENC**
-  * **Intel QuickSync (QSV)**
-  * **AMD AMF**
+<table>
+<tr>
+<td width="33%" valign="top">
 
-### 🎨 7. واجهة مستخدم وتكامل مع نظام ويندوز
-* **نظام ثيمات متعدد:** (الوضع الداكن Dark، الكحلي Navy، البنفسجي الملكي Purple، الأخضر الزمردي Emerald، والوضع الفاتح Light).
-* **متعدد اللغات بالكامل:** واجهة معربة بدقة مع دعم الإنجليزية، الفرنسية، الإسبانية، والتركية.
-* **تكامل مع الويندوز:** خيار إضافة البرنامج لقائمة زر الفأرة الأيمن (Context Menu) لتحويل أي ملف فوراً، والتصغير بجوار الساعة (System Tray)، ومراقبة حية لاستهلاك المعالج.
-* **تحديثات تلقائية ذكية:** فحص فوري ومستمر لأحدث الإصدارات المنشورة على GitHub مع إمكانية التحميل والتحديث بنقرة زر واحدة.
+### 🎬 `01 / الفيديو والصوت`
+#### مختبر الوسائط المتكامل
+تحويل مقاطع الفيديو بدقة 4K فائقة الوضوح (`MP4, MKV, WebM, AVI, MOV, TS`)، وهندسة الصوت النقي (`FLAC, MP3, WAV, AAC`)، وتضخيم الصوت حتى 400%، وتقطيع ودمج المقاطع بدقة أجزاء الثانية.
 
----
+</td>
+<td width="33%" valign="top">
 
-## 📥 التحميل والتثبيت
+### 🖼️ `02 / الصور وصانع الأيقونات`
+#### استوديو الجرافيكس المتقدم
+تحويل الصور بين مختلف الصيغ الحديثة (`WebP, PNG, JPG, BMP, TIFF`) مع صانع أيقونات ويندوز المتخصص الذي يولد حزم أيقونات كاملة متعددة الطبقات (`.ico` من 16px وحتى 256px).
 
-قم بتحميل حزمة التثبيت الرسمية المستقلة لنظام ويندوز:
+</td>
+<td width="33%" valign="top">
 
-👉 **[تحميل برنامج FormaLux-Setup.exe (أحدث إصدار)](https://github.com/mohammadfahmi2030/FormaLux/releases/latest)**
+### 💿 `03 / الأقراص والخدمات`
+#### نسخ الأسطوانات والأدوات الذكية
+نسخ وتحويل أسطوانات الفيديو DVD، واستخراج الأقراص الموسيقية Audio CD إلى FLAC أو MP3، وضغط صور الـ ISO إلى صيغة CSO الخفيفة، مع أداة إعادة التسمية الجماعية.
 
-* **حزمة ذاتية ومستقلة تماماً:** مدمج معها كافة أدوات التشغيل ومحرك FFmpeg دون الحاجة لتحميل أي ملفات إضافية.
-* **برنامج تثبيت وإلغاء تثبيت ذكي:** يدعم إنشاء الاختصارات، الاندماج في قائمة كليك يمين، وإصلاح التثبيت (Repair) أو الحذف النظيف.
+</td>
+</tr>
+</table>
+
+<br>
 
 ---
 
-## 🛠️ البناء من المصدر (Build from Source)
-
-لتشغيل أو تعديل الكود المصدري للبرنامج محلياً:
-
-```bash
-# 1. استنساخ المستودع
-git clone https://github.com/mohammadfahmi2030/FormaLux.git
-cd FormaLux
-
-# 2. تثبيت الحزم والمكتبات
-npm install
-
-# 3. تشغيل التطبيق في بيئة التطوير
-npm start
-
-# 4. بناء حزمة التثبيت النهائية
-npm run build
-```
+### ⚡ تسريع عتادي مذهل عبر كروت الشاشة (GPU)
+يتعرف البرنامج تلقائياً على بطاقة الرسوميات بجهازك لاستغلال كامل طاقتها:
+* **كروت نفيديا (NVIDIA NVENC):** تشفير فائق السرعة عبر `h264_nvenc` و `hevc_nvenc`.
+* **كروت إنتل (Intel QuickSync):** تسريع عتادي متطور لمعالجات Intel Core وكروت Intel Arc.
+* **كروت إيه إم دي (AMD AMF):** تسريع عمليات المعالجة لكروت AMD Radeon.
 
 ---
 
-## 📄 الترخيص وحقوق النشر (License & Copyright)
-* هذا المشروع مرخص بموجب ترخيص **MIT** — راجع ملف [LICENSE](LICENSE) لمزيد من التفاصيل.
-* **Copyright © 2026 Mohammad Fahmi. All rights reserved.**
-* تم التطوير بكل فخر بواسطة: **محمد فهمي (Mohammad Fahmi)**.
+### 🖋️ استوديو دمج وحرق الترجمات الاحترافي
+قل وداعاً لمشاكل ظهور الحروف العربية المتقطعة أو الرموز الغريبة:
+* **تخصيص كامل للمظهر:** اختيار نوع الخط، اللون عبر منتقي ألوان تفاعلي، سمك الإطار الخارجي (Outline)، وعمق الظل.
+* **دعم مثالي للغة العربية:** توافق كامل مع ترميزات **ANSI Windows-1256** و **UTF-8** لضمان خروج الحروف متصلة وواضحة ومنسقة في موضعها الصحيح.
+
+<br>
+
+---
+
+## ` 02 ` &nbsp; حزمة التثبيت الرسمية المستقلة ➔
+> **إصدار ويندوز 64-بت · تشغيل مستقل 100% دون الحاجة لإنترنت**
+
+### حزمة جاهزة ومتكاملة
+لا تحتاج لتحميل أي أدوات مساعدة أو برامج إضافية؛ كافة أدوات ومحركات FFmpeg مدمجة داخل الحزمة الرسمية.
+
+| البيان | التفاصيل الفنية |
+| :--- | :--- |
+| **ملف التثبيت** | `FormaLux-Setup.exe` (برنامج تثبيت وإلغاء تثبيت رسمي وموقع) |
+| **حجم التنزيل** | **~659 ميجابايت** (حزمة كاملة تعمل أوفلاين دون إنترنت أثناء التحويل) |
+| **التوافق** | ويندوز 11 / ويندوز 10 (نواة 64-بت) |
+| **التحديثات التلقائية** | فحص ذكي وتنبيه بضغطة زر عبر GitHub Releases |
+| **أمان الحزمة** | شهادة ناشر محلية وفحص أمان متكامل للملفات |
+
+<br>
+
+---
+
+## ` 03 ` &nbsp; بيئة عمل بصرية متطورة ودعم عربي كامل ➔
+> **5 ثيمات لونية فاخرة · واجهة RTL معربة بالكامل**
+
+* **5 ثيمات ألوان أنيقة:** (الوضع الداكن Obsidian، الكحلي Navy، البنفسجي الملكي Purple، الأخضر الزمردي Emerald، والوضع الفاتح Daylight).
+* **واجهة عربية أصيلة:** دعم حقيقي لتنسيق اليمين إلى اليسار (RTL) بالإضافة إلى اللغات الإنجليزية، الفرنسية، الإسبانية، والتركية.
+* **قائمة زر الفأرة الأيمن:** تحويل أي ملف وسائط فوراً من مستعرض ملفات ويندوز مباشرة.
+* **التصغير بجوار الساعة:** إمكانية تشغيل مهام التحويل الطويلة في الخلفية دون تعطيل عملك.
+
+<br>
+
+---
+
+## ` 04 ` &nbsp; مشروع مفتوح المصدر ومستقل ➔
+> **ترخيص MIT · تطوير مستمر · تحديثات تلقائية ذكية**
+
+مشروع **FormaLux** هو تطبيق مجاني مفتوح المصدر تم تصميمه وتطويره بالكامل بواسطة: **محمد فهمي (Mohammad Fahmi)**.
+
+<br>
+
+<details>
+<summary><b>▶ مواصفات النظام الموصى بها لتشغيل البرنامج</b></summary>
+<br>
+
+* **نظام التشغيل:** Windows 10 (الإصدار 19041 أو أحدث) أو Windows 11 (64-bit).
+* **المعالج (CPU):** Intel Core i3 / AMD Ryzen 3 أو ما يعادلهما كحد أدنى.
+* **الذاكرة العشوائية (RAM):** 4 جيجابايت كحد أدنى (يوصى بـ 8 جيجابايت أو أكثر لتحويل فيديوهات 4K).
+* **كرت الشاشة (GPU):** كروت NVIDIA GTX 900+ أو Intel HD 500+ أو AMD RX 400+ للاستفادة من التسريع العتادي.
+* **الاتصال بالإنترنت:** غير مطلوب، البرنامج يعمل 100% بدون إنترنت (يُستخدم فقط عند فحص التحديثات).
+
+</details>
+
+<br><br>
+
+<!-- FOOTER CARD BANNER -->
+<div align="center">
+
+<img src="assets/formalux_footer_banner.jpg" alt="FormaLux Footer Banner" width="100%">
+
+<br><br>
+
+[الصفحة الرئيسية للمشروع](https://github.com/mohammadfahmi2030/FormaLux) &nbsp;•&nbsp; 
+[صفحة التنزيل المباشر (Releases)](https://github.com/mohammadfahmi2030/FormaLux/releases) &nbsp;•&nbsp; 
+[ترخيص MIT الرسمي](LICENSE)
+
+<br>
+
+**FormaLux — Copyright © 2026 Mohammad Fahmi. All rights reserved.**
+
+</div>

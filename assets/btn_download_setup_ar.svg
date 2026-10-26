@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="330" height="74" viewBox="0 0 330 74">
+  <defs>
+    <linearGradient id="btnGreenAr" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#84cc16"/>
+      <stop offset="100%" stop-color="#4ade80"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Card -->
+  <rect x="1" y="1" width="328" height="72" rx="16" fill="url(#btnGreenAr)"/>
+  <rect x="2" y="2" width="326" height="70" rx="15" fill="none" stroke="#bef264" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Windows Logo Icon -->
+  <g transform="translate(20, 20)" fill="#0f172a">
+    <path d="M0 4.8L13.6 2.9V15.7H0V4.8ZM15.4 2.7L32 0.3V15.7H15.4V2.7ZM0 17.5H13.6V30.3L0 28.4V17.5ZM15.4 17.5H32V32.9L15.4 30.5V17.5Z"/>
+  </g>
+  
+  <!-- Text Content (Right Aligned or Centered) -->
+  <text x="65" y="32" font-family="'Segoe UI',Tahoma,Arial,sans-serif" font-size="16" font-weight="700" fill="#092015">تحميل لنظام ويندوز</text>
+  <text x="65" y="52" font-family="'Segoe UI',Tahoma,Arial,sans-serif" font-size="11" font-weight="600" fill="#14532d">حزمة التثبيت الرسمية · 659 ميجابايت</text>
+  
+  <!-- Arrow -->
+  <path d="M302 37L294 30M302 37L294 44" stroke="#092015" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
