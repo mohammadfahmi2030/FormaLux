@@ -232,6 +232,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Finish button (Normal Install)
   btnFinish?.addEventListener('click', () => {
+    btnFinish.disabled = true;
+    btnFinish.style.pointerEvents = 'none';
     const shouldLaunch = chkFinishLaunch ? chkFinishLaunch.checked : (chkLaunch ? chkLaunch.checked : true);
     if (shouldLaunch) {
       window.installerApi?.launchApp(installedExePath);
@@ -242,6 +244,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Finish button (Maintenance Operation Done)
   btnMaintDoneFinish?.addEventListener('click', () => {
+    btnMaintDoneFinish.disabled = true;
+    btnMaintDoneFinish.style.pointerEvents = 'none';
     if (currentMaintAction === 'repair') {
       const shouldLaunch = chkMaintLaunch?.checked ?? true;
       if (shouldLaunch) {

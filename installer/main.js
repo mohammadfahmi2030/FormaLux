@@ -35,7 +35,18 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
+      devTools: false,
     },
+  });
+
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    if (
+      input.key === 'F12' ||
+      (input.control && input.shift && ['i', 'j', 'c'].includes(input.key.toLowerCase())) ||
+      (input.control && input.key.toLowerCase() === 'u')
+    ) {
+      event.preventDefault();
+    }
   });
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
@@ -397,15 +408,29 @@ foreach ($f in $files) {
 ipcMain.handle('launch-app', (_event, targetPath) => {
   const exe = targetPath || path.join(process.env.LOCALAPPDATA || '', 'Programs', 'FormaLux', 'FormaLux.exe');
   if (fs.existsSync(exe)) {
+    // Instantly hide installer window to provide immediate visual response
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.hide();
+    }
+
+    // Clean environment to prevent inheriting internal electron debug flags
+    const cleanEnv = { ...process.env };
+    delete cleanEnv.ELECTRON_RUN_AS_NODE;
+    delete cleanEnv.ELECTRON_NO_ASAR;
+
     const child = spawn(exe, [], {
       detached: true,
       stdio: 'ignore',
       cwd: path.dirname(exe),
+      env: cleanEnv,
+      windowsHide: false
     });
     child.unref();
-    setTimeout(() => {
+
+    // Exit installer immediately so all file handles and memory are freed for the app
+    setImmediate(() => {
       app.quit();
-    }, 500);
+    });
     return true;
   }
   return false;

@@ -149,21 +149,21 @@ function generateBasicFileInfoText(filePath, stats) {
 // Hardware acceleration tester
 async function testHardwareAcceleration(ffmpegPath) {
   const testCases = [
-    { name: 'NV H264', encoder: 'h264_nvenc' },
-    { name: 'NV H265', encoder: 'hevc_nvenc' },
-    { name: 'NV AV1', encoder: 'av1_nvenc' },
-    { name: 'AMF H264', encoder: 'h264_amf' },
-    { name: 'AMF H265', encoder: 'hevc_amf' },
-    { name: 'AMF AV1', encoder: 'av1_amf' },
-    { name: 'MF H264', encoder: 'h264_mf' },
-    { name: 'MF H265', encoder: 'hevc_mf' },
+    { name: 'NVIDIA NVENC H264', encoder: 'h264_nvenc' },
+    { name: 'NVIDIA NVENC H265', encoder: 'hevc_nvenc' },
+    { name: 'NVIDIA NVENC AV1', encoder: 'av1_nvenc' },
+    { name: 'AMD AMF H264', encoder: 'h264_amf' },
+    { name: 'AMD AMF H265', encoder: 'hevc_amf' },
+    { name: 'AMD AMF AV1', encoder: 'av1_amf' },
     { name: 'Intel QSV H264', encoder: 'h264_qsv' },
     { name: 'Intel QSV H265', encoder: 'hevc_qsv' },
     { name: 'Intel QSV AV1', encoder: 'av1_qsv' },
-    { name: 'Intel QSV VP9', encoder: 'vp9_qsv' }
+    { name: 'Intel QSV VP9', encoder: 'vp9_qsv' },
+    { name: 'Microsoft MF H264', encoder: 'h264_mf' },
+    { name: 'Microsoft MF H265', encoder: 'hevc_mf' }
   ];
 
-  const results = await Promise.all(testCases.map(tc => {
+  function runSingleEncoderTest(tc) {
     return new Promise(resolve => {
       let proc = null;
       let resolved = false;
@@ -176,14 +176,14 @@ async function testHardwareAcceleration(ffmpegPath) {
           }
           resolve({ name: tc.name, encoder: tc.encoder, supported: false });
         }
-      }, 2000);
+      }, 4000);
 
       try {
         proc = spawn(ffmpegPath, [
           '-nostdin',
           '-hide_banner',
           '-f', 'lavfi',
-          '-i', 'color=c=black:s=64x64:d=0.04',
+          '-i', 'color=c=black:s=256x256:d=0.04',
           '-c:v', tc.encoder,
           '-f', 'null', '-'
         ], { windowsHide: true, stdio: 'ignore' });
@@ -211,7 +211,16 @@ async function testHardwareAcceleration(ffmpegPath) {
         }
       }
     });
-  }));
+  }
+
+  // Run in small batches of 3 to avoid GPU driver timeout / contention
+  const results = [];
+  const batchSize = 3;
+  for (let i = 0; i < testCases.length; i += batchSize) {
+    const batch = testCases.slice(i, i + batchSize);
+    const batchResults = await Promise.all(batch.map(tc => runSingleEncoderTest(tc)));
+    results.push(...batchResults);
+  }
 
   return results;
 }

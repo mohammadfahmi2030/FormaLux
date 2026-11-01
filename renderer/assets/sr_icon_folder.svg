@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="foldBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="foldFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="60%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="sheetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="fShadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <g filter="url(#fShadow)">
+    <!-- Back Tab & Body -->
+    <path d="M3 8 C3 6.9 3.9 6 5 6 L12 6 C13 6 13.8 6.5 14.3 7.2 L15.7 9 L27 9 C28.1 9 29 9.9 29 11 L29 23 C29 24.1 28.1 25 27 25 L5 25 C3.9 25 3 24.1 3 23 Z" fill="url(#foldBack)"/>
+    <!-- Papers inside folder -->
+    <rect x="6" y="8" width="18" height="12" rx="1" fill="url(#sheetGrad)"/>
+    <!-- Front Flap (Open) -->
+    <path d="M2.5 13 C2.5 12 3.3 11.2 4.3 11.2 L27.7 11.2 C28.7 11.2 29.5 12 29.5 13 L28.2 24.5 C28.1 25.4 27.3 26 26.4 26 L5.6 26 C4.7 26 3.9 25.4 3.8 24.5 Z" fill="url(#foldFront)"/>
+    <!-- Top Rim Highlight -->
+    <line x1="4.5" y1="12" x2="27.5" y2="12" stroke="#fef3c7" stroke-width="0.8" opacity="0.8"/>
+  </g>
+</svg>

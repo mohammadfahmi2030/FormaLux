@@ -1,7 +1,7 @@
-const { app, BrowserWindow, ipcMain, dialog, shell, Menu, Tray, nativeTheme } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, shell, Menu, MenuItem, Tray, nativeTheme, clipboard } = require('electron');
 const path = require('path');
 const fs = require('fs');
-const { spawn, execFile } = require('child_process');
+const { spawn, execFile, spawnSync } = require('child_process');
 const os = require('os');
 const https = require('https');
 const {
@@ -15,6 +15,24 @@ const {
   decompressCsoToIso,
   createIsoFromFolder
 } = require('./media_utils');
+let docUtils = {};
+try {
+  docUtils = require('./document_utils');
+} catch (err) {
+  console.error('[FormaLux] Failed to load document_utils:', err);
+}
+
+const {
+  convertPdfToDocx = async () => { throw new Error('Document utility not available'); },
+  convertPdfToExcel = async () => { throw new Error('Document utility not available'); },
+  convertPdfToText = async () => { throw new Error('Document utility not available'); },
+  joinPdfs = async () => { throw new Error('Document utility not available'); },
+  compressPdf = async () => { throw new Error('Document utility not available'); },
+  convertPdfToPic = async () => { throw new Error('Document utility not available'); },
+  convertImagesToPdf = async () => { throw new Error('Document utility not available'); },
+  convertDocxToPdf = async () => { throw new Error('Document utility not available'); }
+} = docUtils;
+
 
 // Keep a global reference of the window object
 let mainWindow;
@@ -42,6 +60,48 @@ function getFfprobePath() {
     if (pr && pr.path && fs.existsSync(pr.path)) return pr.path;
   } catch (e) {}
   return 'ffprobe';
+}
+
+function getPythonPath() {
+  const isDev = process.argv.includes('--dev') || !app.isPackaged;
+  const bundledPy = isDev 
+    ? path.join(__dirname, 'bin', 'python', 'python.exe')
+    : path.join(process.resourcesPath, 'bin', 'python', 'python.exe');
+  if (fs.existsSync(bundledPy)) return bundledPy;
+
+  const candidates = [
+    'python',
+    'py',
+    path.join(process.env.LOCALAPPDATA || '', 'Microsoft', 'WindowsApps', 'python.exe'),
+    path.join(process.env.PROGRAMFILES || '', 'Python313', 'python.exe'),
+    path.join(process.env.LOCALAPPDATA || '', 'Programs', 'Python', 'Python313', 'python.exe'),
+  ];
+  for (const p of candidates) {
+    try {
+      const res = spawnSync(p, ['--version'], { windowsHide: true });
+      if (res.status === 0) return p;
+    } catch (_) {}
+  }
+  return null;
+}
+
+function getAiSeparatorScriptPath() {
+  const isDev = process.argv.includes('--dev') || !app.isPackaged;
+  const scriptName = path.join('bin', 'ai_separator.py');
+  const primary = isDev ? path.join(__dirname, scriptName) : path.join(process.resourcesPath, scriptName);
+  if (fs.existsSync(primary)) return primary;
+  const fallback = path.join(__dirname, scriptName);
+  if (fs.existsSync(fallback)) return fallback;
+  return null;
+}
+
+function getAiModelsDir() {
+  const isDev = process.argv.includes('--dev') || !app.isPackaged;
+  const primary = isDev ? path.join(__dirname, 'bin', 'models') : path.join(process.resourcesPath, 'bin', 'models');
+  if (fs.existsSync(primary)) return primary;
+  const tmpModels = 'C:/tmp/audio-separator-models';
+  if (fs.existsSync(tmpModels)) return tmpModels;
+  return primary;
 }
 
 function getSettingsPath() {
@@ -114,7 +174,52 @@ function createWindow() {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
       nodeIntegration: false,
-      sandbox: false
+      sandbox: false,
+      devTools: false
+    }
+  });
+
+  // Prevent opening developer tools / inspector completely
+  mainWindow.webContents.on('before-input-event', (event, input) => {
+    if (
+      input.key === 'F12' ||
+      (input.control && input.shift && ['i', 'j', 'c'].includes(input.key.toLowerCase())) ||
+      (input.control && input.key.toLowerCase() === 'u')
+    ) {
+      event.preventDefault();
+    }
+  });
+
+  // Register application Edit menu to ensure standard shortcuts (Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+A) work reliably
+  const appEditMenu = Menu.buildFromTemplate([
+    {
+      label: 'Edit',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        { role: 'selectAll' }
+      ]
+    }
+  ]);
+  Menu.setApplicationMenu(appEditMenu);
+
+  // Native Right-Click Context Menu for Copy, Paste, Cut & Select All
+  mainWindow.webContents.on('context-menu', (event, params) => {
+    const menu = new Menu();
+    if (params.isEditable) {
+      menu.append(new MenuItem({ label: 'قص (Cut)', role: 'cut' }));
+      menu.append(new MenuItem({ label: 'نسخ (Copy)', role: 'copy' }));
+      menu.append(new MenuItem({ label: 'لصق (Paste)', role: 'paste' }));
+      menu.append(new MenuItem({ type: 'separator' }));
+      menu.append(new MenuItem({ label: 'تحديد الكل (Select All)', role: 'selectAll' }));
+      menu.popup({ window: mainWindow, x: params.x, y: params.y });
+    } else if (params.selectionText && params.selectionText.trim().length > 0) {
+      menu.append(new MenuItem({ label: 'نسخ (Copy)', role: 'copy' }));
+      menu.popup({ window: mainWindow, x: params.x, y: params.y });
     }
   });
 
@@ -434,8 +539,13 @@ ipcMain.handle('get-media-info', async (event, filePath) => {
 
 // Hardware acceleration testing for all 12 encoders
 ipcMain.handle('test-hardware-acceleration', async () => {
-  const ffmpeg = getFfmpegPath();
-  return await testHardwareAcceleration(ffmpeg);
+  try {
+    const ffmpeg = getFfmpegPath();
+    return await testHardwareAcceleration(ffmpeg);
+  } catch (err) {
+    console.error('Error in test-hardware-acceleration IPC handler:', err);
+    return [];
+  }
 });
 
 // Batch file renamer: preview mappings
@@ -648,6 +758,7 @@ ipcMain.handle('fetch-cd-info', async (event, discId) => {
 
 // Conversion task runner
 const activeTasks = new Map();
+const cancelledTasks = new Set();
 
 function extractCleanError(stderr) {
   if (!stderr) return '';
@@ -655,12 +766,17 @@ function extractCleanError(stderr) {
   for (let i = lines.length - 1; i >= 0; i--) {
     const l = lines[i];
     if (l === 'Conversion failed!') continue;
+    if (/signal 15|sigterm|killed|terminated/i.test(l)) {
+      return '';
+    }
     if (/error|failed|invalid|not found|cannot open|unable to|no such file|undefined/i.test(l)) {
-      return l.replace(/^\[.*?\]\s*/, '');
+      const clean = l.replace(/^\[.*?\]\s*/, '').trim();
+      return clean.length > 85 ? clean.slice(0, 82) + '...' : clean;
     }
   }
-  const filtered = lines.filter(l => l !== 'Conversion failed!');
-  return filtered.slice(-2).join(' ') || 'Conversion failed!';
+  const filtered = lines.filter(l => l !== 'Conversion failed!' && !/signal 15|sigterm|killed|terminated/i.test(l));
+  const fallback = (filtered.slice(-1)[0] || 'Conversion failed!').replace(/^\[.*?\]\s*/, '').trim();
+  return fallback.length > 85 ? fallback.slice(0, 82) + '...' : fallback;
 }
 
 function formatAudioBitrate(br, defaultVal = '192k') {
@@ -694,15 +810,125 @@ function getDivideArgs(options = {}) {
 ipcMain.handle('start-conversion', async (event, task) => {
   const taskId = task.id || Date.now().toString();
   const { type, input, output, options = {} } = task;
-  const outputPath = getOutputPath(input, output, options);
+  const outputPath = getOutputPath(input, output, { ...options, taskType: type });
 
-  // 1. Check for custom runners (TTS, Pic->PDF, Zip, Discs, etc.)
-  if (type === 'a_tts' || type === 'd_ffzip' || type === 'd_pic_pdf' || type.startsWith('d_') || type.startsWith('disc_')) {
+  // 1. AI Vocal & Music Separation
+  if (type === 'a_split') {
+    return runAiAudioSeparation(taskId, task, outputPath);
+  }
+
+  // 2. Check for custom runners (Pic->PDF, Zip, Discs, etc.)
+  if (type === 'd_ffzip' || type === 'd_pic_pdf' || type.startsWith('d_') || type.startsWith('disc_')) {
     const customRes = await runCustomTask(taskId, task, outputPath);
     if (customRes) return customRes;
   }
 
-  // 2. FFmpeg runner
+  // 3. FFmpeg runner
+  return runFfmpegTask(taskId, task, outputPath);
+});
+
+async function runAiAudioSeparation(taskId, task, outputPath) {
+  const { input, options = {} } = task;
+  const src = Array.isArray(input) ? input[0] : input;
+  const outDir = path.dirname(outputPath);
+  if (!fs.existsSync(outDir)) {
+    try { fs.mkdirSync(outDir, { recursive: true }); } catch (_) {}
+  }
+
+  const vocalsPath = outputPath;
+  let musicPath = '';
+  if (vocalsPath.includes(' - الصوت فقط')) {
+    musicPath = vocalsPath.replace(' - الصوت فقط', ' - الموسيقى فقط');
+  } else {
+    const parsed = path.parse(src);
+    const ext = (options.outputExt || path.extname(outputPath) || '.mp3');
+    musicPath = path.join(outDir, `${parsed.name} - الموسيقى فقط${ext}`);
+  }
+  task.extraOutputs = [vocalsPath, musicPath];
+
+  const pythonPath = getPythonPath();
+  const scriptPath = getAiSeparatorScriptPath();
+  const modelDir = getAiModelsDir();
+  const ffmpegDir = path.dirname(getFfmpegPath());
+
+  if (pythonPath && scriptPath && fs.existsSync(scriptPath)) {
+    return new Promise((resolve) => {
+      const args = [
+        scriptPath,
+        '--input', src,
+        '--output-dir', outDir,
+        '--vocals-path', vocalsPath,
+        '--music-path', musicPath,
+        '--ffmpeg-dir', ffmpegDir,
+        '--model-dir', modelDir
+      ];
+
+      const env = { ...process.env, PYTHONIOENCODING: 'utf-8' };
+      const proc = spawn(pythonPath, args, { windowsHide: true, env });
+      activeTasks.set(taskId, proc);
+
+      let currentStatusMsg = 'جاري عزل الصوت بالذكاء الاصطناعي...';
+      proc.stdout.on('data', (data) => {
+        const text = data.toString();
+        const statMatch = text.match(/STATUS:\s*(.+)/);
+        if (statMatch) {
+          currentStatusMsg = statMatch[1].trim();
+        }
+        const progMatch = text.match(/PROGRESS:\s*(\d+)/);
+        if (progMatch) {
+          const progress = parseInt(progMatch[1], 10);
+          mainWindow?.webContents.send('task-progress', { taskId, progress, statusMsg: currentStatusMsg });
+        }
+      });
+
+      let stderr = '';
+      proc.stderr.on('data', (d) => {
+        const text = d.toString();
+        stderr += text;
+        const match = text.match(/(\d{1,3})%\|/);
+        if (match) {
+          const tqdmPct = parseInt(match[1], 10);
+          const mapped = 20 + Math.floor(tqdmPct * 0.72);
+          mainWindow?.webContents.send('task-progress', { taskId, progress: mapped, statusMsg: currentStatusMsg });
+        }
+      });
+
+      proc.on('close', (code) => {
+        activeTasks.delete(taskId);
+        const isCancelled = cancelledTasks.has(taskId);
+        cancelledTasks.delete(taskId);
+
+        if (isCancelled) {
+          if (fs.existsSync(vocalsPath)) try { fs.unlinkSync(vocalsPath); } catch (_) {}
+          if (fs.existsSync(musicPath)) try { fs.unlinkSync(musicPath); } catch (_) {}
+          mainWindow?.webContents.send('task-cancelled', { taskId });
+          resolve({ cancelled: true, taskId });
+          return;
+        }
+
+        if (code === 0 && fs.existsSync(vocalsPath) && fs.existsSync(musicPath)) {
+          mainWindow?.webContents.send('task-complete', { taskId, outputPath: vocalsPath });
+          resolve({ success: true, taskId, outputPath: vocalsPath });
+        } else {
+          console.warn('[AI Separator] Process exited with code', code, stderr, '— Falling back to FFmpeg DSP');
+          runFfmpegTask(taskId, task, outputPath).then(resolve);
+        }
+      });
+
+      proc.on('error', (err) => {
+        activeTasks.delete(taskId);
+        console.warn('[AI Separator] Spawn error, falling back to FFmpeg:', err);
+        runFfmpegTask(taskId, task, outputPath).then(resolve);
+      });
+    });
+  }
+
+  // Fallback to FFmpeg if Python not found
+  console.log('[AI Separator] Python not found, using FFmpeg separation');
+  return runFfmpegTask(taskId, task, outputPath);
+}
+
+async function runFfmpegTask(taskId, task, outputPath) {
   const ff = getFfmpegPath();
   const args = buildFFmpegArgs(task, outputPath);
   if (!args) {
@@ -746,6 +972,23 @@ ipcMain.handle('start-conversion', async (event, task) => {
 
     proc.on('close', (code) => {
       activeTasks.delete(taskId);
+      const isCancelled = cancelledTasks.has(taskId);
+      cancelledTasks.delete(taskId);
+
+      if (isCancelled) {
+        if (outputPath && fs.existsSync(outputPath)) {
+          try { fs.unlinkSync(outputPath); } catch (_) {}
+        }
+        if (task.extraOutputs && Array.isArray(task.extraOutputs)) {
+          task.extraOutputs.forEach(f => {
+            if (f && fs.existsSync(f)) try { fs.unlinkSync(f); } catch (_) {}
+          });
+        }
+        mainWindow?.webContents.send('task-cancelled', { taskId });
+        resolve({ cancelled: true, taskId });
+        return;
+      }
+
       if (code === 0) {
         mainWindow?.webContents.send('task-complete', { taskId, outputPath });
         resolve({ success: true, taskId, outputPath });
@@ -759,44 +1002,42 @@ ipcMain.handle('start-conversion', async (event, task) => {
 
     proc.on('error', (err) => {
       activeTasks.delete(taskId);
+      const isCancelled = cancelledTasks.has(taskId);
+      cancelledTasks.delete(taskId);
+
+      if (isCancelled) {
+        if (outputPath && fs.existsSync(outputPath)) {
+          try { fs.unlinkSync(outputPath); } catch (_) {}
+        }
+        if (task.extraOutputs && Array.isArray(task.extraOutputs)) {
+          task.extraOutputs.forEach(f => {
+            if (f && fs.existsSync(f)) try { fs.unlinkSync(f); } catch (_) {}
+          });
+        }
+        mainWindow?.webContents.send('task-cancelled', { taskId });
+        resolve({ cancelled: true, taskId });
+        return;
+      }
+
       mainWindow?.webContents.send('task-failed', { taskId, error: err.message });
       resolve({ error: err.message, taskId });
     });
   });
-});
+}
 
 async function runCustomTask(taskId, task, outputPath) {
   const { type, input, options = {} } = task;
 
-  // A) Text to Speech
-  if (type === 'a_tts') {
-    return runTtsTask(taskId, options.text || 'FormaLux Voice', outputPath);
-  }
-
-  // B) ZIP archive
+  // A) ZIP archive
   if (type === 'd_ffzip') {
     return runZipTask(taskId, input, outputPath);
   }
 
-  // C) Image(s) to PDF
-  if (type === 'd_pic_pdf') {
-    return runPicToPdfTask(taskId, input, outputPath);
-  }
-
-  // D) Extract text from PDF
-  if (type === 'd_pdf_text') {
+  // B) Document Suite: PDF to Word DOCX
+  if (type === 'd_pdf_docx') {
     try {
       const src = Array.isArray(input) ? input[0] : input;
-      let content = `Text content extracted from: ${src}\n\nGenerated by FormaLux on ${new Date().toLocaleString()}\n`;
-      if (fs.existsSync(src)) {
-        try {
-          const raw = fs.readFileSync(src, 'utf8');
-          // Filter readable characters
-          const readable = raw.replace(/[^\x20-\x7E\u0600-\u06FF\n\r\t]/g, ' ');
-          if (readable.trim().length > 20) content += '\n' + readable.trim();
-        } catch (e) {}
-      }
-      fs.writeFileSync(outputPath, content, 'utf8');
+      await convertPdfToDocx(src, outputPath);
       mainWindow?.webContents.send('task-complete', { taskId, outputPath });
       return { success: true, taskId, outputPath };
     } catch (e) {
@@ -805,24 +1046,89 @@ async function runCustomTask(taskId, task, outputPath) {
     }
   }
 
-  // E) Document conversions to PDF
-  if (type === 'd_docx_pdf' || type === 'd_pdf_compress' || type === 'd_pdf_join') {
+  // C) Document Suite: PDF to Excel XLSX
+  if (type === 'd_pdf_excel') {
+    try {
+      const src = Array.isArray(input) ? input[0] : input;
+      await convertPdfToExcel(src, outputPath);
+      mainWindow?.webContents.send('task-complete', { taskId, outputPath });
+      return { success: true, taskId, outputPath };
+    } catch (e) {
+      mainWindow?.webContents.send('task-failed', { taskId, error: e.message });
+      return { error: e.message, taskId };
+    }
+  }
+
+  // D) Document Suite: PDF to Plain Text
+  if (type === 'd_pdf_text') {
+    try {
+      const src = Array.isArray(input) ? input[0] : input;
+      await convertPdfToText(src, outputPath);
+      mainWindow?.webContents.send('task-complete', { taskId, outputPath });
+      return { success: true, taskId, outputPath };
+    } catch (e) {
+      mainWindow?.webContents.send('task-failed', { taskId, error: e.message });
+      return { error: e.message, taskId };
+    }
+  }
+
+  // E) Document Suite: DOCX to PDF
+  if (type === 'd_docx_pdf') {
+    try {
+      const src = Array.isArray(input) ? input[0] : input;
+      await convertDocxToPdf(src, outputPath, BrowserWindow);
+      mainWindow?.webContents.send('task-complete', { taskId, outputPath });
+      return { success: true, taskId, outputPath };
+    } catch (e) {
+      mainWindow?.webContents.send('task-failed', { taskId, error: e.message });
+      return { error: e.message, taskId };
+    }
+  }
+
+  // F) Document Suite: PDF Joiner (Merge)
+  if (type === 'd_pdf_join') {
     try {
       const sources = Array.isArray(input) ? input : [input];
-      const win = new BrowserWindow({ show: false, webPreferences: { offscreen: true } });
-      const body = sources.map(f => {
-        const name = path.basename(f);
-        return `<div style="page-break-after:always;padding:40px;font-family:sans-serif;color:#1e293b;">
-          <h2 style="color:#4f46e5;border-bottom:2px solid #e2e8f0;padding-bottom:10px;">${name}</h2>
-          <p style="color:#64748b;">Converted and processed via FormaLux Document Engine.</p>
-          <p style="margin-top:20px;line-height:1.6;">Processed: ${new Date().toLocaleString()}</p>
-        </div>`;
-      }).join('');
-      await win.loadURL(`data:text/html;charset=utf-8,<!DOCTYPE html><html><body style="margin:0;padding:0;">${body}</body></html>`);
-      await new Promise(r => setTimeout(r, 400));
-      const pdf = await win.webContents.printToPDF({ printBackground: true });
-      win.destroy();
-      fs.writeFileSync(outputPath, pdf);
+      await joinPdfs(sources, outputPath);
+      mainWindow?.webContents.send('task-complete', { taskId, outputPath });
+      return { success: true, taskId, outputPath };
+    } catch (e) {
+      mainWindow?.webContents.send('task-failed', { taskId, error: e.message });
+      return { error: e.message, taskId };
+    }
+  }
+
+  // G) Document Suite: PDF Compress
+  if (type === 'd_pdf_compress') {
+    try {
+      const src = Array.isArray(input) ? input[0] : input;
+      await compressPdf(src, outputPath);
+      mainWindow?.webContents.send('task-complete', { taskId, outputPath });
+      return { success: true, taskId, outputPath };
+    } catch (e) {
+      mainWindow?.webContents.send('task-failed', { taskId, error: e.message });
+      return { error: e.message, taskId };
+    }
+  }
+
+  // H) Document Suite: PDF to Picture(s)
+  if (type === 'd_pdf_pic') {
+    try {
+      const src = Array.isArray(input) ? input[0] : input;
+      await convertPdfToPic(src, outputPath);
+      mainWindow?.webContents.send('task-complete', { taskId, outputPath });
+      return { success: true, taskId, outputPath };
+    } catch (e) {
+      mainWindow?.webContents.send('task-failed', { taskId, error: e.message });
+      return { error: e.message, taskId };
+    }
+  }
+
+  // I) Document Suite: Picture(s) to PDF
+  if (type === 'd_pic_pdf') {
+    try {
+      const sources = Array.isArray(input) ? input : [input];
+      await convertImagesToPdf(sources, outputPath, BrowserWindow);
       mainWindow?.webContents.send('task-complete', { taskId, outputPath });
       return { success: true, taskId, outputPath };
     } catch (e) {
@@ -1093,28 +1399,36 @@ async function runZipTask(taskId, input, outputPath) {
   }
 }
 
-async function runTtsTask(taskId, text, outputPath) {
+// Clipboard access IPC handlers
+ipcMain.handle('read-clipboard', () => {
   try {
-    const sanitizedText = (text || 'FormaLux Audio').replace(/'/g, "''").replace(/"/g, '`"');
-    const psCmd = `Add-Type -AssemblyName System.Speech; $s = New-Object System.Speech.Synthesis.SpeechSynthesizer; $s.SetOutputToWaveFile('${outputPath.replace(/'/g, "''")}'); $s.Speak('${sanitizedText}'); $s.Dispose()`;
-    await new Promise((resolve, reject) => {
-      execFile('powershell.exe', ['-NoProfile', '-Command', psCmd], (err) => {
-        if (err) reject(err);
-        else resolve();
-      });
-    });
-    mainWindow?.webContents.send('task-complete', { taskId, outputPath });
-    return { success: true, taskId, outputPath };
-  } catch (err) {
-    mainWindow?.webContents.send('task-failed', { taskId, error: err.message });
-    return { error: err.message, taskId };
+    return clipboard.readText();
+  } catch (e) {
+    return '';
   }
-}
+});
+
+ipcMain.handle('write-clipboard', (event, text) => {
+  try {
+    clipboard.writeText(text || '');
+    return true;
+  } catch (e) {
+    return false;
+  }
+});
 
 ipcMain.handle('cancel-task', (event, taskId) => {
+  cancelledTasks.add(taskId);
   const proc = activeTasks.get(taskId);
   if (proc) {
-    proc.kill('SIGTERM');
+    try {
+      proc.kill('SIGTERM');
+      setTimeout(() => {
+        try { proc.kill('SIGKILL'); } catch (_) {}
+      }, 400);
+    } catch (_) {
+      try { proc.kill(); } catch (_) {}
+    }
     activeTasks.delete(taskId);
     return true;
   }
@@ -1130,6 +1444,29 @@ ipcMain.handle('get-system-info', () => {
     arch: os.arch(),
     hostname: os.hostname()
   };
+});
+
+ipcMain.handle('shutdown-system', (event, delaySec = 30) => {
+  try {
+    const sec = Math.max(0, parseInt(delaySec, 10) || 30);
+    const { exec } = require('child_process');
+    exec(`shutdown /s /t ${sec} /c "FormaLux: All conversion tasks completed"`);
+    return { success: true };
+  } catch (err) {
+    console.error('[System] Shutdown error:', err);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('cancel-shutdown', () => {
+  try {
+    const { exec } = require('child_process');
+    exec('shutdown /a');
+    return { success: true };
+  } catch (err) {
+    console.error('[System] Cancel shutdown error:', err);
+    return { success: false, error: err.message };
+  }
 });
 
 // ========== FFmpeg Argument Builder ==========
@@ -1177,12 +1514,193 @@ function buildFFmpegArgs(task, customOutputPath) {
     case 'v_m4v':
       return [...baseArgs, ...getClipArgs(options), '-i', input, ...getVideoArgs('libx264', 'm4v', options), ...getDivideArgs(options), outputPath];
     
-    // Video merge
+    // Video merge & Mux
     case 'v_merge': {
-      const inputs = Array.isArray(input) ? input : [input];
-      const listFile = path.join(os.tmpdir(), `formalux_merge_${Date.now()}.txt`);
-      fs.writeFileSync(listFile, inputs.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
-      return [...baseArgs, '-f', 'concat', '-safe', '0', '-i', listFile, '-c', 'copy', outputPath];
+      const vFiles = (options && options.videoFiles && options.videoFiles.length > 0)
+        ? options.videoFiles
+        : (Array.isArray(input) ? input : [input]);
+      const aFiles = (options && options.audioFiles && options.audioFiles.length > 0)
+        ? options.audioFiles
+        : [];
+
+      const vVol = options && options.videoVolume !== undefined ? Math.max(0, Math.min(100, options.videoVolume)) : 100;
+      const aVol = options && options.audioVolume !== undefined ? Math.max(0, Math.min(100, options.audioVolume)) : 100;
+      const loop = !!(options && options.loop);
+
+      const isImage = (f) => /\.(jpe?g|png|bmp|webp|gif|tiff|ico)$/i.test(f || '');
+      const isSingleImage = vFiles.length === 1 && isImage(vFiles[0]);
+
+      // Sub-case 1: Still image + Audio file(s) -> generate video from picture + audio
+      if (isSingleImage && aFiles.length > 0) {
+        let audioInputArg = [];
+        if (aFiles.length === 1) {
+          if (loop) audioInputArg.push('-stream_loop', '-1');
+          audioInputArg.push('-i', aFiles[0]);
+        } else {
+          const aListFile = path.join(os.tmpdir(), `formalux_vmux_a_${Date.now()}_${Math.random().toString(36).slice(2, 7)}.txt`);
+          fs.writeFileSync(aListFile, aFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
+          if (loop) audioInputArg.push('-stream_loop', '-1');
+          audioInputArg.push('-f', 'concat', '-safe', '0', '-i', aListFile);
+        }
+
+        const aGain = (aVol / 100).toFixed(2);
+        const outExt = path.extname(outputPath).toLowerCase();
+        const canCopyAudio = aFiles.length === 1 && aVol === 100 && (outExt === '.mp4' || outExt === '.mkv') && /\.(mp3|aac|m4a)$/i.test(aFiles[0]);
+        const audioArgs = aVol === 0 
+          ? ['-an'] 
+          : canCopyAudio 
+            ? ['-c:a', 'copy'] 
+            : ['-c:a', 'aac', '-b:a', '192k', ...(aVol !== 100 ? ['-af', `volume=${aGain}`] : [])];
+
+        return [
+          ...baseArgs,
+          '-framerate', '1',
+          '-loop', '1',
+          '-i', vFiles[0],
+          ...audioInputArg,
+          '-c:v', 'libx264',
+          '-preset', 'ultrafast',
+          '-tune', 'stillimage',
+          '-crf', '18',
+          '-vf', 'scale=trunc(iw/2)*2:trunc(ih/2)*2',
+          '-pix_fmt', 'yuv420p',
+          '-r', '1',
+          ...audioArgs,
+          '-shortest',
+          outputPath
+        ];
+      }
+
+      // Sub-case 2: Video file(s) only (no external audio files added)
+      if (aFiles.length === 0) {
+        if (vFiles.length === 1) {
+          if (isSingleImage) {
+            return [
+              ...baseArgs,
+              '-framerate', '1',
+              '-loop', '1',
+              '-t', '5',
+              '-i', vFiles[0],
+              '-c:v', 'libx264',
+              '-preset', 'ultrafast',
+              '-crf', '18',
+              '-vf', 'scale=trunc(iw/2)*2:trunc(ih/2)*2',
+              '-pix_fmt', 'yuv420p',
+              '-r', '1',
+              outputPath
+            ];
+          }
+          if (vVol === 0) {
+            return [...baseArgs, '-i', vFiles[0], '-c:v', 'copy', '-an', outputPath];
+          }
+          if (vVol !== 100) {
+            const vGain = (vVol / 100).toFixed(2);
+            return [...baseArgs, '-i', vFiles[0], '-c:v', 'copy', '-c:a', 'aac', '-af', `volume=${vGain}`, outputPath];
+          }
+          return [...baseArgs, '-i', vFiles[0], '-c', 'copy', outputPath];
+        }
+
+        // Multiple videos merged
+        const listFile = path.join(os.tmpdir(), `formalux_merge_${Date.now()}_${Math.random().toString(36).slice(2, 7)}.txt`);
+        fs.writeFileSync(listFile, vFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
+        if (vVol === 0) {
+          return [...baseArgs, '-f', 'concat', '-safe', '0', '-i', listFile, '-c:v', 'copy', '-an', outputPath];
+        }
+        if (vVol !== 100) {
+          const vGain = (vVol / 100).toFixed(2);
+          return [...baseArgs, '-f', 'concat', '-safe', '0', '-i', listFile, '-c:v', 'copy', '-c:a', 'aac', '-af', `volume=${vGain}`, outputPath];
+        }
+        return [...baseArgs, '-f', 'concat', '-safe', '0', '-i', listFile, '-c', 'copy', outputPath];
+      }
+
+      // Sub-case 3: Video file(s) + Audio file(s) (Mux / Joiner)
+      let videoInputArg = [];
+      if (vFiles.length === 1) {
+        videoInputArg = ['-i', vFiles[0]];
+      } else if (vFiles.length > 1) {
+        const vListFile = path.join(os.tmpdir(), `formalux_vmux_v_${Date.now()}_${Math.random().toString(36).slice(2, 7)}.txt`);
+        fs.writeFileSync(vListFile, vFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
+        videoInputArg = ['-f', 'concat', '-safe', '0', '-i', vListFile];
+      }
+
+      let audioInputArg = [];
+      if (aFiles.length === 1) {
+        if (loop) audioInputArg.push('-stream_loop', '-1');
+        audioInputArg.push('-i', aFiles[0]);
+      } else if (aFiles.length > 1) {
+        const aListFile = path.join(os.tmpdir(), `formalux_vmux_a_${Date.now()}_${Math.random().toString(36).slice(2, 7)}.txt`);
+        fs.writeFileSync(aListFile, aFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
+        if (loop) audioInputArg.push('-stream_loop', '-1');
+        audioInputArg.push('-f', 'concat', '-safe', '0', '-i', aListFile);
+      }
+
+      if (vFiles.length > 0) {
+        const aGain = (aVol / 100).toFixed(2);
+        const vGain = (vVol / 100).toFixed(2);
+
+        // If both volumes are muted to 0%
+        if (vVol === 0 && aVol === 0) {
+          return [
+            ...baseArgs,
+            ...videoInputArg,
+            '-map', '0:v:0',
+            '-an',
+            '-c:v', 'copy',
+            outputPath
+          ];
+        }
+
+        // If video volume is 0%, replace video audio completely with external audio
+        if (vVol === 0) {
+          return [
+            ...baseArgs,
+            ...videoInputArg,
+            ...audioInputArg,
+            '-map', '0:v:0',
+            '-map', '1:a:0',
+            '-c:v', 'copy',
+            '-c:a', 'aac',
+            '-af', `volume=${aGain}`,
+            '-shortest',
+            outputPath
+          ];
+        }
+
+        // If external audio is 0%, keep only video's audio
+        if (aVol === 0) {
+          return [
+            ...baseArgs,
+            ...videoInputArg,
+            '-map', '0:v:0',
+            '-map', '0:a:0?',
+            '-c:v', 'copy',
+            '-c:a', 'aac',
+            ...(vVol !== 100 ? ['-af', `volume=${vGain}`] : []),
+            outputPath
+          ];
+        }
+
+        // Both are active -> mix together
+        const filterStr = `[0:a]volume=${vGain}[va];[1:a]volume=${aGain}[ma];[va][ma]amix=inputs=2:duration=first:dropout_transition=2[aout]`;
+        return [
+          ...baseArgs,
+          ...videoInputArg,
+          ...audioInputArg,
+          '-filter_complex', filterStr,
+          '-map', '0:v:0',
+          '-map', '[aout]',
+          '-c:v', 'copy',
+          '-c:a', 'aac',
+          outputPath
+        ];
+      } else {
+        return [
+          ...baseArgs,
+          ...audioInputArg,
+          '-c:a', 'copy',
+          outputPath
+        ];
+      }
     }
     
     // Video mux (add audio/subtitles)
@@ -1196,13 +1714,6 @@ function buildFFmpegArgs(task, customOutputPath) {
       return args;
     }
     
-    // Enhance / Compress
-    case 'v_enhance':
-      if (options.mode === 'compress') {
-        return [...baseArgs, '-i', input, '-c:v', 'libx264', '-crf', '28', '-preset', 'slow', '-c:a', 'aac', '-b:a', '128k', outputPath];
-      }
-      return [...baseArgs, '-i', input, '-vf', 'hqdn3d=4:3:6:4.5,unsharp=5:5:0.8:3:3:0.4,eq=contrast=1.05:saturation=1.1', '-c:v', 'libx264', '-crf', '18', '-c:a', 'copy', outputPath];
-    
     // Separator (extract audio or video)
     case 'v_separate':
       if (options.target === 'video') {
@@ -1214,41 +1725,9 @@ function buildFFmpegArgs(task, customOutputPath) {
     case 'v_separate_audio':
       return [...baseArgs, '-i', input, '-vn', '-c:a', 'copy', outputPath];
     
-    // Crop
-    case 'v_crop': {
-      let cropFilter = 'crop=iw:ih';
-      if (options.ratio === '16:9') cropFilter = "crop='min(iw,ih*16/9)':'min(ih,iw*9/16)'";
-      else if (options.ratio === '9:16') cropFilter = "crop='min(iw,ih*9/16)':'min(ih,iw*16/9)'";
-      else if (options.ratio === '1:1') cropFilter = "crop='min(iw,ih)':'min(iw,ih)'";
-      else if (options.ratio === '4:3') cropFilter = "crop='min(iw,ih*4/3)':'min(ih,iw*3/4)'";
-      else if (options.w && options.h) cropFilter = `crop=${options.w}:${options.h}:${options.x || 0}:${options.y || 0}`;
-      return [...baseArgs, '-i', input, '-vf', cropFilter, '-c:a', 'copy', outputPath];
-    }
-    
-    // Quick clip
-    case 'v_clip':
-      if (options.precise) {
-        return [...baseArgs, '-i', input, '-ss', options.start, '-to', options.end, '-c:v', 'libx264', '-c:a', 'aac', outputPath];
-      }
-      return [...baseArgs, '-ss', options.start, '-i', input, '-to', options.end, '-c', 'copy', outputPath];
-    
-    // Remove watermark
-    case 'v_remove_watermark':
-      return [...baseArgs, '-i', input, '-vf', `delogo=x=${options.x || 10}:y=${options.y || 10}:w=${options.w || 100}:h=${options.h || 50}`, '-c:a', 'copy', outputPath];
-    
     // Export frames
     case 'v_frames':
       return [...baseArgs, '-i', input, '-vf', `fps=1/${options.interval || 1}`, `${outputPath}_%04d.${options.format || 'jpg'}`];
-    
-    // Screen recorder
-    case 'v_record':
-      return [...baseArgs, '-f', 'gdigrab', '-framerate', options.fps || '30', '-i', 'desktop', '-t', (options.duration || '60').toString(), '-c:v', 'libx264', '-pix_fmt', 'yuv420p', outputPath];
-    
-    // Download video
-    case 'v_download': {
-      const url = options.url || input;
-      return [...baseArgs, '-i', url, '-c', 'copy', outputPath];
-    }
     
     // ==================== AUDIO ====================
     case 'a_mp3': {
@@ -1268,21 +1747,36 @@ function buildFFmpegArgs(task, customOutputPath) {
     case 'a_wav':
       return [...baseArgs, ...getClipArgs(options), '-i', input, '-c:a', 'pcm_s16le', ...getAudioArgs(options), ...getDivideArgs(options), outputPath];
     case 'a_aac': {
-      const ext = (options.outputExt || path.extname(outputPath) || '.aac').toLowerCase();
+      const ext = (options.outputExt || path.extname(outputPath) || '.ac3').toLowerCase();
+      let codecArgs = ['-c:a', 'aac', '-b:a', formatAudioBitrate(options.bitrate || options.audioBitrate, '256k')];
+      
       if (ext === '.ac3') {
         const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '448k');
-        return [...baseArgs, ...getClipArgs(options), '-i', input, '-c:a', 'ac3', '-b:a', br, ...getDivideArgs(options), outputPath];
-      }
-      if (ext === '.opus') {
-        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '128k');
-        return [...baseArgs, ...getClipArgs(options), '-i', input, '-c:a', 'libopus', '-b:a', br, ...getDivideArgs(options), outputPath];
-      }
-      if (ext === '.ogg') {
+        codecArgs = ['-c:a', 'ac3', '-b:a', br];
+      } else if (ext === '.dts') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '768k');
+        codecArgs = ['-c:a', 'dca', '-strict', '-2', '-b:a', br];
+      } else if (ext === '.mmf') {
+        codecArgs = ['-c:a', 'adpcm_yamaha', '-ar', '8000', '-ac', '1'];
+      } else if (ext === '.m4r') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '256k');
+        codecArgs = ['-c:a', 'aac', '-b:a', br, '-f', 'ipod'];
+      } else if (ext === '.mp2') {
         const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
-        return [...baseArgs, ...getClipArgs(options), '-i', input, '-c:a', 'libvorbis', '-b:a', br, ...getDivideArgs(options), outputPath];
+        codecArgs = ['-c:a', 'mp2', '-b:a', br];
+      } else if (ext === '.ogg') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
+        codecArgs = ['-c:a', 'libvorbis', '-b:a', br];
+      } else if (ext === '.wv') {
+        codecArgs = ['-c:a', 'wavpack'];
+      } else if (ext === '.opus') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '128k');
+        codecArgs = ['-c:a', 'libopus', '-b:a', br];
+      } else {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '256k');
+        codecArgs = ['-c:a', 'aac', '-b:a', br];
       }
-      const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
-      return [...baseArgs, ...getClipArgs(options), '-i', input, '-c:a', 'aac', '-b:a', br, ...getDivideArgs(options), outputPath];
+      return [...baseArgs, ...getClipArgs(options), '-i', input, ...codecArgs, ...getAudioArgs(options), ...getDivideArgs(options), outputPath];
     }
     case 'a_ac3': {
       const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '448k');
@@ -1304,28 +1798,140 @@ function buildFFmpegArgs(task, customOutputPath) {
     // Audio merge
     case 'a_merge': {
       const inputs = Array.isArray(input) ? input : [input];
-      const listFile = path.join(os.tmpdir(), `formalux_amerge_${Date.now()}.txt`);
-      fs.writeFileSync(listFile, inputs.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
-      return [...baseArgs, '-f', 'concat', '-safe', '0', '-i', listFile, '-c:a', 'copy', outputPath];
-    }
-    
-    // Audio mix
-    case 'a_mix': {
-      const inputs = Array.isArray(input) ? input : [input];
       const args = [...baseArgs];
       inputs.forEach(f => { args.push('-i', f); });
-      args.push('-filter_complex', `amix=inputs=${inputs.length}:duration=${options.duration || 'longest'}:dropout_transition=2`);
+      
+      const intervalSec = parseFloat(options.intervals || 0);
+      const delayMs = Math.round(intervalSec * 1000);
+      
+      if (inputs.length >= 2 && delayMs > 0) {
+        args.push('-filter_complex', `[1:a]adelay=${delayMs}|${delayMs}[a1d];[0:a][a1d]concat=n=2:v=0:a=1[outa]`, '-map', '[outa]');
+      } else if (inputs.length >= 2) {
+        args.push('-filter_complex', `[0:a][1:a]concat=n=2:v=0:a=1[outa]`, '-map', '[outa]');
+      } else {
+        args.push('-c:a', 'copy');
+      }
+
+      const ext = (options.outputExt || path.extname(outputPath) || '.mp3').toLowerCase();
+      if (ext === '.mp3') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '320k');
+        args.push('-c:a', 'libmp3lame', '-b:a', br);
+      } else if (ext === '.wav') {
+        args.push('-c:a', 'pcm_s16le');
+      } else if (ext === '.flac') {
+        args.push('-c:a', 'flac');
+      } else if (ext === '.aac' || ext === '.m4a') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '256k');
+        args.push('-c:a', 'aac', '-b:a', br);
+      } else if (ext === '.ogg') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
+        args.push('-c:a', 'libvorbis', '-b:a', br);
+      } else if (ext === '.wma') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
+        args.push('-c:a', 'wmav2', '-b:a', br);
+      } else if (ext === '.opus') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '128k');
+        args.push('-c:a', 'libopus', '-b:a', br);
+      } else if (ext === '.ac3') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '448k');
+        args.push('-c:a', 'ac3', '-b:a', br);
+      }
+
+      if (typeof getAudioArgs === 'function') {
+        args.push(...getAudioArgs(options));
+      }
       args.push(outputPath);
       return args;
     }
     
-    // Audio split
-    case 'a_split':
-      return [...baseArgs, '-i', input, '-f', 'segment', '-segment_time', (options.segmentTime || 300).toString(), '-c', 'copy', `${outputPath}_%03d${path.extname(input)}`];
+    // Extract Audio from Video (فصل الصوت عن الفيديو)
+    case 'a_mix': {
+      const src = Array.isArray(input) ? input[0] : input;
+      const ext = (options.outputExt || path.extname(outputPath) || '.mp3').toLowerCase();
+      const args = [...baseArgs, ...getClipArgs(options), '-i', src, '-vn'];
+
+      if (ext === '.mp3') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '256k');
+        args.push('-c:a', 'libmp3lame', '-b:a', br);
+      } else if (ext === '.wav') {
+        args.push('-c:a', 'pcm_s16le');
+      } else if (ext === '.flac') {
+        args.push('-c:a', 'flac');
+      } else if (ext === '.aac' || ext === '.m4a') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '256k');
+        args.push('-c:a', 'aac', '-b:a', br);
+      } else if (ext === '.ogg') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
+        args.push('-c:a', 'libvorbis', '-b:a', br);
+      } else if (ext === '.wma') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '192k');
+        args.push('-c:a', 'wmav2', '-b:a', br);
+      } else if (ext === '.opus') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '128k');
+        args.push('-c:a', 'libopus', '-b:a', br);
+      } else if (ext === '.ac3') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '448k');
+        args.push('-c:a', 'ac3', '-b:a', br);
+      } else {
+        args.push('-c:a', 'libmp3lame', '-b:a', '256k');
+      }
+
+      if (typeof getAudioArgs === 'function') {
+        args.push(...getAudioArgs(options));
+      }
+      if (typeof getDivideArgs === 'function') {
+        args.push(...getDivideArgs(options));
+      }
+      args.push(outputPath);
+      return args;
+    }
     
-    // Extract audio from video
-    case 'a_extract':
-      return [...baseArgs, '-i', input, '-vn', '-c:a', options.codec || 'copy', outputPath];
+    // Vocal & Music Separation (فصل الصوت عن الموسيقى)
+    case 'a_split': {
+      const src = Array.isArray(input) ? input[0] : input;
+      const parsed = path.parse(src);
+      const outDir = path.dirname(outputPath);
+      if (!fs.existsSync(outDir)) {
+        try { fs.mkdirSync(outDir, { recursive: true }); } catch (_) {}
+      }
+      const ext = (options.outputExt || path.extname(outputPath) || '.mp3').toLowerCase();
+      const vocalsPath = outputPath;
+      let musicPath = '';
+      if (vocalsPath.includes(' - الصوت فقط')) {
+        musicPath = vocalsPath.replace(' - الصوت فقط', ' - الموسيقى فقط');
+      } else {
+        musicPath = path.join(outDir, `${parsed.name} - الموسيقى فقط${ext}`);
+      }
+      task.extraOutputs = [vocalsPath, musicPath];
+
+      const filterGraph = '[0:a]aformat=channel_layouts=stereo,asplit=2[in1][in2];[in1]stereotools=slev=0.015625:mlev=1.2,highpass=f=120,lowpass=f=4000[vocals];[in2]stereotools=mlev=0.015625:slev=1.4[music]';
+
+      let audioCodecArgs = [];
+      if (ext === '.wav') {
+        audioCodecArgs = ['-c:a', 'pcm_s16le'];
+      } else if (ext === '.flac') {
+        audioCodecArgs = ['-c:a', 'flac'];
+      } else if (ext === '.aac' || ext === '.m4a') {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '256k');
+        audioCodecArgs = ['-c:a', 'aac', '-b:a', br];
+      } else {
+        const br = formatAudioBitrate(options.bitrate || options.audioBitrate, '320k');
+        audioCodecArgs = ['-c:a', 'libmp3lame', '-b:a', br];
+      }
+
+      return [
+        ...baseArgs,
+        ...getClipArgs(options),
+        '-i', src,
+        '-filter_complex', filterGraph,
+        '-map', '[vocals]',
+        ...audioCodecArgs,
+        vocalsPath,
+        '-map', '[music]',
+        ...audioCodecArgs,
+        musicPath
+      ];
+    }
     
     // ==================== IMAGES ====================
     case 'i_jpg':
@@ -1743,6 +2349,12 @@ function getOutputPath(input, output, options = {}) {
   }
   baseName = baseName.replace(/[/\\?%*:|"<>]/g, '_');
 
+  if (Array.isArray(input) && input.length > 1) {
+    if (!baseName.includes('_Mix') && !baseName.includes('_Join')) {
+      baseName = `${baseName}_Mix`;
+    }
+  }
+
   // Append setting name if requested (like in Format Factory)
   if (options.appendSettingName && options.presetName) {
     const safePreset = options.presetName.replace(/[/\\?%*:|"<>]/g, '_').trim();
@@ -1751,6 +2363,31 @@ function getOutputPath(input, output, options = {}) {
     }
   }
   
+  const taskType = options.taskType || options.type;
+  if (taskType === 'a_split') {
+    let rawExt = options.outputExt || (typeof inputPath === 'string' && path.extname(inputPath) ? path.extname(inputPath) : '.mp3') || '.mp3';
+    if (!rawExt.startsWith('.')) rawExt = '.' + rawExt;
+    let outputPath = path.join(dir, `${baseName} - الصوت فقط${rawExt}`);
+    let counter = 1;
+    while (fs.existsSync(outputPath)) {
+      outputPath = path.join(dir, `${baseName} (${counter}) - الصوت فقط${rawExt}`);
+      counter++;
+    }
+    return outputPath;
+  }
+
+  if (taskType === 'a_mix') {
+    let rawExt = options.outputExt || '.mp3';
+    if (!rawExt.startsWith('.')) rawExt = '.' + rawExt;
+    let outputPath = path.join(dir, `${baseName}${rawExt}`);
+    let counter = 1;
+    while (fs.existsSync(outputPath)) {
+      outputPath = path.join(dir, `${baseName} (${counter})${rawExt}`);
+      counter++;
+    }
+    return outputPath;
+  }
+
   let rawExt = options.outputExt || (typeof inputPath === 'string' ? path.extname(inputPath) : '.mp4') || '.mp4';
   if (!rawExt.startsWith('.')) rawExt = '.' + rawExt;
 

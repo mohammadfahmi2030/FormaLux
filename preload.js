@@ -42,9 +42,12 @@ contextBridge.exposeInMainWorld('api', {
   onTaskProgress: (callback) => ipcRenderer.on('task-progress', (_, data) => callback(data)),
   onTaskComplete: (callback) => ipcRenderer.on('task-complete', (_, data) => callback(data)),
   onTaskFailed: (callback) => ipcRenderer.on('task-failed', (_, data) => callback(data)),
+  onTaskCancelled: (callback) => ipcRenderer.on('task-cancelled', (_, data) => callback(data)),
 
   // System & Optical Discs
   getSystemInfo: () => ipcRenderer.invoke('get-system-info'),
+  shutdownSystem: (delaySec) => ipcRenderer.invoke('shutdown-system', delaySec),
+  cancelShutdown: () => ipcRenderer.invoke('cancel-shutdown'),
   getDiscDrives: () => ipcRenderer.invoke('get-disc-drives'),
   getDriveFreeSpace: (path) => ipcRenderer.invoke('get-drive-free-space', path),
   ejectDiscDrive: (drive) => ipcRenderer.invoke('eject-disc-drive', drive),
@@ -55,5 +58,9 @@ contextBridge.exposeInMainWorld('api', {
   // Updates & External Links
   checkForUpdates: (repo) => ipcRenderer.invoke('check-for-updates', repo),
   openExternalUrl: (url) => ipcRenderer.invoke('open-external-url', url),
+
+  // Clipboard
+  readClipboard: () => ipcRenderer.invoke('read-clipboard'),
+  writeClipboard: (text) => ipcRenderer.invoke('write-clipboard', text),
 });
 

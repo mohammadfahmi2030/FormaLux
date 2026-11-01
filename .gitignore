@@ -9,10 +9,22 @@ dist/
 build/temp/
 build/extracted/
 out/
-bin/
+bin/*.exe
+bin/models/*.onnx
+*.onnx
 
-# Temporary / Scratch files
+# Installer & Archive outputs
+installer/payload.tar.gz
+*.tar.gz
+*.zip
+*.7z
+*.rar
+
+# Temporary / Scratch files & Test scripts
 scratch/
+test_*.ps1
+list_*.ps1
+hoda_info.ps1
 *.log
 *.tmp
 *.bak
@@ -20,9 +32,14 @@ scratch/
 *.exe
 FormaLux-Setup.exe
 
+# Local reference screenshots & notes
+صور برنامج صانع الصيغ/
+صور مرجعية للبرنامج المقلد استخدمها عند الحاجة/
+
 # Operating System & IDE files
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
 .gemini/
+

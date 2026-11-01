@@ -430,62 +430,36 @@
   const PICTURE_PRESETS = {
     original: {
       name: 'Original Size',
-      quality: '90',
       limitWidth: 0,
-      limitHeight: 0,
-      rotate: 'No',
-      flip: 'No',
+      limitHeight: 0
     },
-    '50': {
-      name: '50% Original Size',
-      quality: '90',
-      limitWidth: 0,
-      limitHeight: 0,
-      rotate: 'No',
-      flip: 'No',
+    mw2400_mh1800: {
+      name: 'Max Width 2400 Max Height 1800',
+      limitWidth: 2400,
+      limitHeight: 1800
     },
-    '75': {
-      name: '75% Original Size',
-      quality: '90',
-      limitWidth: 0,
-      limitHeight: 0,
-      rotate: 'No',
-      flip: 'No',
+    mw1024_mh768: {
+      name: 'Max Width 1024 Max Height 768',
+      limitWidth: 1024,
+      limitHeight: 768
     },
-    '1080': {
-      name: '1920x1080 (Full HD)',
-      quality: '95',
-      limitWidth: 1920,
-      limitHeight: 1080,
-      rotate: 'No',
-      flip: 'No',
+    mw640_mh480: {
+      name: 'Max Width 640 Max Height 480',
+      limitWidth: 640,
+      limitHeight: 480
     },
-    '720': {
-      name: '1280x720 (HD)',
-      quality: '90',
-      limitWidth: 1280,
-      limitHeight: 720,
-      rotate: 'No',
-      flip: 'No',
+    mw320_mh240: {
+      name: 'Max Width 320 Max Height 240',
+      limitWidth: 320,
+      limitHeight: 240
     },
-    '800': {
-      name: '800x600 (Web)',
-      quality: '85',
-      limitWidth: 800,
-      limitHeight: 600,
-      rotate: 'No',
-      flip: 'No',
-    },
-    avatar: {
-      name: 'Avatar 1:1 Square',
-      quality: '90',
-      limitWidth: 500,
-      limitHeight: 500,
-      rotate: 'No',
-      flip: 'No',
+    mw176_mh144: {
+      name: 'Max Width 176 Max Height 144',
+      limitWidth: 176,
+      limitHeight: 144
     },
     custom: {
-      name: 'Custom Size',
+      name: 'Custom Size'
     }
   };
 
@@ -509,13 +483,13 @@
       menu_exit: 'خروج من البرنامج',
       // Themes
       theme_nebula: 'كحلي نيبولا الفاخر (الافتراضي)',
-      theme_oled: 'أسود أوليد فاحم (OLED)',
+      theme_oled: 'أسود أوليد فاحم',
       theme_cyber: 'سايبر نيون متوهج',
       theme_emerald: 'زمردي ملكي',
-      theme_light: 'كلاسيكي فاتح (Classic Light)',
+      theme_light: 'كلاسيكي فاتح',
       // Options Menu
       menu_settings: 'إعدادات البرنامج',
-      menu_ha_test: 'اختبار تسريع العتاد (HA Test)',
+      menu_ha_test: 'اختبار تسريع العتاد',
       menu_reset_defaults: 'استعادة الضبط الافتراضي',
       // Help Menu
       menu_homepage: 'الصفحة الرئيسية',
@@ -541,9 +515,9 @@
       col_source: 'المصدر',
       col_output: 'الإخراج / حالة التحويل',
       empty_title: 'اسحب الملفات هنا أو اختر أداة من القائمة',
-      empty_subtitle: 'Drag files here or select a tool from the sidebar',
+      empty_subtitle: 'جاهز لتحويل وسائطك بأعلى كفاءة',
       // Status bar
-      status_multithread: 'Use Multi-Threads',
+      status_multithread: 'تعدد المسارات',
       status_shutdown: 'بعد التحويل: إيقاف تشغيل الكمبيوتر',
       status_notify: 'إشعار بالاكتمال',
       status_elapsed: 'الوقت المنقضي',
@@ -563,14 +537,14 @@
       opt_sound_complete: 'إشعار صوتي عند اكتمال التحويل بنجاح',
       opt_sound_fail: 'إشعار صوتي عند فشل عملية التحويل',
       grp_system: 'النظام والتشغيل',
-      opt_context_menu: 'إضافة إلى قائمة زر الفأرة الأيمن (Context Menu)',
+      opt_context_menu: 'إضافة إلى قائمة زر الفأرة الأيمن',
       opt_check_updates: 'التحقق التلقائي من التحديثات',
-      opt_minimize_tray: 'التصغير إلى صينية النظام بجوار الساعة (System Tray)',
-      grp_gpu: 'تسريع كرت الشاشة (GPU Acceleration)',
-      opt_gpu_auto: 'اكتشاف تسريع العتاد تلقائياً (Auto Detect)',
-      btn_ha_test: 'HA Test',
+      opt_minimize_tray: 'التصغير إلى صينية النظام بجوار الساعة',
+      grp_gpu: 'تسريع كرت الشاشة',
+      opt_gpu_auto: 'اكتشاف تسريع العتاد تلقائياً',
+      btn_ha_test: 'اختبار العتاد',
       opt_gpu_desc: 'يدعم تسريع معالجات NVIDIA (NVENC)، وIntel (QuickSync)، وAMD (AMF).',
-      grp_cpu: 'المعالج والتوازي (Multi-Threading)',
+      grp_cpu: 'المعالجة المتوازية متعددة المسارات',
       opt_threads: 'استخدام التعددية المتزامنة',
       opt_show_usage: 'إظهار نسبة استهلاك المعالج في شريط الحالة',
       grp_img_quality: 'جودة حفظ الصور',
@@ -578,7 +552,7 @@
       btn_apply: 'تطبيق',
       btn_ok: 'موافق',
       btn_add_files: 'إضافة ملفات',
-      btn_add_folder: '+ إضافة مجلد',
+      btn_add_folder: 'إضافة مجلد',
       btn_add_music: '+ إضافة موسيقى',
       btn_confirm: 'تأكيد وإضافة للطابور',
       about_tagline: 'مصنع التحويل الفاخر للفيديو والصوت والصور والمستندات',
@@ -594,21 +568,13 @@
       alert_no_files: 'الرجاء إضافة ملف واحد على الأقل للمتابعة',
       // Tools Translations
       t_v_merge: 'دامج & Mux',
-      t_v_enhance: 'تحسين وضغط',
       t_v_separate: 'الفاصل',
-      t_v_crop: 'قص الإطار',
-      t_v_clip: 'مقطع سريع',
-      t_v_delogo: 'إزالة العلامة المائية',
       t_v_frames: 'إطارات التصدير',
-      t_v_record: 'مسجل الشاشة',
-      t_v_player: 'Format Player (مشغل)',
-      t_v_download: 'تنزيل الفيديو',
+      t_v_player: 'مشغل الوسائط',
       t_a_merge: 'دامج الصوت',
-      t_a_split: 'تقسيم الموسيقى',
-      t_a_extract: 'استخراج الصوت',
-      t_a_mix: 'مزيج صوتي',
-      t_a_tts: 'نص إلى صوت',
-      t_d_pdf_join: 'PDF Joiner (دمج PDF)',
+      t_a_split: 'فصل الصوت عن الموسيقى',
+      t_a_mix: 'فصل الصوت عن الفيديو',
+      t_d_pdf_join: 'دمج ملفات PDF',
       t_d_compress: 'ضغط PDF',
       t_d_pic_pdf: 'صور إلى PDF',
       t_d_pdf_pic: 'PDF إلى صور',
@@ -618,7 +584,7 @@
       t_d_docx_pdf: 'Word إلى PDF',
       t_d_decrypt: 'فك تشفير PDF',
       t_d_encrypt: 'تشفير PDF',
-      t_d_zip: 'FFZip (أرشيف)',
+      t_d_zip: 'أرشيف FFZip',
       t_disc_bluray: 'قرص Bluray إلى MKV',
       t_disc_dvd: 'DVD إلى ملف فيديو',
       t_disc_cd: 'أسطوانة الموسيقى إلى صوت',
@@ -626,7 +592,7 @@
       t_disc_cso: 'ISO ↔ CSO',
       t_util_info: 'معلومات ملف الوسائط',
       t_util_rename: 'إعادة تسمية مجمعة',
-      t_util_ha: 'اختبار تسريع العتاد (HA Test)',
+      t_util_ha: 'اختبار تسريع العتاد',
       t_media_info_title: 'معلومات ملف الوسائط',
       btn_copy_clipboard: 'نسخ إلى الحافظة',
       copied_to_clipboard: 'تم النسخ!',
@@ -647,8 +613,10 @@
       lbl_remove_string: 'حذف النص',
       lbl_ignore_datetime: 'تجاهل حروف التاريخ والوقت',
       btn_rename_action: 'بدء إعادة التسمية',
-      t_ha_test_title: 'Hardware Acceleration Testing',
+      t_ha_test_title: 'اختبار تسريع العتاد',
       ha_probing: 'جارٍ اختبار تسريع العتاد للمشفرات...',
+      lbl_ha_supported: 'مدعوم',
+      btn_retest: 'إعادة الفحص',
       rename_success: 'تمت إعادة تسمية {count} ملف بنجاح!',
       rename_no_files: 'لم يتم العثور على ملفات مطابقة في المجلد المحدد.',
       modal_files_heading: 'الملفات',
@@ -660,31 +628,176 @@
       about_engine: 'محرك المعالجة',
       about_license: 'الترخيص',
       about_mit: 'مجاني بالكامل (MIT)',
-      output_setting: 'إعدادات الإخراج (Output Setting)',
-      video_setting_title: 'إعدادات الفيديو (Video Setting)',
-      audio_setting_title: 'إعدادات الصوت (Audio Setting)',
-      picture_setting_title: 'إعدادات الصورة (Picture Setting)',
+      output_format: 'صيغة الإخراج',
+      output_setting: 'إعدادات الإخراج',
+      video_setting_title: 'إعدادات الفيديو',
+      audio_setting_title: 'إعدادات الصوت',
+      picture_setting_title: 'إعدادات الصورة',
       btn_save_as: 'حفظ كقالب',
       btn_default: 'الافتراضي',
       ft_tab_files: 'الملفات المحددة',
-      ft_tab_preview: 'Preview (معاينة)',
-      ft_tab_mediainfo: 'Media information (معلومات الوسائط)',
+      ft_tab_preview: 'المعاينة',
+      ft_tab_mediainfo: 'معلومات الوسائط',
       th_file_info: 'الملف والمعلومات',
       th_actions: 'الخصائص والتقطيع',
       th_file_name: 'اسم الملف',
       th_size: 'الحجم',
       th_duration: 'المدة / الدقة',
       th_path: 'المسار المصدر',
+      // Category Badges
+      badge_video: 'فيديو',
+      badge_audio: 'صوت',
+      badge_picture: 'صورة',
+      badge_document: 'وثيقة',
+      badge_disc: 'أسطوانة',
+      badge_iso_cso: 'ISO / CSO',
+      // Checkbox label template
+      lbl_append_setting_name: 'إضافة اسم الإعداد [{name}]',
+      // Preset Display Names
+      preset_optimum: 'أفضل جودة وحجم',
+      preset_high_2pass: 'جودة وحجم عاليين (مرحلتين)',
+      preset_high: 'جودة وحجم عاليين',
+      preset_medium: 'جودة وحجم متوسطين',
+      preset_low: 'جودة وحجم منخفضين',
+      preset_4k: '4K فائقة الوضوح',
+      preset_2k: '2K عالية الدقة',
+      preset_720p: '720p عالية الدقة',
+      preset_480p: '480p دقة قياسية',
+      preset_copy: 'نسخ مباشر للمسار',
+      preset_custom: 'تخصيص يدوي',
+      preset_avc_high: 'AVC دقة عالية 1080p',
+      preset_hevc_high: 'HEVC دقة عالية 1080p',
+      preset_uhd_4k: '4K Ultra HD',
+      preset_qhd_2k: '2K Quad HD',
+      preset_audio_high: 'جودة عالية (320 ك.بت/ث)',
+      preset_audio_medium: 'جودة متوسطة (192 ك.بت/ث)',
+      preset_audio_low: 'جودة منخفضة (128 ك.بت/ث)',
+      preset_audio_vbr_0: 'معدل متغير 0 (أعلى جودة)',
+      preset_audio_vbr_high: 'معدل متغير عالي الجودة',
+      preset_audio_vbr_2: 'معدل متغير 2 (جودة عالية)',
+      preset_audio_vbr_medium: 'معدل متغير جودة متوسطة',
+      preset_audio_vbr_4: 'معدل متغير 4 (جودة قياسية)',
+      preset_audio_vbr_low: 'معدل متغير جودة منخفضة',
+      preset_pic_original: 'الحجم الأصلي',
+      preset_mw2400_mh1800: 'أقصى عرض 2400 أقصى ارتفاع 1800',
+      preset_mw1024_mh768: 'أقصى عرض 1024 أقصى ارتفاع 768',
+      preset_mw640_mh480: 'أقصى عرض 640 أقصى ارتفاع 480',
+      preset_mw320_mh240: 'أقصى عرض 320 أقصى ارتفاع 240',
+      preset_mw176_mh144: 'أقصى عرض 176 أقصى ارتفاع 144',
+      ps_promo_1: 'إذا كنت ترغب بمزيد من الوظائف لتحرير الصور.',
+      ps_promo_2: 'يرجى تحميل "Picosmos Tools"',
+      preset_cso_lvl5: 'مستوى ضغط CSO 5',
+      preset_ai_delogo: 'إزالة ذكية للعلامة المائية',
+      badge_ai_delogo: 'إزالة ذكية',
+      // Tabs
+      tab_video: 'الفيديو',
+      tab_audio: 'الصوت',
+      tab_subtitle: 'الترجمة',
+      tab_other: 'خيارات أخرى',
+      tab_watermark: 'العلامة المائية',
+      // Properties
+      prop_size_limit: 'الحد الأقصى للحجم',
+      prop_video_encode: 'ترميز الفيديو',
+      prop_video_size: 'أبعاد ودقة الفيديو',
+      prop_bitrate: 'معدل البت (ك.بت/ث)',
+      prop_crf: 'معامل الجودة الثابت',
+      prop_gpu: 'تسريع كرت الشاشة',
+      prop_fps: 'معدل الإطارات بالثانية',
+      prop_aspect_ratio: 'نسبة الأبعاد',
+      prop_encode_2pass: 'ترميز على مرحلتين',
+      prop_keyframe: 'فاصل الإطار الرئيسي',
+      prop_deinterlace: 'إزالة خطوط التشابك',
+      prop_rotate: 'تدوير',
+      prop_xmirror: 'انعكاس أفقي',
+      prop_ymirror: 'انعكاس رأسي',
+      prop_filter: 'الفلتر والتأثير اللوني',
+      prop_fadein: 'تلاشي للداخل',
+      prop_fadeout: 'تلاشي للخارج',
+      prop_antishake: 'تثبيت الاهتزاز',
+      prop_denoise: 'إزالة الضوضاء والتشويش',
+      prop_reverse: 'تشغيل عكسي',
+      prop_audio_encode: 'ترميز الصوت',
+      prop_sample_rate: 'معدل العينة (هرتز)',
+      prop_audio_bitrate: 'معدل البت الصوتي (ك.بت/ث)',
+      prop_channel: 'القنوات الصوتية',
+      prop_disable_audio: 'تعطيل الصوت تماماً',
+      prop_volume: 'مستوى الصوت',
+      prop_keep_audio_streams: 'الاحتفاظ بكافة المسارات الصوتية',
+      prop_echo: 'صدى الصوت',
+      prop_vbr: 'معدل البت المتغير',
+      prop_sample_format: 'تنسيق العينة',
+      prop_keep_sub_streams: 'الاحتفاظ بمسارات الترجمة الأصلية',
+      prop_add_subtitle: 'إضافة ملف ترجمة خارجي',
+      prop_sub_type: 'نوع الترجمة',
+      prop_sub_fontsize: 'حجم الخط',
+      prop_sub_codepage: 'ترميز المحارف',
+      prop_sub_fontfamily: 'نوع الخط',
+      prop_sub_fontcolor: 'لون الخط',
+      prop_sub_borderstyle: 'نمط الحدود والظل',
+      prop_sub_outlinesize: 'سمك الإطار الخارجي',
+      prop_sub_outlinecolor: 'لون الإطار الخارجي',
+      prop_sub_shadowsize: 'حجم الظل',
+      prop_sub_scheme: 'مخطط الألوان',
+      prop_metadata: 'البيانات الوصفية',
+      prop_meta_title: 'العنوان',
+      prop_meta_author: 'المؤلف / الفنان',
+      prop_meta_comment: 'التعليق والوصف',
+      prop_stream_options: 'خيارات تدفق الويب',
+      prop_faststart: 'تشغيل فوري عبر الويب',
+      prop_2pass_mode: 'وضع الترميز المزدوج',
+      prop_wm_enable: 'تفعيل العلامة المائية',
+      prop_wm_type: 'نوع العلامة المائية',
+      prop_wm_image: 'ملف الصورة',
+      prop_wm_text: 'نص العلامة المائية',
+      prop_wm_pos: 'الموضع في الفيديو',
+      prop_wm_opacity: 'درجة الشفافية',
+      prop_wm_margin: 'الهامش والمسافة',
+      prop_wm_scale: 'حجم الشعار بالنسبة للفيديو',
+      btn_add: 'إضافة',
+      prop_max_width: 'أقصى عرض',
+      prop_max_height: 'أقصى ارتفاع',
+      ps_lbl_size_limit: 'تقليل حجم الملف (Size Limit)',
+      ps_opt_original: 'الحجم الأصلي',
+      ps_opt_custom: 'حجم مخصص',
+      prop_quality: 'جودة الحفظ',
+      prop_flip: 'قلب الصورة',
+      lbl_jpg_quality: 'جودة JPG:',
+      lbl_webp_quality: 'جودة WebP:',
+      // Divide Modal
+      div_title: 'تقسيم الملف',
+      div_off: 'إيقاف التقسيم',
+      div_by_time: 'بالمدة الزمنية',
+      div_by_count: 'بعدد الملفات',
+      div_by_size: 'بحجم الملف',
+      // Clip Modal
+      clip_title: 'قص وخيارات المقطع',
+      clip_start_time: 'وقت البداية',
+      clip_end_time: 'وقت النهاية',
+      clip_duration: 'المدة:',
+      clip_precision: 'الدقة:',
+      clip_speed: 'السرعة:',
+      // Multi-Profiles Modal
+      mp_title: 'قوالب متعددة',
+      mp_select_all: 'تحديد الكل',
+      // Context Menus
+      ctx_clip: 'قص وخيارات المقطع',
+      ctx_divide: 'تقسيم الملف',
+      ctx_preview: 'معاينة وتشغيل',
+      ctx_remove: 'إزالة من القائمة',
+      ctx_start: 'بدء التحويل',
+      ctx_stop: 'إيقاف',
+      ctx_open_folder: 'فتح مجلد الإخراج',
+      ctx_clear_all: 'حذف القائمة بالكامل',
       // Document & Disc Modals
       doc_btn_move_up: 'للأعلى',
       doc_btn_move_down: 'للأسفل',
-      doc_th_filename: 'اسم الملف (File Name)',
-      doc_th_size: 'الحجم (Size)',
-      doc_th_pages: 'نطاق الصفحات (Pages)',
+      doc_th_filename: 'اسم الملف',
+      doc_th_size: 'الحجم',
+      doc_th_pages: 'نطاق الصفحات',
       doc_th_status: 'الحالة',
       doc_th_action: 'إجراء',
       doc_empty_hint: 'اسحب وأفلت الملفات هنا، أو انقر على "+ إضافة ملفات"',
-      doc_pages_all: 'الكل (All)',
+      doc_pages_all: 'الكل',
       st_ready: 'جاهز',
       lbl_save_folder: 'مجلد الحفظ:',
       btn_browse: 'استعراض',
@@ -692,7 +805,7 @@
       doc_btn_confirm: 'تأكيد وإضافة للمهام',
       disc_btn_confirm: 'بدء النسخ والتحويل',
       disc_btn_refresh: 'تحديث',
-      disc_lbl_drive: 'محرك الأقراص (CD/DVD Drive):',
+      disc_lbl_drive: 'محرك الأقراص:',
       disc_lbl_or_iso: 'أو من مجلد قرص / ملف ISO على الجهاز:',
       disc_iso_placeholder: 'D:\\VIDEO_TS أو ملف ISO...',
       disc_lbl_disc: 'القرص:',
@@ -702,7 +815,7 @@
       disc_val_ready: 'جاهز للقراءة',
       disc_banner_default: 'سيتم قراءة وفحص بنية القرص وتحويل المحتوى لأعلى جودة مباشرة.',
       doc_banner_default: 'سيتم تحويل المستند وفق أعلى معايير الجودة والتوافق مع التطبيقات الأصلية.',
-      doc_opt_autocompress: 'ضغط الملف المدمج تلقائياً بعد المعالجة (Auto-compress output)',
+      doc_opt_autocompress: 'ضغط الملف المدمج تلقائياً بعد المعالجة',
       doc_opt_bookmarks: 'حفظ الفهرس والإشارات المرجعية للملفات الأصلية',
       doc_lbl_compress_level: 'مستوى الضغط والجودة:',
       doc_opt_compress_balanced: 'متوازن — 150 DPI (موصى به للمشاركة والقراءة)',
@@ -717,13 +830,13 @@
       doc_lbl_page_size: 'مقاس الصفحة:',
       doc_lbl_orientation: 'الاتجاه:',
       doc_opt_orient_auto: 'تلقائي حسب أبعاد الصورة',
-      doc_opt_orient_portrait: 'عمودي (Portrait)',
-      doc_opt_orient_landscape: 'أفقي (Landscape)',
+      doc_opt_orient_portrait: 'عمودي',
+      doc_opt_orient_landscape: 'أفقي',
       doc_lbl_margins: 'الهوامش:',
       doc_opt_margin_none: 'بدون هوامش (ملء الصفحة)',
       doc_opt_margin_small: 'هوامش صغيرة (10mm)',
-      doc_lbl_pwd_open: 'كلمة مرور فتح الملف (Open Password):',
-      doc_lbl_pwd_owner: 'كلمة مرور المدير (Owner):',
+      doc_lbl_pwd_open: 'كلمة مرور فتح الملف:',
+      doc_lbl_pwd_owner: 'كلمة مرور المدير (التحكم):',
       doc_opt_perm_print: 'السماح بطباعة المستند',
       doc_opt_perm_copy: 'السماح بنسخ النصوص',
       doc_lbl_decrypt_pwd: 'كلمة المرور الحالية لفك الحماية:',
@@ -736,38 +849,205 @@
       doc_opt_zip_fast: 'سريع جداً',
       doc_lbl_zip_pwd: 'كلمة مرور الأرشيف (اختياري):',
       doc_zip_pwd_placeholder: 'اتركه فارغاً إذا بدون كلمة سر',
-      disc_lbl_title: 'العنوان (Title):',
+      disc_lbl_title: 'العنوان:',
       disc_lbl_chapters: 'الفصول:',
       disc_lbl_from: 'من',
       disc_lbl_to: 'إلى',
       disc_lbl_audio_stream: 'مسار الصوت:',
       disc_lbl_subtitle: 'الترجمة المدمجة:',
-      disc_opt_sub_none: 'بدون ترجمة (None)',
+      disc_opt_sub_none: 'بدون ترجمة',
       disc_lbl_output_format: 'الصيغة الناتجة:',
-      disc_opt_deinterlace: 'إزالة خطوط التشابك (Deinterlace YADIF)',
-      disc_btn_fetch_cddb: '🌐 جلب معلومات الأسطوانة (Get CD Info from gnudb)',
+      disc_opt_deinterlace: 'إزالة خطوط التشابك',
+      disc_btn_fetch_cddb: '🌐 جلب معلومات الأسطوانة (gnudb)',
       disc_status_cddb_ready: 'جاهز للاتصال بقاعدة بيانات الأقراص',
       disc_lbl_cd_format: 'صيغة الصوت الناتجة:',
       disc_th_track: 'المسار',
-      disc_th_title: 'عنوان المقطع (Track Title)',
-      disc_th_artist: 'الفنان (Artist)',
+      disc_th_title: 'عنوان المقطع',
+      disc_th_artist: 'الفنان',
       disc_th_duration: 'المدة',
       disc_lbl_iso_target: 'صيغة الصورة الناتجة:',
       disc_lbl_cso_level: 'مستوى ضغط CSO (1-9):',
       t_disc_iso_title: 'DVD/CD إلى ISO/CSO',
       t_disc_cso_modal_title: 'ISO <--> CSO',
       t_disc_cd_title: 'أسطوانة الموسيقى إلى ملف صوتي',
-      disc_cd_driver: 'قارئ الأقراص (CD Driver)',
-      disc_output_setting: 'إعدادات الإخراج (Output Setting)',
-      disc_high_quality: 'جودة عالية (High quality)',
+      disc_cd_driver: 'قارئ الأقراص',
+      disc_output_setting: 'إعدادات الإخراج',
+      disc_high_quality: 'جودة عالية',
       disc_rename_all: 'إعادة تسمية جميع المسارات',
       disc_get_cd_info: 'جلب معلومات الأسطوانة',
       disc_compress_level: 'مستوى الضغط',
       disc_btn_change: 'تغيير',
       disc_btn_convert: 'تحويل',
-      disc_ripper_mod_prompt: 'يجب تثبيت DVDRipper MOD. اضغط "Yes" للتثبيت.',
+      disc_ripper_mod_prompt: 'يجب تثبيت إضافة قارئ الأقراص DVDRipper. اضغط "نعم" للتثبيت.',
       btn_yes: 'نعم',
       btn_no: 'لا',
+      // Video Joiner & Mux
+      vmux_title: 'دامج & Mux الفيديو',
+      vmux_out_format: 'صيغة الإخراج:',
+      vmux_preset_optimum: 'أفضل جودة وحجم',
+      vmux_tab_video: 'فيديو',
+      vmux_tab_audio: 'صوت',
+      vmux_col_preview: 'معاينة',
+      vmux_col_info: 'معلومات الوسائط',
+      vmux_btn_add_video: 'إضافة فيديو',
+      vmux_btn_add_audio: 'إضافة صوت',
+      vmux_btn_add_files: 'إضافة ملفات',
+      vmux_btn_add_pic: 'إضافة صورة',
+      vmux_btn_add_music: 'إضافة من مكتبة الموسيقى',
+      vmux_vol_video: 'مستوى صوت الفيديو',
+      vmux_vol_audio: 'مستوى صوت الموسيقى',
+      vmux_opt_loop: 'تكرار:',
+      vmux_opt_loop_yes: 'تكرار: نعم',
+      vmux_opt_loop_no: 'تكرار: لا',
+      vmux_opt_intervals: 'الفواصل:',
+      vmux_btn_clip: 'اقتطاع',
+      vmux_btn_pic: 'إضافة صورة',
+      vmux_btn_add_music: 'إضافة موسيقى',
+      vmux_btn_mute_tip: 'كتم / إلغاء الكتم',
+      vmux_tip_ok: 'موافق وتأكيد المهمة',
+      vmux_tip_close: 'إغلاق',
+      vmux_tip_add_video: 'إضافة ملفات فيديو',
+      vmux_tip_add_pic: 'إضافة صور',
+      vmux_tip_add_audio: 'إضافة ملفات صوتية',
+      vmux_tip_slider: 'سحب لضبط مستوى الصوت (0% إلى 100%)',
+      vmux_tip_setting: 'إعدادات الإخراج المتقدمة',
+      vmux_tip_tab_video: 'قسم الفيديو والصور',
+      vmux_tip_tab_audio: 'قسم الصوت والموسيقى',
+      vmux_alert_add_video_first: 'الرجاء إضافة ملف فيديو أولاً',
+      vmux_alert_add_audio_first: 'الرجاء إضافة مقطع صوتي أولاً',
+      // Audio Mix
+      amix_title: 'مزيج صوتي (Audio Mix)',
+      amix_out_format: 'صيغة الإخراج:',
+      amix_preset_high: 'جودة عالية (320 ك.بت/ث)',
+      amix_col_preview: 'معاينة',
+      amix_col_info: 'معلومات الوسائط',
+      amix_duration: 'المدة:',
+      amix_dur_longest: 'الأطول (Longest)',
+      amix_dur_shortest: 'الأقصر (Shortest)',
+      amix_dur_first: 'الأول (First)',
+      amix_duration_tip: 'تحديد مدة المزيج: حسب أطول ملف، أقصر ملف، أو مدة أول ملف',
+      amix_drag_hint: 'اسحب الملفات الصوتية هنا أو اضغط لاختيارها',
+      amix_tip_format: 'اختر صيغة الملف الصوتي الناتج',
+      amix_tip_add_files: 'إضافة ملفات صوتية للمزيج',
+      amix_tip_clear: 'مسح وتفريغ قائمة الملفات',
+      amix_tip_ok: 'موافق وتأكيد المزيج',
+      amix_tip_close: 'إغلاق',
+      amix_tip_setting: 'إعدادات الإخراج المتقدمة',
+      amix_warn_min_files: 'يرجى إضافة ملفين صوتيين على الأقل لدمجهما في المزيج',
+      // Audio Joiner
+      ajoin_title: 'دامج الصوت (Audio Joiner)',
+      ajoin_out_format: 'صيغة الإخراج:',
+      ajoin_preset_high: 'جودة عالية (320 ك.بت/ث)',
+      ajoin_intervals: 'الفواصل:',
+      ajoin_intervals_unit: 'ثانية',
+      ajoin_intervals_tip: 'المدة الفاصلة (صمت) بالثواني بين المقطعين الصوتين',
+      ajoin_drag_hint: 'اسحب الملفين الصوتين هنا أو اضغط لإضافتهما (ملفان فقط)',
+      ajoin_tip_format: 'اختر صيغة الملف الصوتي الناتج عن الدمج',
+      ajoin_tip_add_files: 'إضافة ملفين صوتيين للدمج',
+      ajoin_tip_clear: 'مسح الملفين المحددين',
+      ajoin_tip_ok: 'موافق وتأكيد دمج المقطعين',
+      ajoin_tip_close: 'إغلاق',
+      ajoin_tip_setting: 'إعدادات الإخراج المتقدمة',
+      ajoin_warn_exact_two: 'دامج الصوت يتطلب إضافة ملفين صوتيين بالضبط (ملف أول وملف ثانٍ)',
+      ajoin_warn_max_two: 'تم تحديد أول ملفين فقط؛ دامج الصوت يدمج ملفين صوتيين فقط',
+      ajoin_tip_swap: 'تبديل الترتيب بين الملفين',
+      tip_delete: 'حذف',
+      tip_move_up: 'تحريك لأعلى',
+      tip_move_down: 'تحريك لأسفل',
+      tip_change_dir: 'تغيير مجلد الحفظ',
+      btn_default: 'الافتراضي',
+      // Screen Recorder
+      sr_title: 'مسجل الشاشة',
+      sr_shortcuts: 'كاميرا(F5) تسجيل(F6) إيقاف مؤقت(F7) إيقاف(F8)',
+      sr_btn_camera: 'كاميرا (F5)',
+      sr_btn_record: 'تسجيل (F6)',
+      sr_btn_pause: 'مؤقت (F7)',
+      sr_btn_stop: 'إيقاف (F8)',
+      sr_region_full: 'كامل الشاشة',
+      sr_region_window: 'نافذة محددة',
+      sr_region_custom: 'منطقة مخصصة',
+      sr_menu_region: 'تحديد منطقة من الشاشة',
+      sr_menu_window: 'نافذة نشطة',
+      sr_menu_fullscreen: 'كامل الشاشة',
+      sr_btn_output: 'مجلد الإخراج',
+      sr_chk_mic: 'استخدام الميكروفون',
+      sr_chk_sound: 'التقاط صوت النظام',
+      sropt_title: 'الخيارات',
+      sropt_tab_system: 'النظام',
+      sropt_tab_video: 'فيديو',
+      sropt_tab_audio: 'صوت',
+      sropt_cam_hotkey: 'مفتاح الكاميرا',
+      sropt_rec_hotkey: 'مفتاح التسجيل',
+      sropt_pause_hotkey: 'مفتاح الإيقاف المؤقت',
+      sropt_stop_hotkey: 'مفتاح الإيقاف',
+      sropt_out_format: 'صيغة الإخراج',
+      sropt_out_folder: 'مجلد الإخراج',
+      sropt_btn_change: 'تغيير',
+      sropt_btn_open: 'فتح',
+      sropt_open_after: 'بعد الانتهاء، فتح المجلد',
+      sropt_always_on_top: 'النافذة دائماً في المقدمة',
+      sropt_framerate: 'معدل الإطارات',
+      sropt_bitrate: 'معدل البت',
+      sropt_draw_mouse: 'إظهار مؤشر الفأرة',
+      sropt_use_sound: 'التقاط صوت النظام',
+      sropt_use_mic: 'استخدام الميكروفون',
+      sropt_btn_default: 'استعادة الافتراضي',
+      sr_lbl_output: 'مجلد الحفظ:',
+      sr_alert_started: 'بدأ تسجيل الشاشة (F6)!',
+      sr_alert_paused: 'تم إيقاف التسجيل مؤقتاً (F7)',
+      sr_alert_stopped: 'تم إنهاء التسجيل وحفظ الفيديو في مجلد الإخراج (F8)',
+      sr_alert_screenshot: 'تم التقاط لقطة للشاشة (F5) وحفظها بنجاح',
+      // Video Downloader
+      vdown_title: 'تنزيل الفيديو',
+      vdown_lbl_url: 'رابط الفيديو',
+      vdown_placeholder_url: 'الصق رابط يوتيوب أو فيسبوك أو تيك توك أو أي رابط فيديو هنا...',
+      vdown_btn_paste: '📋 لصق الرابط',
+      vdown_btn_list_formats: '≡ جلب الصيغ المتاحة',
+      vdown_hint_cookies: '➔ يتطلب يوتيوب تصدير ملفات Cookies للتحميل بأعلى جودة',
+      vdown_tab_main: '⚙ الإعدادات الرئيسية',
+      vdown_tab_network: '🌐 الشبكة',
+      vdown_tab_output: '🔀 الإخراج',
+      vdown_th_property: 'الخاصية',
+      vdown_th_value: 'القيمة',
+      vdown_prop_format: '🛡 معرف الصيغة',
+      vdown_prop_sub: '💬 الترجمة',
+      vdown_prop_thumb: '🖼 الصورة المصغرة',
+      vdown_prop_desc: '📝 الوصف',
+      vdown_prop_json: 'JSON ملف المعلومات',
+      vdown_prop_playlist: 'JSON تنزيل قائمة التشغيل',
+      vdown_auth_section: '👤 بيانات تسجيل الدخول والمصادقة',
+      vdown_auth_cookies_file: '🍪 ملف Cookies',
+      vdown_auth_browser_cookies: '🍪 Cookies من المتصفح',
+      vdown_auth_user: 'اسم المستخدم',
+      vdown_auth_pass: 'كلمة المرور',
+      vdown_lbl_proxy: 'عنوان خادم البروكسي (Proxy):',
+      vdown_lbl_out_dir: 'مجلد حفظ الفيديوهات:',
+      vdown_btn_default: '🖨 استعادة الافتراضي',
+      vdown_btn_download: '⬇ بدء التنزيل',
+      vdown_alert_enter_url: 'الرجاء إدخال رابط الفيديو المراد تنزيله',
+      vdown_alert_formats_fetched: 'تم جلب التنسيقات المتاحة بنجاح للرابط المحدد',
+      // Delogo Interactive Editor
+      delogo_title: 'إزالة العلامة المائية — محرر وتتبع العلامات المائية',
+      delogo_lbl_rects: 'قائمة المستطيلات والفترات الزمنية المحددة:',
+      delogo_btn_ai: '✨ تتبع ذكي بالذكاء الاصطناعي (AI Auto-Track)',
+      delogo_btn_add_rect: '+ إضافة مستطيل',
+      delogo_btn_del_rect: '🗑 حذف',
+      delogo_hint: '💡 ارسم مستطيلاً بالفأرة فوق الشعار أو اضغط "كشف وتتبع بالذكاء الاصطناعي"',
+      delogo_btn_apply: 'تطبيق الإزالة',
+      // Notifications & Shutdown
+      opt_notify_window: 'إظهار نافذة إشعار عند اكتمال التحويل',
+      notify_title: 'اكتمل التحويل',
+      notify_elapsed: 'الوقت المنقضي:',
+      notify_tasks_done: 'تم تحويل {count} من المهام بنجاح',
+      btn_open_folder: 'مجلد الإخراج',
+      shutdown_countdown_title: 'إيقاف تشغيل الكمبيوتر',
+      shutdown_countdown_msg: 'اكتملت جميع المهام! سيتم إيقاف تشغيل الكمبيوتر تلقائياً بعد:',
+      btn_cancel_shutdown: 'إلغاء إيقاف التشغيل',
+      shutdown_cancelled: 'تم إلغاء إيقاف التشغيل بنجاح',
+      lbl_files: 'ملفات',
+      t_d_epub: '→ EPub',
+      t_d_mobi: '→ Mobi',
+      t_d_azw3: '→ AZW3',
     },
     en: {
       dir: 'ltr',
@@ -846,7 +1126,7 @@
       btn_apply: 'Apply',
       btn_ok: 'OK',
       btn_add_files: 'Add Files',
-      btn_add_folder: '+ Add Folder',
+      btn_add_folder: 'Add Folder',
       btn_add_music: '+ Add Music',
       btn_confirm: 'Confirm & Add to Queue',
       about_tagline: 'The ultimate professional converter for Video, Audio, Images & Documents',
@@ -860,20 +1140,12 @@
       alert_no_files: 'Please add at least one file to proceed',
       // Tools Translations
       t_v_merge: 'Video Joiner & Muxer',
-      t_v_enhance: 'Enhance & Compress',
       t_v_separate: 'Audio/Video Separator',
-      t_v_crop: 'Crop Video Frame',
-      t_v_clip: 'Quick Clip & Trim',
-      t_v_delogo: 'Remove Watermark',
       t_v_frames: 'Export Frames',
-      t_v_record: 'Screen Recorder',
       t_v_player: 'Media Player',
-      t_v_download: 'Video Downloader',
       t_a_merge: 'Audio Joiner',
-      t_a_split: 'Audio Splitter',
-      t_a_extract: 'Extract Audio',
-      t_a_mix: 'Audio Mixer',
-      t_a_tts: 'Text to Speech (TTS)',
+      t_a_split: 'Split Vocals & Music',
+      t_a_mix: 'Extract Audio from Video',
       t_d_pdf_join: 'PDF Joiner',
       t_d_compress: 'Compress PDF',
       t_d_pic_pdf: 'Images to PDF',
@@ -915,6 +1187,8 @@
       btn_rename_action: 'Rename',
       t_ha_test_title: 'Hardware Acceleration Testing',
       ha_probing: 'Testing hardware acceleration...',
+      lbl_ha_supported: 'Supported',
+      btn_retest: 'Retest',
       rename_success: 'Successfully renamed {count} files!',
       rename_no_files: 'No matching files found in the selected folder.',
       modal_files_heading: 'Files',
@@ -926,6 +1200,7 @@
       about_engine: 'Core Engine',
       about_license: 'License',
       about_mit: 'Free & Open Source (MIT)',
+      output_format: 'Output Format',
       output_setting: 'Output Setting',
       video_setting_title: 'Video Setting',
       audio_setting_title: 'Audio Setting',
@@ -941,6 +1216,150 @@
       th_size: 'Size',
       th_duration: 'Duration / Res',
       th_path: 'Source Path',
+      // Category Badges
+      badge_video: 'Video',
+      badge_audio: 'Audio',
+      badge_picture: 'Picture',
+      badge_document: 'Document',
+      badge_disc: 'Disc',
+      badge_iso_cso: 'ISO / CSO',
+      // Checkbox label template
+      lbl_append_setting_name: 'Append setting name [{name}]',
+      // Preset Display Names
+      preset_optimum: 'Optimum quality and size',
+      preset_high_2pass: 'High quality and size Encode 2 Pass',
+      preset_high: 'High quality and size',
+      preset_medium: 'Medium quality and size',
+      preset_low: 'Low quality and size',
+      preset_4k: '4K 2160p',
+      preset_2k: '2K 1080p',
+      preset_720p: '720p',
+      preset_480p: '480p',
+      preset_copy: 'Copy Stream',
+      preset_custom: 'Custom',
+      preset_avc_high: 'AVC High quality 1080p',
+      preset_hevc_high: 'HEVC High quality 1080p',
+      preset_uhd_4k: '4K Ultra HD',
+      preset_qhd_2k: '2K Quad HD',
+      preset_audio_high: 'High quality (320 Kbps)',
+      preset_audio_medium: 'Medium quality (192 Kbps)',
+      preset_audio_low: 'Low quality (128 Kbps)',
+      preset_audio_vbr_0: 'VBR 0 (Best quality)',
+      preset_audio_vbr_high: 'VBR High quality',
+      preset_audio_vbr_2: 'VBR 2 (High quality)',
+      preset_audio_vbr_medium: 'VBR Medium quality',
+      preset_audio_vbr_4: 'VBR 4 (Standard quality)',
+      preset_audio_vbr_low: 'VBR Low quality',
+      preset_pic_original: 'Original Size',
+      preset_mw2400_mh1800: 'Max Width 2400 Max Height 1800',
+      preset_mw1024_mh768: 'Max Width 1024 Max Height 768',
+      preset_mw640_mh480: 'Max Width 640 Max Height 480',
+      preset_mw320_mh240: 'Max Width 320 Max Height 240',
+      preset_mw176_mh144: 'Max Width 176 Max Height 144',
+      ps_promo_1: 'If you want more functions about picture.',
+      ps_promo_2: 'Please download "Picosmos Tools"',
+      preset_cso_lvl5: 'CSO Compress Level 5',
+      preset_ai_delogo: 'Smart Watermark Removal',
+      badge_ai_delogo: 'Smart Delogo',
+      // Tabs
+      tab_video: 'Video',
+      tab_audio: 'Audio',
+      tab_subtitle: 'Subtitle',
+      tab_other: 'Other',
+      tab_watermark: 'Watermark',
+      // Properties
+      prop_size_limit: 'Size Limit',
+      prop_video_encode: 'Video Encode',
+      prop_video_size: 'Video Size',
+      prop_bitrate: 'Bitrate (Kb/s)',
+      prop_crf: 'CRF (Constant Quality)',
+      prop_gpu: 'GPU Acceleration',
+      prop_fps: 'FPS (Frames / Sec)',
+      prop_aspect_ratio: 'Aspect Ratio',
+      prop_encode_2pass: '2-Pass Encode',
+      prop_keyframe: 'Keyframe Interval',
+      prop_deinterlace: 'Deinterlace',
+      prop_rotate: 'Rotate',
+      prop_xmirror: 'X-Mirror (Horizontal)',
+      prop_ymirror: 'Y-Mirror (Vertical)',
+      prop_filter: 'Filter & Color',
+      prop_fadein: 'Fade In',
+      prop_fadeout: 'Fade Out',
+      prop_antishake: 'Anti-Shake',
+      prop_denoise: 'Denoise',
+      prop_reverse: 'Reverse',
+      prop_audio_encode: 'Audio Encode',
+      prop_sample_rate: 'Sample Rate (HZ)',
+      prop_audio_bitrate: 'Bitrate (Kb/s)',
+      prop_channel: 'Channel',
+      prop_disable_audio: 'Disable Audio',
+      prop_volume: 'Volume',
+      prop_keep_audio_streams: 'Keep All Audio Streams',
+      prop_echo: 'Echo',
+      prop_vbr: 'VBR (Variable Bitrate)',
+      prop_sample_format: 'Sample Format',
+      prop_keep_sub_streams: 'Keep Subtitle Streams',
+      prop_add_subtitle: 'Add Subtitle File',
+      prop_sub_type: 'Subtitle Type',
+      prop_sub_fontsize: 'Font Size',
+      prop_sub_codepage: 'CodePage',
+      prop_sub_fontfamily: 'Font Family',
+      prop_sub_fontcolor: 'Font Color',
+      prop_sub_borderstyle: 'Border Style',
+      prop_sub_outlinesize: 'Outline Size',
+      prop_sub_outlinecolor: 'Outline Color',
+      prop_sub_shadowsize: 'Shadow Size',
+      prop_sub_scheme: 'Color Scheme',
+      prop_metadata: 'Metadata',
+      prop_meta_title: 'Title',
+      prop_meta_author: 'Author / Artist',
+      prop_meta_comment: 'Comment',
+      prop_stream_options: 'Stream Options',
+      prop_faststart: 'Web FastStart (MOOV)',
+      prop_2pass_mode: '2-Pass Mode',
+      prop_wm_enable: 'Enable Watermark',
+      prop_wm_type: 'Watermark Type',
+      prop_wm_image: 'Image File',
+      prop_wm_text: 'Watermark Text',
+      prop_wm_pos: 'Position',
+      prop_wm_opacity: 'Opacity',
+      prop_wm_margin: 'Margin',
+      prop_wm_scale: 'Scale Size',
+      btn_add: 'Add',
+      prop_max_width: 'Max Width',
+      prop_max_height: 'Max Height',
+      ps_lbl_size_limit: 'Size Limit (Reduce File Size)',
+      ps_opt_original: 'Original Size',
+      ps_opt_custom: 'Custom Size',
+      prop_quality: 'Quality (JPG / WebP)',
+      prop_flip: 'Flip',
+      lbl_jpg_quality: 'JPG Quality:',
+      lbl_webp_quality: 'WebP Quality:',
+      // Divide Modal
+      div_title: 'Divide',
+      div_off: 'Off',
+      div_by_time: 'By length of time',
+      div_by_count: 'By count of files',
+      div_by_size: 'By size of files',
+      // Clip Modal
+      clip_title: 'Clip / Option',
+      clip_start_time: 'Start Time',
+      clip_end_time: 'End Time',
+      clip_duration: 'Duration:',
+      clip_precision: 'Precision:',
+      clip_speed: 'Speed:',
+      // Multi-Profiles Modal
+      mp_title: 'Multi-Profiles',
+      mp_select_all: 'Select All',
+      // Context Menus
+      ctx_clip: 'Clip / Option',
+      ctx_divide: 'Divide',
+      ctx_preview: 'Preview',
+      ctx_remove: 'Remove',
+      ctx_start: 'Start',
+      ctx_stop: 'Stop',
+      ctx_open_folder: 'Open Folder',
+      ctx_clear_all: 'Clear All',
       // Document & Disc Modals
       doc_btn_move_up: 'Move Up',
       doc_btn_move_down: 'Move Down',
@@ -1034,6 +1453,173 @@
       disc_ripper_mod_prompt: 'You must install DVDRipper MOD. Click "Yes" to install.',
       btn_yes: 'Yes',
       btn_no: 'No',
+      // Video Joiner & Mux
+      vmux_title: 'Video Joiner & Mux',
+      vmux_out_format: 'Output Format:',
+      vmux_preset_optimum: 'Optimum quality and size',
+      vmux_tab_video: 'Video',
+      vmux_tab_audio: 'Audio',
+      vmux_col_preview: 'Preview',
+      vmux_col_info: 'Media information',
+      vmux_btn_add_video: 'Add Video',
+      vmux_btn_add_audio: 'Add Audio',
+      vmux_btn_add_files: 'Add Files',
+      vmux_btn_add_pic: 'Add Picture',
+      vmux_btn_add_music: 'Add from music library',
+      vmux_vol_video: 'Video volume',
+      vmux_vol_audio: 'Audio volume',
+      vmux_opt_loop: 'Loop:',
+      vmux_opt_loop_yes: 'Loop: Yes',
+      vmux_opt_loop_no: 'Loop: No',
+      vmux_opt_intervals: 'Intervals:',
+      vmux_btn_clip: 'Clip',
+      vmux_btn_pic: 'Add Picture',
+      vmux_btn_add_music: 'Add Music',
+      vmux_btn_mute_tip: 'Mute / Unmute',
+      vmux_tip_ok: 'Confirm and OK',
+      vmux_tip_close: 'Close',
+      vmux_tip_add_video: 'Add Video Files',
+      vmux_tip_add_pic: 'Add Picture Files',
+      vmux_tip_add_audio: 'Add Audio Files',
+      vmux_tip_slider: 'Drag to adjust volume (0% to 100%)',
+      vmux_tip_setting: 'Advanced Output Settings',
+      vmux_tip_tab_video: 'Video & Pictures Section',
+      vmux_tip_tab_audio: 'Audio & Music Section',
+      vmux_alert_add_video_first: 'Please add a video file first',
+      vmux_alert_add_audio_first: 'Please add an audio file first',
+      // Audio Mix
+      amix_title: 'Audio Mix',
+      amix_out_format: 'Output Format:',
+      amix_preset_high: 'High quality (320 kbps)',
+      amix_col_preview: 'Preview',
+      amix_col_info: 'Media information',
+      amix_duration: 'Duration:',
+      amix_dur_longest: 'Longest',
+      amix_dur_shortest: 'Shortest',
+      amix_dur_first: 'First',
+      amix_duration_tip: 'Set mix duration: based on longest track, shortest track, or first track',
+      amix_drag_hint: 'Drag audio files here or click to add',
+      amix_tip_format: 'Select output audio format',
+      amix_tip_add_files: 'Add audio files to mix',
+      amix_tip_clear: 'Clear all files from list',
+      amix_tip_ok: 'Confirm and OK',
+      amix_tip_close: 'Close',
+      amix_tip_setting: 'Advanced Output Settings',
+      amix_warn_min_files: 'Please add at least 2 audio files to mix together',
+      // Audio Joiner
+      ajoin_title: 'Audio Joiner',
+      ajoin_out_format: 'Output Format:',
+      ajoin_preset_high: 'High quality (320 kbps)',
+      ajoin_intervals: 'Intervals:',
+      ajoin_intervals_unit: 's',
+      ajoin_intervals_tip: 'Silence interval in seconds between the two audio tracks',
+      ajoin_drag_hint: 'Drag the two audio files here or click to add (2 files only)',
+      ajoin_tip_format: 'Select output audio format',
+      ajoin_tip_add_files: 'Add two audio files to join',
+      ajoin_tip_clear: 'Clear files',
+      ajoin_tip_ok: 'Confirm and Join',
+      ajoin_tip_close: 'Close',
+      ajoin_tip_setting: 'Advanced Output Settings',
+      ajoin_warn_exact_two: 'Audio Joiner requires exactly 2 audio files (First track and Second track)',
+      ajoin_warn_max_two: 'Only first 2 files selected; Audio Joiner joins only 2 audio files',
+      ajoin_tip_swap: 'Swap order between tracks',
+      tip_delete: 'Delete',
+      tip_move_up: 'Move up',
+      tip_move_down: 'Move down',
+      tip_change_dir: 'Change output folder',
+      btn_default: 'Default',
+      // Screen Recorder
+      sr_title: 'Screen Record',
+      sr_shortcuts: 'Camera(F5) Record(F6) Pause(F7) Stop(F8)',
+      sr_btn_camera: 'Camera (F5)',
+      sr_btn_record: 'Record (F6)',
+      sr_btn_pause: 'Pause (F7)',
+      sr_btn_stop: 'Stop (F8)',
+      sr_region_full: 'Full Screen',
+      sr_region_window: 'Selected Window',
+      sr_region_custom: 'Custom Region',
+      sr_menu_region: 'Region screen',
+      sr_menu_window: 'Window',
+      sr_menu_fullscreen: 'Full screen',
+      sr_btn_output: 'Output folder',
+      sr_chk_mic: 'Use microphone',
+      sr_chk_sound: 'Use capture sound',
+      sropt_title: 'Options',
+      sropt_tab_system: 'System',
+      sropt_tab_video: 'Video',
+      sropt_tab_audio: 'Audio',
+      sropt_cam_hotkey: 'Camera HotKey',
+      sropt_rec_hotkey: 'Record HotKey',
+      sropt_pause_hotkey: 'Pause HotKey',
+      sropt_stop_hotkey: 'Stop HotKey',
+      sropt_out_format: 'Output Format',
+      sropt_out_folder: 'Output Folder',
+      sropt_btn_change: 'Change',
+      sropt_btn_open: 'Open',
+      sropt_open_after: 'After finish,open the folder',
+      sropt_always_on_top: 'Window always on top',
+      sropt_framerate: 'Frame rate',
+      sropt_bitrate: 'Bitrate',
+      sropt_draw_mouse: 'Draw mouse',
+      sropt_use_sound: 'Use capture sound',
+      sropt_use_mic: 'Use microphone',
+      sropt_btn_default: 'Default',
+      sr_lbl_output: 'Output Folder:',
+      sr_alert_started: 'Screen recording started (F6)!',
+      sr_alert_paused: 'Recording paused (F7)',
+      sr_alert_stopped: 'Recording finished and saved to output folder (F8)',
+      sr_alert_screenshot: 'Screenshot captured (F5) successfully',
+      // Video Downloader
+      vdown_title: 'Video Downloader',
+      vdown_lbl_url: 'Video URL',
+      vdown_placeholder_url: 'Paste YouTube, Facebook, TikTok, or any direct video link here...',
+      vdown_btn_paste: '📋 Paste URL',
+      vdown_btn_list_formats: '≡ List Available Formats',
+      vdown_hint_cookies: '➔ youtube needs to export cookies files',
+      vdown_tab_main: '⚙ Main',
+      vdown_tab_network: '🌐 Network',
+      vdown_tab_output: '🔀 Output',
+      vdown_th_property: 'Property',
+      vdown_th_value: 'Value',
+      vdown_prop_format: '🛡 Format ID',
+      vdown_prop_sub: '💬 Subtitle',
+      vdown_prop_thumb: '🖼 Thumbnail',
+      vdown_prop_desc: '📝 Description',
+      vdown_prop_json: 'JSON Info Json',
+      vdown_prop_playlist: 'JSON Download Playlist',
+      vdown_auth_section: '👤 Authentication',
+      vdown_auth_cookies_file: '🍪 Cookies file',
+      vdown_auth_browser_cookies: '🍪 Cookies From Browser',
+      vdown_auth_user: 'Username',
+      vdown_auth_pass: 'Password',
+      vdown_lbl_proxy: 'Proxy Server Address:',
+      vdown_lbl_out_dir: 'Output Directory:',
+      vdown_btn_default: '🖨 Default',
+      vdown_btn_download: '⬇ Download',
+      vdown_alert_enter_url: 'Please enter a video URL to download',
+      vdown_alert_formats_fetched: 'Available formats retrieved successfully for the URL',
+      // Delogo Interactive Editor
+      delogo_title: 'Remove Watermark — Interactive Delogo & Auto-Track',
+      delogo_lbl_rects: 'Selected rectangles & timeline intervals:',
+      delogo_btn_ai: '✨ AI Auto-Track Watermark',
+      delogo_btn_add_rect: '+ Add Rectangle',
+      delogo_btn_del_rect: '🗑 Delete',
+      delogo_hint: '💡 Draw a rectangle with mouse over the watermark or click "AI Auto-Track"',
+      delogo_btn_apply: 'Apply & OK',
+      // Notifications & Shutdown
+      opt_notify_window: 'Show notification window upon completion',
+      notify_title: 'Task Complete',
+      notify_elapsed: 'Elapsed Time:',
+      notify_tasks_done: 'Successfully completed {count} task(s)',
+      btn_open_folder: 'Open Output Folder',
+      shutdown_countdown_title: 'Shutting Down Computer',
+      shutdown_countdown_msg: 'All tasks completed! Computer will shut down in:',
+      btn_cancel_shutdown: 'Cancel Shutdown',
+      shutdown_cancelled: 'Shutdown cancelled successfully',
+      lbl_files: 'files',
+      t_d_epub: '→ EPub',
+      t_d_mobi: '→ Mobi',
+      t_d_azw3: '→ AZW3',
     },
     fr: {
       dir: 'ltr',
@@ -1089,7 +1675,7 @@
       btn_apply: 'Appliquer',
       btn_ok: 'Valider',
       btn_add_files: 'Ajouter des fichiers',
-      btn_add_folder: '+ Ajouter dossier',
+      btn_add_folder: 'Ajouter dossier',
       btn_add_music: '+ Ajouter musique',
       btn_confirm: 'Ajouter à la file',
       about_tagline: 'Convertisseur professionnel tout-en-un',
@@ -1103,20 +1689,12 @@
       alert_no_files: 'Veuillez ajouter au moins un fichier',
       // Tools Translations
       t_v_merge: 'Fusionner & Muxer',
-      t_v_enhance: 'Améliorer & Compresser',
       t_v_separate: 'Séparateur Audio/Vidéo',
-      t_v_crop: 'Recadrer la vidéo',
-      t_v_clip: 'Découpage Rapide',
-      t_v_delogo: 'Supprimer Filigrane',
       t_v_frames: 'Exporter les images',
-      t_v_record: 'Enregistreur d\'écran',
       t_v_player: 'Lecteur Multimédia',
-      t_v_download: 'Téléchargeur de Vidéos',
       t_a_merge: 'Fusionneur Audio',
-      t_a_split: 'Découpeur Audio',
-      t_a_extract: 'Extraire l\'audio',
-      t_a_mix: 'Mixeur Audio',
-      t_a_tts: 'Texte en Parole (TTS)',
+      t_a_split: 'Séparer Voix et Musique',
+      t_a_mix: 'Extraire l\'audio de la vidéo',
       t_d_pdf_join: 'Fusionner PDF',
       t_d_compress: 'Compresser PDF',
       t_d_pic_pdf: 'Images en PDF',
@@ -1158,6 +1736,8 @@
       btn_rename_action: 'Renommer',
       t_ha_test_title: 'Hardware Acceleration Testing',
       ha_probing: 'Test de l\'accélération matérielle...',
+      lbl_ha_supported: 'Supporté',
+      btn_retest: 'Tester à nouveau',
       rename_success: '{count} fichiers renommés avec succès !',
       rename_no_files: 'Aucun fichier correspondant trouvé dans le dossier.',
       modal_files_heading: 'Fichiers',
@@ -1169,6 +1749,7 @@
       about_engine: 'Moteur de traitement',
       about_license: 'Licence',
       about_mit: 'Gratuit & Open Source (MIT)',
+      output_format: 'Format de sortie',
       output_setting: 'Paramètres de sortie',
       video_setting_title: 'Paramètres Vidéo',
       audio_setting_title: 'Paramètres Audio',
@@ -1178,10 +1759,155 @@
       ft_tab_files: 'Fichiers sélectionnés',
       ft_tab_preview: 'Aperçu',
       ft_tab_mediainfo: 'Informations média',
+      th_file_info: 'Infos Fichier & Média',
+      th_actions: 'Options & Découpage',
       th_file_name: 'Nom du fichier',
       th_size: 'Taille',
       th_duration: 'Durée / Résolution',
       th_path: 'Chemin source',
+      // Category Badges
+      badge_video: 'Vidéo',
+      badge_audio: 'Audio',
+      badge_picture: 'Image',
+      badge_document: 'Document',
+      badge_disc: 'Disque',
+      badge_iso_cso: 'ISO / CSO',
+      // Checkbox label template
+      lbl_append_setting_name: 'Ajouter le nom du profil [{name}]',
+      // Preset Display Names
+      preset_optimum: 'Qualité et taille optimales',
+      preset_high_2pass: 'Haute qualité et taille (2 passes)',
+      preset_high: 'Haute qualité et taille',
+      preset_medium: 'Qualité et taille moyennes',
+      preset_low: 'Basse qualité et taille',
+      preset_4k: '4K 2160p',
+      preset_2k: '2K 1080p',
+      preset_720p: '720p',
+      preset_480p: '480p',
+      preset_copy: 'Copier le flux',
+      preset_custom: 'Personnalisé',
+      preset_avc_high: 'AVC Haute qualité 1080p',
+      preset_hevc_high: 'HEVC Haute qualité 1080p',
+      preset_uhd_4k: '4K Ultra HD',
+      preset_qhd_2k: '2K Quad HD',
+      preset_audio_high: 'Haute qualité (320 Kbps)',
+      preset_audio_medium: 'Qualité moyenne (192 Kbps)',
+      preset_audio_low: 'Basse qualité (128 Kbps)',
+      preset_audio_vbr_0: 'VBR 0 (Meilleure qualité)',
+      preset_audio_vbr_high: 'VBR Haute qualité',
+      preset_audio_vbr_2: 'VBR 2 (Haute qualité)',
+      preset_audio_vbr_medium: 'VBR Qualité moyenne',
+      preset_audio_vbr_4: 'VBR 4 (Qualité standard)',
+      preset_audio_vbr_low: 'VBR Basse qualité',
+      preset_pic_original: 'Taille originale',
+      preset_pic_50: '50% Taille originale',
+      preset_pic_75: '75% Taille originale',
+      preset_pic_1080: '1920x1080 (Full HD)',
+      preset_pic_720: '1280x720 (HD)',
+      preset_pic_800: '800x600 (Web)',
+      preset_pic_avatar: 'Avatar 1:1 Carré',
+      preset_cso_lvl5: 'Niveau de compression CSO 5',
+      preset_ai_delogo: 'Suppression intelligente du filigrane',
+      badge_ai_delogo: 'Suppr. IA',
+      // Tabs
+      tab_video: 'Vidéo',
+      tab_audio: 'Audio',
+      tab_subtitle: 'Sous-titre',
+      tab_other: 'Autre',
+      tab_watermark: 'Filigrane',
+      // Properties
+      prop_size_limit: 'Limite de taille',
+      prop_video_encode: 'Encodage vidéo',
+      prop_video_size: 'Taille vidéo',
+      prop_bitrate: 'Débit (Kb/s)',
+      prop_crf: 'Qualité constante (CRF)',
+      prop_gpu: 'Accélération GPU',
+      prop_fps: 'Images/sec (FPS)',
+      prop_aspect_ratio: 'Format d\'image',
+      prop_encode_2pass: 'Encodage 2 passes',
+      prop_keyframe: 'Images clés',
+      prop_deinterlace: 'Désentrelacement',
+      prop_rotate: 'Rotation',
+      prop_xmirror: 'Miroir horizontal',
+      prop_ymirror: 'Miroir vertical',
+      prop_filter: 'Filtre et couleur',
+      prop_fadein: 'Fondu entrant',
+      prop_fadeout: 'Fondu sortant',
+      prop_antishake: 'Stabilisation',
+      prop_denoise: 'Réduction de bruit',
+      prop_reverse: 'Lecture inversée',
+      prop_audio_encode: 'Encodage audio',
+      prop_sample_rate: 'Taux d\'échantillonnage (HZ)',
+      prop_audio_bitrate: 'Débit audio (Kb/s)',
+      prop_channel: 'Canaux audio',
+      prop_disable_audio: 'Désactiver le son',
+      prop_volume: 'Volume',
+      prop_keep_audio_streams: 'Conserver les pistes audio',
+      prop_echo: 'Écho',
+      prop_vbr: 'Débit variable (VBR)',
+      prop_sample_format: 'Format d\'échantillonnage',
+      prop_keep_sub_streams: 'Conserver les sous-titres',
+      prop_add_subtitle: 'Ajouter sous-titre',
+      prop_sub_type: 'Type de sous-titre',
+      prop_sub_fontsize: 'Taille de police',
+      prop_sub_codepage: 'Page de code',
+      prop_sub_fontfamily: 'Police',
+      prop_sub_fontcolor: 'Couleur de police',
+      prop_sub_borderstyle: 'Style de bordure',
+      prop_sub_outlinesize: 'Taille contour',
+      prop_sub_outlinecolor: 'Couleur contour',
+      prop_sub_shadowsize: 'Taille ombre',
+      prop_sub_scheme: 'Jeu de couleurs',
+      prop_metadata: 'Métadonnées',
+      prop_meta_title: 'Titre',
+      prop_meta_author: 'Auteur / Artiste',
+      prop_meta_comment: 'Commentaire',
+      prop_stream_options: 'Options de streaming',
+      prop_faststart: 'Démarrage rapide Web',
+      prop_2pass_mode: 'Mode 2 passes',
+      prop_wm_enable: 'Activer filigrane',
+      prop_wm_type: 'Type de filigrane',
+      prop_wm_image: 'Fichier image',
+      prop_wm_text: 'Texte filigrane',
+      prop_wm_pos: 'Position',
+      prop_wm_opacity: 'Opacité',
+      prop_wm_margin: 'Marge',
+      prop_wm_scale: 'Échelle',
+      btn_add: 'Ajouter',
+      prop_max_width: 'Largeur max',
+      prop_max_height: 'Hauteur max',
+      ps_lbl_size_limit: 'Limite de taille',
+      ps_opt_original: 'Taille originale',
+      ps_opt_custom: 'Taille personnalisée',
+      prop_quality: 'Qualité (JPG / WebP)',
+      prop_flip: 'Retourner',
+      lbl_jpg_quality: 'Qualité JPG :',
+      lbl_webp_quality: 'Qualité WebP :',
+      // Divide Modal
+      div_title: 'Diviser',
+      div_off: 'Désactivé',
+      div_by_time: 'Par durée',
+      div_by_count: 'Par nombre de fichiers',
+      div_by_size: 'Par taille de fichier',
+      // Clip Modal
+      clip_title: 'Découpage / Options',
+      clip_start_time: 'Début',
+      clip_end_time: 'Fin',
+      clip_duration: 'Durée :',
+      clip_precision: 'Précision :',
+      clip_speed: 'Vitesse :',
+      // Multi-Profiles Modal
+      mp_title: 'Profils multiples',
+      mp_select_all: 'Tout sélectionner',
+      // Context Menus
+      ctx_clip: 'Découpage / Options',
+      ctx_divide: 'Diviser',
+      ctx_preview: 'Aperçu',
+      ctx_remove: 'Supprimer',
+      ctx_start: 'Démarrer',
+      ctx_stop: 'Arrêter',
+      ctx_open_folder: 'Ouvrir le dossier',
+      ctx_clear_all: 'Tout vider',
       // Document & Disc Modals
       doc_btn_move_up: 'Monter',
       doc_btn_move_down: 'Descendre',
@@ -1275,6 +2001,173 @@
       disc_ripper_mod_prompt: 'Vous devez installer DVDRipper MOD. Cliquez sur "Yes" pour installer.',
       btn_yes: 'Oui',
       btn_no: 'Non',
+      // Video Joiner & Mux
+      vmux_title: 'Fusionner & Mux Vidéo',
+      vmux_out_format: 'Format de sortie :',
+      vmux_preset_optimum: 'Qualité et taille optimales',
+      vmux_tab_video: 'Vidéo',
+      vmux_tab_audio: 'Audio',
+      vmux_col_preview: 'Aperçu',
+      vmux_col_info: 'Informations média',
+      vmux_btn_add_video: 'Ajouter Vidéo',
+      vmux_btn_add_audio: 'Ajouter Audio',
+      vmux_btn_add_files: 'Ajouter des fichiers',
+      vmux_btn_add_pic: 'Ajouter une image',
+      vmux_btn_add_music: 'Ajouter depuis la bibliothèque',
+      vmux_vol_video: 'Volume vidéo',
+      vmux_vol_audio: 'Volume audio',
+      vmux_opt_loop: 'Boucle :',
+      vmux_opt_loop_yes: 'Boucle : Oui',
+      vmux_opt_loop_no: 'Boucle : Non',
+      vmux_opt_intervals: 'Intervalles :',
+      vmux_btn_clip: 'Découper',
+      vmux_btn_pic: 'Ajouter image',
+      vmux_btn_add_music: 'Ajouter musique',
+      vmux_btn_mute_tip: 'Couper / Activer le son',
+      vmux_tip_ok: 'Confirmer et OK',
+      vmux_tip_close: 'Fermer',
+      vmux_tip_add_video: 'Ajouter des fichiers vidéo',
+      vmux_tip_add_pic: 'Ajouter des images',
+      vmux_tip_add_audio: 'Ajouter des fichiers audio',
+      vmux_tip_slider: 'Glisser pour ajuster le volume (0% à 100%)',
+      vmux_tip_setting: 'Paramètres de sortie avancés',
+      vmux_tip_tab_video: 'Section Vidéo et Images',
+      vmux_tip_tab_audio: 'Section Audio et Musique',
+      vmux_alert_add_video_first: 'Veuillez d\'abord ajouter un fichier vidéo',
+      vmux_alert_add_audio_first: 'Veuillez d\'abord ajouter un fichier audio',
+      // Audio Mix
+      amix_title: 'Mixeur Audio',
+      amix_out_format: 'Format de sortie :',
+      amix_preset_high: 'Haute qualité (320 kbps)',
+      amix_col_preview: 'Aperçu',
+      amix_col_info: 'Informations média',
+      amix_duration: 'Durée :',
+      amix_dur_longest: 'Le plus long',
+      amix_dur_shortest: 'Le plus court',
+      amix_dur_first: 'Le premier',
+      amix_duration_tip: 'Définir la durée du mix : selon la piste la plus longue, la plus courte ou la première',
+      amix_drag_hint: 'Glissez des fichiers audio ici ou cliquez pour ajouter',
+      amix_tip_format: 'Sélectionnez le format audio de sortie',
+      amix_tip_add_files: 'Ajouter des fichiers audio au mix',
+      amix_tip_clear: 'Vider toute la liste des fichiers',
+      amix_tip_ok: 'Confirmer et OK',
+      amix_tip_close: 'Fermer',
+      amix_tip_setting: 'Paramètres de sortie avancés',
+      amix_warn_min_files: 'Veuillez ajouter au moins 2 fichiers audio à mixer ensemble',
+      // Audio Joiner
+      ajoin_title: 'Fusionneur Audio',
+      ajoin_out_format: 'Format de sortie :',
+      ajoin_preset_high: 'Haute qualité (320 kbps)',
+      ajoin_intervals: 'Intervalles :',
+      ajoin_intervals_unit: 's',
+      ajoin_intervals_tip: 'Intervalle de silence en secondes entre les deux pistes audio',
+      ajoin_drag_hint: 'Glissez les deux fichiers audio ici ou cliquez pour ajouter (2 fichiers uniquement)',
+      ajoin_tip_format: 'Sélectionnez le format audio de sortie',
+      ajoin_tip_add_files: 'Ajouter deux fichiers audio à fusionner',
+      ajoin_tip_clear: 'Effacer les fichiers',
+      ajoin_tip_ok: 'Confirmer et Fusionner',
+      ajoin_tip_close: 'Fermer',
+      ajoin_tip_setting: 'Paramètres de sortie avancés',
+      ajoin_warn_exact_two: 'Le fusionneur audio nécessite exactement 2 fichiers audio (Piste 1 et Piste 2)',
+      ajoin_warn_max_two: 'Seuls les 2 premiers fichiers sont pris en compte ; le fusionneur n\'en fusionne que 2',
+      ajoin_tip_swap: 'Inverser l\'ordre des pistes',
+      tip_delete: 'Supprimer',
+      tip_move_up: 'Monter',
+      tip_move_down: 'Descendre',
+      tip_change_dir: 'Changer le dossier de sortie',
+      btn_default: 'Par défaut',
+      // Screen Recorder
+      sr_title: 'Enregistreur d\'écran',
+      sr_shortcuts: 'Caméra(F5) Enregistrer(F6) Pause(F7) Arrêter(F8)',
+      sr_btn_camera: 'Caméra (F5)',
+      sr_btn_record: 'Enregistrer (F6)',
+      sr_btn_pause: 'Pause (F7)',
+      sr_btn_stop: 'Arrêter (F8)',
+      sr_region_full: 'Plein écran',
+      sr_region_window: 'Fenêtre sélectionnée',
+      sr_region_custom: 'Zone personnalisée',
+      sr_menu_region: 'Région de l\'écran',
+      sr_menu_window: 'Fenêtre',
+      sr_menu_fullscreen: 'Plein écran',
+      sr_btn_output: 'Dossier de sortie',
+      sr_chk_mic: 'Utiliser le microphone',
+      sr_chk_sound: 'Capturer le son système',
+      sropt_title: 'Options',
+      sropt_tab_system: 'Système',
+      sropt_tab_video: 'Vidéo',
+      sropt_tab_audio: 'Audio',
+      sropt_cam_hotkey: 'Raccourci caméra',
+      sropt_rec_hotkey: 'Raccourci enregistrement',
+      sropt_pause_hotkey: 'Raccourci pause',
+      sropt_stop_hotkey: 'Raccourci arrêt',
+      sropt_out_format: 'Format de sortie',
+      sropt_out_folder: 'Dossier de sortie',
+      sropt_btn_change: 'Modifier',
+      sropt_btn_open: 'Ouvrir',
+      sropt_open_after: 'Après la fin, ouvrir le dossier',
+      sropt_always_on_top: 'Fenêtre toujours au premier plan',
+      sropt_framerate: 'Fréquence d\'images',
+      sropt_bitrate: 'Débit binaire',
+      sropt_draw_mouse: 'Afficher le curseur',
+      sropt_use_sound: 'Capturer le son système',
+      sropt_use_mic: 'Utiliser le microphone',
+      sropt_btn_default: 'Par défaut',
+      sr_lbl_output: 'Dossier de sortie :',
+      sr_alert_started: 'Enregistrement de l\'écran commencé (F6) !',
+      sr_alert_paused: 'Enregistrement suspendu (F7)',
+      sr_alert_stopped: 'Enregistrement terminé et enregistré dans le dossier de sortie (F8)',
+      sr_alert_screenshot: 'Capture d\'écran (F5) effectuée avec succès',
+      // Video Downloader
+      vdown_title: 'Téléchargeur de vidéos',
+      vdown_lbl_url: 'URL de la vidéo',
+      vdown_placeholder_url: 'Collez l\'URL de YouTube, Facebook, TikTok ou tout lien vidéo direct ici...',
+      vdown_btn_paste: '📋 Coller l\'URL',
+      vdown_btn_list_formats: '≡ Lister les formats disponibles',
+      vdown_hint_cookies: '➔ youtube nécessite d\'exporter des fichiers cookies',
+      vdown_tab_main: '⚙ Principal',
+      vdown_tab_network: '🌐 Réseau',
+      vdown_tab_output: '🔀 Sortie',
+      vdown_th_property: 'Propriété',
+      vdown_th_value: 'Valeur',
+      vdown_prop_format: '🛡 ID du format',
+      vdown_prop_sub: '💬 Sous-titre',
+      vdown_prop_thumb: '🖼 Miniature',
+      vdown_prop_desc: '📝 Description',
+      vdown_prop_json: 'JSON Fichier Info',
+      vdown_prop_playlist: 'JSON Télécharger la playlist',
+      vdown_auth_section: '👤 Authentification',
+      vdown_auth_cookies_file: '🍪 Fichier Cookies',
+      vdown_auth_browser_cookies: '🍪 Cookies du navigateur',
+      vdown_auth_user: 'Nom d\'utilisateur',
+      vdown_auth_pass: 'Mot de passe',
+      vdown_lbl_proxy: 'Adresse du serveur proxy :',
+      vdown_lbl_out_dir: 'Dossier de sortie :',
+      vdown_btn_default: '🖨 Par défaut',
+      vdown_btn_download: '⬇ Télécharger',
+      vdown_alert_enter_url: 'Veuillez saisir l\'URL d\'une vidéo à télécharger',
+      vdown_alert_formats_fetched: 'Formats disponibles récupérés avec succès pour l\'URL',
+      // Delogo Interactive Editor
+      delogo_title: 'Supprimer Filigrane — Suivi et Suppression Interactive',
+      delogo_lbl_rects: 'Liste des rectangles et intervalles temporels :',
+      delogo_btn_ai: '✨ Suivi Automatique IA',
+      delogo_btn_add_rect: '+ Ajouter un rectangle',
+      delogo_btn_del_rect: '🗑 Supprimer',
+      delogo_hint: '💡 Dessinez un rectangle sur le logo ou cliquez sur « Suivi Automatique IA »',
+      delogo_btn_apply: 'Appliquer et OK',
+      // Notifications & Shutdown
+      opt_notify_window: 'Afficher une notification à la fin',
+      notify_title: 'Tâche terminée',
+      notify_elapsed: 'Temps écoulé :',
+      notify_tasks_done: '{count} tâche(s) terminée(s) avec succès',
+      btn_open_folder: 'Ouvrir le dossier',
+      shutdown_countdown_title: 'Arrêt de l\'ordinateur',
+      shutdown_countdown_msg: 'Toutes les tâches sont terminées ! Arrêt de l\'ordinateur dans :',
+      btn_cancel_shutdown: 'Annuler l\'arrêt',
+      shutdown_cancelled: 'Arrêt annulé avec succès',
+      lbl_files: 'fichiers',
+      t_d_epub: '→ EPub',
+      t_d_mobi: '→ Mobi',
+      t_d_azw3: '→ AZW3',
     },
     es: {
       dir: 'ltr',
@@ -1330,7 +2223,7 @@
       btn_apply: 'Aplicar',
       btn_ok: 'Aceptar',
       btn_add_files: 'Añadir archivos',
-      btn_add_folder: '+ Añadir carpeta',
+      btn_add_folder: 'Añadir carpeta',
       btn_add_music: '+ Añadir música',
       btn_confirm: 'Confirmar y añadir a cola',
       about_tagline: 'Suite de conversión multimedia profesional',
@@ -1344,20 +2237,12 @@
       alert_no_files: 'Por favor, añada al menos un archivo',
       // Tools Translations
       t_v_merge: 'Unir Vídeo & Mux',
-      t_v_enhance: 'Mejorar y Comprimir',
       t_v_separate: 'Separador Audio/Vídeo',
-      t_v_crop: 'Recortar encuadre',
-      t_v_clip: 'Recorte Rápido',
-      t_v_delogo: 'Eliminar Marca de Agua',
       t_v_frames: 'Exportar Fotogramas',
-      t_v_record: 'Grabador de Pantalla',
       t_v_player: 'Reproductor Multimedia',
-      t_v_download: 'Descargador de Vídeos',
       t_a_merge: 'Unir Pistas de Audio',
-      t_a_split: 'Dividir Audio',
-      t_a_extract: 'Extraer Audio',
-      t_a_mix: 'Mezclador de Audio',
-      t_a_tts: 'Texto a Voz (TTS)',
+      t_a_split: 'Separar Voz y Música',
+      t_a_mix: 'Extraer audio del video',
       t_d_pdf_join: 'Unir PDF',
       t_d_compress: 'Comprimir PDF',
       t_d_pic_pdf: 'Imágenes a PDF',
@@ -1399,6 +2284,8 @@
       btn_rename_action: 'Renombrar',
       t_ha_test_title: 'Hardware Acceleration Testing',
       ha_probing: 'Comprobando aceleración por hardware...',
+      lbl_ha_supported: 'Compatible',
+      btn_retest: 'Volver a probar',
       rename_success: '¡Se renombraron {count} archivos con éxito!',
       rename_no_files: 'No se encontraron archivos coincidentes en la carpeta.',
       modal_files_heading: 'Archivos',
@@ -1410,6 +2297,7 @@
       about_engine: 'Motor de procesamiento',
       about_license: 'Licencia',
       about_mit: 'Gratuito y Código Abierto (MIT)',
+      output_format: 'Formato de salida',
       output_setting: 'Ajustes de salida',
       video_setting_title: 'Ajustes de Vídeo',
       audio_setting_title: 'Ajustes de Audio',
@@ -1419,10 +2307,155 @@
       ft_tab_files: 'Archivos seleccionados',
       ft_tab_preview: 'Vista previa',
       ft_tab_mediainfo: 'Información de medios',
+      th_file_info: 'Información de Medios',
+      th_actions: 'Opciones y División',
       th_file_name: 'Nombre de archivo',
       th_size: 'Tamaño',
       th_duration: 'Duración / Resolución',
       th_path: 'Ruta de origen',
+      // Category Badges
+      badge_video: 'Vídeo',
+      badge_audio: 'Audio',
+      badge_picture: 'Imagen',
+      badge_document: 'Documento',
+      badge_disc: 'Disco',
+      badge_iso_cso: 'ISO / CSO',
+      // Checkbox label template
+      lbl_append_setting_name: 'Agregar nombre de ajuste [{name}]',
+      // Preset Display Names
+      preset_optimum: 'Calidad y tamaño óptimos',
+      preset_high_2pass: 'Alta calidad y tamaño (2 pasos)',
+      preset_high: 'Alta calidad y tamaño',
+      preset_medium: 'Calidad y tamaño medios',
+      preset_low: 'Baja calidad y tamaño',
+      preset_4k: '4K 2160p',
+      preset_2k: '2K 1080p',
+      preset_720p: '720p',
+      preset_480p: '480p',
+      preset_copy: 'Copiar flujo',
+      preset_custom: 'Personalizado',
+      preset_avc_high: 'AVC Alta calidad 1080p',
+      preset_hevc_high: 'HEVC Alta calidad 1080p',
+      preset_uhd_4k: '4K Ultra HD',
+      preset_qhd_2k: '2K Quad HD',
+      preset_audio_high: 'Alta calidad (320 Kbps)',
+      preset_audio_medium: 'Calidad media (192 Kbps)',
+      preset_audio_low: 'Baja calidad (128 Kbps)',
+      preset_audio_vbr_0: 'VBR 0 (Mejor calidad)',
+      preset_audio_vbr_high: 'VBR Alta calidad',
+      preset_audio_vbr_2: 'VBR 2 (Alta calidad)',
+      preset_audio_vbr_medium: 'VBR Calidad media',
+      preset_audio_vbr_4: 'VBR 4 (Calidad estándar)',
+      preset_audio_vbr_low: 'VBR Baja calidad',
+      preset_pic_original: 'Tamaño original',
+      preset_pic_50: '50% Tamaño original',
+      preset_pic_75: '75% Tamaño original',
+      preset_pic_1080: '1920x1080 (Full HD)',
+      preset_pic_720: '1280x720 (HD)',
+      preset_pic_800: '800x600 (Web)',
+      preset_pic_avatar: 'Avatar 1:1 Cuadrado',
+      preset_cso_lvl5: 'Nivel de compresión CSO 5',
+      preset_ai_delogo: 'Eliminación inteligente de marca de agua',
+      badge_ai_delogo: 'Eliminar IA',
+      // Tabs
+      tab_video: 'Vídeo',
+      tab_audio: 'Audio',
+      tab_subtitle: 'Subtítulos',
+      tab_other: 'Otros',
+      tab_watermark: 'Marca de agua',
+      // Properties
+      prop_size_limit: 'Límite de tamaño',
+      prop_video_encode: 'Codificación de vídeo',
+      prop_video_size: 'Tamaño de vídeo',
+      prop_bitrate: 'Tasa de bits (Kb/s)',
+      prop_crf: 'Calidad constante (CRF)',
+      prop_gpu: 'Aceleración GPU',
+      prop_fps: 'Fotogramas por seg (FPS)',
+      prop_aspect_ratio: 'Relación de aspecto',
+      prop_encode_2pass: 'Codificación 2 pasos',
+      prop_keyframe: 'Fotogramas clave',
+      prop_deinterlace: 'Desentrelazado',
+      prop_rotate: 'Rotar',
+      prop_xmirror: 'Espejo horizontal',
+      prop_ymirror: 'Espejo vertical',
+      prop_filter: 'Filtro y color',
+      prop_fadein: 'Fundido de entrada',
+      prop_fadeout: 'Fundido de salida',
+      prop_antishake: 'Estabilizador de imagen',
+      prop_denoise: 'Reducción de ruido',
+      prop_reverse: 'Reproducción inversa',
+      prop_audio_encode: 'Codificación de audio',
+      prop_sample_rate: 'Frecuencia de muestreo (HZ)',
+      prop_audio_bitrate: 'Tasa de bits de audio (Kb/s)',
+      prop_channel: 'Canales de audio',
+      prop_disable_audio: 'Desactivar audio',
+      prop_volume: 'Volumen',
+      prop_keep_audio_streams: 'Mantener pistas de audio',
+      prop_echo: 'Eco',
+      prop_vbr: 'Tasa variable (VBR)',
+      prop_sample_format: 'Formato de muestra',
+      prop_keep_sub_streams: 'Mantener subtítulos originales',
+      prop_add_subtitle: 'Añadir archivo de subtítulo',
+      prop_sub_type: 'Tipo de subtítulo',
+      prop_sub_fontsize: 'Tamaño de fuente',
+      prop_sub_codepage: 'Página de códigos',
+      prop_sub_fontfamily: 'Familia de fuente',
+      prop_sub_fontcolor: 'Color de fuente',
+      prop_sub_borderstyle: 'Estilo de borde',
+      prop_sub_outlinesize: 'Grosor de contorno',
+      prop_sub_outlinecolor: 'Color de contorno',
+      prop_sub_shadowsize: 'Tamaño de sombra',
+      prop_sub_scheme: 'Esquema de color',
+      prop_metadata: 'Metadatos',
+      prop_meta_title: 'Título',
+      prop_meta_author: 'Autor / Artista',
+      prop_meta_comment: 'Comentario',
+      prop_stream_options: 'Opciones de streaming',
+      prop_faststart: 'Inicio rápido web',
+      prop_2pass_mode: 'Modo 2 pasos',
+      prop_wm_enable: 'Activar marca de agua',
+      prop_wm_type: 'Tipo de marca de agua',
+      prop_wm_image: 'Archivo de imagen',
+      prop_wm_text: 'Texto de marca de agua',
+      prop_wm_pos: 'Posición',
+      prop_wm_opacity: 'Opacidad',
+      prop_wm_margin: 'Margen',
+      prop_wm_scale: 'Tamaño de escala',
+      btn_add: 'Añadir',
+      prop_max_width: 'Ancho máx',
+      prop_max_height: 'Alto máx',
+      ps_lbl_size_limit: 'Límite de tamaño',
+      ps_opt_original: 'Tamaño original',
+      ps_opt_custom: 'Tamaño personalizado',
+      prop_quality: 'Calidad (JPG / WebP)',
+      prop_flip: 'Voltear',
+      lbl_jpg_quality: 'Calidad JPG:',
+      lbl_webp_quality: 'Calidad WebP:',
+      // Divide Modal
+      div_title: 'Dividir',
+      div_off: 'Desactivado',
+      div_by_time: 'Por duración de tiempo',
+      div_by_count: 'Por cantidad de archivos',
+      div_by_size: 'Por tamaño de archivos',
+      // Clip Modal
+      clip_title: 'Recorte / Opciones',
+      clip_start_time: 'Hora de inicio',
+      clip_end_time: 'Hora de fin',
+      clip_duration: 'Duración:',
+      clip_precision: 'Precisión:',
+      clip_speed: 'Velocidad:',
+      // Multi-Profiles Modal
+      mp_title: 'Perfiles múltiples',
+      mp_select_all: 'Seleccionar todo',
+      // Context Menus
+      ctx_clip: 'Recorte / Opciones',
+      ctx_divide: 'Dividir',
+      ctx_preview: 'Vista previa',
+      ctx_remove: 'Eliminar',
+      ctx_start: 'Iniciar',
+      ctx_stop: 'Detener',
+      ctx_open_folder: 'Abrir carpeta',
+      ctx_clear_all: 'Vaciar todo',
       // Document & Disc Modals
       doc_btn_move_up: 'Subir',
       doc_btn_move_down: 'Bajar',
@@ -1516,6 +2549,173 @@
       disc_ripper_mod_prompt: 'Debe instalar DVDRipper MOD. Haga clic en "Yes" para instalar.',
       btn_yes: 'Sí',
       btn_no: 'No',
+      // Video Joiner & Mux
+      vmux_title: 'Unir Vídeo & Mux',
+      vmux_out_format: 'Formato de salida:',
+      vmux_preset_optimum: 'Calidad y tamaño óptimos',
+      vmux_tab_video: 'Vídeo',
+      vmux_tab_audio: 'Audio',
+      vmux_col_preview: 'Vista previa',
+      vmux_col_info: 'Información multimedia',
+      vmux_btn_add_video: 'Añadir vídeo',
+      vmux_btn_add_audio: 'Añadir audio',
+      vmux_btn_add_files: 'Añadir archivos',
+      vmux_btn_add_pic: 'Añadir imagen',
+      vmux_btn_add_music: 'Añadir desde biblioteca',
+      vmux_vol_video: 'Volumen del vídeo',
+      vmux_vol_audio: 'Volumen del audio',
+      vmux_opt_loop: 'Bucle:',
+      vmux_opt_loop_yes: 'Bucle: Sí',
+      vmux_opt_loop_no: 'Bucle: No',
+      vmux_opt_intervals: 'Intervalos:',
+      vmux_btn_clip: 'Cortar',
+      vmux_btn_pic: 'Añadir imagen',
+      vmux_btn_add_music: 'Añadir música',
+      vmux_btn_mute_tip: 'Silenciar / Activar sonido',
+      vmux_tip_ok: 'Confirmar y Aceptar',
+      vmux_tip_close: 'Cerrar',
+      vmux_tip_add_video: 'Añadir archivos de vídeo',
+      vmux_tip_add_pic: 'Añadir imágenes',
+      vmux_tip_add_audio: 'Añadir archivos de audio',
+      vmux_tip_slider: 'Arrastrar para ajustar el volumen (0% a 100%)',
+      vmux_tip_setting: 'Ajustes de salida avanzados',
+      vmux_tip_tab_video: 'Sección de Vídeo e Imágenes',
+      vmux_tip_tab_audio: 'Sección de Audio y Música',
+      vmux_alert_add_video_first: 'Por favor, añade primero un archivo de vídeo',
+      vmux_alert_add_audio_first: 'Por favor, añade primero un archivo de audio',
+      // Audio Mix
+      amix_title: 'Mezclador de Audio',
+      amix_out_format: 'Formato de salida:',
+      amix_preset_high: 'Alta calidad (320 kbps)',
+      amix_col_preview: 'Vista previa',
+      amix_col_info: 'Información multimedia',
+      amix_duration: 'Duración:',
+      amix_dur_longest: 'El más largo',
+      amix_dur_shortest: 'El más corto',
+      amix_dur_first: 'El primero',
+      amix_duration_tip: 'Establecer la duración de la mezcla: pista más larga, más corta o primera pista',
+      amix_drag_hint: 'Arrastra archivos de audio aquí o haz clic para añadir',
+      amix_tip_format: 'Selecciona el formato de audio de salida',
+      amix_tip_add_files: 'Añadir archivos de audio a la mezcla',
+      amix_tip_clear: 'Vaciar toda la lista de archivos',
+      amix_tip_ok: 'Confirmar y Aceptar',
+      amix_tip_close: 'Cerrar',
+      amix_tip_setting: 'Ajustes de salida avanzados',
+      amix_warn_min_files: 'Por favor añade al menos 2 archivos de audio para mezclar',
+      // Audio Joiner
+      ajoin_title: 'Unir Audio (Audio Joiner)',
+      ajoin_out_format: 'Formato de salida:',
+      ajoin_preset_high: 'Alta calidad (320 kbps)',
+      ajoin_intervals: 'Intervalos:',
+      ajoin_intervals_unit: 's',
+      ajoin_intervals_tip: 'Intervalo de silencio en segundos entre las dos pistas',
+      ajoin_drag_hint: 'Arrastra los dos archivos de audio aquí o haz clic para añadir (solo 2 archivos)',
+      ajoin_tip_format: 'Selecciona el formato de audio de salida',
+      ajoin_tip_add_files: 'Añadir dos archivos de audio para unir',
+      ajoin_tip_clear: 'Vaciar archivos',
+      ajoin_tip_ok: 'Confirmar y Unir',
+      ajoin_tip_close: 'Cerrar',
+      ajoin_tip_setting: 'Ajustes de salida avanzados',
+      ajoin_warn_exact_two: 'Audio Joiner requiere exactamente 2 archivos de audio (primera y segunda pista)',
+      ajoin_warn_max_two: 'Solo se tomaron los primeros 2 archivos; Audio Joiner une solo 2 archivos',
+      ajoin_tip_swap: 'Cambiar el orden de las pistas',
+      tip_delete: 'Eliminar',
+      tip_move_up: 'Mover arriba',
+      tip_move_down: 'Mover abajo',
+      tip_change_dir: 'Cambiar carpeta de salida',
+      btn_default: 'Predeterminado',
+      // Screen Recorder
+      sr_title: 'Grabador de pantalla',
+      sr_shortcuts: 'Cámara(F5) Grabar(F6) Pausar(F7) Detener(F8)',
+      sr_btn_camera: 'Cámara (F5)',
+      sr_btn_record: 'Grabar (F6)',
+      sr_btn_pause: 'Pausa (F7)',
+      sr_btn_stop: 'Detener (F8)',
+      sr_region_full: 'Pantalla completa',
+      sr_region_window: 'Ventana seleccionada',
+      sr_region_custom: 'Área personalizada',
+      sr_menu_region: 'Región de pantalla',
+      sr_menu_window: 'Ventana',
+      sr_menu_fullscreen: 'Pantalla completa',
+      sr_btn_output: 'Carpeta de salida',
+      sr_chk_mic: 'Usar micrófono',
+      sr_chk_sound: 'Capturar sonido del sistema',
+      sropt_title: 'Opciones',
+      sropt_tab_system: 'Sistema',
+      sropt_tab_video: 'Vídeo',
+      sropt_tab_audio: 'Audio',
+      sropt_cam_hotkey: 'Tecla de cámara',
+      sropt_rec_hotkey: 'Tecla de grabación',
+      sropt_pause_hotkey: 'Tecla de pausa',
+      sropt_stop_hotkey: 'Tecla de detención',
+      sropt_out_format: 'Formato de salida',
+      sropt_out_folder: 'Carpeta de salida',
+      sropt_btn_change: 'Cambiar',
+      sropt_btn_open: 'Abrir',
+      sropt_open_after: 'Al finalizar, abrir la carpeta',
+      sropt_always_on_top: 'Ventana siempre visible',
+      sropt_framerate: 'Tasa de fotogramas',
+      sropt_bitrate: 'Tasa de bits',
+      sropt_draw_mouse: 'Mostrar puntero del ratón',
+      sropt_use_sound: 'Capturar sonido del sistema',
+      sropt_use_mic: 'Usar micrófono',
+      sropt_btn_default: 'Predeterminado',
+      sr_lbl_output: 'Carpeta de salida:',
+      sr_alert_started: '¡Grabación de pantalla iniciada (F6)!',
+      sr_alert_paused: 'Grabación pausada (F7)',
+      sr_alert_stopped: 'Grabación finalizada y guardada en la carpeta de salida (F8)',
+      sr_alert_screenshot: 'Captura de pantalla (F5) realizada con éxito',
+      // Video Downloader
+      vdown_title: 'Descargador de vídeos',
+      vdown_lbl_url: 'URL del vídeo',
+      vdown_placeholder_url: 'Pega la URL de YouTube, Facebook, TikTok o cualquier enlace directo de vídeo aquí...',
+      vdown_btn_paste: '📋 Pegar URL',
+      vdown_btn_list_formats: '≡ Listar formatos disponibles',
+      vdown_hint_cookies: '➔ youtube necesita exportar archivos de cookies',
+      vdown_tab_main: '⚙ Principal',
+      vdown_tab_network: '🌐 Red',
+      vdown_tab_output: '🔀 Salida',
+      vdown_th_property: 'Propiedad',
+      vdown_th_value: 'Valor',
+      vdown_prop_format: '🛡 ID de formato',
+      vdown_prop_sub: '💬 Subtítulo',
+      vdown_prop_thumb: '🖼 Miniatura',
+      vdown_prop_desc: '📝 Descripción',
+      vdown_prop_json: 'JSON Info Json',
+      vdown_prop_playlist: 'JSON Descargar lista de reproducción',
+      vdown_auth_section: '👤 Autenticación',
+      vdown_auth_cookies_file: '🍪 Archivo de Cookies',
+      vdown_auth_browser_cookies: '🍪 Cookies del navegador',
+      vdown_auth_user: 'Nombre de usuario',
+      vdown_auth_pass: 'Contraseña',
+      vdown_lbl_proxy: 'Dirección del servidor proxy:',
+      vdown_lbl_out_dir: 'Carpeta de salida:',
+      vdown_btn_default: '🖨 Por defecto',
+      vdown_btn_download: '⬇ Descargar',
+      vdown_alert_enter_url: 'Por favor, introduce una URL de vídeo para descargar',
+      vdown_alert_formats_fetched: 'Formatos disponibles obtenidos con éxito para la URL',
+      // Delogo Interactive Editor
+      delogo_title: 'Eliminar Marca de Agua — Editor y Seguimiento Interactivo',
+      delogo_lbl_rects: 'Lista de rectángulos e intervalos de tiempo:',
+      delogo_btn_ai: '✨ Seguimiento Automático por IA',
+      delogo_btn_add_rect: '+ Añadir rectángulo',
+      delogo_btn_del_rect: '🗑 Eliminar',
+      delogo_hint: '💡 Dibuja un rectángulo con el ratón sobre el logo o haz clic en "Seguimiento Automático por IA"',
+      delogo_btn_apply: 'Aplicar y Aceptar',
+      // Notifications & Shutdown
+      opt_notify_window: 'Mostrar ventana de notificación al finalizar',
+      notify_title: 'Tarea completada',
+      notify_elapsed: 'Tiempo transcurrido:',
+      notify_tasks_done: '{count} tarea(s) completada(s) con éxito',
+      btn_open_folder: 'Abrir carpeta de salida',
+      shutdown_countdown_title: 'Apagando el equipo',
+      shutdown_countdown_msg: '¡Todas las tareas completadas! El equipo se apagará en:',
+      btn_cancel_shutdown: 'Cancelar apagado',
+      shutdown_cancelled: 'Apagado cancelado con éxito',
+      lbl_files: 'archivos',
+      t_d_epub: '→ EPub',
+      t_d_mobi: '→ Mobi',
+      t_d_azw3: '→ AZW3',
     },
     tr: {
       dir: 'ltr',
@@ -1571,7 +2771,7 @@
       btn_apply: 'Uygula',
       btn_ok: 'Tamam',
       btn_add_files: 'Dosya Ekle',
-      btn_add_folder: '+ Klasör Ekle',
+      btn_add_folder: 'Klasör Ekle',
       btn_add_music: '+ Müzik Ekle',
       btn_confirm: 'Kuyruğa Ekle',
       about_tagline: 'Kapsamlı profesyonel medya dönüştürücü',
@@ -1585,20 +2785,12 @@
       alert_no_files: 'Lütfen devam etmek için en az bir dosya ekleyin',
       // Tools Translations
       t_v_merge: 'Video Birleştirici & Mux',
-      t_v_enhance: 'İyileştir ve Sıkıştır',
       t_v_separate: 'Ses/Video Ayırıcı',
-      t_v_crop: 'Video Kırpma',
-      t_v_clip: 'Hızlı Kırp',
-      t_v_delogo: 'Filigranı Kaldır',
       t_v_frames: 'Kareleri Dışa Aktar',
-      t_v_record: 'Ekran Kaydedici',
       t_v_player: 'Medya Oynatıcı',
-      t_v_download: 'Video İndirici',
       t_a_merge: 'Ses Birleştirici',
-      t_a_split: 'Ses Bölücü',
-      t_a_extract: 'Sesi Ayıkla',
-      t_a_mix: 'Ses Karıştırıcı',
-      t_a_tts: 'Metinden Sese (TTS)',
+      t_a_split: 'Ses ve Müziği Ayır',
+      t_a_mix: 'Videodan Ses Çıkar',
       t_d_pdf_join: 'PDF Birleştirici',
       t_d_compress: 'PDF Sıkıştır',
       t_d_pic_pdf: 'Resimden PDF\'e',
@@ -1638,8 +2830,10 @@
       lbl_remove_string: 'Kaldırılacak Metin',
       lbl_ignore_datetime: 'Tarih ve saat karakterlerini yoksay',
       btn_rename_action: 'Yeniden Adlandır',
-      t_ha_test_title: 'Hardware Acceleration Testing',
+      t_ha_test_title: 'Donanım Hızlandırma Testi',
       ha_probing: 'Donanım hızlandırma test ediliyor...',
+      lbl_ha_supported: 'Destekleniyor',
+      btn_retest: 'Yeniden Test Et',
       rename_success: '{count} dosya başarıyla yeniden adlandırıldı!',
       rename_no_files: 'Seçili klasörde eşleşen dosya bulunamadı.',
       modal_files_heading: 'Dosyalar',
@@ -1651,6 +2845,7 @@
       about_engine: 'İşleme Motoru',
       about_license: 'Lisans',
       about_mit: 'Tamamen Ücretsiz (MIT)',
+      output_format: 'Çıktı Formatı',
       output_setting: 'Çıktı Ayarları',
       video_setting_title: 'Video Ayarları',
       audio_setting_title: 'Ses Ayarları',
@@ -1660,10 +2855,154 @@
       ft_tab_files: 'Seçilen Dosyalar',
       ft_tab_preview: 'Önizleme',
       ft_tab_mediainfo: 'Medya Bilgisi',
+      th_file_info: 'Dosya ve Medya Bilgisi',
+      th_actions: 'Seçenekler ve Bölme',
       th_file_name: 'Dosya Adı',
       th_size: 'Boyut',
       th_duration: 'Süre / Çözünürlük',
       th_path: 'Kaynak Yolu',
+      // Category Badges
+      badge_video: 'Video',
+      badge_audio: 'Ses',
+      badge_picture: 'Resim',
+      badge_document: 'Belge',
+      badge_disc: 'Disk',
+      badge_iso_cso: 'ISO / CSO',
+      // Checkbox label template
+      lbl_append_setting_name: 'Ayar adını ekle [{name}]',
+      // Preset Display Names
+      preset_optimum: 'En uygun kalite ve boyut',
+      preset_high_2pass: 'Yüksek kalite ve boyut (2 Geçişli)',
+      preset_high: 'Yüksek kalite ve boyut',
+      preset_medium: 'Orta kalite ve boyut',
+      preset_low: 'Düşük kalite ve boyut',
+      preset_4k: '4K 2160p',
+      preset_2k: '2K 1080p',
+      preset_720p: '720p',
+      preset_480p: '480p',
+      preset_copy: 'Akışı Kopyala',
+      preset_custom: 'Özel',
+      preset_avc_high: 'AVC Yüksek kalite 1080p',
+      preset_hevc_high: 'HEVC Yüksek kalite 1080p',
+      preset_uhd_4k: '4K Ultra HD',
+      preset_qhd_2k: '2K Quad HD',
+      preset_audio_high: 'Yüksek kalite (320 Kbps)',
+      preset_audio_medium: 'Orta kalite (192 Kbps)',
+      preset_audio_low: 'Düşük kalite (128 Kbps)',
+      preset_audio_vbr_0: 'VBR 0 (En iyi kalite)',
+      preset_audio_vbr_high: 'VBR Yüksek kalite',
+      preset_audio_vbr_2: 'VBR 2 (Yüksek kalite)',
+      preset_audio_vbr_medium: 'VBR Orta kalite',
+      preset_audio_vbr_4: 'VBR 4 (Standart kalite)',
+      preset_audio_vbr_low: 'VBR Düşük kalite',
+      preset_pic_original: 'Orijinal Boyut',
+      preset_pic_50: '%50 Orijinal Boyut',
+      preset_pic_75: '%75 Orijinal Boyut',
+      preset_pic_1080: '1920x1080 (Full HD)',
+      preset_pic_720: '1280x720 (HD)',
+      preset_pic_800: '800x600 (Web)',
+      preset_pic_avatar: 'Avatar 1:1 Kare',
+      preset_cso_lvl5: 'CSO Sıkıştırma Düzeyi 5',
+      preset_ai_delogo: 'Akıllı Filigran Kaldırma',
+      badge_ai_delogo: 'Akıllı Silme',
+      // Tabs
+      tab_video: 'Video',
+      tab_audio: 'Ses',
+      tab_subtitle: 'Altyazı',
+      tab_other: 'Diğer',
+      tab_watermark: 'Filigran',
+      // Properties
+      prop_size_limit: 'Boyut Sınırı',
+      prop_video_encode: 'Video Kodlama',
+      prop_video_size: 'Video Boyutu',
+      prop_bitrate: 'Bit Hızı (Kb/s)',
+      prop_crf: 'Sabit Kalite (CRF)',
+      prop_gpu: 'GPU Hızlandırma',
+      prop_fps: 'Kare Hızı (FPS)',
+      prop_aspect_ratio: 'En-Boy Oranı',
+      prop_encode_2pass: '2 Geçişli Kodlama',
+      prop_keyframe: 'Anahtar Kare Aralığı',
+      prop_deinterlace: 'Taramayı Kaldır',
+      prop_rotate: 'Döndür',
+      prop_xmirror: 'Yatay Aynalama',
+      prop_ymirror: 'Dikey Aynalama',
+      prop_filter: 'Filtre ve Renk',
+      prop_fadein: 'Girişte Belirme',
+      prop_fadeout: 'Çıkışta Kaybolma',
+      prop_antishake: 'Titreşim Önleyici',
+      prop_denoise: 'Parazit Azaltma',
+      prop_reverse: 'Tersine Çevir',
+      prop_audio_encode: 'Ses Kodlama',
+      prop_sample_rate: 'Örnekleme Hızı (HZ)',
+      prop_audio_bitrate: 'Ses Bit Hızı (Kb/s)',
+      prop_channel: 'Ses Kanalları',
+      prop_disable_audio: 'Sesi Devre Dışı Bırak',
+      prop_volume: 'Ses Düzeyi',
+      prop_keep_audio_streams: 'Tüm Ses Akışlarını Koru',
+      prop_echo: 'Yankı',
+      prop_vbr: 'Değişken Bit Hızı (VBR)',
+      prop_sample_format: 'Örnekleme Formatı',
+      prop_keep_sub_streams: 'Altyazı Akışlarını Koru',
+      prop_add_subtitle: 'Harici Altyazı Ekle',
+      prop_sub_type: 'Altyazı Türü',
+      prop_sub_fontsize: 'Yazı Boyutu',
+      prop_sub_codepage: 'Kod Sayfası',
+      prop_sub_fontfamily: 'Yazı Tipi',
+      prop_sub_fontcolor: 'Yazı Rengi',
+      prop_sub_borderstyle: 'Kenarlık Stili',
+      prop_sub_outlinesize: 'Dış Çizgi Kalınlığı',
+      prop_sub_outlinecolor: 'Dış Çizgi Rengi',
+      prop_sub_shadowsize: 'Gölge Boyutu',
+      prop_sub_scheme: 'Renk Şeması',
+      prop_metadata: 'Meta Verileri',
+      prop_meta_title: 'Başlık',
+      prop_meta_author: 'Yazar / Sanatçı',
+      prop_meta_comment: 'Yorum',
+      prop_stream_options: 'Akış Seçenekleri',
+      prop_faststart: 'Web Hızlı Başlatma',
+      prop_2pass_mode: '2 Geçişli Mod',
+      prop_wm_enable: 'Filigranı Etkinleştir',
+      prop_wm_type: 'Filigran Türü',
+      prop_wm_image: 'Resim Dosyası',
+      prop_wm_text: 'Filigran Metni',
+      prop_wm_pos: 'Konum',
+      prop_wm_opacity: 'Opaklık',
+      prop_wm_margin: 'Kenar Boşluğu',
+      prop_wm_scale: 'Ölçek Boyutu',
+      btn_add: 'Ekle',
+      prop_max_width: 'Maks. Genişlik',
+      prop_max_height: 'Maks. Yükseklik',
+      ps_lbl_size_limit: 'Boyut Sınırı',
+      ps_opt_original: 'Orijinal Boyut',
+      ps_opt_custom: 'Özel Boyut',
+      prop_quality: 'Kalite (JPG / WebP)',
+      prop_flip: 'Çevir',
+      lbl_jpg_quality: 'JPG Kalitesi:',
+      lbl_webp_quality: 'WebP Kalitesi:',
+      // Divide Modal
+      div_title: 'Dosyayı Böl',
+      div_off: 'Kapalı',
+      div_by_time: 'Süreye göre',
+      div_by_count: 'Dosya sayısına göre',
+      div_by_size: 'Dosya boyutuna göre',
+      clip_title: 'Kırpma / Seçenekler',
+      clip_start_time: 'Başlangıç Zamanı',
+      clip_end_time: 'Bitiş Zamanı',
+      clip_duration: 'Süre:',
+      clip_precision: 'Hassasiyet:',
+      clip_speed: 'Hız:',
+      // Multi-Profiles Modal
+      mp_title: 'Çoklu Profiller',
+      mp_select_all: 'Tümünü Seç',
+      // Context Menus
+      ctx_clip: 'Kırpma / Seçenekler',
+      ctx_divide: 'Böl',
+      ctx_preview: 'Önizleme',
+      ctx_remove: 'Kaldır',
+      ctx_start: 'Başlat',
+      ctx_stop: 'Durdur',
+      ctx_open_folder: 'Çıktı Klasörünü Aç',
+      ctx_clear_all: 'Tümünü Temizle',
       // Document & Disc Modals
       doc_btn_move_up: 'Yukarı Taşı',
       doc_btn_move_down: 'Aşağı Taşı',
@@ -1757,6 +3096,173 @@
       disc_ripper_mod_prompt: 'DVDRipper MOD yüklenmelidir. Yüklemek için "Yes"e tıklayın.',
       btn_yes: 'Evet',
       btn_no: 'Hayır',
+      // Video Joiner & Mux
+      vmux_title: 'Video Birleştirici & Mux',
+      vmux_out_format: 'Çıktı Formatı:',
+      vmux_preset_optimum: 'En uygun kalite ve boyut',
+      vmux_tab_video: 'Video',
+      vmux_tab_audio: 'Ses',
+      vmux_col_preview: 'Önizleme',
+      vmux_col_info: 'Medya Bilgisi',
+      vmux_btn_add_video: 'Video Ekle',
+      vmux_btn_add_audio: 'Ses Ekle',
+      vmux_btn_add_files: 'Dosya Ekle',
+      vmux_btn_add_pic: 'Resim Ekle',
+      vmux_btn_add_music: 'Müzik kitaplığından ekle',
+      vmux_vol_video: 'Video ses düzeyi',
+      vmux_vol_audio: 'Ses düzeyi',
+      vmux_opt_loop: 'Döngü:',
+      vmux_opt_loop_yes: 'Döngü: Evet',
+      vmux_opt_loop_no: 'Döngü: Hayır',
+      vmux_opt_intervals: 'Aralıklar:',
+      vmux_btn_clip: 'Kırp',
+      vmux_btn_pic: 'Resim Ekle',
+      vmux_btn_add_music: 'Müzik Ekle',
+      vmux_btn_mute_tip: 'Sesi Kapat / Aç',
+      vmux_tip_ok: 'Onayla ve Tamam',
+      vmux_tip_close: 'Kapat',
+      vmux_tip_add_video: 'Video Dosyaları Ekle',
+      vmux_tip_add_pic: 'Resim Dosyaları Ekle',
+      vmux_tip_add_audio: 'Ses Dosyaları Ekle',
+      vmux_tip_slider: 'Ses düzeyini ayarlamak için kaydırın (%0 - %100)',
+      vmux_tip_setting: 'Gelişmiş Çıktı Ayarları',
+      vmux_tip_tab_video: 'Video ve Resim Bölümü',
+      vmux_tip_tab_audio: 'Ses ve Müzik Bölümü',
+      vmux_alert_add_video_first: 'Lütfen önce bir video dosyası ekleyin',
+      vmux_alert_add_audio_first: 'Lütfen önce bir ses dosyası ekleyin',
+      // Audio Mix
+      amix_title: 'Ses Karıştırıcı',
+      amix_out_format: 'Çıktı Formatı:',
+      amix_preset_high: 'Yüksek kalite (320 kbps)',
+      amix_col_preview: 'Önizleme',
+      amix_col_info: 'Medya Bilgisi',
+      amix_duration: 'Süre:',
+      amix_dur_longest: 'En uzun',
+      amix_dur_shortest: 'En kısa',
+      amix_dur_first: 'İlk dosya',
+      amix_duration_tip: 'Karışım süresini belirleyin: en uzun parça, en kısa parça veya ilk parça',
+      amix_drag_hint: 'Ses dosyalarını buraya sürükleyin veya eklemek için tıklayın',
+      amix_tip_format: 'Çıktı ses formatını seçin',
+      amix_tip_add_files: 'Karışıma ses dosyaları ekle',
+      amix_tip_clear: 'Tüm dosya listesini temizle',
+      amix_tip_ok: 'Onayla ve Tamam',
+      amix_tip_close: 'Kapat',
+      amix_tip_setting: 'Gelişmiş Çıktı Ayarları',
+      amix_warn_min_files: 'Birlikte karıştırmak için lütfen en az 2 ses dosyası ekleyin',
+      // Audio Joiner
+      ajoin_title: 'Ses Birleştirici',
+      ajoin_out_format: 'Çıktı Formatı:',
+      ajoin_preset_high: 'Yüksek kalite (320 kbps)',
+      ajoin_intervals: 'Aralıklar:',
+      ajoin_intervals_unit: 'sn',
+      ajoin_intervals_tip: 'İki ses parçası arasındaki saniye cinsinden sessizlik süresi',
+      ajoin_drag_hint: 'İki ses dosyasını buraya sürükleyin veya eklemek için tıklayın (yalnızca 2 dosya)',
+      ajoin_tip_format: 'Çıktı ses formatını seçin',
+      ajoin_tip_add_files: 'Birleştirmek için iki ses dosyası ekleyin',
+      ajoin_tip_clear: 'Dosyaları temizle',
+      ajoin_tip_ok: 'Onayla ve Birleştir',
+      ajoin_tip_close: 'Kapat',
+      ajoin_tip_setting: 'Gelişmiş Çıktı Ayarları',
+      ajoin_warn_exact_two: 'Ses Birleştirici tam olarak 2 ses dosyası gerektirir (İlk ve İkinci parça)',
+      ajoin_warn_max_two: 'Yalnızca ilk 2 dosya eklendi; Ses Birleştirici yalnızca 2 ses dosyasını birleştirir',
+      ajoin_tip_swap: 'Parçaların sırasını değiştir',
+      tip_delete: 'Sil',
+      tip_move_up: 'Yukarı taşı',
+      tip_move_down: 'Aşağı taşı',
+      tip_change_dir: 'Çıktı klasörünü değiştir',
+      btn_default: 'Varsayılan',
+      // Screen Recorder
+      sr_title: 'Ekran Kaydedici',
+      sr_shortcuts: 'Kamera(F5) Kaydet(F6) Duraklat(F7) Durdur(F8)',
+      sr_btn_camera: 'Kamera (F5)',
+      sr_btn_record: 'Kaydet (F6)',
+      sr_btn_pause: 'Duraklat (F7)',
+      sr_btn_stop: 'Durdur (F8)',
+      sr_region_full: 'Tam Ekran',
+      sr_region_window: 'Seçili Pencere',
+      sr_region_custom: 'Özel Bölge',
+      sr_menu_region: 'Ekran bölgesi',
+      sr_menu_window: 'Pencere',
+      sr_menu_fullscreen: 'Tam ekran',
+      sr_btn_output: 'Çıktı klasörü',
+      sr_chk_mic: 'Mikrofon kullan',
+      sr_chk_sound: 'Yakalama sesini kullan',
+      sropt_title: 'Seçenekler',
+      sropt_tab_system: 'Sistem',
+      sropt_tab_video: 'Video',
+      sropt_tab_audio: 'Ses',
+      sropt_cam_hotkey: 'Kamera kısayolu',
+      sropt_rec_hotkey: 'Kayıt kısayolu',
+      sropt_pause_hotkey: 'Duraklatma kısayolu',
+      sropt_stop_hotkey: 'Durdurma kısayolu',
+      sropt_out_format: 'Çıktı formatı',
+      sropt_out_folder: 'Çıktı klasörü',
+      sropt_btn_change: 'Değiştir',
+      sropt_btn_open: 'Aç',
+      sropt_open_after: 'Bittiğinde klasörü aç',
+      sropt_always_on_top: 'Pencere her zaman üstte',
+      sropt_framerate: 'Kare hızı',
+      sropt_bitrate: 'Bit hızı',
+      sropt_draw_mouse: 'Fare imlecini çiz',
+      sropt_use_sound: 'Yakalama sesini kullan',
+      sropt_use_mic: 'Mikrofon kullan',
+      sropt_btn_default: 'Varsayılan',
+      sr_lbl_output: 'Çıktı Klasörü:',
+      sr_alert_started: 'Ekran kaydı başladı (F6)!',
+      sr_alert_paused: 'Kayıt duraklatıldı (F7)',
+      sr_alert_stopped: 'Kayıt tamamlandı ve çıktı klasörüne kaydedildi (F8)',
+      sr_alert_screenshot: 'Ekran görüntüsü (F5) başarıyla yakalandı',
+      // Video Downloader
+      vdown_title: 'Video İndirici',
+      vdown_lbl_url: 'Video Bağlantısı',
+      vdown_placeholder_url: 'YouTube, Facebook, TikTok veya doğrudan video bağlantısını buraya yapıştırın...',
+      vdown_btn_paste: '📋 Bağlantıyı Yapıştır',
+      vdown_btn_list_formats: '≡ Mevcut Formatları Listele',
+      vdown_hint_cookies: '➔ youtube çerez (cookies) dosyalarının dışa aktarılmasını gerektirir',
+      vdown_tab_main: '⚙ Temel',
+      vdown_tab_network: '🌐 Ağ',
+      vdown_tab_output: '🔀 Çıktı',
+      vdown_th_property: 'Özellik',
+      vdown_th_value: 'Değer',
+      vdown_prop_format: '🛡 Format Kimliği',
+      vdown_prop_sub: '💬 Altyazı',
+      vdown_prop_thumb: '🖼 Küçük Resim',
+      vdown_prop_desc: '📝 Açıklama',
+      vdown_prop_json: 'JSON Bilgi Dosyası',
+      vdown_prop_playlist: 'JSON Oynatma Listesini İndir',
+      vdown_auth_section: '👤 Kimlik Doğrulama',
+      vdown_auth_cookies_file: '🍪 Cookies Dosyası',
+      vdown_auth_browser_cookies: '🍪 Tarayıcıdan Cookies',
+      vdown_auth_user: 'Kullanıcı Adı',
+      vdown_auth_pass: 'Şifre',
+      vdown_lbl_proxy: 'Proxy Sunucu Adresi:',
+      vdown_lbl_out_dir: 'Çıktı Klasörü:',
+      vdown_btn_default: '🖨 Varsayılan',
+      vdown_btn_download: '⬇ İndir',
+      vdown_alert_enter_url: 'Lütfen indirmek için bir video bağlantısı girin',
+      vdown_alert_formats_fetched: 'Mevcut formatlar belirtilen bağlantı için başarıyla alındı',
+      // Delogo Interactive Editor
+      delogo_title: 'Filigranı Kaldır — Etkileşimli Düzenleyici ve Otomatik Takip',
+      delogo_lbl_rects: 'Seçili dikdörtgenler ve zaman aralıkları:',
+      delogo_btn_ai: '✨ Yapay Zeka Otomatik Takip',
+      delogo_btn_add_rect: '+ Dikdörtgen Ekle',
+      delogo_btn_del_rect: '🗑 Sil',
+      delogo_hint: '💡 Fare ile logonun üzerine bir dikdörtgen çizin veya "Yapay Zeka Otomatik Takip"e tıklayın',
+      delogo_btn_apply: 'Uygula ve Tamam',
+      // Notifications & Shutdown
+      opt_notify_window: 'Tamamlandığında bildirim penceresi göster',
+      notify_title: 'Görev Tamamlandı',
+      notify_elapsed: 'Geçen Süre:',
+      notify_tasks_done: '{count} görev başarıyla tamamlandı',
+      btn_open_folder: 'Çıktı Klasörünü Aç',
+      shutdown_countdown_title: 'Bilgisayar Kapatılıyor',
+      shutdown_countdown_msg: 'Tüm görevler tamamlandı! Bilgisayar kapanıyor:',
+      btn_cancel_shutdown: 'Kapatmayı İptal Et',
+      shutdown_cancelled: 'Kapatma işlemi başarıyla iptal edildi',
+      lbl_files: 'dosya',
+      t_d_epub: '→ EPub',
+      t_d_mobi: '→ Mobi',
+      t_d_azw3: '→ AZW3',
     }
   };
 
@@ -1765,17 +3271,17 @@
     // VIDEO
     v_mp4: { name: '→ MP4', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','wmv','flv','webm','mpg','3gp','ts','m4v'] }],
       options: [
-        { key: 'quality', label: 'الجودة / Quality', type: 'select', choices: [['high','عالية / High'],['medium','متوسطة / Medium'],['low','صغيرة / Low']], default: 'medium' },
-        { key: 'resolution', label: 'الدقة / Resolution', type: 'select', choices: [['','الأصلية / Original'],['2160','4K (2160p)'],['1080','Full HD (1080p)'],['720','HD (720p)'],['480','SD (480p)']], default: '' },
-        { key: 'fps', label: 'الإطارات/ث / FPS', type: 'select', choices: [['','الأصلي / Original'],['60','60 fps'],['30','30 fps'],['24','24 fps']], default: '' },
-        { key: 'audioBitrate', label: 'جودة الصوت / Audio', type: 'select', choices: [['320','320 kbps'],['256','256 kbps'],['192','192 kbps'],['128','128 kbps']], default: '192' },
+        { key: 'quality', label: 'الجودة', type: 'select', choices: [['high','عالية'],['medium','متوسطة'],['low','منخفضة']], default: 'medium' },
+        { key: 'resolution', label: 'الدقة', type: 'select', choices: [['','الأصلية'],['2160','4K (2160p)'],['1080','Full HD (1080p)'],['720','HD (720p)'],['480','SD (480p)']], default: '' },
+        { key: 'fps', label: 'معدل الإطارات', type: 'select', choices: [['','الأصلي'],['60','60 إطار/ث'],['30','30 إطار/ث'],['24','24 إطار/ث']], default: '' },
+        { key: 'audioBitrate', label: 'جودة الصوت', type: 'select', choices: [['320','320 ك.بت/ث'],['256','256 ك.بت/ث'],['192','192 ك.بت/ث'],['128','128 ك.بت/ث']], default: '192' },
       ]
     },
     v_mkv: { name: '→ MKV', section: 'video', ext: '.mkv', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','wmv','flv','webm','mpg','ts'] }],
       options: [
-        { key: 'copy', label: 'نسخ فوري بدون إعادة ترميز (Direct Stream Copy)', type: 'checkbox', default: false },
-        { key: 'quality', label: 'الجودة / Quality', type: 'select', choices: [['high','عالية / High'],['medium','متوسطة / Medium'],['low','صغيرة / Low']], default: 'medium' },
-        { key: 'resolution', label: 'الدقة / Resolution', type: 'select', choices: [['','الأصلية / Original'],['1080','1080p'],['720','720p']], default: '' },
+        { key: 'copy', label: 'نسخ فوري بدون إعادة ترميز', type: 'checkbox', default: false },
+        { key: 'quality', label: 'الجودة', type: 'select', choices: [['high','عالية'],['medium','متوسطة'],['low','منخفضة']], default: 'medium' },
+        { key: 'resolution', label: 'الدقة', type: 'select', choices: [['','الأصلية'],['1080','1080p'],['720','720p']], default: '' },
       ]
     },
     v_gif: { name: '→ GIF', section: 'video', ext: '.gif', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','webm'] }],
@@ -1787,23 +3293,30 @@
     },
     v_webm: { name: '→ WebM', section: 'video', ext: '.webm', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','webm','flv'] }],
       options: [
-        { key: 'quality', label: 'الجودة', type: 'select', choices: [['high','عالية'],['medium','متوسطة'],['low','صغيرة']], default: 'medium' },
+        { key: 'quality', label: 'الجودة', type: 'select', choices: [['high','عالية'],['medium','متوسطة'],['low','منخفضة']], default: 'medium' },
       ]
     },
-    v_avi: { name: '→ AVI / MOV / FLV', section: 'video', ext: '.avi', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','wmv','flv','webm'] }],
-      options: [
-        { key: 'outputExt', label: 'الصيغة الناتجة', type: 'select', choices: [['.avi','AVI'],['.flv','FLV'],['.mov','MOV'],['.wmv','WMV'],['.mpg','MPG'],['.3gp','3GP'],['.ts','TS'],['.m4v','M4V']], default: '.avi' },
-        { key: 'quality', label: 'الجودة', type: 'select', choices: [['high','عالية'],['medium','متوسطة'],['low','صغيرة']], default: 'medium' },
-      ]
+    v_avi: {
+      name: 'AVI',
+      defaultExt: '.avi',
+      multiFormats: [
+        { ext: '.avi', label: 'AVI' },
+        { ext: '.flv', label: 'FLV' },
+        { ext: '.mov', label: 'MOV' },
+        { ext: '.wmv', label: 'WMV' },
+        { ext: '.mpg', label: 'MPG' },
+        { ext: '.vob', label: 'VOB' },
+        { ext: '.3gp', label: '3GP' },
+        { ext: '.swf', label: 'SWF' }
+      ],
+      section: 'video',
+      ext: '.avi',
+      filters: [{ name: 'Video Files', extensions: ['mp4','mkv','avi','mov','wmv','flv','webm','ts','m4v','mpg','vob','3gp'] }],
+      options: []
     },
     v_merge: { name: 'دامج & Mux', section: 'video', ext: '.mp4', multi: true, filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','ts'] }],
       options: [
         { key: 'mode', label: 'نوع العملية', type: 'select', choices: [['concat','دمج مقاطع فيديو بالتتابع'],['compress','ضغط الفيديو']], default: 'concat' },
-      ]
-    },
-    v_enhance: { name: 'تحسين وضغط', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
-      options: [
-        { key: 'mode', label: 'الوضع', type: 'select', choices: [['enhance','تحسين الجودة وإزالة التشويش (Denoise + Sharpen)'],['compress','ضغط الفيديو لتقليل الحجم']], default: 'enhance' },
       ]
     },
     v_separate: { name: 'الفاصل', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
@@ -1811,56 +3324,28 @@
         { key: 'target', label: 'استخراج', type: 'select', choices: [['video','استخراج فيديو صامت فقط (بدون صوت)'],['audio','استخراج ملف الصوت فقط']], default: 'audio' },
       ]
     },
-    v_crop: { name: 'قص الإطار (Crop)', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
-      options: [
-        { key: 'ratio', label: 'نسبة الأبعاد', type: 'select', choices: [['16:9','16:9 عريض'],['9:16','9:16 تيك توك / ريلز'],['1:1','1:1 مربع'],['4:3','4:3 تقليدي']], default: '16:9' },
-      ]
-    },
-    v_clip: { name: 'مقطع سريع', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
-      options: [
-        { key: 'start', label: 'وقت البداية (00:00:00)', type: 'text', default: '00:00:00' },
-        { key: 'end', label: 'وقت النهاية (00:01:00)', type: 'text', default: '00:01:00' },
-      ]
-    },
-    v_remove_watermark: { name: 'إزالة العلامة المائية', i18nKey: 't_v_delogo', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
-      options: [
-        { key: 'x', label: 'إحداثي X', type: 'number', default: 10 },
-        { key: 'y', label: 'إحداثي Y', type: 'number', default: 10 },
-        { key: 'w', label: 'عرض الشعار', type: 'number', default: 100 },
-        { key: 'h', label: 'ارتفاع الشعار', type: 'number', default: 50 },
-      ]
-    },
     v_frames: { name: 'إطارات التصدير', section: 'video', ext: '.jpg', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
       options: [
         { key: 'interval', label: 'استخراج صورة كل (ثانية)', type: 'number', default: 1, min: 1, max: 60 },
       ]
     },
-    v_record: { name: 'مسجل الشاشة', section: 'video', ext: '.mp4', noFiles: true,
-      options: [
-        { key: 'fps', label: 'معدل الإطارات', type: 'number', default: 30, min: 15, max: 60 },
-        { key: 'duration', label: 'مدة التسجيل (ثانية)', type: 'number', default: 60, min: 5, max: 3600 },
-      ]
-    },
     v_player: { name: 'Format Player', section: 'video', ext: '', filters: [{ name: 'Media', extensions: ['*'] }], noQueue: true, options: [] },
-    v_download: { name: 'تنزيل الفيديو', section: 'video', ext: '.mp4', noFiles: true,
-      options: [
-        { key: 'url', label: 'رابط الفيديو المباشر', type: 'text', placeholder: 'https://...' },
-      ]
-    },
 
     // AUDIO
     a_merge: { name: 'دامج الصوت', section: 'audio', ext: '.mp3', multi: true, filters: [{ name: 'Audio', extensions: ['mp3','wav','flac','m4a','ogg'] }], options: [] },
-    a_split: { name: 'Split Music', section: 'audio', ext: '.mp3', filters: [{ name: 'Audio', extensions: ['mp3','wav','flac','m4a'] }],
-      options: [
-        { key: 'segmentTime', label: 'مدة كل جزء (ثانية)', type: 'number', default: 300, min: 10 },
-      ]
+    a_split: {
+      name: 'فصل الصوت عن الموسيقى',
+      section: 'audio',
+      ext: '.mp3',
+      filters: [{ name: 'Audio Files', extensions: ['mp3','wav','flac','m4a','aac','ogg','wma','opus'] }],
+      options: []
     },
-    a_extract: { name: 'استخراج الصوت من فيديو', section: 'audio', ext: '.mp3', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }], options: [] },
-    a_mix: { name: 'مزيج (Audio Mix)', section: 'audio', ext: '.mp3', multi: true, filters: [{ name: 'Audio', extensions: ['mp3','wav','flac','m4a'] }], options: [] },
-    a_tts: { name: 'Text to Wav', section: 'audio', ext: '.wav', noFiles: true,
-      options: [
-        { key: 'text', label: 'النص المطلوب تحويله لصوت', type: 'textarea', default: 'مرحباً بك في FormaLux' },
-      ]
+    a_mix: {
+      name: 'فصل الصوت عن الفيديو',
+      section: 'audio',
+      ext: '.mp3',
+      filters: [{ name: 'Video Files', extensions: ['mp4','mkv','avi','mov','webm','flv','wmv','ts','m4v','3gp','rmvb'] }],
+      options: []
     },
     a_mp3: { name: '→ MP3', section: 'audio', ext: '.mp3', filters: [{ name: 'Audio', extensions: ['wav','flac','m4a','wma','ogg','aac'] }],
       options: [
@@ -1871,10 +3356,23 @@
     a_m4a: { name: '→ M4A', section: 'audio', ext: '.m4a', filters: [{ name: 'Audio', extensions: ['mp3','wav','flac'] }], options: [] },
     a_flac: { name: '→ FLAC (Lossless)', section: 'audio', ext: '.flac', filters: [{ name: 'Audio', extensions: ['mp3','wav','m4a'] }], options: [] },
     a_wav: { name: '→ WAV', section: 'audio', ext: '.wav', filters: [{ name: 'Audio', extensions: ['mp3','flac','m4a'] }], options: [] },
-    a_aac: { name: '→ AAC / AC3 / DTS', section: 'audio', ext: '.aac', filters: [{ name: 'Audio', extensions: ['mp3','wav','flac'] }],
-      options: [
-        { key: 'outputExt', label: 'الصيغة', type: 'select', choices: [['.aac','AAC'],['.ac3','AC3 Dolby'],['.opus','Opus'],['.ogg','OGG Vorbis']], default: '.aac' },
-      ]
+    a_aac: {
+      name: 'AC3',
+      defaultExt: '.ac3',
+      multiFormats: [
+        { ext: '.ac3', label: 'AC3' },
+        { ext: '.aac', label: 'AAC' },
+        { ext: '.dts', label: 'DTS' },
+        { ext: '.mmf', label: 'MMF' },
+        { ext: '.m4r', label: 'M4R' },
+        { ext: '.mp2', label: 'MP2' },
+        { ext: '.ogg', label: 'OGG' },
+        { ext: '.wv', label: 'WV' }
+      ],
+      section: 'audio',
+      ext: '.ac3',
+      filters: [{ name: 'Audio & Video Files', extensions: ['mp3','wav','flac','m4a','aac','ogg','wma','opus','ac3','dts','mp2','m4r','wv','mmf','mp4','mkv','avi','mov','webm','ts','wmv','flv'] }],
+      options: []
     },
 
     // IMAGES
@@ -1888,20 +3386,20 @@
     i_tga: { name: '→ TGA', section: 'image', ext: '.tga', filters: [{ name: 'Images', extensions: ['png','jpg','webp'] }], options: [] },
 
     // DOCUMENTS
-    d_pdf_join: { name: 'PDF Joiner', section: 'document', ext: '.pdf', multi: true, filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
+    d_pdf_join: { name: 'PDF Joiner', i18nKey: 't_d_pdf_join', section: 'document', ext: '.pdf', multi: true, filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
     d_pdf_compress: { name: 'ضغط PDF', i18nKey: 't_d_compress', section: 'document', ext: '.pdf', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
-    d_pic_pdf: { name: 'Pic → PDF', section: 'document', ext: '.pdf', multi: true, filters: [{ name: 'Images', extensions: ['jpg','png','webp'] }], options: [] },
-    d_pdf_pic: { name: 'PDF → Pic', section: 'document', ext: '.jpg', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
-    d_pdf_text: { name: 'PDF → Text', section: 'document', ext: '.txt', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
-    d_pdf_docx: { name: 'PDF → Docx', section: 'document', ext: '.docx', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
-    d_pdf_excel: { name: 'PDF → Excel', section: 'document', ext: '.xlsx', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
-    d_docx_pdf: { name: 'Docx → PDF', section: 'document', ext: '.pdf', filters: [{ name: 'Word', extensions: ['docx','doc'] }], options: [] },
+    d_pic_pdf: { name: 'Pic → PDF', i18nKey: 't_d_pic_pdf', section: 'document', ext: '.pdf', multi: true, filters: [{ name: 'Images', extensions: ['jpg','png','webp'] }], options: [] },
+    d_pdf_pic: { name: 'PDF → Pic', i18nKey: 't_d_pdf_pic', section: 'document', ext: '.jpg', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
+    d_pdf_text: { name: 'PDF → Text', i18nKey: 't_d_pdf_text', section: 'document', ext: '.txt', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
+    d_pdf_docx: { name: 'PDF → Docx', i18nKey: 't_d_pdf_docx', section: 'document', ext: '.docx', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
+    d_pdf_excel: { name: 'PDF → Excel', i18nKey: 't_d_pdf_excel', section: 'document', ext: '.xlsx', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
+    d_docx_pdf: { name: 'Docx → PDF', i18nKey: 't_d_docx_pdf', section: 'document', ext: '.pdf', filters: [{ name: 'Word', extensions: ['docx','doc'] }], options: [] },
     d_pdf_decrypt: { name: 'فك تشفير PDF', i18nKey: 't_d_decrypt', section: 'document', ext: '.pdf', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
     d_pdf_encrypt: { name: 'تشفير PDF', i18nKey: 't_d_encrypt', section: 'document', ext: '.pdf', filters: [{ name: 'PDF', extensions: ['pdf'] }], options: [] },
     d_ffzip: { name: 'FFZip (أرشيف)', i18nKey: 't_d_zip', section: 'document', ext: '.zip', multi: true, filters: [{ name: 'All Files', extensions: ['*'] }], options: [] },
-    d_epub: { name: '→ EPub', section: 'document', ext: '.epub', filters: [{ name: 'Documents', extensions: ['txt','html','md','pdf'] }], options: [] },
-    d_mobi: { name: '→ Mobi', section: 'document', ext: '.mobi', filters: [{ name: 'Documents', extensions: ['epub','txt','pdf'] }], options: [] },
-    d_azw3: { name: '→ AZW3', section: 'document', ext: '.azw3', filters: [{ name: 'Documents', extensions: ['epub','mobi','pdf'] }], options: [] },
+    d_epub: { name: '→ EPub', i18nKey: 't_d_epub', section: 'document', ext: '.epub', filters: [{ name: 'Documents', extensions: ['txt','html','md','pdf'] }], options: [] },
+    d_mobi: { name: '→ Mobi', i18nKey: 't_d_mobi', section: 'document', ext: '.mobi', filters: [{ name: 'Documents', extensions: ['epub','txt','pdf'] }], options: [] },
+    d_azw3: { name: '→ AZW3', i18nKey: 't_d_azw3', section: 'document', ext: '.azw3', filters: [{ name: 'Documents', extensions: ['epub','mobi','pdf'] }], options: [] },
 
     // DISCS / ISO
     disc_bluray_mkv: { name: 'Bluray → MKV', i18nKey: 't_disc_bluray', section: 'disc', ext: '.mkv', dirInput: true, options: [] },
@@ -1911,8 +3409,6 @@
     disc_iso_cso: { name: 'ISO ↔ CSO', i18nKey: 't_disc_cso', section: 'disc', ext: '.cso', filters: [{ name: 'Disc Images', extensions: ['iso','cso'] }], options: [] },
 
     // UTILITIES
-    util_info: { name: 'معلومات الملف', i18nKey: 't_util_info', section: 'tools', ext: '', filters: [{ name: 'Media', extensions: ['*'] }], noQueue: true, options: [] },
-    util_rename: { name: 'إعادة تسمية مجمعة', i18nKey: 't_util_rename', section: 'tools', ext: '', multi: true, filters: [{ name: 'All', extensions: ['*'] }], noQueue: true, options: [] },
     util_ha_test: { name: 'HA Test (تسريع العتاد)', i18nKey: 't_util_ha', section: 'tools', ext: '', noFiles: true, noQueue: true, options: [] },
   };
 
@@ -1953,7 +3449,31 @@
     setupDragDrop();
     setupTaskListeners();
     setupKeyboardShortcuts();
+    setupNotificationAndShutdownUI();
     updateOutputPathDisplay();
+
+    // Sync status bar checkboxes with settings
+    const chkShutdown = document.getElementById('chk-shutdown');
+    if (chkShutdown) {
+      chkShutdown.checked = !!settings.shutdownAfter;
+      chkShutdown.addEventListener('change', () => {
+        settings.shutdownAfter = chkShutdown.checked;
+        const optShut = document.getElementById('opt-shutdown');
+        if (optShut) optShut.checked = chkShutdown.checked;
+        window.api.saveSettings(settings);
+      });
+    }
+
+    const chkNotify = document.getElementById('chk-notify');
+    if (chkNotify) {
+      chkNotify.checked = settings.notifyComplete !== false;
+      chkNotify.addEventListener('change', () => {
+        settings.notifyComplete = chkNotify.checked;
+        const optNot = document.getElementById('opt-notify-complete');
+        if (optNot) optNot.checked = chkNotify.checked;
+        window.api.saveSettings(settings);
+      });
+    }
 
     // Start CPU monitor simulation
     setInterval(updateCpuBadge, 2500);
@@ -1972,6 +3492,12 @@
     document.getElementById('txt-app-title').textContent = bundle.app_title;
     document.title = bundle.app_title;
 
+    // Update vmux sliders direction if open
+    const vSl = document.getElementById('vmux-video-volume');
+    if (vSl) updateVmuxVolumeUI('video', vSl.value);
+    const aSl = document.getElementById('vmux-audio-volume');
+    if (aSl) updateVmuxVolumeUI('audio', aSl.value);
+
     // Update menu bar main button labels
     document.getElementById('menu-task').textContent = bundle.menu_task;
     document.getElementById('menu-theme').textContent = bundle.menu_theme;
@@ -1984,6 +3510,22 @@
       const key = el.dataset.i18n;
       if (bundle[key]) {
         el.textContent = bundle[key];
+      }
+    });
+
+    // Update all elements with data-i18n-title
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+      const key = el.dataset.i18nTitle;
+      if (bundle[key]) {
+        el.title = bundle[key];
+      }
+    });
+
+    // Update all elements with data-i18n-placeholder
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (bundle[key]) {
+        el.placeholder = bundle[key];
       }
     });
 
@@ -2001,6 +3543,9 @@
     });
     renderTasks();
 
+    if (typeof renderAmixTable === 'function' && typeof amixFiles !== 'undefined' && amixFiles.length > 0) renderAmixTable();
+    if (typeof renderAjoinTable === 'function' && typeof ajoinFiles !== 'undefined' && ajoinFiles.length > 0) renderAjoinTable();
+
     // Update modal title and content if open
     if (currentToolType) {
       const modalTitle = document.getElementById('tool-modal-title');
@@ -2014,6 +3559,13 @@
     // Update document and disc modals if open
     if (typeof updateDocModalLanguage === 'function') updateDocModalLanguage();
     if (typeof updateDiscModalLanguage === 'function') updateDiscModalLanguage();
+
+    // Update format task modal & presets if open or active
+    if (typeof updateCategoryBadge === 'function') updateCategoryBadge();
+    if (typeof updatePresetDisplays === 'function') updatePresetDisplays();
+    if (typeof updatePresetDropdownOptions === 'function') updatePresetDropdownOptions();
+    if (typeof updateMultiProfilesModalLanguage === 'function') updateMultiProfilesModalLanguage();
+    if (typeof updateSRTitlebarShortcuts === 'function') updateSRTitlebarShortcuts();
 
     if (save) {
       settings.language = langCode;
@@ -2207,6 +3759,18 @@
 
   // ========== Tool Cards ==========
   function setupToolCards() {
+    // Ensure all tool card icons load robustly from both relative paths
+    document.querySelectorAll('img.tool-img-icon').forEach(img => {
+      img.addEventListener('error', function onIconErr() {
+        if (this.dataset.fallbackApplied) return;
+        this.dataset.fallbackApplied = 'true';
+        const alt = this.getAttribute('alt');
+        if (alt) {
+          this.src = `../assets/tools/${alt}.png`;
+        }
+      });
+    });
+
     document.querySelectorAll('.tool-card').forEach(card => {
       card.addEventListener('click', (e) => {
         if (e) {
@@ -2214,20 +3778,20 @@
           e.stopPropagation();
         }
         const toolType = card.dataset.tool;
-        if (toolType === 'util_info') {
-          openMediaInfoModal();
-          return;
-        }
-        if (toolType === 'util_rename') {
-          openRenameModal();
-          return;
-        }
         if (toolType === 'util_ha_test') {
           openHaTestModal();
           return;
         }
         if (toolType === 'v_player') {
           playMediaWithSystem();
+          return;
+        }
+        if (toolType === 'v_merge') {
+          openVideoMuxModal();
+          return;
+        }
+        if (toolType === 'a_merge') {
+          openAudioJoinModal();
           return;
         }
         if (toolType.startsWith('d_')) {
@@ -2246,6 +3810,100 @@
       });
     });
   }
+
+  // ========== Tool Modal Options Localization Map ==========
+  const OPTION_TRANSLATIONS = {
+    quality: {
+      label: { ar: 'الجودة', en: 'Quality', fr: 'Qualité', es: 'Calidad', tr: 'Kalite' },
+      choices: {
+        high: { ar: 'عالية', en: 'High', fr: 'Haute', es: 'Alta', tr: 'Yüksek' },
+        medium: { ar: 'متوسطة', en: 'Medium', fr: 'Moyenne', es: 'Media', tr: 'Orta' },
+        low: { ar: 'منخفضة', en: 'Low', fr: 'Basse', es: 'Baja', tr: 'Düşük' },
+      }
+    },
+    resolution: {
+      label: { ar: 'الدقة', en: 'Resolution', fr: 'Résolution', es: 'Resolución', tr: 'Çözünürlük' },
+      choices: {
+        '': { ar: 'الأصلية', en: 'Original', fr: 'Originale', es: 'Original', tr: 'Orijinal' },
+        '2160': { ar: '4K (2160p)', en: '4K (2160p)', fr: '4K (2160p)', es: '4K (2160p)', tr: '4K (2160p)' },
+        '1080': { ar: 'Full HD (1080p)', en: 'Full HD (1080p)', fr: 'Full HD (1080p)', es: 'Full HD (1080p)', tr: 'Full HD (1080p)' },
+        '720': { ar: 'HD (720p)', en: 'HD (720p)', fr: 'HD (720p)', es: 'HD (720p)', tr: 'HD (720p)' },
+        '480': { ar: 'SD (480p)', en: 'SD (480p)', fr: 'SD (480p)', es: 'SD (480p)', tr: 'SD (480p)' },
+      }
+    },
+    fps: {
+      label: { ar: 'معدل الإطارات', en: 'Frame Rate (FPS)', fr: 'Images par seconde (FPS)', es: 'Fotogramas/seg (FPS)', tr: 'Kare Hızı (FPS)' },
+      choices: {
+        '': { ar: 'الأصلي', en: 'Original', fr: 'Original', es: 'Original', tr: 'Orijinal' },
+        '60': { ar: '60 إطار/ث', en: '60 fps', fr: '60 fps', es: '60 fps', tr: '60 fps' },
+        '30': { ar: '30 إطار/ث', en: '30 fps', fr: '30 fps', es: '30 fps', tr: '30 fps' },
+        '24': { ar: '24 إطار/ث', en: '24 fps', fr: '24 fps', es: '24 fps', tr: '24 fps' },
+      }
+    },
+    audioBitrate: {
+      label: { ar: 'جودة الصوت', en: 'Audio Quality', fr: 'Qualité audio', es: 'Calidad de audio', tr: 'Ses Kalitesi' },
+      choices: {
+        '320': { ar: '320 ك.بت/ث', en: '320 kbps', fr: '320 kbps', es: '320 kbps', tr: '320 kbps' },
+        '256': { ar: '256 ك.بت/ث', en: '256 kbps', fr: '256 kbps', es: '256 kbps', tr: '256 kbps' },
+        '192': { ar: '192 ك.بت/ث', en: '192 kbps', fr: '192 kbps', es: '192 kbps', tr: '192 kbps' },
+        '128': { ar: '128 ك.بت/ث', en: '128 kbps', fr: '128 kbps', es: '128 kbps', tr: '128 kbps' },
+      }
+    },
+    copy: {
+      label: {
+        ar: 'نسخ فوري بدون إعادة ترميز',
+        en: 'Direct stream copy (No re-encoding)',
+        fr: 'Copie directe du flux (Sans réencodage)',
+        es: 'Copia directa de flujo (Sin recodificar)',
+        tr: 'Yeniden kodlamadan doğrudan akış kopyalama'
+      }
+    },
+    mode: {
+      label: { ar: 'نوع العملية', en: 'Operation Mode', fr: 'Mode d\'opération', es: 'Modo de operación', tr: 'İşlem Modu' },
+      choices: {
+        concat: { ar: 'دمج مقاطع الفيديو بالتتابع', en: 'Merge videos sequentially', fr: 'Fusionner les vidéos à la suite', es: 'Combinar vídeos en secuencia', tr: 'Videoları sırayla birleştir' },
+        compress: { ar: 'ضغط الفيديو لتقليل الحجم', en: 'Compress video size', fr: 'Compresser la taille vidéo', es: 'Comprimir tamaño de vídeo', tr: 'Video boyutunu sıkıştır' },
+        enhance: { ar: 'تحسين الجودة وإزالة التشويش', en: 'Enhance & Denoise', fr: 'Améliorer et débruiter', es: 'Mejorar y reducir ruido', tr: 'İyileştir ve paraziti temizle' }
+      }
+    },
+    target: {
+      label: { ar: 'استخراج', en: 'Extract', fr: 'Extraire', es: 'Extraer', tr: 'Ayıkla' },
+      choices: {
+        video: { ar: 'استخراج فيديو صامت فقط', en: 'Extract silent video only', fr: 'Extraire vidéo muette seulement', es: 'Extraer solo vídeo silencioso', tr: 'Yalnızca sessiz video ayıkla' },
+        audio: { ar: 'استخراج ملف الصوت فقط', en: 'Extract audio file only', fr: 'Extraire le fichier audio seulement', es: 'Extraer solo archivo de audio', tr: 'Yalnızca ses dosyasını ayıkla' }
+      }
+    },
+    ratio: {
+      label: { ar: 'نسبة الأبعاد', en: 'Aspect Ratio', fr: 'Format d\'image', es: 'Relación de aspecto', tr: 'En-Boy Oranı' },
+      choices: {
+        '16:9': { ar: '16:9 عريض', en: '16:9 Widescreen', fr: '16:9 Écran large', es: '16:9 Panorámico', tr: '16:9 Geniş Ekran' },
+        '9:16': { ar: '9:16 طولي ريلز وتيك توك', en: '9:16 Vertical (Reels/TikTok)', fr: '9:16 Vertical (Reels/TikTok)', es: '9:16 Vertical (Reels/TikTok)', tr: '9:16 Dikey (Reels/TikTok)' },
+        '1:1': { ar: '1:1 مربع', en: '1:1 Square', fr: '1:1 Carré', es: '1:1 Cuadrado', tr: '1:1 Kare' },
+        '4:3': { ar: '4:3 تقليدي', en: '4:3 Standard', fr: '4:3 Standard', es: '4:3 Estándar', tr: '4:3 Standart' }
+      }
+    },
+    width: {
+      label: { ar: 'العرض (بكسل)', en: 'Width (pixels)', fr: 'Largeur (pixels)', es: 'Ancho (píxeles)', tr: 'Genişlik (piksel)' }
+    },
+    duration: {
+      label: { ar: 'أقصى مدة (ثواني)', en: 'Max Duration (seconds)', fr: 'Durée maximale (secondes)', es: 'Duración máxima (segundos)', tr: 'Maksimum Süre (saniye)' }
+    },
+    outputExt: {
+      label: { ar: 'الصيغة الناتجة', en: 'Output Format', fr: 'Format de sortie', es: 'Formato de salida', tr: 'Çıktı Formatı' }
+    },
+    start: {
+      label: { ar: 'وقت البداية', en: 'Start Time', fr: 'Heure de début', es: 'Tiempo de inicio', tr: 'Başlangıç Zamanı' }
+    },
+    end: {
+      label: { ar: 'وقت النهاية', en: 'End Time', fr: 'Heure de fin', es: 'Tiempo de fin', tr: 'Bitiş Zamanı' }
+    },
+    interval: {
+      label: { ar: 'استخراج صورة كل (ثانية)', en: 'Extract frame every (sec)', fr: 'Extraire une image chaque (sec)', es: 'Extraer fotograma cada (seg)', tr: 'Her (saniyede) kare ayıkla' }
+    },
+    url: {
+      label: { ar: 'رابط الفيديو المباشر', en: 'Direct Video URL', fr: 'URL directe de la vidéo', es: 'URL directa del vídeo', tr: 'Doğrudan Video Bağlantısı' }
+    }
+  };
 
   // ========== Tool Modal ==========
   function openToolModal(toolType) {
@@ -2285,18 +3943,22 @@
         const row = document.createElement('div');
         row.className = 'tool-option-row';
 
+        const optTrans = OPTION_TRANSLATIONS[opt.key];
+        const labelText = optTrans?.label?.[currentLang] || optTrans?.label?.ar || opt.label;
+
         const label = document.createElement('label');
-        label.textContent = opt.label;
+        label.textContent = labelText;
         row.appendChild(label);
 
         let input;
         if (opt.type === 'select') {
           input = document.createElement('select');
           input.id = `tool-opt-${opt.key}`;
-          opt.choices.forEach(([val, text]) => {
+          opt.choices.forEach(([val, defaultText]) => {
             const option = document.createElement('option');
             option.value = val;
-            option.textContent = text;
+            const choiceText = optTrans?.choices?.[val]?.[currentLang] || optTrans?.choices?.[val]?.ar || defaultText;
+            option.textContent = choiceText;
             if (val === opt.default?.toString()) option.selected = true;
             input.appendChild(option);
           });
@@ -2479,7 +4141,7 @@
         failed: b.st_failed,
         cancelled: b.st_cancelled,
       };
-      const statusText = statusMap[task.status] || task.status;
+      const statusText = (task.status === 'converting' && task.statusMsg) ? task.statusMsg : (statusMap[task.status] || task.status);
 
       const el = document.createElement('div');
       el.className = `task-item ${task.status}`;
@@ -2493,8 +4155,8 @@
         <div class="task-source" title="${Array.isArray(task.input) ? task.input.join(', ') : task.input}">${Array.isArray(task.input) ? task.input.map(f => f.split(/[/\\]/).pop()).join(', ') : (task.input || '').split(/[/\\]/).pop()}</div>
         <div class="task-output">
           <div class="task-filename">${task.name} — ${inputName}</div>
-          <div class="task-status" style="color:${task.status === 'completed' ? 'var(--success)' : task.status === 'failed' ? 'var(--danger)' : ''}">
-            ${statusText}${task.error ? ` <span style="font-size:10px;opacity:0.85;">(${task.error})</span>` : ''}${task.status === 'converting' ? ` (${Math.round(task.progress)}%)` : ''}
+          <div class="task-status" style="color:${task.status === 'completed' ? 'var(--success)' : task.status === 'failed' ? 'var(--danger)' : task.status === 'cancelled' ? '#94a3b8' : ''}">
+            ${statusText}${task.error && task.status !== 'cancelled' ? ` <span style="font-size:10px;opacity:0.85;">(${task.error})</span>` : ''}${task.status === 'converting' ? ` (${Math.round(task.progress)}%)` : ''}
           </div>
           ${task.status === 'converting' ? `<div class="task-progress-bar"><div class="task-progress-fill" style="width:${task.progress}%"></div></div>` : ''}
         </div>
@@ -2539,7 +4201,10 @@
           options: task.options,
         });
 
-        if (result.error) {
+        if (result.cancelled || task.status === 'cancelled') {
+          task.status = 'cancelled';
+          task.error = null;
+        } else if (result.error) {
           task.status = 'failed';
           task.error = result.error;
         } else {
@@ -2548,32 +4213,227 @@
           if (result.outputPath) task.outputPath = result.outputPath;
         }
       } catch (e) {
-        task.status = 'failed';
-        task.error = e.message;
+        if (task.status === 'cancelled') {
+          task.error = null;
+        } else {
+          task.status = 'failed';
+          task.error = e.message;
+        }
       }
 
       renderTasks();
     }
 
     isConverting = false;
+    const finalElapsedSec = elapsedSeconds;
     stopElapsedTimer();
 
-    // Check post conversion actions
-    if (document.getElementById('chk-notify')?.checked) {
-      const b = I18N[currentLang] || I18N.ar;
-      new Notification('FormaLux', { body: b.notify_all_completed || 'All conversions completed successfully!' });
+    const h = Math.floor(finalElapsedSec / 3600).toString().padStart(2, '0');
+    const m = Math.floor((finalElapsedSec % 3600) / 60).toString().padStart(2, '0');
+    const s = (finalElapsedSec % 60).toString().padStart(2, '0');
+    const elapsedStr = `${h}:${m}:${s}`;
+
+    const completedCount = queuedTasks.filter(t => t.status === 'completed').length;
+    const failedCount = queuedTasks.filter(t => t.status === 'failed').length;
+
+    // 1. Sound Alerts
+    if (completedCount > 0 && settings.soundComplete) {
+      playAudioAlert('success');
+    } else if (failedCount > 0 && settings.soundFail !== false) {
+      playAudioAlert('fail');
     }
+
+    // 2. In-App Notification Window
+    const shouldNotify = (document.getElementById('chk-notify')?.checked || settings.notifyComplete !== false);
+    if (shouldNotify && (completedCount > 0 || failedCount > 0)) {
+      showCompletionNotification(elapsedStr, completedCount || queuedTasks.length);
+    }
+
+    // 3. Open output folder automatically if enabled
     if (settings.openFolderAfter) {
       window.api.openFolder();
     }
+
+    // 4. Shutdown PC if enabled and tasks completed
+    const shouldShutdown = (document.getElementById('chk-shutdown')?.checked || settings.shutdownAfter);
+    if (shouldShutdown && completedCount > 0) {
+      startShutdownCountdown();
+    }
+  }
+
+  // ========== In-App Audio & Notification & Shutdown Engine ==========
+  let audioCtx = null;
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioCtxClass) audioCtx = new AudioCtxClass();
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playAudioAlert(type = 'success') {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+
+      if (type === 'success') {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.09);
+
+          const start = ctx.currentTime + idx * 0.09;
+          gain.gain.setValueAtTime(0, start);
+          gain.gain.linearRampToValueAtTime(0.22, start + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.55);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(start);
+          osc.stop(start + 0.6);
+        });
+      } else if (type === 'fail') {
+        const notes = [392.00, 311.13];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.15);
+
+          const start = ctx.currentTime + idx * 0.15;
+          gain.gain.setValueAtTime(0, start);
+          gain.gain.linearRampToValueAtTime(0.25, start + 0.03);
+          gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.4);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(start);
+          osc.stop(start + 0.45);
+        });
+      }
+    } catch (e) {
+      console.warn('Audio alert error:', e);
+    }
+  }
+
+  let notifyDismissTimeout = null;
+
+  function showCompletionNotification(elapsedStr, count) {
+    const notifyEl = document.getElementById('app-complete-notify');
+    if (!notifyEl) return;
+
+    if (notifyDismissTimeout) {
+      clearTimeout(notifyDismissTimeout);
+      notifyDismissTimeout = null;
+    }
+
+    const b = I18N[currentLang] || I18N.ar;
+    const elapsedValEl = document.getElementById('notify-elapsed-val');
+    const tasksCountEl = document.getElementById('notify-tasks-count');
+    const mainTextEl = document.getElementById('notify-main-text');
+
+    if (elapsedValEl) elapsedValEl.textContent = elapsedStr || '00:00:00';
+    if (tasksCountEl) {
+      const template = b.notify_tasks_done || '{count} tasks completed';
+      tasksCountEl.textContent = template.replace('{count}', count || 1);
+    }
+    if (mainTextEl) mainTextEl.textContent = b.notify_all_completed || 'All conversions completed successfully!';
+
+    notifyEl.classList.remove('hidden', 'hiding');
+
+    notifyDismissTimeout = setTimeout(() => {
+      closeCompletionNotification();
+    }, 12000);
+  }
+
+  function closeCompletionNotification() {
+    const notifyEl = document.getElementById('app-complete-notify');
+    if (!notifyEl || notifyEl.classList.contains('hidden')) return;
+    notifyEl.classList.add('hiding');
+    setTimeout(() => {
+      notifyEl.classList.add('hidden');
+      notifyEl.classList.remove('hiding');
+    }, 280);
+    if (notifyDismissTimeout) {
+      clearTimeout(notifyDismissTimeout);
+      notifyDismissTimeout = null;
+    }
+  }
+
+  let shutdownCountdownInterval = null;
+  let shutdownSecondsRemaining = 30;
+
+  function startShutdownCountdown() {
+    const overlay = document.getElementById('app-shutdown-overlay');
+    const timerDisplay = document.getElementById('shutdown-timer-display');
+    if (!overlay) return;
+
+    shutdownSecondsRemaining = 30;
+    if (timerDisplay) timerDisplay.textContent = '00:30';
+    overlay.classList.remove('hidden');
+
+    if (window.api?.shutdownSystem) {
+      window.api.shutdownSystem(30);
+    }
+
+    if (shutdownCountdownInterval) clearInterval(shutdownCountdownInterval);
+    shutdownCountdownInterval = setInterval(() => {
+      shutdownSecondsRemaining--;
+      if (shutdownSecondsRemaining < 0) {
+        clearInterval(shutdownCountdownInterval);
+        shutdownCountdownInterval = null;
+        return;
+      }
+      const s = shutdownSecondsRemaining.toString().padStart(2, '0');
+      if (timerDisplay) timerDisplay.textContent = `00:${s}`;
+    }, 1000);
+  }
+
+  function cancelShutdownCountdown() {
+    if (shutdownCountdownInterval) {
+      clearInterval(shutdownCountdownInterval);
+      shutdownCountdownInterval = null;
+    }
+    if (window.api?.cancelShutdown) {
+      window.api.cancelShutdown();
+    }
+
+    const overlay = document.getElementById('app-shutdown-overlay');
+    if (overlay) overlay.classList.add('hidden');
+
+    const chk = document.getElementById('chk-shutdown');
+    if (chk) chk.checked = false;
+    const optShut = document.getElementById('opt-shutdown');
+    if (optShut) optShut.checked = false;
+    settings.shutdownAfter = false;
+    window.api.saveSettings(settings);
+
+    const b = I18N[currentLang] || I18N.ar;
+    alert(b.shutdown_cancelled || 'Shutdown cancelled');
+  }
+
+  function setupNotificationAndShutdownUI() {
+    document.getElementById('notify-btn-close')?.addEventListener('click', closeCompletionNotification);
+    document.getElementById('notify-btn-ok')?.addEventListener('click', closeCompletionNotification);
+    document.getElementById('notify-btn-folder')?.addEventListener('click', () => {
+      closeCompletionNotification();
+      window.api.openFolder();
+    });
+    document.getElementById('btn-cancel-shutdown')?.addEventListener('click', cancelShutdownCountdown);
   }
 
   function stopAllTasks() {
     isConverting = false;
     tasks.forEach(task => {
       if (task.status === 'converting') {
-        window.api.cancelTask(task.id);
         task.status = 'cancelled';
+        task.error = null;
+        window.api.cancelTask(task.id);
       }
     });
     renderTasks();
@@ -2602,6 +4462,7 @@
       const task = tasks.find(t => t.id === data.taskId);
       if (task) {
         task.progress = data.progress;
+        if (data.statusMsg) task.statusMsg = data.statusMsg;
         renderTasks();
       }
     });
@@ -2619,8 +4480,18 @@
     window.api.onTaskFailed((data) => {
       const task = tasks.find(t => t.id === data.taskId);
       if (task) {
+        if (task.status === 'cancelled') return;
         task.status = 'failed';
         task.error = data.error || (data.code ? `Exit code ${data.code}` : 'Failed');
+        renderTasks();
+      }
+    });
+
+    window.api.onTaskCancelled?.((data) => {
+      const task = tasks.find(t => t.id === data.taskId);
+      if (task) {
+        task.status = 'cancelled';
+        task.error = null;
         renderTasks();
       }
     });
@@ -2721,14 +4592,15 @@
 
     // Format & Utilities Modals (safely isolated)
     try { setupFormatTaskModals(); } catch (e) { console.error('setupFormatTaskModals error:', e); }
+    try { setupVideoMuxModal(); } catch (e) { console.error('setupVideoMuxModal error:', e); }
+    try { setupAudioMixModal(); } catch (e) { console.error('setupAudioMixModal error:', e); }
+    try { setupAudioJoinModal(); } catch (e) { console.error('setupAudioJoinModal error:', e); }
     try { setupDocumentTaskModals(); } catch (e) { console.error('setupDocumentTaskModals error:', e); }
     try { setupDiscTaskModals(); } catch (e) { console.error('setupDiscTaskModals error:', e); }
     try { setupDvdIsoModal(); } catch (e) { console.error('setupDvdIsoModal error:', e); }
     try { setupCsoCompressModal(); } catch (e) { console.error('setupCsoCompressModal error:', e); }
     try { setupCdAudioModal(); } catch (e) { console.error('setupCdAudioModal error:', e); }
     try { setupDvdRipperModPrompt(); } catch (e) { console.error('setupDvdRipperModPrompt error:', e); }
-    try { setupMediaInfoHandlers(); } catch (e) { console.error('setupMediaInfoHandlers error:', e); }
-    try { setupRenameHandlers(); } catch (e) { console.error('setupRenameHandlers error:', e); }
     try { setupHaTestHandlers(); } catch (e) { console.error('setupHaTestHandlers error:', e); }
   }
 
@@ -2739,6 +4611,8 @@
     document.getElementById('opt-sub-folder').checked = settings.outputToSubFolder || false;
     document.getElementById('opt-shutdown').checked = settings.shutdownAfter || false;
     document.getElementById('opt-open-folder').checked = settings.openFolderAfter || false;
+    const optNotify = document.getElementById('opt-notify-complete');
+    if (optNotify) optNotify.checked = settings.notifyComplete !== false;
     document.getElementById('opt-sound-general').checked = settings.soundGeneral || false;
     document.getElementById('opt-sound-complete').checked = settings.soundComplete || false;
     document.getElementById('opt-sound-fail').checked = settings.soundFail !== false;
@@ -2766,6 +4640,8 @@
     settings.outputToSubFolder = document.getElementById('opt-sub-folder').checked;
     settings.shutdownAfter = document.getElementById('opt-shutdown').checked;
     settings.openFolderAfter = document.getElementById('opt-open-folder').checked;
+    const optNotify = document.getElementById('opt-notify-complete');
+    if (optNotify) settings.notifyComplete = optNotify.checked;
     settings.soundGeneral = document.getElementById('opt-sound-general').checked;
     settings.soundComplete = document.getElementById('opt-sound-complete').checked;
     settings.soundFail = document.getElementById('opt-sound-fail').checked;
@@ -2779,6 +4655,10 @@
     settings.showCpuGpu = document.getElementById('opt-show-usage').checked;
     settings.jpgQuality = parseInt(document.getElementById('opt-jpg-quality').value) || 90;
     settings.webpQuality = parseInt(document.getElementById('opt-webp-quality').value) || 90;
+    const chkShutdown = document.getElementById('chk-shutdown');
+    if (chkShutdown) chkShutdown.checked = settings.shutdownAfter;
+    const chkNotify = document.getElementById('chk-notify');
+    if (chkNotify) chkNotify.checked = settings.notifyComplete !== false;
     await window.api.saveSettings(settings);
     updateOutputPathDisplay();
   }
@@ -2828,414 +4708,7 @@
   }
 
   // =========================================================
-  // UTILITIES 1: MEDIA FILE INFO MODAL
-  // =========================================================
-  let currentMediaInfoPath = '';
-
-  function resetMediaInfoStats() {
-    const ids = ['mi-stat-container', 'mi-stat-size', 'mi-stat-duration', 'mi-stat-video', 'mi-stat-audio'];
-    ids.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = '--';
-    });
-    const badge = document.getElementById('mi-strip-badge');
-    if (badge) badge.textContent = currentLang === 'ar' ? 'جاهز للعرض' : 'Ready';
-  }
-
-  function openMediaInfoModal(initialFilePath) {
-    const modal = document.getElementById('media-info-modal');
-    if (!modal) return;
-
-    // Show immediately without any blocking delay
-    modal.classList.remove('hidden');
-
-    const b = I18N[currentLang] || I18N.ar;
-    const pathInput = document.getElementById('media-info-path-input');
-    const contentPre = document.getElementById('media-info-content');
-    const copyText = document.getElementById('media-info-copy-text');
-
-    if (copyText) copyText.textContent = b.btn_copy_clipboard || 'Copy to clipboard';
-
-    if (initialFilePath) {
-      loadMediaInfoForFile(initialFilePath);
-    } else if (currentMediaInfoPath) {
-      loadMediaInfoForFile(currentMediaInfoPath);
-    } else {
-      if (pathInput) pathInput.value = '';
-      if (contentPre) {
-        contentPre.textContent = currentLang === 'ar'
-          ? 'اختر ملف وسائط من الأعلى أو اسحب وأفلت الملف هنا لعرض تقرير MediaInfo المفصل الشامل لكافة المسارات والبيانات الوصفية.'
-          : 'Select a media file above or drag & drop a file here to inspect detailed MediaInfo.';
-      }
-      resetMediaInfoStats();
-    }
-  }
-
-  function closeMediaInfoModal() {
-    const modal = document.getElementById('media-info-modal');
-    if (modal) modal.classList.add('hidden');
-  }
-
-  function formatDurationStr(sec) {
-    if (!sec || isNaN(sec)) return '--';
-    const s = Math.floor(sec);
-    const hrs = Math.floor(s / 3600);
-    const mins = Math.floor((s % 3600) / 60);
-    const secs = s % 60;
-    if (hrs > 0) {
-      return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  }
-
-  function formatBytesStr(bytes) {
-    if (!bytes || isNaN(bytes)) return '--';
-    const mb = bytes / (1024 * 1024);
-    if (mb >= 1024) {
-      return (mb / 1024).toFixed(2) + ' GB';
-    }
-    return mb.toFixed(1) + ' MB';
-  }
-
-  async function loadMediaInfoForFile(filePath) {
-    if (!filePath) return;
-    currentMediaInfoPath = filePath;
-    const pathInput = document.getElementById('media-info-path-input');
-    const contentPre = document.getElementById('media-info-content');
-    const badge = document.getElementById('mi-strip-badge');
-
-    if (pathInput) pathInput.value = filePath;
-    if (contentPre) {
-      contentPre.textContent = (currentLang === 'ar' ? 'جارٍ قراءة بيانات الوسائط وتحليل الحاويات...' : 'Reading media information and analyzing streams...');
-    }
-    if (badge) badge.textContent = currentLang === 'ar' ? 'جاري التحليل...' : 'Analyzing...';
-
-    try {
-      const res = await window.api.getMediaInfo(filePath);
-      if (contentPre) {
-        contentPre.textContent = (res && res.text) ? res.text : (currentLang === 'ar' ? 'تعذر استخراج بيانات الوسائط.' : 'Unable to extract media information.');
-      }
-      if (badge) badge.textContent = currentLang === 'ar' ? 'تم التحليل بنجاح ✓' : 'Analyzed ✓';
-
-      // Update stat pills from raw ffprobe data
-      if (res && res.raw) {
-        const raw = res.raw;
-        const fmt = raw.format || {};
-        const streams = raw.streams || [];
-
-        // Container
-        const containerEl = document.getElementById('mi-stat-container');
-        if (containerEl) {
-          const ext = filePath.split(/[/\\]/).pop().split('.').pop().toUpperCase();
-          const fmtName = (fmt.format_long_name || fmt.format_name || ext).split(',')[0].trim();
-          containerEl.textContent = `${ext} (${fmtName})`;
-        }
-
-        // Size
-        const sizeEl = document.getElementById('mi-stat-size');
-        if (sizeEl) {
-          sizeEl.textContent = formatBytesStr(parseInt(fmt.size));
-        }
-
-        // Duration
-        const durEl = document.getElementById('mi-stat-duration');
-        if (durEl) {
-          durEl.textContent = formatDurationStr(parseFloat(fmt.duration));
-        }
-
-        // Video
-        const vStream = streams.find(s => s.codec_type === 'video');
-        const vEl = document.getElementById('mi-stat-video');
-        if (vEl) {
-          if (vStream) {
-            const cName = (vStream.codec_name || '').toUpperCase();
-            const resStr = (vStream.width && vStream.height) ? `${vStream.width}x${vStream.height}` : '';
-            vEl.textContent = resStr ? `${cName} • ${resStr}` : cName;
-          } else {
-            vEl.textContent = currentLang === 'ar' ? 'لا يوجد فيديو' : 'No Video';
-          }
-        }
-
-        // Audio
-        const aStream = streams.find(s => s.codec_type === 'audio');
-        const aEl = document.getElementById('mi-stat-audio');
-        if (aEl) {
-          if (aStream) {
-            const cName = (aStream.codec_name || '').toUpperCase();
-            const br = aStream.bit_rate ? `${Math.round(aStream.bit_rate / 1000)}k` : '';
-            aEl.textContent = br ? `${cName} • ${br}` : cName;
-          } else {
-            aEl.textContent = currentLang === 'ar' ? 'لا يوجد صوت' : 'No Audio';
-          }
-        }
-      }
-    } catch (err) {
-      if (contentPre) contentPre.textContent = `Error reading file: ${err.message || err}`;
-      if (badge) badge.textContent = currentLang === 'ar' ? 'خطأ في التحليل' : 'Analysis Error';
-    }
-  }
-
-  function setupMediaInfoHandlers() {
-    const closeBtn = document.getElementById('close-media-info-modal');
-    const okBtn = document.getElementById('media-info-btn-ok');
-    const browseBtn = document.getElementById('media-info-btn-browse');
-    const copyBtn = document.getElementById('media-info-btn-copy');
-    const openFolderBtn = document.getElementById('media-info-btn-open-folder');
-    const modal = document.getElementById('media-info-modal');
-
-    if (closeBtn) closeBtn.addEventListener('click', closeMediaInfoModal);
-    if (okBtn) okBtn.addEventListener('click', closeMediaInfoModal);
-
-    if (openFolderBtn) {
-      openFolderBtn.addEventListener('click', () => {
-        if (currentMediaInfoPath) {
-          window.api.openFolder(currentMediaInfoPath);
-        }
-      });
-    }
-
-    if (browseBtn) {
-      browseBtn.addEventListener('click', async () => {
-        const file = await window.api.selectSingleFile([
-          { name: 'All Media & Files (*.*)', extensions: ['*'] }
-        ]);
-        if (file) {
-          loadMediaInfoForFile(file);
-        }
-      });
-    }
-
-    const pathInput = document.getElementById('media-info-path-input');
-    if (pathInput) {
-      pathInput.style.cursor = 'pointer';
-      pathInput.addEventListener('click', () => browseBtn?.click());
-    }
-
-    if (copyBtn) {
-      copyBtn.addEventListener('click', async () => {
-        const contentPre = document.getElementById('media-info-content');
-        const copyText = document.getElementById('media-info-copy-text');
-        const b = I18N[currentLang] || I18N.ar;
-        if (!contentPre || !contentPre.textContent) return;
-
-        try {
-          await navigator.clipboard.writeText(contentPre.textContent);
-          if (copyText) {
-            const original = copyText.textContent;
-            copyText.textContent = `✓ ${b.copied_to_clipboard || 'تم النسخ!'}`;
-            setTimeout(() => { copyText.textContent = original; }, 2000);
-          }
-        } catch (e) {
-          console.error('Clipboard copy error:', e);
-        }
-      });
-    }
-
-    // Drag and drop onto modal
-    if (modal) {
-      modal.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-      });
-      modal.addEventListener('drop', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-          const droppedFile = e.dataTransfer.files[0];
-          const fullPath = window.api.getPathForFile ? window.api.getPathForFile(droppedFile) : droppedFile.path;
-          if (fullPath) loadMediaInfoForFile(fullPath);
-        }
-      });
-    }
-  }
-
-  // =========================================================
-  // UTILITIES 2: BATCH FILE RENAMER MODAL
-  // =========================================================
-  let currentRenameFolder = '';
-
-  function openRenameModal() {
-    const modal = document.getElementById('rename-modal');
-    if (!modal) return;
-
-    // Show immediately without any blocking
-    modal.classList.remove('hidden');
-
-    const folderInput = document.getElementById('rename-folder-input');
-    if (!currentRenameFolder && settings && settings.outputDir) {
-      currentRenameFolder = settings.outputDir;
-    }
-    if (folderInput) folderInput.value = currentRenameFolder || '';
-
-    // Asynchronously update preview to prevent any UI freeze
-    setTimeout(() => {
-      updateRenamePreview();
-    }, 10);
-  }
-
-  function closeRenameModal() {
-    const modal = document.getElementById('rename-modal');
-    if (modal) modal.classList.add('hidden');
-  }
-
-  function getRenameOptionsFromUI() {
-    const folderInput = document.getElementById('rename-folder-input');
-    const fileType = document.getElementById('rename-file-type')?.value || 'picture';
-    const entireTree = document.getElementById('rename-entire-tree')?.checked || false;
-    const pattern = document.getElementById('rename-pattern')?.value || '[Date][Number]';
-    const delimiter = document.getElementById('rename-delimiter')?.value !== undefined ? document.getElementById('rename-delimiter').value : ' ';
-    const startNumber = parseInt(document.getElementById('rename-start-num')?.value) || 1;
-    const dateFormat = document.getElementById('rename-date-format')?.value || 'YYYY-MM-DD';
-    const timeFormat = document.getElementById('rename-time-format')?.value || 'None';
-    const dateType = document.querySelector('input[name="rename-date-type"]:checked')?.value || 'photo_date';
-    const removeString = document.getElementById('rename-remove-string')?.value || '';
-    const ignoreDateTime = document.getElementById('rename-ignore-dt')?.checked ?? true;
-
-    return {
-      folderPath: folderInput?.value || '',
-      fileType,
-      entireTree,
-      pattern,
-      delimiter,
-      startNumber,
-      dateFormat,
-      timeFormat,
-      dateType,
-      removeString,
-      ignoreDateTime
-    };
-  }
-
-  async function updateRenamePreview() {
-    const previewEl = document.getElementById('rename-live-preview');
-    if (!previewEl) return;
-
-    const opts = getRenameOptionsFromUI();
-
-    if (opts.folderPath) {
-      try {
-        const res = await window.api.batchRenamePreview(opts);
-        if (res && res.success && res.totalFiles > 0) {
-          previewEl.textContent = `${res.samplePreview || ''} (${res.totalFiles} files detected)`;
-          return;
-        }
-      } catch (e) {}
-    }
-
-    // Default simulated sample if no real files in folder
-    const ext = opts.fileType === 'picture' ? '.jpg' : (opts.fileType === 'video' ? '.mp4' : (opts.fileType === 'audio' ? '.mp3' : '.dat'));
-    const now = new Date();
-    const y = now.getFullYear();
-    const m = (now.getMonth() + 1).toString().padStart(2, '0');
-    const d = now.getDate().toString().padStart(2, '0');
-    let dateStr = `${y}-${m}-${d}`;
-    if (opts.dateFormat === 'YYYYMMDD') dateStr = `${y}${m}${d}`;
-    else if (opts.dateFormat === 'YYYY.MM.DD') dateStr = `${y}.${m}.${d}`;
-    else if (opts.dateFormat === 'DD-MM-YYYY') dateStr = `${d}-${m}-${y}`;
-    else if (opts.dateFormat === 'MM-DD-YYYY') dateStr = `${m}-${d}-${y}`;
-    else if (opts.dateFormat === 'None') dateStr = '';
-
-    const numStr = (opts.startNumber || 1).toString();
-    const delim = opts.delimiter;
-    let sampleNew = '';
-    if (opts.pattern === '[Date][Number]') sampleNew = dateStr ? `${dateStr}${delim}${numStr}` : numStr;
-    else if (opts.pattern === '[OriginalName][Number]') sampleNew = `MySample${delim}${numStr}`;
-    else if (opts.pattern === '[Number]') sampleNew = numStr;
-    else if (opts.pattern === '[Date][OriginalName]') sampleNew = dateStr ? `${dateStr}${delim}MySample` : 'MySample';
-    else if (opts.pattern === '[OriginalName][Date]') sampleNew = dateStr ? `MySample${delim}${dateStr}` : 'MySample';
-    else sampleNew = `File${delim}${numStr}`;
-
-    previewEl.textContent = `MySample${ext} -> ${sampleNew}${ext}`;
-  }
-
-  async function executeBatchRename() {
-    const opts = getRenameOptionsFromUI();
-    const b = I18N[currentLang] || I18N.ar;
-
-    if (!opts.folderPath) {
-      alert(b.alert_no_files || 'Please select a target folder first.');
-      return;
-    }
-
-    const btn = document.getElementById('btn-execute-rename');
-    if (btn) btn.disabled = true;
-
-    try {
-      const res = await window.api.batchRenameExecute(opts);
-      if (res && res.success) {
-        if (res.count === 0) {
-          alert(b.rename_no_files || 'No matching files found to rename.');
-        } else {
-          const msg = (b.rename_success || 'Successfully renamed {count} files!').replace('{count}', res.count);
-          alert(msg);
-          updateRenamePreview();
-        }
-      } else {
-        alert('Rename error: ' + (res.errors?.[0]?.error || 'Unknown error'));
-      }
-    } catch (e) {
-      alert('Rename error: ' + e.message);
-    } finally {
-      if (btn) btn.disabled = false;
-    }
-  }
-
-  function setupRenameHandlers() {
-    const closeBtn = document.getElementById('close-rename-modal');
-    const cancelBtn = document.getElementById('close-rename-cancel-btn');
-    const browseBtn = document.getElementById('rename-btn-browse');
-    const executeBtn = document.getElementById('btn-execute-rename');
-
-    if (closeBtn) closeBtn.addEventListener('click', closeRenameModal);
-    if (cancelBtn) cancelBtn.addEventListener('click', closeRenameModal);
-
-    if (browseBtn) {
-      browseBtn.addEventListener('click', async () => {
-        const folder = await window.api.selectFolder();
-        if (folder) {
-          currentRenameFolder = folder;
-          const input = document.getElementById('rename-folder-input');
-          if (input) input.value = folder;
-          updateRenamePreview();
-        }
-      });
-    }
-
-    const folderInput = document.getElementById('rename-folder-input');
-    if (folderInput) {
-      folderInput.style.cursor = 'pointer';
-      folderInput.addEventListener('click', () => browseBtn?.click());
-    }
-
-    if (executeBtn) executeBtn.addEventListener('click', executeBatchRename);
-
-    // Live update on input changes
-    const inputsToWatch = [
-      'rename-file-type',
-      'rename-entire-tree',
-      'rename-pattern',
-      'rename-delimiter',
-      'rename-start-num',
-      'rename-date-format',
-      'rename-time-format',
-      'rename-remove-string',
-      'rename-ignore-dt'
-    ];
-    inputsToWatch.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) {
-        el.addEventListener('change', updateRenamePreview);
-        el.addEventListener('input', updateRenamePreview);
-      }
-    });
-
-    document.querySelectorAll('input[name="rename-date-type"]').forEach(r => {
-      r.addEventListener('change', updateRenamePreview);
-    });
-  }
-
-  // =========================================================
-  // UTILITIES 3: HARDWARE ACCELERATION TESTING MODAL
+  // UTILITIES: HARDWARE ACCELERATION TESTING MODAL
   // =========================================================
   function openHaTestModal() {
     const modal = document.getElementById('ha-test-modal');
@@ -3298,16 +4771,16 @@
       list.innerHTML = results.map(r => {
         let vendor = 'Hardware';
         let vendorClass = 'ha-vendor-generic';
-        if (r.name.startsWith('NV')) {
+        if (r.name.includes('NVIDIA') || r.name.startsWith('NV')) {
           vendor = 'NVIDIA';
           vendorClass = 'ha-vendor-nvidia';
-        } else if (r.name.startsWith('AMF')) {
+        } else if (r.name.includes('AMD') || r.name.startsWith('AMF')) {
           vendor = 'AMD';
           vendorClass = 'ha-vendor-amd';
-        } else if (r.name.startsWith('Intel')) {
+        } else if (r.name.includes('Intel')) {
           vendor = 'Intel';
           vendorClass = 'ha-vendor-intel';
-        } else if (r.name.startsWith('MF')) {
+        } else if (r.name.includes('Microsoft') || r.name.startsWith('MF')) {
           vendor = 'Microsoft';
           vendorClass = 'ha-vendor-ms';
         }
@@ -3473,16 +4946,850 @@
 
   function isFormatConversionTool(toolType) {
     if (!toolType) return false;
-    const nonFormat = ['util_ha_test', 'v_player', 'v_record', 'v_download', 'a_tts'];
+    const nonFormat = ['util_ha_test', 'v_player', 'v_merge', 'a_merge'];
     if (nonFormat.includes(toolType)) return false;
     return toolType.startsWith('v_') || toolType.startsWith('a_') || toolType.startsWith('i_') || toolType === 'disc_iso_cso';
   }
 
+  // =========================================================
+  // VIDEO JOINER & MUX MODAL ENGINE (Format Factory Style)
+  // =========================================================
+  let vmuxVideoFiles = [];
+  let vmuxAudioFiles = [];
+  let vmuxActiveTab = 'video';
+  let vmuxVideoPrevVol = 100;
+  let vmuxAudioPrevVol = 100;
+
+  function updateVmuxVolumeUI(type, val) {
+    const isVideo = type === 'video';
+    const slider = document.getElementById(isVideo ? 'vmux-video-volume' : 'vmux-audio-volume');
+    const badge = document.getElementById(isVideo ? 'vmux-video-vol-badge' : 'vmux-audio-vol-badge');
+    const icon = document.getElementById(isVideo ? 'vmux-video-vol-icon' : 'vmux-audio-vol-icon');
+    val = Math.max(0, Math.min(100, parseInt(val !== undefined && val !== null ? val : '100', 10)));
+    
+    const isRtl = (document.documentElement.getAttribute('dir') === 'rtl') || (currentLang === 'ar');
+
+    if (slider) {
+      slider.value = val;
+      slider.dir = isRtl ? 'rtl' : 'ltr';
+      slider.style.direction = isRtl ? 'rtl' : 'ltr';
+      const primaryCol = isVideo ? '#0284c7' : '#db2777';
+      const secondaryCol = isVideo ? '#38bdf8' : '#f472b6';
+      const gradDir = isRtl ? 'to left' : 'to right';
+      slider.style.background = `linear-gradient(${gradDir}, ${primaryCol} 0%, ${secondaryCol} ${val}%, rgba(255,255,255,0.14) ${val}%, rgba(255,255,255,0.14) 100%)`;
+    }
+    if (badge) {
+      badge.textContent = `${val}%`;
+    }
+    if (icon) {
+      if (val === 0) {
+        icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+      } else if (val < 50) {
+        icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+      } else {
+        icon.innerHTML = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+      }
+    }
+  }
+
+  function setupVideoMuxModal() {
+    document.getElementById('vmux-btn-close')?.addEventListener('click', () => {
+      document.getElementById('modal-video-mux')?.classList.add('hidden');
+    });
+
+    document.getElementById('vmux-btn-output-setting')?.addEventListener('click', () => {
+      openSettingModal('video');
+    });
+
+    document.getElementById('vmux-tab-video')?.addEventListener('click', () => switchVmuxTab('video'));
+    document.getElementById('vmux-tab-audio')?.addEventListener('click', () => switchVmuxTab('audio'));
+
+    // Video buttons (Add Video & Add Picture)
+    document.getElementById('vmux-btn-center-add-video')?.addEventListener('click', promptAddVmuxVideoFiles);
+    document.getElementById('vmux-btn-table-add-video')?.addEventListener('click', promptAddVmuxVideoFiles);
+    document.getElementById('vmux-btn-center-add-pic')?.addEventListener('click', promptAddVmuxPictureFiles);
+    document.getElementById('vmux-btn-table-add-pic')?.addEventListener('click', promptAddVmuxPictureFiles);
+
+    document.getElementById('vmux-video-volume')?.addEventListener('input', (e) => {
+      updateVmuxVolumeUI('video', e.target.value);
+    });
+
+    document.getElementById('vmux-video-vol-toggle')?.addEventListener('click', () => {
+      const slider = document.getElementById('vmux-video-volume');
+      const cur = parseInt(slider?.value || '100', 10);
+      if (cur > 0) {
+        vmuxVideoPrevVol = cur;
+        updateVmuxVolumeUI('video', 0);
+      } else {
+        updateVmuxVolumeUI('video', vmuxVideoPrevVol || 100);
+      }
+    });
+
+    // Audio buttons (Add Audio)
+    document.getElementById('vmux-btn-center-add-audio')?.addEventListener('click', promptAddVmuxAudioFiles);
+    document.getElementById('vmux-btn-table-add-audio')?.addEventListener('click', promptAddVmuxAudioFiles);
+
+    document.getElementById('vmux-audio-volume')?.addEventListener('input', (e) => {
+      updateVmuxVolumeUI('audio', e.target.value);
+    });
+
+    document.getElementById('vmux-audio-vol-toggle')?.addEventListener('click', () => {
+      const slider = document.getElementById('vmux-audio-volume');
+      const cur = parseInt(slider?.value || '100', 10);
+      if (cur > 0) {
+        vmuxAudioPrevVol = cur;
+        updateVmuxVolumeUI('audio', 0);
+      } else {
+        updateVmuxVolumeUI('audio', vmuxAudioPrevVol || 100);
+      }
+    });
+
+    // OK Buttons
+    document.getElementById('vmux-btn-ok')?.addEventListener('click', confirmVmuxTask);
+    document.getElementById('vmux-btn-audio-ok')?.addEventListener('click', confirmVmuxTask);
+  }
+
+  function openVideoMuxModal(initialFiles = []) {
+    vmuxVideoFiles = [];
+    vmuxAudioFiles = [];
+    if (initialFiles && initialFiles.length > 0) {
+      initialFiles.forEach(f => {
+        const ext = f.split('.').pop().toLowerCase();
+        if (['mp3','wav','aac','m4a','flac','ogg','wma'].includes(ext)) {
+          vmuxAudioFiles.push({ path: f, name: f.split(/[/\\]/).pop(), size: '...', duration: '--:--', bitrate: 'Default' });
+        } else {
+          vmuxVideoFiles.push({ path: f, name: f.split(/[/\\]/).pop(), size: '...', duration: '--:--', resolution: 'Default', isPic: ['jpg','jpeg','png','webp','bmp'].includes(ext) });
+        }
+      });
+    }
+    switchVmuxTab('video');
+    updateVmuxVolumeUI('video', 100);
+    updateVmuxVolumeUI('audio', 100);
+    renderVmuxVideoTable();
+    renderVmuxAudioTable();
+    document.getElementById('modal-video-mux')?.classList.remove('hidden');
+  }
+
+  function switchVmuxTab(tab) {
+    vmuxActiveTab = tab;
+    const vTab = document.getElementById('vmux-tab-video');
+    const aTab = document.getElementById('vmux-tab-audio');
+    const vPanel = document.getElementById('vmux-panel-video');
+    const aPanel = document.getElementById('vmux-panel-audio');
+
+    if (tab === 'video') {
+      vTab?.classList.add('active');
+      aTab?.classList.remove('active');
+      vPanel?.classList.remove('hidden');
+      aPanel?.classList.add('hidden');
+    } else {
+      aTab?.classList.add('active');
+      vTab?.classList.remove('active');
+      aPanel?.classList.remove('hidden');
+      vPanel?.classList.add('hidden');
+    }
+  }
+
+  async function promptAddVmuxVideoFiles() {
+    const filters = [{ name: 'Video Files', extensions: ['mp4', 'mkv', 'avi', 'mov', 'ts', 'flv', 'wmv', 'webm', '3gp', 'mpg', 'vob', 'm4v'] }];
+    const files = await window.api.selectFiles(filters);
+    if (files && files.length > 0) {
+      for (const f of files) {
+        if (!vmuxVideoFiles.some(x => x.path === f)) {
+          vmuxVideoFiles.push({
+            path: f,
+            name: f.split(/[/\\]/).pop(),
+            size: '...',
+            duration: '--:--',
+            resolution: 'Default',
+            isPic: false
+          });
+        }
+      }
+      renderVmuxVideoTable();
+    }
+  }
+
+  async function promptAddVmuxPictureFiles() {
+    const filters = [{ name: 'Picture Files', extensions: ['jpg', 'jpeg', 'png', 'bmp', 'webp', 'gif', 'tiff', 'ico'] }];
+    const files = await window.api.selectFiles(filters);
+    if (files && files.length > 0) {
+      for (const f of files) {
+        if (!vmuxVideoFiles.some(x => x.path === f)) {
+          vmuxVideoFiles.push({
+            path: f,
+            name: f.split(/[/\\]/).pop(),
+            size: '...',
+            duration: '00:00:05',
+            resolution: 'Picture',
+            isPic: true
+          });
+        }
+      }
+      renderVmuxVideoTable();
+    }
+  }
+
+  async function promptAddVmuxVideoFolder() {
+    const folder = await window.api.selectFolder();
+    if (folder) {
+      const exts = ['mp4', 'mkv', 'avi', 'mov', 'ts', 'flv', 'wmv', 'webm', 'jpg', 'png', 'jpeg'];
+      const found = await window.api.scanFolder(folder, exts);
+      if (found && found.length > 0) {
+        found.forEach(f => {
+          if (!vmuxVideoFiles.some(x => x.path === f)) {
+            const ext = f.split('.').pop().toLowerCase();
+            const isPic = ['jpg', 'jpeg', 'png', 'webp', 'bmp'].includes(ext);
+            vmuxVideoFiles.push({
+              path: f,
+              name: f.split(/[/\\]/).pop(),
+              size: '...',
+              duration: isPic ? '00:00:05' : '--:--',
+              resolution: isPic ? 'Picture' : 'Default',
+              isPic
+            });
+          }
+        });
+        renderVmuxVideoTable();
+      }
+    }
+  }
+
+  async function promptAddVmuxAudioFiles() {
+    const filters = [{ name: 'Audio Files', extensions: ['mp3', 'wav', 'aac', 'm4a', 'flac', 'ogg', 'wma', 'opus', 'ac3'] }];
+    const files = await window.api.selectFiles(filters);
+    if (files && files.length > 0) {
+      for (const f of files) {
+        if (!vmuxAudioFiles.some(x => x.path === f)) {
+          vmuxAudioFiles.push({
+            path: f,
+            name: f.split(/[/\\]/).pop(),
+            size: '...',
+            duration: '--:--',
+            bitrate: 'Default'
+          });
+        }
+      }
+      renderVmuxAudioTable();
+    }
+  }
+
+  async function promptAddVmuxAudioFolder() {
+    const folder = await window.api.selectFolder();
+    if (folder) {
+      const exts = ['mp3', 'wav', 'aac', 'm4a', 'flac', 'ogg', 'wma'];
+      const found = await window.api.scanFolder(folder, exts);
+      if (found && found.length > 0) {
+        found.forEach(f => {
+          if (!vmuxAudioFiles.some(x => x.path === f)) {
+            vmuxAudioFiles.push({
+              path: f,
+              name: f.split(/[/\\]/).pop(),
+              size: '...',
+              duration: '--:--',
+              bitrate: 'Default'
+            });
+          }
+        });
+        renderVmuxAudioTable();
+      }
+    }
+  }
+
+  function renderVmuxVideoTable() {
+    const emptyBox = document.getElementById('vmux-video-empty');
+    const table = document.getElementById('vmux-video-table');
+    const tbody = document.getElementById('vmux-video-tbody');
+    const actions = document.getElementById('vmux-video-table-actions');
+    if (!emptyBox || !table || !tbody) return;
+
+    if (vmuxVideoFiles.length === 0) {
+      emptyBox.style.display = 'flex';
+      table.style.display = 'none';
+      if (actions) actions.style.display = 'none';
+      tbody.innerHTML = '';
+      return;
+    }
+
+    emptyBox.style.display = 'none';
+    table.style.display = 'table';
+    if (actions) actions.style.display = 'flex';
+    tbody.innerHTML = '';
+
+    vmuxVideoFiles.forEach((file, idx) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="text-align: center; font-size: 18px;">${file.isPic ? '🖼️' : '🎬'}</td>
+        <td style="font-weight: 500; max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${file.path}">
+          ${file.name}
+          <div style="font-size: 11px; color: var(--text-muted);">${file.path}</div>
+        </td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.duration}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.resolution}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.size}</td>
+        <td style="text-align: center;">
+          <button class="ft-row-action-btn danger" style="padding: 2px 6px; border: none; background: transparent; color: #ef4444; cursor: pointer;" title="Delete" data-idx="${idx}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </td>
+      `;
+      tr.querySelector('button')?.addEventListener('click', () => {
+        vmuxVideoFiles.splice(idx, 1);
+        renderVmuxVideoTable();
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  function renderVmuxAudioTable() {
+    const emptyBox = document.getElementById('vmux-audio-empty');
+    const table = document.getElementById('vmux-audio-table');
+    const tbody = document.getElementById('vmux-audio-tbody');
+    if (!emptyBox || !table || !tbody) return;
+
+    if (vmuxAudioFiles.length === 0) {
+      emptyBox.style.display = 'flex';
+      table.style.display = 'none';
+      tbody.innerHTML = '';
+      return;
+    }
+
+    emptyBox.style.display = 'none';
+    table.style.display = 'table';
+    tbody.innerHTML = '';
+
+    vmuxAudioFiles.forEach((file, idx) => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="text-align: center; font-size: 18px;">🎵</td>
+        <td style="font-weight: 500; max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${file.path}">
+          ${file.name}
+          <div style="font-size: 11px; color: var(--text-muted);">${file.path}</div>
+        </td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.duration}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.bitrate}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.size}</td>
+        <td style="text-align: center;">
+          <button class="ft-row-action-btn danger" style="padding: 2px 6px; border: none; background: transparent; color: #ef4444; cursor: pointer;" title="Delete" data-idx="${idx}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </td>
+      `;
+      tr.querySelector('button')?.addEventListener('click', () => {
+        vmuxAudioFiles.splice(idx, 1);
+        renderVmuxAudioTable();
+      });
+      tbody.appendChild(tr);
+    });
+  }
+
+  function confirmVmuxTask() {
+    if (vmuxVideoFiles.length === 0 && vmuxAudioFiles.length === 0) {
+      alert(currentLang === 'ar' ? 'الرجاء إضافة ملف واحد على الأقل للمتابعة' : 'Please add at least one file to proceed');
+      return;
+    }
+    const fmt = document.getElementById('vmux-output-format')?.value || 'mp4';
+    const vVol = parseInt(document.getElementById('vmux-video-volume')?.value || '100', 10);
+    const aVol = parseInt(document.getElementById('vmux-audio-volume')?.value || '100', 10);
+    const loop = document.getElementById('vmux-audio-loop')?.value === '1';
+    const intervals = parseInt(document.getElementById('vmux-audio-intervals')?.value || '0', 10);
+
+    const inputs = vmuxVideoFiles.map(f => f.path);
+    if (inputs.length === 0) {
+      inputs.push(...vmuxAudioFiles.map(f => f.path));
+    }
+
+    const b = I18N[currentLang] || I18N.ar;
+    const taskTitle = b.vmux_title || 'Video Joiner & Mux';
+    const vCountLabel = currentLang === 'ar' ? `${vmuxVideoFiles.length} فيديو/صورة` : `${vmuxVideoFiles.length} video/pic`;
+    const aCountLabel = currentLang === 'ar' ? `${vmuxAudioFiles.length} صوت` : `${vmuxAudioFiles.length} audio`;
+
+    addTask({
+      type: 'v_merge',
+      input: inputs,
+      options: {
+        outputExt: '.' + fmt,
+        videoFiles: vmuxVideoFiles.map(f => f.path),
+        audioFiles: vmuxAudioFiles.map(f => f.path),
+        videoVolume: vVol,
+        audioVolume: aVol,
+        loop,
+        intervals,
+        outputDir: settings.outputDir || 'D:\\FLoutput'
+      },
+      name: `${taskTitle} (${vCountLabel} + ${aCountLabel})`
+    });
+
+    document.getElementById('modal-video-mux')?.classList.add('hidden');
+  }
+
+  // =========================================================
+  // AUDIO MIX MODAL ENGINE (Format Factory Style)
+  // =========================================================
+  let amixFiles = [];
+
+  function setupAudioMixModal() {
+    // Close button
+    document.getElementById('amix-btn-close')?.addEventListener('click', closeAudioMixModal);
+
+    // Output Setting button & Preset Badge -> opens audio settings modal strictly in front
+    document.getElementById('amix-btn-output-setting')?.addEventListener('click', () => {
+      openSettingModal('audio');
+    });
+    document.getElementById('amix-preset-name')?.addEventListener('click', () => {
+      openSettingModal('audio');
+    });
+
+    document.getElementById('amix-output-format')?.addEventListener('change', (e) => {
+      const val = e.target.value.toUpperCase();
+      setSelectVal('as-opt-audio-encode', val);
+      if (currentFormatOptions) currentFormatOptions.audioEncode = val;
+    });
+
+    // Add Files (Center empty button & Footer button)
+    document.getElementById('amix-btn-center-add')?.addEventListener('click', promptAddAmixFiles);
+    document.getElementById('amix-btn-footer-add')?.addEventListener('click', promptAddAmixFiles);
+
+    // Clear button
+    document.getElementById('amix-btn-clear')?.addEventListener('click', () => {
+      amixFiles = [];
+      renderAmixTable();
+    });
+
+    // OK / Confirm button
+    document.getElementById('amix-btn-ok')?.addEventListener('click', confirmAudioMixTask);
+
+    // Drag and drop onto modal
+    const amixModal = document.getElementById('modal-audio-mix');
+    if (amixModal) {
+      amixModal.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+      amixModal.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer && e.dataTransfer.files) {
+          const validExts = ['mp3', 'wav', 'aac', 'flac', 'm4a', 'ogg', 'wma', 'opus', 'ac3'];
+          for (let i = 0; i < e.dataTransfer.files.length; i++) {
+            const f = e.dataTransfer.files[i];
+            const ext = f.name.split('.').pop().toLowerCase();
+            if (validExts.includes(ext) && !amixFiles.some(x => x.path === f.path)) {
+              addAmixFile(f.path);
+            }
+          }
+        }
+      });
+    }
+  }
+
+  function openAudioMixModal(initialFiles = []) {
+    currentMediaType = 'audio';
+    currentFormatTool = 'a_mix';
+    currentPresetKey = 'high';
+    currentPresetName = AUDIO_PRESETS.high?.name || 'High quality';
+    currentFormatOptions = { ...(AUDIO_PRESETS.high || {}) };
+    updatePresetDisplays();
+
+    amixFiles = [];
+    const fmtSelect = document.getElementById('amix-output-format');
+    if (fmtSelect) fmtSelect.value = 'mp3';
+    const durSelect = document.getElementById('amix-duration-select');
+    if (durSelect) durSelect.value = 'longest';
+
+    if (initialFiles && initialFiles.length > 0) {
+      const validExts = ['mp3', 'wav', 'aac', 'flac', 'm4a', 'ogg', 'wma', 'opus', 'ac3'];
+      initialFiles.forEach(p => {
+        const ext = p.split('.').pop().toLowerCase();
+        if (validExts.includes(ext)) {
+          addAmixFile(p);
+        }
+      });
+    }
+
+    renderAmixTable();
+    document.getElementById('modal-audio-mix')?.classList.remove('hidden');
+  }
+
+  function closeAudioMixModal() {
+    document.getElementById('modal-audio-mix')?.classList.add('hidden');
+  }
+
+  async function promptAddAmixFiles() {
+    const filters = [{ name: 'Audio Files', extensions: ['mp3', 'wav', 'aac', 'm4a', 'flac', 'ogg', 'wma', 'opus', 'ac3'] }];
+    const files = await window.api.selectFiles(filters);
+    if (files && files.length > 0) {
+      for (const p of files) {
+        if (!amixFiles.some(x => x.path === p)) {
+          addAmixFile(p);
+        }
+      }
+    }
+  }
+
+  function addAmixFile(filePath) {
+    const fileRecord = {
+      path: filePath,
+      name: filePath.split(/[/\\]/).pop(),
+      size: '...',
+      duration: '--:--',
+      bitrate: 'Default'
+    };
+    amixFiles.push(fileRecord);
+    renderAmixTable();
+
+    // Async probe metadata
+    if (window.api && window.api.getMediaInfo) {
+      window.api.getMediaInfo(filePath).then(info => {
+        if (!info) return;
+        if (info.format) {
+          if (info.format.size) fileRecord.size = formatBytes(parseInt(info.format.size));
+          if (info.format.duration) fileRecord.duration = formatDuration(parseFloat(info.format.duration));
+          if (info.format.bit_rate) fileRecord.bitrate = Math.round(parseInt(info.format.bit_rate) / 1000) + ' kbps';
+        }
+        renderAmixTable();
+      }).catch(() => {});
+    }
+  }
+
+  function renderAmixTable() {
+    const emptyBox = document.getElementById('amix-empty-state');
+    const tableWrapper = document.getElementById('amix-table-wrapper');
+    const tbody = document.getElementById('amix-files-tbody');
+    if (!emptyBox || !tableWrapper || !tbody) return;
+
+    if (amixFiles.length === 0) {
+      emptyBox.style.display = 'flex';
+      tableWrapper.style.display = 'none';
+      tbody.innerHTML = '';
+      return;
+    }
+
+    emptyBox.style.display = 'none';
+    tableWrapper.style.display = 'block';
+    tbody.innerHTML = '';
+
+    amixFiles.forEach((file, idx) => {
+      const b = I18N[currentLang] || I18N.ar;
+      const upTip = b.tip_move_up || 'تحريك لأعلى';
+      const downTip = b.tip_move_down || 'تحريك لأسفل';
+      const delTip = b.tip_delete || 'حذف';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="text-align: center; font-size: 18px;">🎵</td>
+        <td style="font-weight: 500; max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${file.path}">
+          <span style="color: var(--text-primary); font-weight: 600;">${file.name}</span>
+          <div style="font-size: 11px; color: var(--text-muted);">${file.path}</div>
+        </td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.duration}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.bitrate}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.size}</td>
+        <td style="text-align: center; white-space: nowrap;">
+          <button class="amix-row-btn" data-action="up" data-idx="${idx}" title="${upTip}" ${idx === 0 ? 'disabled' : ''}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+          </button>
+          <button class="amix-row-btn" data-action="down" data-idx="${idx}" title="${downTip}" ${idx === amixFiles.length - 1 ? 'disabled' : ''}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <button class="amix-row-btn danger" data-action="del" data-idx="${idx}" title="${delTip}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </td>
+      `;
+
+      tr.querySelector('[data-action="up"]')?.addEventListener('click', () => {
+        if (idx > 0) {
+          const temp = amixFiles[idx];
+          amixFiles[idx] = amixFiles[idx - 1];
+          amixFiles[idx - 1] = temp;
+          renderAmixTable();
+        }
+      });
+
+      tr.querySelector('[data-action="down"]')?.addEventListener('click', () => {
+        if (idx < amixFiles.length - 1) {
+          const temp = amixFiles[idx];
+          amixFiles[idx] = amixFiles[idx + 1];
+          amixFiles[idx + 1] = temp;
+          renderAmixTable();
+        }
+      });
+
+      tr.querySelector('[data-action="del"]')?.addEventListener('click', () => {
+        amixFiles.splice(idx, 1);
+        renderAmixTable();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function confirmAudioMixTask() {
+    const b = I18N[currentLang] || I18N.ar;
+    if (amixFiles.length < 2) {
+      alert(b.amix_warn_min_files || 'يرجى إضافة ملفين صوتيين على الأقل لدمجهما في المزيج');
+      return;
+    }
+
+    const fmt = document.getElementById('amix-output-format')?.value || 'mp3';
+    const duration = document.getElementById('amix-duration-select')?.value || 'longest';
+    const taskTitle = b.amix_title || 'Audio Mix';
+    const countLabel = currentLang === 'ar' ? `${amixFiles.length} ملفات صوتية` : `${amixFiles.length} audio tracks`;
+    const presetName = document.getElementById('amix-preset-name')?.textContent || 'جودة عالية (320 ك.بت/ث)';
+
+    addTask({
+      type: 'a_mix',
+      input: amixFiles.map(f => f.path),
+      options: {
+        duration,
+        outputExt: '.' + fmt,
+        presetName,
+        outputDir: settings.outputDir || 'D:\\FLoutput',
+        ...(currentFormatOptions || {})
+      },
+      name: `${taskTitle} (${countLabel}) [${fmt.toUpperCase()}]`
+    });
+
+    closeAudioMixModal();
+  }
+
+  // =========================================================
+  // AUDIO JOINER MODAL ENGINE (Format Factory Style - 2 Files Only)
+  // =========================================================
+  let ajoinFiles = [];
+
+  function setupAudioJoinModal() {
+    // Close button
+    document.getElementById('ajoin-btn-close')?.addEventListener('click', closeAudioJoinModal);
+
+    // Output Setting button & Preset Badge -> opens audio settings modal strictly in front
+    document.getElementById('ajoin-btn-output-setting')?.addEventListener('click', () => {
+      openSettingModal('audio');
+    });
+    document.getElementById('ajoin-preset-name')?.addEventListener('click', () => {
+      openSettingModal('audio');
+    });
+
+    document.getElementById('ajoin-output-format')?.addEventListener('change', (e) => {
+      const val = e.target.value.toUpperCase();
+      setSelectVal('as-opt-audio-encode', val);
+      if (currentFormatOptions) currentFormatOptions.audioEncode = val;
+    });
+
+    // Add Files (Center empty button & Footer button)
+    document.getElementById('ajoin-btn-center-add')?.addEventListener('click', promptAddAjoinFiles);
+    document.getElementById('ajoin-btn-footer-add')?.addEventListener('click', promptAddAjoinFiles);
+
+    // Clear button
+    document.getElementById('ajoin-btn-clear')?.addEventListener('click', () => {
+      ajoinFiles = [];
+      renderAjoinTable();
+    });
+
+    // OK / Confirm button
+    document.getElementById('ajoin-btn-ok')?.addEventListener('click', confirmAudioJoinTask);
+
+    // Drag and drop onto modal
+    const ajoinModal = document.getElementById('modal-audio-join');
+    if (ajoinModal) {
+      ajoinModal.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+      ajoinModal.addEventListener('drop', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.dataTransfer && e.dataTransfer.files) {
+          const validExts = ['mp3', 'wav', 'aac', 'flac', 'm4a', 'ogg', 'wma', 'opus', 'ac3'];
+          const filesToAdd = [];
+          for (let i = 0; i < e.dataTransfer.files.length; i++) {
+            const f = e.dataTransfer.files[i];
+            const ext = f.name.split('.').pop().toLowerCase();
+            if (validExts.includes(ext) && !ajoinFiles.some(x => x.path === f.path)) {
+              filesToAdd.push(f.path);
+            }
+          }
+          addAjoinFilesBatch(filesToAdd);
+        }
+      });
+    }
+  }
+
+  function openAudioJoinModal(initialFiles = []) {
+    currentMediaType = 'audio';
+    currentFormatTool = 'a_merge';
+    currentPresetKey = 'high';
+    currentPresetName = AUDIO_PRESETS.high?.name || 'High quality';
+    currentFormatOptions = { ...(AUDIO_PRESETS.high || {}) };
+    updatePresetDisplays();
+
+    ajoinFiles = [];
+    const fmtSelect = document.getElementById('ajoin-output-format');
+    if (fmtSelect) fmtSelect.value = 'mp3';
+    const intSelect = document.getElementById('ajoin-intervals-select');
+    if (intSelect) intSelect.value = '0';
+
+    if (initialFiles && initialFiles.length > 0) {
+      const validExts = ['mp3', 'wav', 'aac', 'flac', 'm4a', 'ogg', 'wma', 'opus', 'ac3'];
+      const valid = initialFiles.filter(p => validExts.includes(p.split('.').pop().toLowerCase()));
+      addAjoinFilesBatch(valid);
+    } else {
+      renderAjoinTable();
+    }
+
+    document.getElementById('modal-audio-join')?.classList.remove('hidden');
+  }
+
+  function closeAudioJoinModal() {
+    document.getElementById('modal-audio-join')?.classList.add('hidden');
+  }
+
+  async function promptAddAjoinFiles() {
+    const b = I18N[currentLang] || I18N.ar;
+    if (ajoinFiles.length >= 2) {
+      alert(b.ajoin_warn_max_two || 'دامج الصوت يدمج ملفين صوتيين فقط. يمكنك حذف ملف لإضافة بديل.');
+      return;
+    }
+
+    const filters = [{ name: 'Audio Files', extensions: ['mp3', 'wav', 'aac', 'm4a', 'flac', 'ogg', 'wma', 'opus', 'ac3'] }];
+    const files = await window.api.selectFiles(filters);
+    if (files && files.length > 0) {
+      addAjoinFilesBatch(files);
+    }
+  }
+
+  function addAjoinFilesBatch(filePaths) {
+    const b = I18N[currentLang] || I18N.ar;
+    for (const p of filePaths) {
+      if (ajoinFiles.length >= 2) {
+        alert(b.ajoin_warn_max_two || 'تم تحديد أول ملفين فقط؛ دامج الصوت يدمج ملفين صوتيين فقط');
+        break;
+      }
+      if (!ajoinFiles.some(x => x.path === p)) {
+        addAjoinFile(p);
+      }
+    }
+    renderAjoinTable();
+  }
+
+  function addAjoinFile(filePath) {
+    const fileRecord = {
+      path: filePath,
+      name: filePath.split(/[/\\]/).pop(),
+      size: '...',
+      duration: '--:--',
+      bitrate: 'Default'
+    };
+    ajoinFiles.push(fileRecord);
+    renderAjoinTable();
+
+    if (window.api && window.api.getMediaInfo) {
+      window.api.getMediaInfo(filePath).then(info => {
+        if (!info) return;
+        if (info.format) {
+          if (info.format.size) fileRecord.size = formatBytes(parseInt(info.format.size));
+          if (info.format.duration) fileRecord.duration = formatDuration(parseFloat(info.format.duration));
+          if (info.format.bit_rate) fileRecord.bitrate = Math.round(parseInt(info.format.bit_rate) / 1000) + ' kbps';
+        }
+        renderAjoinTable();
+      }).catch(() => {});
+    }
+  }
+
+  function renderAjoinTable() {
+    const emptyBox = document.getElementById('ajoin-empty-state');
+    const tableWrapper = document.getElementById('ajoin-table-wrapper');
+    const tbody = document.getElementById('ajoin-files-tbody');
+    if (!emptyBox || !tableWrapper || !tbody) return;
+
+    if (ajoinFiles.length === 0) {
+      emptyBox.style.display = 'flex';
+      tableWrapper.style.display = 'none';
+      tbody.innerHTML = '';
+      return;
+    }
+
+    emptyBox.style.display = 'none';
+    tableWrapper.style.display = 'block';
+    tbody.innerHTML = '';
+
+    ajoinFiles.forEach((file, idx) => {
+      const b = I18N[currentLang] || I18N.ar;
+      const swapTip = b.ajoin_tip_swap || 'تبديل الترتيب بين الملفين';
+      const delTip = b.tip_delete || 'حذف';
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td style="text-align: center; font-weight: 700; color: #38bdf8;">#${idx + 1}</td>
+        <td style="text-align: center; font-size: 18px;">🎵</td>
+        <td style="font-weight: 500; max-width: 380px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${file.path}">
+          <span style="color: var(--text-primary); font-weight: 600;">${file.name}</span>
+          <div style="font-size: 11px; color: var(--text-muted);">${file.path}</div>
+        </td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.duration}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.bitrate}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${file.size}</td>
+        <td style="text-align: center; white-space: nowrap;">
+          <button class="amix-row-btn" data-action="swap" title="${swapTip}" ${ajoinFiles.length !== 2 ? 'disabled' : ''}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="7 10 12 15 17 10"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </button>
+          <button class="amix-row-btn danger" data-action="del" data-idx="${idx}" title="${delTip}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </button>
+        </td>
+      `;
+
+      tr.querySelector('[data-action="swap"]')?.addEventListener('click', () => {
+        if (ajoinFiles.length === 2) {
+          const temp = ajoinFiles[0];
+          ajoinFiles[0] = ajoinFiles[1];
+          ajoinFiles[1] = temp;
+          renderAjoinTable();
+        }
+      });
+
+      tr.querySelector('[data-action="del"]')?.addEventListener('click', () => {
+        ajoinFiles.splice(idx, 1);
+        renderAjoinTable();
+      });
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function confirmAudioJoinTask() {
+    const b = I18N[currentLang] || I18N.ar;
+    if (ajoinFiles.length !== 2) {
+      alert(b.ajoin_warn_exact_two || 'دامج الصوت يتطلب إضافة ملفين صوتيين بالضبط (ملف أول وملف ثانٍ)');
+      return;
+    }
+
+    const fmt = document.getElementById('ajoin-output-format')?.value || 'mp3';
+    const intervals = parseFloat(document.getElementById('ajoin-intervals-select')?.value || '0');
+    const taskTitle = b.ajoin_title || 'Audio Joiner';
+    const presetName = document.getElementById('ajoin-preset-name')?.textContent || 'جودة عالية (320 ك.بت/ث)';
+
+    addTask({
+      type: 'a_merge',
+      input: ajoinFiles.map(f => f.path),
+      options: {
+        intervals,
+        outputExt: '.' + fmt,
+        presetName,
+        outputDir: settings.outputDir || 'D:\\FLoutput',
+        ...(currentFormatOptions || {})
+      },
+      name: `${taskTitle} (${ajoinFiles[0].name} + ${ajoinFiles[1].name}) [${fmt.toUpperCase()}]`
+    });
+
+    closeAudioJoinModal();
+  }
+
+    // =========================================================
   function getMediaTypeForTool(toolType) {
     if (!toolType) return 'video';
     if (toolType.startsWith('v_')) return 'video';
     if (toolType.startsWith('a_')) return 'audio';
-    if (toolType.startsWith('i_')) return 'image';
+    if (toolType.startsWith('i_')) return 'picture';
     if (toolType === 'disc_iso_cso') return 'disc';
     return 'video';
   }
@@ -3490,7 +5797,14 @@
   function setupFormatTaskModals() {
     // Format Task Window Controls
     document.getElementById('ft-btn-close')?.addEventListener('click', closeFormatTaskModal);
-    document.getElementById('ft-btn-output-setting')?.addEventListener('click', openSettingModal);
+    document.getElementById('ft-btn-output-setting')?.addEventListener('click', (e) => {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      openSettingModal();
+    });
+    document.getElementById('ft-preset-name')?.addEventListener('click', (e) => {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      openSettingModal();
+    });
     document.getElementById('ft-btn-quick-preset')?.addEventListener('click', openMultiProfilesModal);
 
     // Subtabs: Files, Preview, Media Info
@@ -3534,6 +5848,20 @@
 
     // OK Button: confirm format task
     document.getElementById('ft-btn-ok')?.addEventListener('click', confirmFormatTask);
+
+    // Multi-format dropdown listener (a_aac, v_avi)
+    document.getElementById('ft-format-select')?.addEventListener('change', (e) => {
+      const selectedFmt = e.target.value.toLowerCase();
+      currentFormatOptions.outputExt = '.' + selectedFmt;
+      if (currentMediaType === 'audio') {
+        currentFormatOptions.audioEncode = selectedFmt.toUpperCase();
+        setSelectVal('as-opt-audio-encode', selectedFmt.toUpperCase());
+      }
+      const titleEl = document.getElementById('ft-window-title');
+      if (titleEl) {
+        titleEl.textContent = `-> ${selectedFmt.toUpperCase()}`;
+      }
+    });
 
     // Format Files Table Delegated Events (Delete X, Divide, Option/Clip, Selection)
     const ftTbody = document.getElementById('ft-files-tbody');
@@ -3740,13 +6068,33 @@
     document.getElementById('ps-btn-cancel')?.addEventListener('click', () => {
       document.getElementById('picture-setting-modal').classList.add('hidden');
     });
-    document.getElementById('ps-btn-default')?.addEventListener('click', () => {
-      setSelectVal('ps-preset-select', 'original');
-      onPicturePresetChange('original');
+    document.getElementById('ps-chk-size-limit')?.addEventListener('change', (e) => {
+      const isChecked = e.target.checked;
+      const wInput = document.getElementById('ps-input-max-width');
+      const hInput = document.getElementById('ps-input-max-height');
+      const sel = document.getElementById('ps-preset-select');
+      if (wInput) wInput.disabled = !isChecked;
+      if (hInput) hInput.disabled = !isChecked;
+      if (!isChecked) {
+        if (sel) sel.value = 'original';
+        currentPresetKey = 'original';
+        currentPresetName = 'Original Size';
+        if (wInput) wInput.value = 0;
+        if (hInput) hInput.value = 0;
+      } else {
+        const curW = parseInt(wInput?.value || 0);
+        const curH = parseInt(hInput?.value || 0);
+        if (curW === 0 && curH === 0) {
+          if (sel) sel.value = 'mw1024_mh768';
+          onPicturePresetChange('mw1024_mh768');
+        }
+      }
     });
     document.getElementById('ps-preset-select')?.addEventListener('change', (e) => {
       onPicturePresetChange(e.target.value);
     });
+    document.getElementById('ps-input-max-width')?.addEventListener('input', onPictureDimensionInput);
+    document.getElementById('ps-input-max-height')?.addEventListener('input', onPictureDimensionInput);
     document.getElementById('ps-btn-save-as')?.addEventListener('click', () => {
       const name = prompt(currentLang === 'ar' ? 'أدخل اسم القالب المخصص:' : 'Enter custom preset name:', currentPresetName);
       if (name && name.trim()) {
@@ -3788,6 +6136,128 @@
     });
   }
 
+  // ========== Presets Localization Map & Helpers ==========
+  const PRESET_I18N_KEYS = {
+    // Video
+    optimum: 'preset_optimum',
+    high_2pass: 'preset_high_2pass',
+    high: 'preset_high',
+    medium: 'preset_medium',
+    low: 'preset_low',
+    '4k': 'preset_4k',
+    '2k': 'preset_2k',
+    '720p': 'preset_720p',
+    '480p': 'preset_480p',
+    copy: 'preset_copy',
+    custom: 'preset_custom',
+    avc_high: 'preset_avc_high',
+    hevc_high: 'preset_hevc_high',
+    uhd_4k: 'preset_uhd_4k',
+    qhd_2k: 'preset_qhd_2k',
+
+    // Audio
+    high: 'preset_audio_high',
+    medium: 'preset_audio_medium',
+    low: 'preset_audio_low',
+    audio_high: 'preset_audio_high',
+    audio_medium: 'preset_audio_medium',
+    audio_low: 'preset_audio_low',
+    vbr_0: 'preset_audio_vbr_0',
+    vbr_high: 'preset_audio_vbr_high',
+    vbr_2: 'preset_audio_vbr_2',
+    vbr_medium: 'preset_audio_vbr_medium',
+    vbr_4: 'preset_audio_vbr_4',
+    vbr_low: 'preset_audio_vbr_low',
+
+    // Picture
+    original: 'preset_pic_original',
+    mw2400_mh1800: 'preset_mw2400_mh1800',
+    mw1024_mh768: 'preset_mw1024_mh768',
+    mw640_mh480: 'preset_mw640_mh480',
+    mw320_mh240: 'preset_mw320_mh240',
+    mw176_mh144: 'preset_mw176_mh144',
+    pic_custom: 'preset_pic_custom',
+
+    // Disc
+    cso_lvl5: 'preset_cso_lvl5',
+
+  };
+
+  function getPresetDisplayName(key, fallbackName) {
+    const b = I18N[currentLang] || I18N.en;
+    if (!key) return fallbackName || '';
+
+    if (currentMediaType === 'audio') {
+      const audioKey = 'audio_' + key;
+      if (PRESET_I18N_KEYS[audioKey] && b[PRESET_I18N_KEYS[audioKey]]) {
+        return b[PRESET_I18N_KEYS[audioKey]];
+      }
+    } else if (currentMediaType === 'picture' || currentMediaType === 'image') {
+      if (key === 'custom' && b.preset_pic_custom) return b.preset_pic_custom;
+    }
+
+    const i18nKey = PRESET_I18N_KEYS[key];
+    if (i18nKey && b[i18nKey]) {
+      return b[i18nKey];
+    }
+    return fallbackName || key;
+  }
+
+  function updateCategoryBadge() {
+    const badgeText = document.getElementById('ft-badge-text');
+    if (!badgeText) return;
+    const b = I18N[currentLang] || I18N.ar;
+    if (currentFormatTool === 'disc_iso_cso') {
+      badgeText.textContent = b.badge_iso_cso || 'ISO / CSO';
+    } else if (currentMediaType === 'video') {
+      badgeText.textContent = b.badge_video || (currentLang === 'ar' ? 'فيديو' : 'Video');
+    } else if (currentMediaType === 'audio') {
+      badgeText.textContent = b.badge_audio || (currentLang === 'ar' ? 'صوت' : 'Audio');
+    } else if (currentMediaType === 'picture' || currentMediaType === 'image') {
+      badgeText.textContent = b.badge_picture || (currentLang === 'ar' ? 'صورة' : 'Picture');
+    } else if (currentMediaType === 'doc' || currentMediaType === 'document') {
+      badgeText.textContent = b.badge_document || (currentLang === 'ar' ? 'وثيقة' : 'Document');
+    } else {
+      badgeText.textContent = b.badge_disc || (currentLang === 'ar' ? 'أسطوانة' : 'Disc');
+    }
+  }
+
+  function updatePresetDropdownOptions() {
+    const b = I18N[currentLang] || I18N.en;
+
+    const vsSelect = document.getElementById('vs-preset-select');
+    if (vsSelect && vsSelect.options) {
+      Array.from(vsSelect.options).forEach(opt => {
+        const val = opt.value;
+        const key = PRESET_I18N_KEYS[val];
+        if (key && b[key]) opt.textContent = b[key];
+      });
+    }
+
+    const asSelect = document.getElementById('as-preset-select');
+    if (asSelect && asSelect.options) {
+      Array.from(asSelect.options).forEach(opt => {
+        const val = opt.value;
+        const audioKey = 'audio_' + val;
+        const key = PRESET_I18N_KEYS[audioKey] || PRESET_I18N_KEYS[val];
+        if (key && b[key]) opt.textContent = b[key];
+      });
+    }
+
+    const psSelect = document.getElementById('ps-preset-select');
+    if (psSelect && psSelect.options) {
+      Array.from(psSelect.options).forEach(opt => {
+        const val = opt.value;
+        if (val === 'custom') {
+          if (b.preset_pic_custom) opt.textContent = b.preset_pic_custom;
+        } else {
+          const key = PRESET_I18N_KEYS[val];
+          if (key && b[key]) opt.textContent = b[key];
+        }
+      });
+    }
+  }
+
   function openFormatTaskModal(toolType, initialFiles = []) {
     currentFormatTool = toolType;
     currentMediaType = getMediaTypeForTool(toolType);
@@ -3800,7 +6270,9 @@
       if (toolType === 'disc_iso_cso') {
         titleEl.textContent = 'ISO <--> CSO';
       } else {
-        let displayName = def.name || toolType.toUpperCase();
+        const b = I18N[currentLang] || I18N.ar;
+        const localized = b[`t_${toolType}`];
+        let displayName = localized || def.name || toolType.toUpperCase();
         if (!displayName.startsWith('->') && !displayName.startsWith('→')) {
           displayName = `-> ${displayName}`;
         }
@@ -3812,54 +6284,118 @@
     }
 
     // Set Category Badge
-    const badgeText = document.getElementById('ft-badge-text');
+    updateCategoryBadge();
     const badgeIcon = document.getElementById('ft-badge-icon');
+    const badgeBox = document.getElementById('ft-category-badge');
+    const badgeText = document.getElementById('ft-badge-text');
+
     if (badgeText) {
-      badgeText.textContent = toolType === 'disc_iso_cso' ? 'ISO / CSO' : currentMediaType === 'video' ? 'Video' : currentMediaType === 'audio' ? 'Audio' : 'Picture';
+      badgeText.style.color = '#ffffff';
+      badgeText.style.display = 'block';
+      badgeText.style.visibility = 'visible';
+      badgeText.style.opacity = '1';
+    }
+
+    if (badgeBox) {
+      if (toolType === 'disc_iso_cso') {
+        badgeBox.style.borderColor = '#8b5cf6';
+        badgeBox.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(15, 23, 42, 0.95))';
+        badgeBox.style.boxShadow = '0 0 16px rgba(139, 92, 246, 0.4)';
+      } else if (currentMediaType === 'video') {
+        badgeBox.style.borderColor = '#0284c7';
+        badgeBox.style.background = 'linear-gradient(135deg, rgba(2, 132, 199, 0.28), rgba(15, 23, 42, 0.95))';
+        badgeBox.style.boxShadow = '0 0 16px rgba(2, 132, 199, 0.4)';
+      } else if (currentMediaType === 'audio') {
+        badgeBox.style.borderColor = '#10b981';
+        badgeBox.style.background = 'linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(15, 23, 42, 0.95))';
+        badgeBox.style.boxShadow = '0 0 16px rgba(16, 185, 129, 0.4)';
+      } else if (currentMediaType === 'picture' || currentMediaType === 'image') {
+        badgeBox.style.borderColor = '#38bdf8';
+        badgeBox.style.background = 'linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(15, 23, 42, 0.95))';
+        badgeBox.style.boxShadow = '0 0 16px rgba(56, 189, 248, 0.4)';
+      } else if (currentMediaType === 'doc' || currentMediaType === 'document') {
+        badgeBox.style.borderColor = '#ef4444';
+        badgeBox.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.28), rgba(15, 23, 42, 0.95))';
+        badgeBox.style.boxShadow = '0 0 16px rgba(239, 68, 68, 0.4)';
+      } else {
+        badgeBox.style.borderColor = '#8b5cf6';
+        badgeBox.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(15, 23, 42, 0.95))';
+        badgeBox.style.boxShadow = '0 0 16px rgba(139, 92, 246, 0.4)';
+      }
     }
     if (badgeIcon) {
       if (toolType === 'disc_iso_cso') {
-        badgeIcon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>`;
+        badgeIcon.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>`;
       } else if (currentMediaType === 'video') {
-        badgeIcon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="18" rx="2.5"/><line x1="7.5" y1="3" x2="7.5" y2="21"/><line x1="16.5" y1="3" x2="16.5" y2="21"/><line x1="2.5" y1="12" x2="21.5" y2="12"/></svg>`;
+        badgeIcon.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="19" height="18" rx="2.5"/><line x1="7.5" y1="3" x2="7.5" y2="21"/><line x1="16.5" y1="3" x2="16.5" y2="21"/><line x1="2.5" y1="12" x2="21.5" y2="12"/></svg>`;
       } else if (currentMediaType === 'audio') {
-        badgeIcon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l12-2.5v12.5"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`;
-      } else if (currentMediaType === 'picture') {
-        badgeIcon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="17" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10.5 5 20.5"/></svg>`;
+        badgeIcon.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l12-2.5v12.5"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`;
+      } else if (currentMediaType === 'picture' || currentMediaType === 'image') {
+        badgeIcon.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3.5" width="18" height="17" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10.5 5 20.5"/></svg>`;
       } else if (currentMediaType === 'doc' || currentMediaType === 'document') {
-        badgeIcon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
+        badgeIcon.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>`;
       } else {
-        badgeIcon.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>`;
+        badgeIcon.innerHTML = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>`;
       }
     }
 
     // Initialize Default Presets & Options
-    const mBtn = document.getElementById('ft-btn-add-music');
     const qBtn = document.getElementById('ft-btn-quick-preset');
     if (toolType === 'disc_iso_cso') {
       currentPresetKey = 'cso_lvl5';
       currentPresetName = 'CSO Compress Level 5';
       currentFormatOptions = { csoCompressLevel: 5 };
-      if (mBtn) mBtn.style.display = 'none';
       if (qBtn) qBtn.style.display = 'none';
     } else if (currentMediaType === 'video') {
-      currentPresetKey = 'optimum';
-      currentPresetName = VIDEO_PRESETS.optimum.name;
-      currentFormatOptions = { ...VIDEO_PRESETS.optimum };
-      if (mBtn) mBtn.style.display = 'inline-flex';
-      if (qBtn) qBtn.style.display = 'inline-flex';
+      {
+        currentPresetKey = 'optimum';
+        currentPresetName = VIDEO_PRESETS.optimum.name;
+        currentFormatOptions = { ...VIDEO_PRESETS.optimum };
+        if (qBtn) qBtn.style.display = 'inline-flex';
+      }
     } else if (currentMediaType === 'audio') {
       currentPresetKey = 'high';
       currentPresetName = AUDIO_PRESETS.high.name;
       currentFormatOptions = { ...AUDIO_PRESETS.high };
-      if (mBtn) mBtn.style.display = 'none';
       if (qBtn) qBtn.style.display = 'inline-flex';
     } else {
       currentPresetKey = 'original';
       currentPresetName = PICTURE_PRESETS.original.name;
       currentFormatOptions = { ...PICTURE_PRESETS.original };
-      if (mBtn) mBtn.style.display = 'none';
       if (qBtn) qBtn.style.display = 'inline-flex';
+    }
+
+    // Multi-format selector bar (for tools like a_aac and v_avi)
+    const pickerWrap = document.getElementById('ft-format-picker-wrap');
+    const pickerSelect = document.getElementById('ft-format-select');
+
+    if (def.multiFormats && def.multiFormats.length > 0) {
+      if (pickerWrap && pickerSelect) {
+        pickerSelect.innerHTML = '';
+        def.multiFormats.forEach(fmt => {
+          const opt = document.createElement('option');
+          opt.value = fmt.ext.replace(/^\./, '');
+          opt.textContent = fmt.label;
+          pickerSelect.appendChild(opt);
+        });
+
+        const defaultFormat = def.defaultExt ? def.defaultExt.replace(/^\./, '') : def.multiFormats[0].ext.replace(/^\./, '');
+        pickerSelect.value = defaultFormat;
+        pickerWrap.style.display = 'inline-flex';
+
+        currentFormatOptions.outputExt = '.' + defaultFormat;
+        if (currentMediaType === 'audio') {
+          currentFormatOptions.audioEncode = defaultFormat.toUpperCase();
+          setSelectVal('as-opt-audio-encode', defaultFormat.toUpperCase());
+        }
+
+        if (titleEl) {
+          titleEl.textContent = `-> ${defaultFormat.toUpperCase()}`;
+        }
+      }
+    } else {
+      if (pickerWrap) pickerWrap.style.display = 'none';
+      currentFormatOptions.outputExt = def.ext || '.mp4';
     }
 
     // Update Banner Preset Display
@@ -3890,11 +6426,22 @@
   }
 
   function updatePresetDisplays() {
+    const displayName = getPresetDisplayName(currentPresetKey, currentPresetName);
     const presetNameEl = document.getElementById('ft-preset-name');
-    if (presetNameEl) presetNameEl.textContent = currentPresetName;
+    if (presetNameEl) presetNameEl.textContent = displayName;
+
+    const amixPresetEl = document.getElementById('amix-preset-name');
+    if (amixPresetEl) amixPresetEl.textContent = displayName;
+
+    const ajoinPresetEl = document.getElementById('ajoin-preset-name');
+    if (ajoinPresetEl) ajoinPresetEl.textContent = displayName;
 
     const appendLbl = document.getElementById('ft-lbl-append-name');
-    if (appendLbl) appendLbl.textContent = `Append setting name [${currentPresetName}]`;
+    if (appendLbl) {
+      const b = I18N[currentLang] || I18N.en;
+      const template = b.lbl_append_setting_name || 'Append setting name [{name}]';
+      appendLbl.textContent = template.replace('{name}', displayName);
+    }
   }
 
   function closeFormatTaskModal() {
@@ -4051,7 +6598,7 @@
 
       const isVideo = currentMediaType === 'video';
       const isAudio = currentMediaType === 'audio';
-      const isImg = currentMediaType === 'image';
+      const isImg = currentMediaType === 'image' || currentMediaType === 'picture';
       const mediaIcon = isVideo ? '🎬' : isAudio ? '🎵' : isImg ? '🖼️' : '📄';
 
       const metaSub = file.metaLine || (file.size !== '...' ? `${file.size} • ${file.path}` : file.path);
@@ -4622,14 +7169,15 @@
 
     const safeUrl = 'file:///' + file.path.replace(/\\/g, '/');
 
-    if (currentMediaType === 'video') {
+    const hasVideo = file.rawInfo?.streams?.some(s => s.codec_type === 'video') || /\.(mp4|mkv|webm|avi|mov|flv|wmv|ts|m4v|3gp)$/i.test(file.path);
+    if (hasVideo) {
       if (vid) {
         vid.src = safeUrl;
         vid.style.display = 'block';
       }
       if (aud) aud.style.display = 'none';
       if (img) img.style.display = 'none';
-    } else if (currentMediaType === 'audio') {
+    } else if (currentMediaType === 'audio' || /\.(mp3|wav|ogg|flac|m4a|aac|wma|opus)$/i.test(file.path)) {
       if (aud) {
         aud.src = safeUrl;
         aud.style.display = 'block';
@@ -4712,18 +7260,23 @@
     return fraction;
   }
 
-  function openSettingModal() {
+  function openSettingModal(explicitType = null) {
+    const validExplicit = (typeof explicitType === 'string' && explicitType) ? explicitType : null;
+    const type = validExplicit || (currentFormatTool === 'a_mix' || currentFormatTool === 'a_merge' ? 'audio' : currentMediaType);
+    if (type === 'audio') {
+      currentMediaType = 'audio';
+      populateAudioSettingsModal();
+      document.getElementById('audio-setting-modal').classList.remove('hidden');
+      return;
+    }
     if (currentFormatTool === 'disc_iso_cso') {
       openCsoCompressModal();
       return;
     }
-    if (currentMediaType === 'video') {
+    if (type === 'video') {
       populateVideoSettingsModal();
       document.getElementById('video-setting-modal').classList.remove('hidden');
-    } else if (currentMediaType === 'audio') {
-      populateAudioSettingsModal();
-      document.getElementById('audio-setting-modal').classList.remove('hidden');
-    } else if (currentMediaType === 'image') {
+    } else if (type === 'image' || type === 'picture') {
       populatePictureSettingsModal();
       document.getElementById('picture-setting-modal').classList.remove('hidden');
     }
@@ -4833,19 +7386,41 @@
   }
 
   function populatePictureSettingsModal() {
-    const sel = document.getElementById('ps-preset-select');
-    if (sel) sel.value = currentPresetKey || 'original';
+    const titleEl = document.getElementById('ps-window-title');
+    if (titleEl) {
+      const def = TOOL_DEFS[currentFormatTool] || { name: (currentFormatTool || '').toUpperCase() };
+      let displayName = def.name || 'PICTURE';
+      if (!displayName.startsWith('->') && !displayName.startsWith('→')) {
+        displayName = `-> ${displayName}`;
+      }
+      titleEl.textContent = displayName.replace('→', '->');
+    }
 
-    const opts = currentFormatOptions || {};
-    setSelectVal('ps-opt-quality', opts.quality || '90');
+    const sel = document.getElementById('ps-preset-select');
+    const chkLimit = document.getElementById('ps-chk-size-limit');
     const w = document.getElementById('ps-input-max-width');
-    if (w) w.value = opts.maxWidth || 0;
     const h = document.getElementById('ps-input-max-height');
-    if (h) h.value = opts.maxHeight || 0;
-    const chk = document.getElementById('ps-chk-size-limit');
-    if (chk) chk.checked = opts.sizeLimit !== false;
-    setSelectVal('ps-opt-rotate', opts.rotate || 'No');
-    setSelectVal('ps-opt-flip', opts.flip || 'No');
+    const opts = currentFormatOptions || {};
+
+    const wVal = opts.maxWidth !== undefined ? opts.maxWidth : 0;
+    const hVal = opts.maxHeight !== undefined ? opts.maxHeight : 0;
+    const isLimit = !!opts.sizeLimit || (wVal > 0 || hVal > 0);
+
+    if (w) {
+      w.value = wVal;
+      w.disabled = !isLimit;
+    }
+    if (h) {
+      h.value = hVal;
+      h.disabled = !isLimit;
+    }
+    if (chkLimit) {
+      chkLimit.checked = isLimit;
+    }
+
+    let presetKey = currentPresetKey || (isLimit ? 'custom' : 'original');
+    if (!PICTURE_PRESETS[presetKey]) presetKey = isLimit ? 'custom' : 'original';
+    if (sel) sel.value = presetKey;
   }
 
   function setSelectVal(id, val) {
@@ -4932,9 +7507,26 @@
   }
 
   function onPicturePresetChange(key) {
+    const chkLimit = document.getElementById('ps-chk-size-limit');
+    const wInput = document.getElementById('ps-input-max-width');
+    const hInput = document.getElementById('ps-input-max-height');
+
+    if (key === 'original') {
+      currentPresetKey = 'original';
+      currentPresetName = 'Original Size';
+      if (chkLimit) chkLimit.checked = false;
+      if (wInput) { wInput.value = 0; wInput.disabled = true; }
+      if (hInput) { hInput.value = 0; hInput.disabled = true; }
+      return;
+    }
+
+    if (chkLimit) chkLimit.checked = true;
+    if (wInput) wInput.disabled = false;
+    if (hInput) hInput.disabled = false;
+
     if (key === 'custom') {
       currentPresetKey = 'custom';
-      currentPresetName = 'Custom';
+      currentPresetName = 'Custom Size';
       return;
     }
     const p = PICTURE_PRESETS[key];
@@ -4942,13 +7534,34 @@
     currentPresetKey = key;
     currentPresetName = p.name;
 
-    if (p.quality) setSelectVal('ps-opt-quality', p.quality);
-    const w = document.getElementById('ps-input-max-width');
-    if (w) w.value = p.limitWidth || 0;
-    const h = document.getElementById('ps-input-max-height');
-    if (h) h.value = p.limitHeight || 0;
-    if (p.rotate) setSelectVal('ps-opt-rotate', p.rotate);
-    if (p.flip) setSelectVal('ps-opt-flip', p.flip);
+    if (wInput) wInput.value = p.limitWidth || 0;
+    if (hInput) hInput.value = p.limitHeight || 0;
+  }
+
+  function onPictureDimensionInput() {
+    const w = parseInt(document.getElementById('ps-input-max-width')?.value) || 0;
+    const h = parseInt(document.getElementById('ps-input-max-height')?.value) || 0;
+    const chkLimit = document.getElementById('ps-chk-size-limit');
+    if (w > 0 || h > 0) {
+      if (chkLimit) chkLimit.checked = true;
+    }
+    let matched = null;
+    for (const [k, p] of Object.entries(PICTURE_PRESETS)) {
+      if (k !== 'custom' && (p.limitWidth || 0) === w && (p.limitHeight || 0) === h) {
+        matched = k;
+        break;
+      }
+    }
+    const sel = document.getElementById('ps-preset-select');
+    if (matched) {
+      if (sel) sel.value = matched;
+      currentPresetKey = matched;
+      currentPresetName = PICTURE_PRESETS[matched].name;
+    } else {
+      if (sel) sel.value = 'custom';
+      currentPresetKey = 'custom';
+      currentPresetName = (w === 0 && h === 0) ? 'Original Size' : `Max Width ${w} Max Height ${h}`;
+    }
   }
 
   function applyVideoSettings() {
@@ -5054,29 +7667,44 @@
       reverse: getSelectVal('as-opt-reverse'),
     };
 
+    if (currentFormatOptions.audioEncode) {
+      const code = currentFormatOptions.audioEncode.toLowerCase();
+      const amixFmt = document.getElementById('amix-output-format');
+      if (amixFmt && Array.from(amixFmt.options).some(o => o.value === code)) {
+        amixFmt.value = code;
+      }
+      const ajoinFmt = document.getElementById('ajoin-output-format');
+      if (ajoinFmt && Array.from(ajoinFmt.options).some(o => o.value === code)) {
+        ajoinFmt.value = code;
+      }
+    }
+
     updatePresetDisplays();
     document.getElementById('audio-setting-modal').classList.add('hidden');
   }
 
   function applyPictureSettings() {
     const sel = document.getElementById('ps-preset-select');
+    const chkLimit = document.getElementById('ps-chk-size-limit');
     currentPresetKey = sel ? sel.value : currentPresetKey;
-    if (currentPresetKey !== 'custom' && PICTURE_PRESETS[currentPresetKey]) {
-      currentPresetName = PICTURE_PRESETS[currentPresetKey].name;
-    }
+    const isLimit = chkLimit ? chkLimit.checked : false;
+    const w = isLimit ? (parseInt(document.getElementById('ps-input-max-width')?.value) || 0) : 0;
+    const h = isLimit ? (parseInt(document.getElementById('ps-input-max-height')?.value) || 0) : 0;
 
-    const w = parseFloat(document.getElementById('ps-input-max-width')?.value) || 0;
-    const h = parseFloat(document.getElementById('ps-input-max-height')?.value) || 0;
-    const isLimit = document.getElementById('ps-chk-size-limit')?.checked !== false && (w > 0 || h > 0);
+    if (!isLimit || (w === 0 && h === 0)) {
+      currentPresetName = 'Original Size';
+      currentPresetKey = 'original';
+    } else if (currentPresetKey !== 'custom' && PICTURE_PRESETS[currentPresetKey]) {
+      currentPresetName = PICTURE_PRESETS[currentPresetKey].name;
+    } else {
+      currentPresetName = `Max Width ${w} Max Height ${h}`;
+    }
 
     currentFormatOptions = {
       ...currentFormatOptions,
-      quality: parseInt(getSelectVal('ps-opt-quality')) || 90,
-      sizeLimit: isLimit,
+      sizeLimit: isLimit && (w > 0 || h > 0),
       maxWidth: w,
-      maxHeight: h,
-      rotate: getSelectVal('ps-opt-rotate'),
-      flip: getSelectVal('ps-opt-flip'),
+      maxHeight: h
     };
 
     updatePresetDisplays();
@@ -5128,6 +7756,15 @@
     selectAll.indeterminate = !allChecked && someChecked;
   }
 
+  let currentMultiProfilesList = null;
+
+  function updateMultiProfilesModalLanguage() {
+    const modal = document.getElementById('multi-profiles-modal');
+    if (modal && !modal.classList.contains('hidden') && currentMultiProfilesList) {
+      renderMultiProfilesList(currentMultiProfilesList);
+    }
+  }
+
   function openMultiProfilesModal() {
     const isAudio = currentMediaType === 'audio';
     const isVideo = currentMediaType === 'video';
@@ -5162,6 +7799,7 @@
       ];
     }
 
+    currentMultiProfilesList = profiles;
     renderMultiProfilesList(profiles);
     document.getElementById('multi-profiles-modal')?.classList.remove('hidden');
   }
@@ -5171,12 +7809,15 @@
   }
 
   function getProfileDocIconSvg(type, color) {
+    const b = I18N[currentLang] || I18N.en;
+    const label = type === 'video' ? (b.badge_video || 'Video') : (b.badge_audio || 'Audio');
+
     if (type === 'vbr') {
       return `<svg class="mp-doc-icon" width="26" height="30" viewBox="0 0 24 28" fill="none">
         <path d="M3 2a2 2 0 0 1 2-2h10l6 6v20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
         <path d="M15 0v6h6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
         <path d="M8 15a2 2 0 1 0 2-2V8l5-1.5v4.5a2 2 0 1 0 2-2V5L8 7v8z" fill="${color}"/>
-        <text x="12" y="24" font-size="5" font-weight="700" text-anchor="middle" fill="${color}">Audio</text>
+        <text x="12" y="24" font-size="5" font-weight="700" text-anchor="middle" fill="${color}">${label}</text>
       </svg>`;
     } else if (type === 'video') {
       return `<svg class="mp-doc-icon" width="26" height="30" viewBox="0 0 24 28" fill="none">
@@ -5184,14 +7825,14 @@
         <path d="M15 0v6h6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
         <rect x="6.5" y="8" width="11" height="8" rx="1.5" fill="${color}"/>
         <polygon points="10,10.2 14.5,12 10,13.8" fill="#ffffff"/>
-        <text x="12" y="24" font-size="5" font-weight="700" text-anchor="middle" fill="${color}">Video</text>
+        <text x="12" y="24" font-size="5" font-weight="700" text-anchor="middle" fill="${color}">${label}</text>
       </svg>`;
     } else {
       return `<svg class="mp-doc-icon" width="26" height="30" viewBox="0 0 24 28" fill="none">
         <path d="M3 2a2 2 0 0 1 2-2h10l6 6v20a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V2z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
         <path d="M15 0v6h6" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
         <path d="M8 15a2 2 0 1 0 2-2V8l5-1.5v4.5a2 2 0 1 0 2-2V5L8 7v8z" fill="${color}"/>
-        <text x="12" y="24" font-size="5" font-weight="700" text-anchor="middle" fill="${color}">Audio</text>
+        <text x="12" y="24" font-size="5" font-weight="700" text-anchor="middle" fill="${color}">${label}</text>
       </svg>`;
     }
   }
@@ -5206,12 +7847,13 @@
 
     listEl.innerHTML = profiles.map(p => {
       const isChecked = activeKeys.includes(p.id);
+      const displayName = getPresetDisplayName(p.id, p.name);
       return `
         <div class="mp-profile-item ${isChecked ? 'selected' : ''}" data-id="${p.id}">
           <input type="checkbox" class="mp-item-chk" ${isChecked ? 'checked' : ''} data-id="${p.id}">
           <div class="mp-item-icon">${getProfileDocIconSvg(p.type, p.color)}</div>
           <div class="mp-item-info">
-            <span class="mp-item-name">${p.name}</span>
+            <span class="mp-item-name">${displayName}</span>
           </div>
         </div>
       `;
@@ -5223,7 +7865,7 @@
   function applyMultiProfiles() {
     const checkedChks = Array.from(document.querySelectorAll('.mp-item-chk:checked'));
     if (checkedChks.length === 0) {
-      alert('Please select at least one profile.');
+      alert(currentLang === 'ar' ? 'يرجى تحديد قالب واحد على الأقل.' : 'Please select at least one profile.');
       return;
     }
 
@@ -5254,7 +7896,8 @@
       if (currentMediaType === 'audio') firstName = AUDIO_PRESETS[firstKey]?.name || firstKey;
       else if (currentMediaType === 'video') firstName = VIDEO_PRESETS[firstKey]?.name || firstKey;
 
-      currentPresetName = `${firstName} (+${checkedIds.length - 1} Profiles)`;
+      const suffix = currentLang === 'ar' ? ` (+${checkedIds.length - 1} قوالب)` : ` (+${checkedIds.length - 1} Profiles)`;
+      currentPresetName = `${firstName}${suffix}`;
       updatePresetDisplays();
     }
 
@@ -5287,8 +7930,10 @@
           presetOpts = AUDIO_PRESETS[pKey] || {};
           pName = presetOpts.name || pKey;
         } else if (currentMediaType === 'video') {
-          presetOpts = VIDEO_PRESETS[pKey] || {};
-          pName = presetOpts.name || pKey;
+          {
+            presetOpts = VIDEO_PRESETS[pKey] || {};
+            pName = presetOpts.name || pKey;
+          }
         } else if (currentMediaType === 'picture') {
           presetOpts = PICTURE_PRESETS[pKey] || {};
           pName = presetOpts.name || pKey;
@@ -5297,7 +7942,7 @@
         }
 
         const isCsoInput = file.path.toLowerCase().endsWith('.cso');
-        const outputExt = currentFormatTool === 'disc_iso_cso' ? (isCsoInput ? '.iso' : '.cso') : (def.ext || '.mp4');
+        const outputExt = currentFormatTool === 'disc_iso_cso' ? (isCsoInput ? '.iso' : '.cso') : (currentFormatOptions.outputExt || def.ext || '.mp4');
 
         const taskOptions = {
           ...currentFormatOptions,
@@ -5314,11 +7959,16 @@
           divide: file.divide,
         };
 
+        let displayName = getToolName(currentFormatTool);
+        if (def.multiFormats && currentFormatOptions.outputExt) {
+          displayName = `-> ${currentFormatOptions.outputExt.replace('.', '').toUpperCase()}`;
+        }
+
         addTask({
           type: currentFormatTool,
           input: file.path,
           options: taskOptions,
-          name: getToolName(currentFormatTool) + (profilesToCreate.length > 1 ? ` [${pName}]` : ''),
+          name: displayName + (profilesToCreate.length > 1 ? ` [${pName}]` : ''),
         });
       });
     });
@@ -5457,22 +8107,6 @@
       es: { title: 'Word a PDF — Convertir DOCX a PDF', sub: 'Convertir documentos Word DOCX a formato PDF con máxima fidelidad' },
       tr: { title: 'Word\'den PDF\'e — DOCX\'i PDF Yap', sub: 'Word belgelerini yüksek kaliteli ve güvenli PDF dosyalarına dönüştürün' },
     },
-    d_pdf_encrypt: {
-      icon: '🔒', ext: '.pdf', filters: [{ name: 'PDF Documents', extensions: ['pdf'] }],
-      ar: { title: 'PDF Protect — تشفير وحماية PDF', sub: 'تأمين ملفات الـ PDF بكلمات مرور وصلاحيات طباعة ونسخ' },
-      en: { title: 'PDF Protect — Encrypt & Secure PDF', sub: 'Secure PDF files with open passwords and print/copy permission locks' },
-      fr: { title: 'Protéger PDF — Chiffrer & Verrouiller', sub: 'Sécuriser les PDF avec mot de passe et restriction d\'impression' },
-      es: { title: 'Proteger PDF — Cifrar y Proteger', sub: 'Asegurar archivos PDF con contraseñas y permisos de copia e impresión' },
-      tr: { title: 'PDF Şifrele — Güvenlik ve Korumalar', sub: 'PDF dosyalarını şifreleyin, yazdırma ve kopyalama kısıtlamaları ekleyin' },
-    },
-    d_pdf_decrypt: {
-      icon: '🔓', ext: '.pdf', filters: [{ name: 'PDF Documents', extensions: ['pdf'] }],
-      ar: { title: 'PDF Decrypt — فك تشفير PDF', sub: 'إزالة كلمات المرور والقيود من ملفات PDF' },
-      en: { title: 'PDF Decrypt — Unlock & Remove Protection', sub: 'Remove known passwords and permissions restrictions from PDF' },
-      fr: { title: 'Déverrouiller PDF — Supprimer protection', sub: 'Supprimer les mots de passe et restrictions d\'un document PDF' },
-      es: { title: 'Desbloquear PDF — Quitar contraseñas', sub: 'Eliminar contraseñas conocidas y restricciones de edición en PDF' },
-      tr: { title: 'PDF Kilidini Aç — Korumayı Kaldır', sub: 'Bilinen şifreleri ve izin kısıtlamalarını PDF belgesinden kaldırın' },
-    },
     d_epub: {
       icon: '📚', ext: '.epub', filters: [{ name: 'E-Books & Text', extensions: ['txt','pdf','mobi','html'] }],
       ar: { title: 'E-Book to EPUB — تحويل لكتب EPUB', sub: 'التحويل لصيغة الكتب الإلكترونية EPUB المتوافقة مع جميع القارئات' },
@@ -5505,6 +8139,22 @@
       es: { title: 'FFZip — Comprimir y Archivar', sub: 'Crear archivos ZIP altamente comprimidos y protegidos con contraseña' },
       tr: { title: 'FFZip — Dosya Arşivleme ve Sıkıştırma', sub: 'Yüksek sıkıştırmalı ve şifre korumalı ZIP arşivleri oluşturun' },
     },
+    d_pdf_decrypt: {
+      icon: '🔓', ext: '.pdf', filters: [{ name: 'PDF Documents', extensions: ['pdf'] }],
+      ar: { title: 'Decrypt PDF — فك تشفير وحماية PDF', sub: 'إزالة كلمات المرور والقيود من ملفات الـ PDF المحمية' },
+      en: { title: 'Decrypt PDF — Unlock Protected PDF', sub: 'Remove passwords and permissions restrictions from protected PDF files' },
+      fr: { title: 'Déverrouiller PDF — Retirer la protection', sub: 'Supprimer les mots de passe et restrictions des fichiers PDF' },
+      es: { title: 'Descifrar PDF — Desbloquear PDF', sub: 'Eliminar contraseñas y restricciones de archivos PDF protegidos' },
+      tr: { title: 'PDF Şifresi Çöz — PDF Kilidini Aç', sub: 'Korumalı PDF dosyalarından parolaları ve izin kısıtlamalarını kaldırın' },
+    },
+    d_pdf_encrypt: {
+      icon: '🔒', ext: '.pdf', filters: [{ name: 'PDF Documents', extensions: ['pdf'] }],
+      ar: { title: 'Encrypt PDF — تشفير وحماية PDF', sub: 'تأمين مستندات الـ PDF بكلمة مرور وتشفير قوي لمنع النسخ أو التعديل' },
+      en: { title: 'Encrypt PDF — Protect & Secure PDF', sub: 'Secure PDF files with strong password encryption and permission controls' },
+      fr: { title: 'Chiffrer PDF — Protéger par mot de passe', sub: 'Sécuriser vos PDF avec mot de passe et restriction de copie' },
+      es: { title: 'Cifrar PDF — Proteger con contraseña', sub: 'Asegurar documentos PDF con cifrado de contraseña y control de permisos' },
+      tr: { title: 'PDF Şifrele — PDF Güvenliği', sub: 'PDF dosyalarınızı güçlü şifreleme ve izin kontrolleriyle koruyun' },
+    },
   };
 
   function getDocMeta(toolType, lang) {
@@ -5529,12 +8179,24 @@
 
     document.getElementById('doc-btn-add-files')?.addEventListener('click', promptAddFilesToDocTask);
     document.getElementById('doc-btn-add-folder')?.addEventListener('click', promptAddFolderToDocTask);
+    document.getElementById('doc-center-add-files')?.addEventListener('click', promptAddFilesToDocTask);
     document.getElementById('doc-empty-add-btn')?.addEventListener('click', promptAddFilesToDocTask);
 
     document.getElementById('doc-btn-move-up')?.addEventListener('click', () => moveSelectedDocFile(-1));
     document.getElementById('doc-btn-move-down')?.addEventListener('click', () => moveSelectedDocFile(1));
     document.getElementById('doc-btn-remove')?.addEventListener('click', removeSelectedDocFile);
     document.getElementById('doc-btn-clear')?.addEventListener('click', clearDocFiles);
+
+    // Subtabs
+    document.getElementById('doc-tab-files')?.addEventListener('click', () => switchDocSubtab('files'));
+    document.getElementById('doc-tab-preview')?.addEventListener('click', () => switchDocSubtab('preview'));
+    document.getElementById('doc-tab-mediainfo')?.addEventListener('click', () => switchDocSubtab('mediainfo'));
+
+    // Checkbox select all
+    document.getElementById('doc-chk-select-all')?.addEventListener('change', (e) => {
+      const chk = e.target.checked;
+      document.querySelectorAll('.doc-row-chk').forEach(c => c.checked = chk);
+    });
 
     document.getElementById('doc-btn-browse-out')?.addEventListener('click', async () => {
       const folder = await window.api.selectOutputFolder();
@@ -5551,6 +8213,71 @@
     document.getElementById('doc-btn-confirm')?.addEventListener('click', confirmDocumentTask);
   }
 
+  function switchDocSubtab(tabName) {
+    ['files', 'preview', 'mediainfo'].forEach(t => {
+      const btn = document.getElementById(`doc-tab-${t}`);
+      const view = document.getElementById(`doc-view-${t}`);
+      if (t === tabName) {
+        btn?.classList.add('active');
+        view?.classList.remove('hidden');
+        view?.classList.add('active');
+      } else {
+        btn?.classList.remove('active');
+        view?.classList.add('hidden');
+        view?.classList.remove('active');
+      }
+    });
+
+    if (tabName === 'preview') {
+      updateDocPreview();
+    } else if (tabName === 'mediainfo') {
+      updateDocMediaInfo();
+    }
+  }
+
+  function updateDocPreview() {
+    const box = document.getElementById('doc-preview-box');
+    if (!box) return;
+    const b = I18N[currentLang] || I18N.ar;
+    if (selectedDocFileIndex >= 0 && docTaskFiles[selectedDocFileIndex]) {
+      const file = docTaskFiles[selectedDocFileIndex];
+      box.innerHTML = `
+        <div style="padding: 20px; background: rgba(255,255,255,0.03); border-radius: 8px; border: 1px solid var(--border-subtle); max-width: 600px; margin: 0 auto; text-align: left; direction: ltr;">
+          <div style="font-size: 28px; margin-bottom: 12px; text-align: center;">📄</div>
+          <div style="font-weight: 700; font-size: 15px; color: #f8fafc; margin-bottom: 8px; word-break: break-all;">${file.name}</div>
+          <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 4px;">Path: <span style="color: #cbd5e1;">${file.path}</span></div>
+          <div style="font-size: 12.5px; color: #94a3b8; margin-bottom: 4px;">Size: <span style="color: #cbd5e1;">${file.size}</span></div>
+          <div style="font-size: 12.5px; color: #94a3b8;">Target Tool: <span style="color: #38bdf8;">${currentDocTool || 'Document Conversion'}</span></div>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `<p style="color:var(--text-muted);font-size:13px;">${b.doc_preview_hint || 'اختر ملفاً من القائمة لمعاينته هنا'}</p>`;
+    }
+  }
+
+  function updateDocMediaInfo() {
+    const box = document.getElementById('doc-mediainfo-box');
+    if (!box) return;
+    const b = I18N[currentLang] || I18N.ar;
+    if (selectedDocFileIndex >= 0 && docTaskFiles[selectedDocFileIndex]) {
+      const file = docTaskFiles[selectedDocFileIndex];
+      const ext = file.name.split('.').pop().toUpperCase();
+      box.innerHTML = `
+        <div style="padding: 16px 24px; text-align: left; direction: ltr; font-family: monospace; font-size: 13px; line-height: 1.8; color: #cbd5e1;">
+          <div style="color: #38bdf8; font-weight: bold; margin-bottom: 8px;">=== Document Metadata ===</div>
+          <div>File Name    : ${file.name}</div>
+          <div>File Extension: ${ext}</div>
+          <div>Full Path    : ${file.path}</div>
+          <div>Size Estimate: ${file.size}</div>
+          <div>Status       : ${file.status}</div>
+          <div style="margin-top: 8px; color: #10b981;">✓ Ready for conversion engine</div>
+        </div>
+      `;
+    } else {
+      box.innerHTML = `<p style="color:var(--text-muted);text-align:center;padding:24px;">${b.doc_info_hint || 'حدد ملفاً لعرض تفاصيل التنسيق ومعدل الضغط والصفحات...'}</p>`;
+    }
+  }
+
   function openDocumentTaskModal(toolType) {
     currentDocTool = toolType;
     docTaskFiles = [];
@@ -5559,8 +8286,9 @@
     const modal = document.getElementById('document-task-modal');
     const outInput = document.getElementById('doc-output-dir-input');
 
-    if (outInput) outInput.value = settings.outputDir || 'C:\\Users\\Mohamed Fahmi\\Desktop\\FLoutput';
+    if (outInput) outInput.value = settings.outputDir || 'D:\\FLoutput';
 
+    switchDocSubtab('files');
     updateDocModalLanguage();
     renderDocFilesTable();
 
@@ -5569,16 +8297,30 @@
 
   function updateDocModalLanguage() {
     if (!currentDocTool) return;
+    const b = I18N[currentLang] || I18N.ar;
     const meta = getDocMeta(currentDocTool, currentLang);
     const titleEl = document.getElementById('doc-window-title');
     const subtitleEl = document.getElementById('doc-tool-subtitle');
     const iconEl = document.getElementById('doc-window-icon');
+    const badgeTextEl = document.getElementById('doc-badge-text');
+    const badgeBox = document.getElementById('doc-category-badge');
 
+    if (badgeBox) {
+      badgeBox.style.borderColor = '#ef4444';
+      badgeBox.style.background = 'linear-gradient(135deg, rgba(239, 68, 68, 0.28), rgba(15, 23, 42, 0.95))';
+      badgeBox.style.boxShadow = '0 0 16px rgba(239, 68, 68, 0.4)';
+    }
     if (titleEl) titleEl.innerHTML = `<bdi>${meta.title}</bdi>`;
     if (subtitleEl) subtitleEl.innerHTML = `<bdi>${meta.sub}</bdi>`;
     if (iconEl) iconEl.textContent = meta.icon;
+    if (badgeTextEl) {
+      badgeTextEl.style.color = '#ffffff';
+      badgeTextEl.style.display = 'block';
+      badgeTextEl.style.visibility = 'visible';
+      badgeTextEl.style.opacity = '1';
+      badgeTextEl.textContent = b.badge_document || (currentLang === 'ar' ? 'وثيقة' : 'Document');
+    }
 
-    renderDocConfigPanel(currentDocTool);
     if (docTaskFiles.length === 0) {
       renderDocFilesTable();
     }
@@ -5589,145 +8331,6 @@
     if (modal) modal.classList.add('hidden');
     docTaskFiles = [];
     currentDocTool = null;
-  }
-
-  function renderDocConfigPanel(toolType) {
-    const panel = document.getElementById('doc-tool-config-panel');
-    if (!panel) return;
-    const b = I18N[currentLang] || I18N.ar;
-
-    if (toolType === 'd_pdf_join') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <label class="opt-check"><input type="checkbox" id="doc-chk-autocompress" checked> <span>${b.doc_opt_autocompress || 'Auto-compress output'}</span></label>
-          <label class="opt-check"><input type="checkbox" id="doc-chk-bookmarks" checked> <span>${b.doc_opt_bookmarks || 'Preserve bookmarks'}</span></label>
-        </div>`;
-    } else if (toolType === 'd_pdf_compress') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_compress_level || 'Compression:'}</label>
-            <select id="doc-opt-compress-level">
-              <option value="balanced" selected>${b.doc_opt_compress_balanced || 'Balanced — 150 DPI'}</option>
-              <option value="high">${b.doc_opt_compress_high || 'High Quality — 300 DPI'}</option>
-              <option value="extreme">${b.doc_opt_compress_extreme || 'Max Compression — 72 DPI'}</option>
-            </select>
-          </div>
-          <div class="doc-config-item">
-            <label class="opt-check"><input type="checkbox" id="doc-chk-del-fonts" checked> <span>${b.doc_opt_del_fonts || 'Remove unused duplicate fonts'}</span></label>
-          </div>
-        </div>`;
-    } else if (toolType === 'd_pdf_pic') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_pic_format || 'Image Format:'}</label>
-            <select id="doc-opt-pic-format">
-              <option value="png" selected>PNG</option>
-              <option value="jpg">JPG</option>
-              <option value="webp">WebP</option>
-            </select>
-          </div>
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_pic_dpi || 'DPI:'}</label>
-            <select id="doc-opt-pic-dpi">
-              <option value="150" selected>150 DPI</option>
-              <option value="300">300 DPI</option>
-              <option value="72">72 DPI</option>
-            </select>
-          </div>
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_pic_mode || 'Mode:'}</label>
-            <select id="doc-opt-pic-mode">
-              <option value="pages" selected>${b.doc_opt_mode_pages || 'Each page as full image'}</option>
-              <option value="embedded">${b.doc_opt_mode_embedded || 'Embedded images only'}</option>
-            </select>
-          </div>
-        </div>`;
-    } else if (toolType === 'd_pic_pdf') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_page_size || 'Page Size:'}</label>
-            <select id="doc-opt-page-size">
-              <option value="a4" selected>A4</option>
-              <option value="fit">${b.doc_opt_orient_auto || 'Auto'}</option>
-              <option value="letter">US Letter</option>
-            </select>
-          </div>
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_orientation || 'Orientation:'}</label>
-            <select id="doc-opt-orientation">
-              <option value="auto" selected>${b.doc_opt_orient_auto || 'Auto'}</option>
-              <option value="portrait">${b.doc_opt_orient_portrait || 'Portrait'}</option>
-              <option value="landscape">${b.doc_opt_orient_landscape || 'Landscape'}</option>
-            </select>
-          </div>
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_margins || 'Margins:'}</label>
-            <select id="doc-opt-margins">
-              <option value="none" selected>${b.doc_opt_margin_none || 'No margins'}</option>
-              <option value="small">${b.doc_opt_margin_small || 'Small margins (10mm)'}</option>
-            </select>
-          </div>
-        </div>`;
-    } else if (toolType === 'd_pdf_encrypt') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_pwd_open || 'Open Password:'}</label>
-            <input type="password" id="doc-opt-pwd-open" placeholder="••••••••">
-          </div>
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_pwd_owner || 'Owner Password:'}</label>
-            <input type="password" id="doc-opt-pwd-owner" placeholder="••••••••">
-          </div>
-        </div>
-        <div class="doc-config-row" style="margin-top:6px;">
-          <label class="opt-check"><input type="checkbox" id="doc-chk-perm-print" checked> <span>${b.doc_opt_perm_print || 'Allow printing'}</span></label>
-          <label class="opt-check"><input type="checkbox" id="doc-chk-perm-copy" checked> <span>${b.doc_opt_perm_copy || 'Allow copying'}</span></label>
-        </div>`;
-    } else if (toolType === 'd_pdf_decrypt') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_decrypt_pwd || 'Current Password:'}</label>
-            <input type="password" id="doc-opt-decrypt-pwd" placeholder="••••••••">
-          </div>
-        </div>`;
-    } else if (toolType === 'd_pdf_docx' || toolType === 'd_pdf_excel' || toolType === 'd_pdf_text') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_range || 'Page Range:'}</label>
-            <input type="text" id="doc-opt-range" placeholder="${b.doc_range_placeholder || '1-5, 8'}">
-          </div>
-          <div class="doc-config-item">
-            <label class="opt-check"><input type="checkbox" id="doc-chk-ocr" checked> <span>${b.doc_opt_ocr || 'Preserve formatting'}</span></label>
-          </div>
-        </div>`;
-    } else if (toolType === 'd_ffzip') {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_zip_level || 'Compression:'}</label>
-            <select id="doc-opt-zip-level">
-              <option value="normal" selected>${b.doc_opt_zip_normal || 'Normal'}</option>
-              <option value="maximum">${b.doc_opt_zip_max || 'Maximum'}</option>
-              <option value="fast">${b.doc_opt_zip_fast || 'Fast'}</option>
-            </select>
-          </div>
-          <div class="doc-config-item">
-            <label>${b.doc_lbl_zip_pwd || 'Password:'}</label>
-            <input type="password" id="doc-opt-zip-pwd" placeholder="${b.doc_zip_pwd_placeholder || ''}">
-          </div>
-        </div>`;
-    } else {
-      panel.innerHTML = `
-        <div class="doc-config-row">
-          <span style="font-size:12.5px; color:var(--text-secondary);">${b.doc_banner_default || ''}</span>
-        </div>`;
-    }
   }
 
   async function promptAddFilesToDocTask() {
@@ -5803,14 +8406,18 @@
   }
 
   function renderDocFilesTable() {
+    const emptyState = document.getElementById('doc-empty-state');
+    const tableContainer = document.getElementById('doc-table-container');
     const tbody = document.getElementById('doc-files-tbody');
     if (!tbody) return;
     const b = I18N[currentLang] || I18N.ar;
 
     if (docTaskFiles.length === 0) {
+      if (emptyState) emptyState.classList.remove('hidden');
+      if (tableContainer) tableContainer.classList.add('hidden');
       tbody.innerHTML = `
         <tr class="empty-row">
-          <td colspan="6" style="text-align: center; padding: 22px 16px; border: none; background: transparent;">
+          <td colspan="6" style="text-align: center; padding: 28px 16px; border: none; background: transparent;">
             <div class="format-empty-state" style="padding: 4px 0;">
               <div class="big-add-files-btn" id="doc-empty-add-btn">
                 <div class="big-add-icon">
@@ -5821,23 +8428,32 @@
                     <line x1="9" y1="15" x2="15" y2="15"/>
                   </svg>
                 </div>
-                <span class="big-add-label" id="doc-empty-add-label">${b.btn_add_files || 'Add Files'}</span>
+                <span class="big-add-label">${b.btn_add_files || 'Add Files'}</span>
               </div>
-              <span class="ft-drag-hint" id="doc-empty-drag-hint">${b.doc_empty_hint || 'Drag files here or choose a tool from the left'}</span>
+              <span class="ft-drag-hint">${b.doc_empty_hint || 'Drag files here or click Add Files'}</span>
             </div>
           </td>
-        </tr>`;
+        </tr>
+      `;
       document.getElementById('doc-empty-add-btn')?.addEventListener('click', promptAddFilesToDocTask);
       return;
     }
 
+    if (emptyState) emptyState.classList.add('hidden');
+    if (tableContainer) tableContainer.classList.remove('hidden');
+
     tbody.innerHTML = docTaskFiles.map((f, idx) => `
       <tr class="${idx === selectedDocFileIndex ? 'selected' : ''}" data-index="${idx}">
+        <td style="text-align:center;"><input type="checkbox" class="doc-row-chk" checked></td>
         <td style="text-align:center; color:var(--text-muted);">${idx + 1}</td>
-        <td style="font-weight:600; color:var(--text-primary);">${f.name}</td>
-        <td style="color:var(--text-secondary);">${f.size}</td>
-        <td style="color:#38bdf8;">${f.pages}</td>
-        <td><span class="status-badge queued">${f.status}</span></td>
+        <td style="font-weight:600; color:var(--text-primary);">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span>📄</span>
+            <span style="direction:ltr; text-align:left;">${f.name}</span>
+          </div>
+        </td>
+        <td style="text-align:center; color:var(--text-secondary);">${f.size}</td>
+        <td style="text-align:center;"><span class="status-badge queued">${f.status}</span></td>
         <td style="text-align:center;">
           <button class="ft-cell-btn btn-del-doc-file" data-index="${idx}" title="${b.tb_remove || 'Remove'}">✕</button>
         </td>
@@ -5846,7 +8462,7 @@
 
     tbody.querySelectorAll('tr').forEach(row => {
       row.addEventListener('click', (e) => {
-        if (e.target.classList.contains('btn-del-doc-file')) return;
+        if (e.target.classList.contains('btn-del-doc-file') || e.target.classList.contains('doc-row-chk')) return;
         const idx = parseInt(row.dataset.index);
         selectedDocFileIndex = idx;
         renderDocFilesTable();
@@ -5865,8 +8481,9 @@
   }
 
   function confirmDocumentTask() {
+    const b = I18N[currentLang] || I18N.ar;
     if (docTaskFiles.length === 0) {
-      alert('الرجاء إضافة ملف واحد على الأقل للمتابعة');
+      alert(b.alert_no_files || 'الرجاء إضافة ملف واحد على الأقل للمتابعة');
       return;
     }
 
@@ -5875,26 +8492,16 @@
 
     const options = {
       outputDir,
-      outputExt: def.ext || '.pdf',
-      compressLevel: document.getElementById('doc-opt-compress-level')?.value,
-      picFormat: document.getElementById('doc-opt-pic-format')?.value,
-      picDpi: document.getElementById('doc-opt-pic-dpi')?.value,
-      pageSize: document.getElementById('doc-opt-page-size')?.value,
-      orientation: document.getElementById('doc-opt-orientation')?.value,
-      openPassword: document.getElementById('doc-opt-pwd-open')?.value,
-      ownerPassword: document.getElementById('doc-opt-pwd-owner')?.value,
-      decryptPassword: document.getElementById('doc-opt-decrypt-pwd')?.value,
-      range: document.getElementById('doc-opt-range')?.value,
-      zipLevel: document.getElementById('doc-opt-zip-level')?.value,
-      zipPassword: document.getElementById('doc-opt-zip-pwd')?.value,
+      outputExt: def.ext || '.pdf'
     };
 
     if (currentDocTool === 'd_pdf_join' || currentDocTool === 'd_pic_pdf' || currentDocTool === 'd_ffzip') {
+      const filesSuffix = b.lbl_files || (currentLang === 'ar' ? 'ملفات' : 'files');
       addTask({
         type: currentDocTool,
         input: docTaskFiles.map(f => f.path),
         options,
-        name: getToolName(currentDocTool) + ` (${docTaskFiles.length} ملفات)`,
+        name: `${getToolName(currentDocTool)} (${docTaskFiles.length} ${filesSuffix})`,
       });
     } else {
       docTaskFiles.forEach(file => {
@@ -6011,14 +8618,30 @@
 
   function updateDiscModalLanguage() {
     if (!currentDiscTool) return;
+    const b = I18N[currentLang] || I18N.ar;
     const meta = getDiscMeta(currentDiscTool, currentLang);
     const titleEl = document.getElementById('disc-window-title');
     const subtitleEl = document.getElementById('disc-tool-subtitle');
     const iconEl = document.getElementById('disc-window-icon');
+    const badgeTextEl = document.getElementById('disc-badge-text');
+    const badgeBox = document.getElementById('disc-category-badge');
+
+    if (badgeBox) {
+      badgeBox.style.borderColor = '#8b5cf6';
+      badgeBox.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.28), rgba(15, 23, 42, 0.95))';
+      badgeBox.style.boxShadow = '0 0 16px rgba(139, 92, 246, 0.4)';
+    }
 
     if (titleEl) titleEl.innerHTML = `<bdi>${meta.title}</bdi>`;
     if (subtitleEl) subtitleEl.innerHTML = `<bdi>${meta.sub}</bdi>`;
     if (iconEl) iconEl.textContent = meta.icon;
+    if (badgeTextEl) {
+      badgeTextEl.style.color = '#ffffff';
+      badgeTextEl.style.display = 'block';
+      badgeTextEl.style.visibility = 'visible';
+      badgeTextEl.style.opacity = '1';
+      badgeTextEl.textContent = b.badge_disc || (currentLang === 'ar' ? 'أسطوانة' : 'ROM / Disc');
+    }
 
     renderDiscConfigPanel(currentDiscTool);
   }
