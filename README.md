@@ -5,17 +5,7 @@
 <br><br>
 
 <!-- ACTION CTA BUTTONS -->
-<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
-  <img src="assets/btn_download_setup.svg" width="310" alt="Download FormaLux for Windows">
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest">
-  <img src="assets/btn_latest_release.svg" width="245" alt="FormaLux Latest Release">
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/mohammadfahmi2030/FormaLux/archive/refs/heads/main.zip">
-  <img src="assets/btn_source_code.svg" width="245" alt="FormaLux Source Code">
-</a>
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe"><img src="assets/btn_download_setup.svg" width="310" alt="Download FormaLux for Windows"></a>&nbsp;&nbsp;<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest"><img src="assets/btn_latest_release.svg" width="245" alt="FormaLux Latest Release"></a>&nbsp;&nbsp;<a href="https://github.com/mohammadfahmi2030/FormaLux/archive/refs/heads/main.zip"><img src="assets/btn_source_code.svg" width="245" alt="FormaLux Source Code"></a>
 
 <br><br>
 
@@ -131,13 +121,7 @@ FormaLux is digitally signed with an official publisher certificate issued to **
 
 <div align="center">
 
-<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
-  <img src="assets/btn_download_setup.svg" width="310" alt="Download FormaLux Setup">
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest">
-  <img src="assets/btn_latest_release.svg" width="245" alt="Releases">
-</a>
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe"><img src="assets/btn_download_setup.svg" width="310" alt="Download FormaLux Setup"></a>&nbsp;&nbsp;<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest"><img src="assets/btn_latest_release.svg" width="245" alt="Releases"></a>
 
 </div>
 
@@ -200,17 +184,7 @@ FormaLux is an independent, free and open-source project created and actively de
 <div align="center">
 
 <!-- ARABIC ACTION CTA BUTTONS -->
-<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
-  <img src="assets/btn_download_setup_ar.svg" width="310" alt="تحميل فورما لوكس لويندوز">
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest">
-  <img src="assets/btn_latest_release_ar.svg" width="245" alt="الإصدار الرسمي">
-</a>
-&nbsp;&nbsp;
-<a href="https://github.com/mohammadfahmi2030/FormaLux/archive/refs/heads/main.zip">
-  <img src="assets/btn_source_code_ar.svg" width="245" alt="الكود المصدري">
-</a>
+<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe"><img src="assets/btn_download_setup_ar.svg" width="310" alt="تحميل فورما لوكس لويندوز"></a>&nbsp;&nbsp;<a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest"><img src="assets/btn_latest_release_ar.svg" width="245" alt="الإصدار الرسمي"></a>&nbsp;&nbsp;<a href="https://github.com/mohammadfahmi2030/FormaLux/archive/refs/heads/main.zip"><img src="assets/btn_source_code_ar.svg" width="245" alt="الكود المصدري"></a>
 
 <br><br>
 

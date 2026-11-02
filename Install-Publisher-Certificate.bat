@@ -52,3 +52,4 @@ echo   3. FormaLux is now fully trusted on this system.
 echo ======================================================================
 echo.
 pause
+
