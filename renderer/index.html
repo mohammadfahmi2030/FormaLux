@@ -169,10 +169,6 @@
             <span class="menu-icon" style="color:#10b981;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
             <span class="menu-label" data-i18n="menu_check_updates">التحقق من الإصدار الجديد</span>
           </div>
-          <div class="menu-dropdown-item" id="menu-action-changelog">
-            <span class="menu-icon" style="color:#c084fc;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
-            <span class="menu-label" data-i18n="menu_changelog">تحديث السجل</span>
-          </div>
           <div class="menu-divider"></div>
           <div class="menu-dropdown-item" id="menu-action-about">
             <span class="menu-icon" style="color:#60a5fa;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
@@ -2829,6 +2825,141 @@
           <span data-i18n="menu_homepage">الموقع الرسمي</span>
         </button>
         <button class="modal-act-btn btn-confirm" id="btn-close-about-ok" style="min-width: 130px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span data-i18n="btn_ok">موافق</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= UPDATES CHECK MODAL ================= -->
+  <div class="modal-overlay hidden" id="updates-modal" style="z-index: 10035;">
+    <div class="format-task-window" style="max-width: 580px; width: 92%; height: auto; min-height: unset;">
+      <!-- Window Titlebar -->
+      <div class="format-window-titlebar">
+        <div class="format-title-left">
+          <span class="format-window-icon" style="color: #10b981;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </span>
+          <span class="format-window-title" data-i18n="updates_modal_title">التحقق من وجود تحديثات</span>
+        </div>
+        <div class="format-window-controls">
+          <button class="win-ctrl-btn win-ctrl-close" id="close-updates" title="إغلاق">×</button>
+        </div>
+      </div>
+
+      <!-- Main Body -->
+      <div class="format-main-body" style="padding: 22px 24px 18px; display: flex; flex-direction: column; gap: 16px;">
+        <!-- Hero Header -->
+        <div class="about-hero-section">
+          <div class="about-logo-wrapper">
+            <img src="icon.png" onerror="this.src='../assets/icon.png'" alt="FormaLux Icon" class="about-hero-icon">
+            <div class="about-logo-glow" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);"></div>
+          </div>
+          <div class="about-hero-text">
+            <h3 class="about-title-text" data-i18n="updates_center_title">مركز تحديثات FormaLux</h3>
+            <p class="about-tagline-text" id="updates-current-version-label">الإصدار المثبت حالياً: v1.0.0</p>
+          </div>
+        </div>
+
+        <!-- Dynamic Content Card -->
+        <!-- 1. Checking State -->
+        <div id="updates-state-checking" class="update-card state-checking" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px 16px; gap: 14px; text-align: center;">
+          <div class="update-spinner"></div>
+          <div style="font-size: 14px; font-weight: 600; color: #f8fafc;" data-i18n="updates_checking_msg">جارٍ الاتصال بمستودع GitHub وفحص أحدث إصدار...</div>
+          <div style="font-size: 11.5px; color: var(--text-muted); font-family: monospace;" id="updates-checking-repo">mohammadfahmi2030/FormaLux</div>
+        </div>
+
+        <!-- 2. Up-To-Date State -->
+        <div id="updates-state-latest" class="update-card state-latest hidden" style="display: none; flex-direction: column; gap: 14px; padding: 18px 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 1.5px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 14.5px; font-weight: 700; color: #10b981;" data-i18n="updates_up_to_date">أنت تستخدم أحدث إصدار من FormaLux 👍</div>
+              <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;" data-i18n="updates_no_new">لا توجد تحديثات جديدة متوفرة حالياً، برنامجك محدث بالكامل.</div>
+            </div>
+          </div>
+          <div class="about-spec-grid" style="grid-template-columns: 1fr 1fr; margin-top: 4px;">
+            <div class="about-spec-card">
+              <div class="spec-card-icon" style="color: #38bdf8;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </div>
+              <div class="spec-card-content">
+                <span class="spec-card-label" data-i18n="updates_lbl_checked_at">وقت الفحص</span>
+                <span class="spec-card-val" id="updates-latest-time" style="font-family: monospace;">الآن</span>
+              </div>
+            </div>
+            <div class="about-spec-card">
+              <div class="spec-card-icon" style="color: #a855f7;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </div>
+              <div class="spec-card-content">
+                <span class="spec-card-label" data-i18n="opt_github_repo">المستودع</span>
+                <span class="spec-card-val" id="updates-latest-repo" style="font-family: monospace; font-size: 11px;">mohammadfahmi2030/FormaLux</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. New Update Available State -->
+        <div id="updates-state-available" class="update-card state-available hidden" style="display: none; flex-direction: column; gap: 14px; padding: 18px 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(56, 189, 248, 0.15); border: 1.5px solid rgba(56, 189, 248, 0.45); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10m0 0l-4-4m4 4l4-4"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div>
+                <div style="font-size: 15px; font-weight: 700; color: #38bdf8;" data-i18n="updates_new_found">🎉 يتوفر إصدار جديد جاهز للتحميل!</div>
+                <div style="font-size: 12.5px; color: #f8fafc; margin-top: 2px;">
+                  <span data-i18n="updates_ver_label">الإصدار الجديد:</span> <strong id="updates-avail-ver" style="color: #22c55e;">v1.0.1</strong>
+                </div>
+              </div>
+            </div>
+            <button class="modal-act-btn btn-confirm" id="updates-btn-download-now" style="padding: 8px 18px; font-size: 13px; font-weight: 700; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span data-i18n="updates_btn_download">تحميل التحديث الآن</span>
+            </button>
+          </div>
+          <!-- Release Notes Container -->
+          <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 12px 14px;">
+            <div style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;" data-i18n="updates_lbl_notes">ملاحظات ومميزات الإصدار الجديد:</div>
+            <div id="updates-avail-notes" style="font-size: 12px; color: var(--text-secondary); max-height: 140px; overflow-y: auto; white-space: pre-wrap; line-height: 1.5; font-family: inherit;">...</div>
+          </div>
+        </div>
+
+        <!-- 4. Error / Offline State -->
+        <div id="updates-state-error" class="update-card state-error hidden" style="display: none; flex-direction: column; gap: 12px; padding: 18px 20px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: rgba(239, 68, 68, 0.15); border: 1.5px solid rgba(239, 68, 68, 0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div>
+              <div style="font-size: 14px; font-weight: 700; color: #ef4444;" data-i18n="updates_err_title">تعذر التحقق من التحديثات</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;" id="updates-err-desc">يرجى التأكد من اتصالك بالإنترنت.</div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: flex-end;">
+            <button class="modal-act-btn btn-cancel" id="updates-btn-retry" style="font-size: 12px; padding: 6px 16px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              <span data-i18n="updates_btn_retry">إعادة المحاولة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons Footer -->
+      <div class="format-modal-actions" style="justify-content: space-between;">
+        <button class="modal-act-btn btn-cancel" id="updates-btn-releases-page" title="صفحة الإصدارات">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span data-i18n="updates_btn_view_releases">صفحة الإصدارات على GitHub</span>
+        </button>
+        <button class="modal-act-btn btn-confirm" id="btn-close-updates-ok" style="min-width: 120px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           <span data-i18n="btn_ok">موافق</span>
         </button>

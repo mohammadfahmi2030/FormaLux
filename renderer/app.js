@@ -494,7 +494,6 @@
       // Help Menu
       menu_homepage: 'الصفحة الرئيسية',
       menu_check_updates: 'التحقق من الإصدار الجديد',
-      menu_changelog: 'تحديث السجل',
       menu_about: 'عن FormaLux',
       // Toolbar
       tb_output_folder: 'مجلد الإخراج',
@@ -1048,6 +1047,21 @@
       t_d_epub: '→ EPub',
       t_d_mobi: '→ Mobi',
       t_d_azw3: '→ AZW3',
+      // Updates Modal
+      updates_modal_title: 'التحقق من وجود تحديثات',
+      updates_center_title: 'مركز تحديثات FormaLux',
+      updates_current_ver: 'الإصدار المثبت حالياً: {version}',
+      updates_checking_msg: 'جارٍ الاتصال بمستودع GitHub وفحص أحدث إصدار...',
+      updates_up_to_date: 'أنت تستخدم أحدث إصدار من FormaLux 👍',
+      updates_no_new: 'لا توجد تحديثات جديدة متوفرة حالياً، برنامجك محدث بالكامل.',
+      updates_lbl_checked_at: 'وقت الفحص',
+      updates_new_found: '🎉 يتوفر إصدار جديد جاهز للتحميل!',
+      updates_ver_label: 'الإصدار الجديد:',
+      updates_btn_download: 'تحميل التحديث الآن',
+      updates_lbl_notes: 'ملاحظات ومميزات الإصدار الجديد:',
+      updates_err_title: 'تعذر التحقق من التحديثات',
+      updates_btn_retry: 'إعادة المحاولة',
+      updates_btn_view_releases: 'صفحة الإصدارات على GitHub',
     },
     en: {
       dir: 'ltr',
@@ -1073,7 +1087,6 @@
       menu_reset_defaults: 'Reset to Defaults',
       menu_homepage: 'Official Homepage',
       menu_check_updates: 'Check for Updates',
-      menu_changelog: 'Changelog & Release Notes',
       menu_about: 'About FormaLux',
       tb_output_folder: 'Output Folder',
       tb_options: 'Options',
@@ -1620,6 +1633,21 @@
       t_d_epub: '→ EPub',
       t_d_mobi: '→ Mobi',
       t_d_azw3: '→ AZW3',
+      // Updates Modal
+      updates_modal_title: 'Check for Updates',
+      updates_center_title: 'FormaLux Update Center',
+      updates_current_ver: 'Currently installed: {version}',
+      updates_checking_msg: 'Connecting to GitHub repository and checking for latest release...',
+      updates_up_to_date: 'You are using the latest version of FormaLux 👍',
+      updates_no_new: 'No new updates available at this time. Your software is fully up to date.',
+      updates_lbl_checked_at: 'Checked At',
+      updates_new_found: '🎉 A new version is available for download!',
+      updates_ver_label: 'New Version:',
+      updates_btn_download: 'Download Update Now',
+      updates_lbl_notes: 'Release Notes & Highlights:',
+      updates_err_title: 'Unable to Check for Updates',
+      updates_btn_retry: 'Retry',
+      updates_btn_view_releases: 'Releases Page on GitHub',
     },
     fr: {
       dir: 'ltr',
@@ -1645,7 +1673,6 @@
       menu_reset_defaults: 'Réinitialiser',
       menu_homepage: 'Site Officiel',
       menu_check_updates: 'Mises à jour',
-      menu_changelog: 'Historique',
       menu_about: 'À propos de FormaLux',
       tb_output_folder: 'Dossier de sortie',
       tb_options: 'Options',
@@ -2168,6 +2195,21 @@
       t_d_epub: '→ EPub',
       t_d_mobi: '→ Mobi',
       t_d_azw3: '→ AZW3',
+      // Updates Modal
+      updates_modal_title: 'Vérifier les mises à jour',
+      updates_center_title: 'Centre de mises à jour FormaLux',
+      updates_current_ver: 'Version installée : {version}',
+      updates_checking_msg: 'Connexion au dépôt GitHub et vérification de la dernière version...',
+      updates_up_to_date: 'Vous utilisez la dernière version de FormaLux 👍',
+      updates_no_new: 'Aucune mise à jour disponible pour le moment. Votre logiciel est à jour.',
+      updates_lbl_checked_at: 'Vérifié à',
+      updates_new_found: '🎉 Une nouvelle version est disponible !',
+      updates_ver_label: 'Nouvelle version :',
+      updates_btn_download: 'Télécharger la mise à jour',
+      updates_lbl_notes: 'Notes de version et nouveautés :',
+      updates_err_title: 'Impossible de vérifier les mises à jour',
+      updates_btn_retry: 'Réessayer',
+      updates_btn_view_releases: 'Page des versions sur GitHub',
     },
     es: {
       dir: 'ltr',
@@ -2193,7 +2235,6 @@
       menu_reset_defaults: 'Restablecer',
       menu_homepage: 'Sitio Oficial',
       menu_check_updates: 'Buscar actualizaciones',
-      menu_changelog: 'Registro de cambios',
       menu_about: 'Acerca de FormaLux',
       tb_output_folder: 'Carpeta de salida',
       tb_options: 'Opciones',
@@ -2716,6 +2757,21 @@
       t_d_epub: '→ EPub',
       t_d_mobi: '→ Mobi',
       t_d_azw3: '→ AZW3',
+      // Updates Modal
+      updates_modal_title: 'Buscar actualizaciones',
+      updates_center_title: 'Centro de actualizaciones FormaLux',
+      updates_current_ver: 'Versión instalada: {version}',
+      updates_checking_msg: 'Conectando al repositorio de GitHub y verificando...',
+      updates_up_to_date: 'Estás usando la versión más reciente de FormaLux 👍',
+      updates_no_new: 'No hay actualizaciones disponibles en este momento. Tu aplicación está al día.',
+      updates_lbl_checked_at: 'Hora de verificación',
+      updates_new_found: '🎉 ¡Una nueva versión está disponible para descargar!',
+      updates_ver_label: 'Nueva versión:',
+      updates_btn_download: 'Descargar actualización ahora',
+      updates_lbl_notes: 'Notas de la versión y novedades:',
+      updates_err_title: 'No se pudieron verificar las actualizaciones',
+      updates_btn_retry: 'Reintentar',
+      updates_btn_view_releases: 'Página de versiones en GitHub',
     },
     tr: {
       dir: 'ltr',
@@ -2741,7 +2797,6 @@
       menu_reset_defaults: 'Varsayılana Sıfırla',
       menu_homepage: 'Resmi Web Sitesi',
       menu_check_updates: 'Güncellemeleri Denetle',
-      menu_changelog: 'Değişiklik Günlüğü',
       menu_about: 'FormaLux Hakkında',
       tb_output_folder: 'Çıktı Klasörü',
       tb_options: 'Seçenekler',
@@ -3263,6 +3318,21 @@
       t_d_epub: '→ EPub',
       t_d_mobi: '→ Mobi',
       t_d_azw3: '→ AZW3',
+      // Updates Modal
+      updates_modal_title: 'Güncellemeleri Denetle',
+      updates_center_title: 'FormaLux Güncelleme Merkezi',
+      updates_current_ver: 'Yüklü geçerli sürüm: {version}',
+      updates_checking_msg: 'GitHub deposuna bağlanılıyor ve en son sürüm denetleniyor...',
+      updates_up_to_date: 'FormaLux\'un en son sürümünü kullanıyorsunuz 👍',
+      updates_no_new: 'Şu anda yeni bir güncelleme yok. Uygulamanız tamamen güncel.',
+      updates_lbl_checked_at: 'Denetleme Zamanı',
+      updates_new_found: '🎉 İndirmek için yeni bir sürüm mevcut!',
+      updates_ver_label: 'Yeni Sürüm:',
+      updates_btn_download: 'Güncellemeyi Şimdi İndir',
+      updates_lbl_notes: 'Sürüm Notları ve Yenilikler:',
+      updates_err_title: 'Güncellemeler Denetlenemedi',
+      updates_btn_retry: 'Yeniden Dene',
+      updates_btn_view_releases: 'GitHub Sürümler Sayfası',
     }
   };
 
@@ -3691,17 +3761,14 @@
     document.getElementById('menu-action-site')?.addEventListener('click', (e) => {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       closeAllDropdowns();
-      alert('FormaLux v1.0.0 — Official Website: https://github.com/formalux');
+      const repo = settings.githubRepo || 'mohammadfahmi2030/FormaLux';
+      const url = repo.startsWith('http') ? repo : `https://github.com/${repo}`;
+      window.api.openExternalUrl(url);
     });
     document.getElementById('menu-action-updates')?.addEventListener('click', (e) => {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       closeAllDropdowns();
       triggerCheckForUpdates(true);
-    });
-    document.getElementById('menu-action-changelog')?.addEventListener('click', (e) => {
-      if (e) { e.preventDefault(); e.stopPropagation(); }
-      closeAllDropdowns();
-      alert('FormaLux v1.0.0 Changelog:\n• Initial Release\n• 56 Conversion Tools\n• Multi-Theme Engine & Multi-Language Support\n• Full FFmpeg / FFprobe Hardware Acceleration');
     });
     document.getElementById('menu-action-about')?.addEventListener('click', (e) => {
       if (e) { e.preventDefault(); e.stopPropagation(); }
@@ -4550,6 +4617,7 @@
         closeOptionsModal();
         closeToolModal();
         closeAboutModal();
+        closeUpdatesModal();
         if (isConverting) stopAllTasks();
       } else if (e.key === 'Delete') {
         if (!e.target.matches('input, textarea')) {
@@ -4605,7 +4673,23 @@
       document.getElementById('close-about')?.addEventListener('click', closeAboutModal);
       document.getElementById('btn-close-about-ok')?.addEventListener('click', closeAboutModal);
       document.getElementById('about-btn-website')?.addEventListener('click', () => {
-        alert('FormaLux v1.0.0 — Official Website: https://github.com/formalux');
+        const repo = settings.githubRepo || 'mohammadfahmi2030/FormaLux';
+        const url = repo.startsWith('http') ? repo : `https://github.com/${repo}`;
+        window.api.openExternalUrl(url);
+      });
+
+      // Updates modal
+      document.getElementById('close-updates')?.addEventListener('click', closeUpdatesModal);
+      document.getElementById('btn-close-updates-ok')?.addEventListener('click', closeUpdatesModal);
+      document.getElementById('updates-btn-retry')?.addEventListener('click', () => triggerCheckForUpdates(true));
+      document.getElementById('updates-btn-releases-page')?.addEventListener('click', () => {
+        const repo = settings.githubRepo || 'mohammadfahmi2030/FormaLux';
+        window.api.openExternalUrl(`https://github.com/${repo}/releases`);
+      });
+      document.getElementById('updates-btn-download-now')?.addEventListener('click', () => {
+        const repo = settings.githubRepo || 'mohammadfahmi2030/FormaLux';
+        const url = updateLatestDownloadUrl || `https://github.com/${repo}/releases/latest`;
+        window.api.openExternalUrl(url);
       });
 
       // Click outside to close modals
@@ -4691,36 +4775,109 @@
     updateOutputPathDisplay();
   }
 
+  let updateLatestDownloadUrl = '';
+
+  function openUpdatesModal() {
+    const modal = document.getElementById('updates-modal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+  }
+
+  function closeUpdatesModal() {
+    const modal = document.getElementById('updates-modal');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.style.display = 'none';
+    }
+  }
+
   async function triggerCheckForUpdates(manual = true) {
     const isAr = currentLang === 'ar';
+    const b = I18N[currentLang] || I18N.ar;
     const repo = settings.githubRepo || 'mohammadfahmi2030/FormaLux';
+
+    const stateChecking = document.getElementById('updates-state-checking');
+    const stateLatest = document.getElementById('updates-state-latest');
+    const stateAvailable = document.getElementById('updates-state-available');
+    const stateError = document.getElementById('updates-state-error');
+
+    const checkingRepoEl = document.getElementById('updates-checking-repo');
+    if (checkingRepoEl) checkingRepoEl.textContent = repo;
+
+    const curVerLabel = document.getElementById('updates-current-version-label');
+
+    // 1. Reset states: show checking, hide all others
+    if (stateChecking) { stateChecking.classList.remove('hidden'); stateChecking.style.display = 'flex'; }
+    if (stateLatest) { stateLatest.classList.add('hidden'); stateLatest.style.display = 'none'; }
+    if (stateAvailable) { stateAvailable.classList.add('hidden'); stateAvailable.style.display = 'none'; }
+    if (stateError) { stateError.classList.add('hidden'); stateError.style.display = 'none'; }
+
+    // If triggered manually, open modal immediately with checking spinner
+    if (manual) {
+      openUpdatesModal();
+    }
 
     try {
       const res = await window.api.checkForUpdates(repo);
+      if (curVerLabel) {
+        const curTpl = b.updates_current_ver || 'الإصدار المثبت حالياً: {version}';
+        curVerLabel.textContent = curTpl.replace('{version}', `v${res.currentVersion || '1.0.0'}`);
+      }
+
+      if (stateChecking) { stateChecking.classList.add('hidden'); stateChecking.style.display = 'none'; }
+
       if (res.hasUpdate) {
-        const title = isAr ? '🎉 يتوفر إصدار جديد من FormaLux!' : '🎉 A new version of FormaLux is available!';
-        const notes = res.releaseNotes ? (isAr ? '\n\nملاحظات الإصدار:\n' : '\n\nRelease Notes:\n') + res.releaseNotes : '';
-        const promptTxt = isAr ? '\n\nهل تريد فتح صفحة التحميل الآن؟' : '\n\nWould you like to open the download page now?';
-        const msg = `${title}\n${isAr ? 'الإصدار الحالي: ' : 'Current Version: '}v${res.currentVersion}\n${isAr ? 'الإصدار الجديد: ' : 'New Version: '}v${res.latestVersion}\n${isAr ? 'المستودع: ' : 'Repository: '}${res.repo}${notes}${promptTxt}`;
-        
-        if (confirm(msg)) {
-          window.api.openExternalUrl(res.downloadUrl || res.releaseUrl);
+        // State 3: Update Available
+        updateLatestDownloadUrl = res.downloadUrl || res.releaseUrl || `https://github.com/${repo}/releases`;
+        const availVerEl = document.getElementById('updates-avail-ver');
+        const availNotesEl = document.getElementById('updates-avail-notes');
+        if (availVerEl) availVerEl.textContent = `v${res.latestVersion || '1.0.1'}`;
+        if (availNotesEl) {
+          availNotesEl.textContent = res.releaseNotes?.trim() || (isAr ? 'تحديث جديد لتحسين الأداء وإضافة مميزات جديدة.' : 'New update with performance improvements and new features.');
+        }
+
+        if (stateAvailable) {
+          stateAvailable.classList.remove('hidden');
+          stateAvailable.style.display = 'flex';
+        }
+        if (!manual) openUpdatesModal();
+      } else if (res.status === 'error' || res.status === 'invalid_repo') {
+        // State 4: Error
+        if (manual) {
+          const errDescEl = document.getElementById('updates-err-desc');
+          if (errDescEl) errDescEl.textContent = res.message || res.error || (isAr ? 'تعذر الاتصال بـ GitHub، يرجى التأكد من اتصالك بالإنترنت.' : 'Could not connect to GitHub.');
+          if (stateError) {
+            stateError.classList.remove('hidden');
+            stateError.style.display = 'flex';
+          }
         }
       } else {
+        // State 2: Up to Date
         if (manual) {
-          if (res.status === 'error') {
-            alert(isAr ? `تعذر الاتصال بـ GitHub للتحقق من التحديثات:\n${res.error}` : `Failed to check for updates on GitHub:\n${res.error}`);
-          } else if (res.status === 'invalid_repo') {
-            alert(isAr ? `يرجى ضبط رابط مستودع GitHub في الإعدادات:\n${res.message}` : `Please configure GitHub repository in Settings:\n${res.message}`);
-          } else if (res.status === 'no_release_yet') {
-            alert(isAr ? `أنت تستخدم أحدث إصدار من FormaLux (v${res.currentVersion}) 👍\nالمستودع: ${res.repo}\n(لم تُنشر إصدارات Releases أحدث على GitHub بعد)` : `You are using the latest version of FormaLux (v${res.currentVersion}) 👍\nRepository: ${res.repo}\n(No newer releases published on GitHub yet)`);
-          } else {
-            alert(isAr ? `أنت تستخدم أحدث إصدار من FormaLux (v${res.currentVersion}) 👍\nلا توجد تحديثات جديدة حالياً.` : `You are using the latest version of FormaLux (v${res.currentVersion}) 👍\nNo updates available.`);
+          const timeEl = document.getElementById('updates-latest-time');
+          const repoEl = document.getElementById('updates-latest-repo');
+          if (timeEl) {
+            const now = new Date();
+            timeEl.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          }
+          if (repoEl) repoEl.textContent = repo;
+          if (stateLatest) {
+            stateLatest.classList.remove('hidden');
+            stateLatest.style.display = 'flex';
           }
         }
       }
     } catch (e) {
-      if (manual) alert(isAr ? `خطأ أثناء التحقق من التحديثات: ${e.message}` : `Update check error: ${e.message}`);
+      if (stateChecking) { stateChecking.classList.add('hidden'); stateChecking.style.display = 'none'; }
+      if (manual) {
+        const errDescEl = document.getElementById('updates-err-desc');
+        if (errDescEl) errDescEl.textContent = e.message || (isAr ? 'تعذر الاتصال بخادم التحديثات.' : 'Failed to reach updates server.');
+        if (stateError) {
+          stateError.classList.remove('hidden');
+          stateError.style.display = 'flex';
+        }
+      }
     }
   }
 

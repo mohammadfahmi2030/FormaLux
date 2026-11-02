@@ -6614,3 +6614,43 @@ html[dir="ltr"] .vmux-studio-slider {
   box-shadow: 0 4px 18px rgba(239, 68, 68, 0.45);
   transform: translateY(-1px);
 }
+
+/* =========================================================
+   UPDATES CHECK MODAL STYLING
+   ========================================================= */
+.update-card {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.update-card.state-checking {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.6) 100%);
+}
+
+.update-card.state-latest {
+  border-color: rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(15, 23, 42, 0.65) 100%);
+}
+
+.update-card.state-available {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+
+.update-card.state-error {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.06) 0%, rgba(15, 23, 42, 0.65) 100%);
+}
+
+.update-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3.5px solid rgba(56, 189, 248, 0.18);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: haSpin 0.85s linear infinite;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+}
