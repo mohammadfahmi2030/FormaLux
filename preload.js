@@ -48,6 +48,8 @@ contextBridge.exposeInMainWorld('api', {
   getSystemInfo: () => ipcRenderer.invoke('get-system-info'),
   shutdownSystem: (delaySec) => ipcRenderer.invoke('shutdown-system', delaySec),
   cancelShutdown: () => ipcRenderer.invoke('cancel-shutdown'),
+  focusWindow: () => ipcRenderer.invoke('focus-window'),
+  notifyTaskComplete: (data) => ipcRenderer.invoke('notify-task-complete', data),
   getDiscDrives: () => ipcRenderer.invoke('get-disc-drives'),
   getDriveFreeSpace: (path) => ipcRenderer.invoke('get-drive-free-space', path),
   ejectDiscDrive: (drive) => ipcRenderer.invoke('eject-disc-drive', drive),

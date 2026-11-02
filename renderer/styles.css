@@ -6333,18 +6333,23 @@ html[dir="ltr"] .vmux-studio-slider {
    ========================================================================== */
 .in-app-notify-window {
   position: fixed;
-  bottom: 38px;
+  bottom: 44px;
   right: 24px;
-  z-index: 99999;
+  z-index: 999999;
   width: 360px;
   max-width: calc(100vw - 48px);
   animation: notifySlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: auto;
+}
+
+.in-app-notify-window.hidden {
+  display: none !important;
 }
 
 [dir="rtl"] .in-app-notify-window {
-  right: auto;
-  left: 24px;
+  right: 24px;
+  left: auto;
 }
 
 @keyframes notifySlideIn {

@@ -129,11 +129,12 @@ function loadSettings() {
   if (!appSettings.outputToSameFolder) appSettings.outputToSameFolder = false;
   if (!appSettings.outputToSubFolder) appSettings.outputToSubFolder = false;
   if (!appSettings.appendSettings) appSettings.appendSettings = false;
-  if (!appSettings.shutdownAfter) appSettings.shutdownAfter = false;
-  if (!appSettings.openFolderAfter) appSettings.openFolderAfter = false;
-  if (!appSettings.soundGeneral) appSettings.soundGeneral = false;
-  if (!appSettings.soundComplete) appSettings.soundComplete = false;
-  if (!appSettings.soundFail) appSettings.soundFail = true;
+  if (appSettings.shutdownAfter === undefined) appSettings.shutdownAfter = false;
+  if (appSettings.openFolderAfter === undefined) appSettings.openFolderAfter = false;
+  if (appSettings.soundGeneral === undefined) appSettings.soundGeneral = false;
+  if (appSettings.soundComplete === undefined) appSettings.soundComplete = true;
+  if (appSettings.soundFail === undefined) appSettings.soundFail = true;
+  if (appSettings.notifyComplete === undefined) appSettings.notifyComplete = true;
   if (!appSettings.addToContextMenu) appSettings.addToContextMenu = true;
   if (!appSettings.checkUpdates) appSettings.checkUpdates = true;
   if (!appSettings.minimizeToTray) appSettings.minimizeToTray = false;
@@ -1450,7 +1451,16 @@ ipcMain.handle('shutdown-system', (event, delaySec = 30) => {
   try {
     const sec = Math.max(0, parseInt(delaySec, 10) || 30);
     const { exec } = require('child_process');
-    exec(`shutdown /s /t ${sec} /c "FormaLux: All conversion tasks completed"`);
+    // First abort any previous scheduled shutdown to prevent error 1190
+    exec('shutdown /a', () => {
+      exec(`shutdown /s /f /t ${sec} /c "FormaLux: All conversion tasks completed"`, (err, stdout, stderr) => {
+        if (err) {
+          console.error('[System] Shutdown command failed:', err, stderr);
+        } else {
+          console.log(`[System] Shutdown scheduled in ${sec} seconds`);
+        }
+      });
+    });
     return { success: true };
   } catch (err) {
     console.error('[System] Shutdown error:', err);
@@ -1461,10 +1471,59 @@ ipcMain.handle('shutdown-system', (event, delaySec = 30) => {
 ipcMain.handle('cancel-shutdown', () => {
   try {
     const { exec } = require('child_process');
-    exec('shutdown /a');
+    exec('shutdown /a', (err, stdout, stderr) => {
+      if (err) {
+        console.warn('[System] Cancel shutdown info:', err.message);
+      } else {
+        console.log('[System] Shutdown cancelled successfully');
+      }
+    });
     return { success: true };
   } catch (err) {
     console.error('[System] Cancel shutdown error:', err);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('focus-window', () => {
+  try {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.show();
+      mainWindow.focus();
+      mainWindow.flashFrame(true);
+    }
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('notify-task-complete', (event, data = {}) => {
+  try {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) mainWindow.restore();
+      mainWindow.flashFrame(true);
+    }
+    const { Notification } = require('electron');
+    if (Notification && Notification.isSupported()) {
+      const notif = new Notification({
+        title: data.title || 'FormaLux',
+        body: data.message || 'All conversion tasks completed successfully!',
+        icon: path.join(__dirname, 'assets', 'icon.png'),
+        silent: true
+      });
+      notif.show();
+      notif.on('click', () => {
+        if (mainWindow) {
+          if (mainWindow.isMinimized()) mainWindow.restore();
+          mainWindow.show();
+          mainWindow.focus();
+        }
+      });
+    }
+    return { success: true };
+  } catch (err) {
     return { success: false, error: err.message };
   }
 });

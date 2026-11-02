@@ -4237,13 +4237,13 @@
     const failedCount = queuedTasks.filter(t => t.status === 'failed').length;
 
     // 1. Sound Alerts
-    if (completedCount > 0 && settings.soundComplete) {
+    if (completedCount > 0 && settings.soundComplete !== false) {
       playAudioAlert('success');
     } else if (failedCount > 0 && settings.soundFail !== false) {
       playAudioAlert('fail');
     }
 
-    // 2. In-App Notification Window
+    // 2. In-App Notification Window & Native System Toast
     const shouldNotify = (document.getElementById('chk-notify')?.checked || settings.notifyComplete !== false);
     if (shouldNotify && (completedCount > 0 || failedCount > 0)) {
       showCompletionNotification(elapsedStr, completedCount || queuedTasks.length);
@@ -4255,7 +4255,7 @@
     }
 
     // 4. Shutdown PC if enabled and tasks completed
-    const shouldShutdown = (document.getElementById('chk-shutdown')?.checked || settings.shutdownAfter);
+    const shouldShutdown = (document.getElementById('chk-shutdown')?.checked || !!settings.shutdownAfter);
     if (shouldShutdown && completedCount > 0) {
       startShutdownCountdown();
     }
@@ -4324,15 +4324,30 @@
   let notifyDismissTimeout = null;
 
   function showCompletionNotification(elapsedStr, count) {
+    const b = I18N[currentLang] || I18N.ar;
     const notifyEl = document.getElementById('app-complete-notify');
-    if (!notifyEl) return;
+
+    // 1. Always trigger native OS notification and taskbar flash
+    if (window.api?.notifyTaskComplete) {
+      const title = b.notify_title || 'اكتمل التحويل';
+      const msg = b.notify_all_completed || 'اكتملت جميع عمليات التحويل بنجاح!';
+      window.api.notifyTaskComplete({
+        title: `FormaLux - ${title}`,
+        message: `${msg} (${b.notify_elapsed || 'الوقت:'} ${elapsedStr})`,
+        elapsed: elapsedStr
+      });
+    }
+
+    if (!notifyEl) {
+      console.warn('app-complete-notify element missing from DOM');
+      return;
+    }
 
     if (notifyDismissTimeout) {
       clearTimeout(notifyDismissTimeout);
       notifyDismissTimeout = null;
     }
 
-    const b = I18N[currentLang] || I18N.ar;
     const elapsedValEl = document.getElementById('notify-elapsed-val');
     const tasksCountEl = document.getElementById('notify-tasks-count');
     const mainTextEl = document.getElementById('notify-main-text');
@@ -4345,10 +4360,11 @@
     if (mainTextEl) mainTextEl.textContent = b.notify_all_completed || 'All conversions completed successfully!';
 
     notifyEl.classList.remove('hidden', 'hiding');
+    notifyEl.style.display = 'block';
 
     notifyDismissTimeout = setTimeout(() => {
       closeCompletionNotification();
-    }, 12000);
+    }, 15000);
   }
 
   function closeCompletionNotification() {
@@ -4358,6 +4374,7 @@
     setTimeout(() => {
       notifyEl.classList.add('hidden');
       notifyEl.classList.remove('hiding');
+      notifyEl.style.display = 'none';
     }, 280);
     if (notifyDismissTimeout) {
       clearTimeout(notifyDismissTimeout);
@@ -4369,16 +4386,24 @@
   let shutdownSecondsRemaining = 30;
 
   function startShutdownCountdown() {
-    const overlay = document.getElementById('app-shutdown-overlay');
-    const timerDisplay = document.getElementById('shutdown-timer-display');
-    if (!overlay) return;
-
-    shutdownSecondsRemaining = 30;
-    if (timerDisplay) timerDisplay.textContent = '00:30';
-    overlay.classList.remove('hidden');
-
+    // 1. Immediately schedule system-level shutdown command via Windows shutdown.exe
     if (window.api?.shutdownSystem) {
       window.api.shutdownSystem(30);
+    }
+
+    // 2. Bring window to front so the user sees the countdown overlay
+    if (window.api?.focusWindow) {
+      window.api.focusWindow();
+    }
+
+    // 3. Show the UI countdown overlay with Cancel button
+    const overlay = document.getElementById('app-shutdown-overlay');
+    const timerDisplay = document.getElementById('shutdown-timer-display');
+    if (overlay) {
+      shutdownSecondsRemaining = 30;
+      if (timerDisplay) timerDisplay.textContent = '00:30';
+      overlay.classList.remove('hidden');
+      overlay.style.display = 'flex';
     }
 
     if (shutdownCountdownInterval) clearInterval(shutdownCountdownInterval);
@@ -4404,7 +4429,10 @@
     }
 
     const overlay = document.getElementById('app-shutdown-overlay');
-    if (overlay) overlay.classList.add('hidden');
+    if (overlay) {
+      overlay.classList.add('hidden');
+      overlay.style.display = 'none';
+    }
 
     const chk = document.getElementById('chk-shutdown');
     if (chk) chk.checked = false;
@@ -4414,7 +4442,7 @@
     window.api.saveSettings(settings);
 
     const b = I18N[currentLang] || I18N.ar;
-    alert(b.shutdown_cancelled || 'Shutdown cancelled');
+    alert(b.shutdown_cancelled || 'Shutdown cancelled successfully');
   }
 
   function setupNotificationAndShutdownUI() {
@@ -4614,7 +4642,7 @@
     const optNotify = document.getElementById('opt-notify-complete');
     if (optNotify) optNotify.checked = settings.notifyComplete !== false;
     document.getElementById('opt-sound-general').checked = settings.soundGeneral || false;
-    document.getElementById('opt-sound-complete').checked = settings.soundComplete || false;
+    document.getElementById('opt-sound-complete').checked = settings.soundComplete !== false;
     document.getElementById('opt-sound-fail').checked = settings.soundFail !== false;
     document.getElementById('opt-context-menu').checked = settings.addToContextMenu !== false;
     document.getElementById('opt-check-updates').checked = settings.checkUpdates !== false;
