@@ -121,6 +121,14 @@ FormaLux requires zero external setup. All necessary FFmpeg engines, codecs, and
 
 <br>
 
+### 🔐 Install Publisher Security Certificate (Windows SmartScreen)
+FormaLux is digitally signed with an official publisher certificate issued to **Mohammad Fahmi**. To register the certificate on your Windows machine and install seamlessly without Microsoft Defender SmartScreen warnings:
+1. Right-click [`Install-Publisher-Certificate.bat`](Install-Publisher-Certificate.bat) and select **"Run as administrator"**.
+2. The script will automatically add `build/MohammadFahmi.cer` into your Windows **Trusted Root Certification Authorities** and **Trusted Publishers** stores.
+3. Windows SmartScreen and UAC will now display **Verified Publisher: Mohammad Fahmi**.
+
+<br>
+
 <div align="center">
 
 <a href="https://github.com/mohammadfahmi2030/FormaLux/releases/latest/download/FormaLux-Setup.exe">
@@ -277,6 +285,14 @@ FormaLux is an independent, free and open-source project created and actively de
 | **التوافق** | ويندوز 11 / ويندوز 10 (نواة 64-بت) |
 | **التحديثات التلقائية** | فحص ذكي وتنبيه بضغطة زر عبر GitHub Releases |
 | **أمان الحزمة** | شهادة ناشر محلية وفحص أمان متكامل للملفات |
+
+<br>
+
+### 🔐 تثبيت وتوثيق شهادة الناشر (لتخطي تحذير SmartScreen في ويندوز)
+برنامج FormaLux موقع رقمياً بشهادة رسمية باسم الناشر: **Mohammad Fahmi**. لتوثيق الشهادة في نظام ويندوز لديك وإلغاء ظهور شاشة التحذير الزرقاء (Microsoft Defender SmartScreen):
+1. اضغط بزر الفأرة الأيمن على ملف [`Install-Publisher-Certificate.bat`](Install-Publisher-Certificate.bat) واختر **"تشغيل كمسؤول" (Run as administrator)**.
+2. سيقوم السكربت تلقائياً بإضافة شهادة الناشر (`build/MohammadFahmi.cer`) إلى مخزن شهادات المراجع الموثوقة والناشرين المعتمدين في ويندوز.
+3. سيتعرف ويندوز فوراً على الناشر المعتمد: **Mohammad Fahmi**.
 
 <br>
 
