@@ -3826,14 +3826,14 @@
 
   // ========== Tool Cards ==========
   function setupToolCards() {
-    // Ensure all tool card icons load robustly from both relative paths
+    // Ensure all tool card icons load robustly
     document.querySelectorAll('img.tool-img-icon').forEach(img => {
       img.addEventListener('error', function onIconErr() {
         if (this.dataset.fallbackApplied) return;
         this.dataset.fallbackApplied = 'true';
         const alt = this.getAttribute('alt');
         if (alt) {
-          this.src = `../assets/tools/${alt}.png`;
+          this.src = `assets/tools/${alt}.png`;
         }
       });
     });
