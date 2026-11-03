@@ -567,7 +567,6 @@
       alert_no_files: 'الرجاء إضافة ملف واحد على الأقل للمتابعة',
       // Tools Translations
       t_v_merge: 'دامج & Mux',
-      t_v_separate: 'الفاصل',
       t_v_frames: 'إطارات التصدير',
       t_v_player: 'مشغل الوسائط',
       t_a_merge: 'دامج الصوت',
@@ -1171,7 +1170,6 @@
       alert_no_files: 'Please add at least one file to proceed',
       // Tools Translations
       t_v_merge: 'Video Joiner & Muxer',
-      t_v_separate: 'Audio/Video Separator',
       t_v_frames: 'Export Frames',
       t_v_player: 'Media Player',
       t_a_merge: 'Audio Joiner',
@@ -1752,7 +1750,6 @@
       alert_no_files: 'Veuillez ajouter au moins un fichier',
       // Tools Translations
       t_v_merge: 'Fusionner & Muxer',
-      t_v_separate: 'Séparateur Audio/Vidéo',
       t_v_frames: 'Exporter les images',
       t_v_player: 'Lecteur Multimédia',
       t_a_merge: 'Fusionneur Audio',
@@ -2363,7 +2360,6 @@
       alert_no_files: 'Por favor, añada al menos un archivo',
       // Tools Translations
       t_v_merge: 'Unir Vídeo & Mux',
-      t_v_separate: 'Separador Audio/Vídeo',
       t_v_frames: 'Exportar Fotogramas',
       t_v_player: 'Reproductor Multimedia',
       t_a_merge: 'Unir Pistas de Audio',
@@ -2974,7 +2970,6 @@
       alert_no_files: 'Lütfen devam etmek için en az bir dosya ekleyin',
       // Tools Translations
       t_v_merge: 'Video Birleştirici & Mux',
-      t_v_separate: 'Ses/Video Ayırıcı',
       t_v_frames: 'Kareleri Dışa Aktar',
       t_v_player: 'Medya Oynatıcı',
       t_a_merge: 'Ses Birleştirici',
@@ -3570,11 +3565,6 @@
     v_merge: { name: 'دامج & Mux', section: 'video', ext: '.mp4', multi: true, filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov','ts'] }],
       options: [
         { key: 'mode', label: 'نوع العملية', type: 'select', choices: [['concat','دمج مقاطع فيديو بالتتابع'],['compress','ضغط الفيديو']], default: 'concat' },
-      ]
-    },
-    v_separate: { name: 'الفاصل', section: 'video', ext: '.mp4', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],
-      options: [
-        { key: 'target', label: 'استخراج', type: 'select', choices: [['video','استخراج فيديو صامت فقط (بدون صوت)'],['audio','استخراج ملف الصوت فقط']], default: 'audio' },
       ]
     },
     v_frames: { name: 'إطارات التصدير', section: 'video', ext: '.jpg', filters: [{ name: 'Video', extensions: ['mp4','mkv','avi','mov'] }],

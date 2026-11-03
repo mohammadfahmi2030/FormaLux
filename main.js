@@ -1773,16 +1773,6 @@ function buildFFmpegArgs(task, customOutputPath) {
       return args;
     }
     
-    // Separator (extract audio or video)
-    case 'v_separate':
-      if (options.target === 'video') {
-        return [...baseArgs, '-i', input, '-an', '-c:v', 'copy', outputPath];
-      }
-      return [...baseArgs, '-i', input, '-vn', '-c:a', 'copy', outputPath];
-    case 'v_separate_video':
-      return [...baseArgs, '-i', input, '-an', '-c:v', 'copy', outputPath];
-    case 'v_separate_audio':
-      return [...baseArgs, '-i', input, '-vn', '-c:a', 'copy', outputPath];
     
     // Export frames
     case 'v_frames':
